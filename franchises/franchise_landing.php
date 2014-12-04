@@ -6,32 +6,26 @@
         <link href="../libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">
         <script src="../libs/js/jquery.js"></script>
         <script src="../libs/js/bootstrap.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#menu-toggle").click(function (e) {
+                    e.preventDefault();
+                    $("#wrapper").toggleClass("toggled");
+                });
+
+                //$('.FranList').hide();
+                $('.collapseList').click(function () {
+                    $(this).siblings('.collapseList').find('ul').slideUp();
+                    $(this).find('ul').slideToggle();
+                });
+            });
+        </script>
     </head>
     <body>
         <div id="wrapper">
 
             <!-- Sidebar -->
-            <div id="sidebar-wrapper">
-                <ul class="sidebar-nav">
-                    <li class="sidebar-brand">
-                        <a href="#">
-                            Madden '08
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../index.php">Home</a>
-                    </li>
-                    <li>
-                        <a href="franchise_mgt.php">Franchise Management</a> <!-- Locked Icon When Logged Out On Hover Explain Need to Be Logged in -->
-                    </li>
-                    <li>
-                        <a href="ATL/Fran_ATL.php">ATL</a>
-                    </li>
-                    <li>
-                        <a href="#">BAL</a>
-                    </li>
-                </ul>
-            </div>
+            <?php include ('../nav/franchiseTopNav.php'); ?>
             <!-- /#sidebar-wrapper -->
 
             <!-- Page Content -->
@@ -50,20 +44,6 @@
             <!-- /#page-content-wrapper -->
 
         </div>
-        <!-- /#wrapper -->
-
-        <!-- jQuery -->
-        <script src="js/jquery.js"></script>
-
-        <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
-
-        <!-- Menu Toggle Script -->
-        <script>
-            $("#menu-toggle").click(function (e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("toggled");
-            });
-        </script>
+        <!-- /#wrapper -->        
     </body>
 </html>
