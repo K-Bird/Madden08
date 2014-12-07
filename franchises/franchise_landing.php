@@ -12,12 +12,6 @@
                     e.preventDefault();
                     $("#wrapper").toggleClass("toggled");
                 });
-
-                //$('.FranList').hide();
-                $('.collapseList').click(function () {
-                    $(this).siblings('.collapseList').find('ul').slideUp();
-                    $(this).find('ul').slideToggle();
-                });
             });
         </script>
     </head>
@@ -25,7 +19,7 @@
         <div id="wrapper">
 
             <!-- Sidebar -->
-            <?php include ('../nav/franchiseTopNav.php'); ?>
+            <?php include ('../nav/franchiseTopSidebar.php'); ?>
             <!-- /#sidebar-wrapper -->
 
             <!-- Page Content -->

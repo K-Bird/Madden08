@@ -12,7 +12,7 @@
             <a href="franchise_mgt.php">Franchise Management</a> <!-- Locked Icon When Logged Out On Hover Explain Need to Be Logged in -->
         </li>
         <li>
-            <a href="#" class="collpaseList">Franchises:</a>
+            <a href="#">Franchises:</a>
         </li>
         <?php
         $con = mysql_connect("localhost", 'root', 'Fly0Bird797979');
@@ -26,9 +26,9 @@
 
         while ($row = mysql_fetch_array($FranResult)) {
             if ($row['Active'] === 'Y') {
-                echo '<li><a href="Franchises/', $row['Franchise'], '/Fran_', $row['Franchise'], '.php"><img src=',$row['Franchise'],'/',$row['Franchise'],'_Logo.png height=18 width=25><b> - ', $row['Franchise'], ' - Year: ',$row['CurrentYear'],'</b></a></li>';
+                echo '<li><a href="', $row['Franchise'], '/Fran_', $row['Franchise'], '.php"><img src=',$row['Franchise'],'/',$row['Franchise'],'_Logo.png height=18 width=25><b> - ', $row['Franchise'], ' - Year: ',$row['CurrentYear'],'</b></a></li>';
             } else {
-                echo '<li style="opacity:0.5"><a href="Franchises/', $row['Franchise'], '/Fran_', $row['Franchise'], '.php"><img src=',$row['Franchise'],'/',$row['Franchise'],'_Logo.png height=18 width=25> - ', $row['Franchise'], ' - Inactive</a></li>';
+                echo '<li style="opacity:0.5"><a href="', $row['Franchise'], '/Fran_', $row['Franchise'], '.php"><img src=',$row['Franchise'],'/',$row['Franchise'],'_Logo.png height=18 width=25> - ', $row['Franchise'], ' - Inactive</a></li>';
             }
         }
         ?>
