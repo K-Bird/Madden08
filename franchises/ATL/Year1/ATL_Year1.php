@@ -8,26 +8,35 @@
         <script src="../../../libs/js/jquery.js"></script>
         <script src="../../../libs/js/bootstrap.js"></script>
         <script src="../../../libs/js/commonFunctions.js"></script>
+        <style>
+            .popover {
+                max-width: 800px;
+                width: auto;
+            }
+        </style>
     </head>
     <body style="background-color: #890101">
-        <?php  $franYear='1'; $fran='atl';  ?>
+        <?php
+        $franYear = '1';
+        $fran = 'atl';
+        ?>
         <div id="wrapper">
-            <?php include ('../../../nav/franchiseYearSidebar.php'); ?>
+<?php include ('../../../nav/franchiseYearSidebar.php'); ?>
             <div id="page-content-wrapper">
                 <div class="container-fluid">
-                    <?php include ('../../../nav/franchiseYearNav.php'); ?>
+<?php include ('../../../nav/franchiseYearNav.php'); ?>
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="Preseason Information">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#preseasonPanel" aria-expanded="true" aria-controls="preseasonPanel">
-                                        Preseason Information
+                                        <?php echo strtoupper($fran)." - Year: ".$franYear." - "; ?>Preseason Information
                                     </a>
                                 </h4>
                             </div>
-                            <div id="preseasonPanel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="Preseason Information">
+                            <div id="preseasonPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Preseason Information">
                                 <div class="panel-body">
-                                    <?php include 'ATL_Year1_PreSeason_Table.php'; ?>
+<?php include 'ATL_Year1_PreSeason_Table.php'; ?>
                                 </div>
                             </div>
                         </div>
@@ -35,13 +44,13 @@
                             <div class="panel-heading" role="tab" id="Coaching Staff">
                                 <h4 class="panel-title">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#coachingPanel" aria-expanded="false" aria-controls="coachingPanel">
-                                        Coaching Staff
+                                        <?php echo strtoupper($fran)." - Year: ".$franYear." - "; ?>Coaching Staff
                                     </a>
                                 </h4>
                             </div>
                             <div id="coachingPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Coaching Staff">
                                 <div class="panel-body">
-                                    [Coaching Table]
+<?php include 'ATL_Year1_CoachingStaff_Table.php'; ?>
                                 </div>
                             </div>
                         </div>
@@ -49,13 +58,13 @@
                             <div class="panel-heading" role="tab" id="Depth Chart">
                                 <h4 class="panel-title">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#depthPanel" aria-expanded="false" aria-controls="depthPanel">
-                                        Depth Chart
+                                        <?php echo strtoupper($fran)." - Year: ".$franYear." - "; ?>Depth Chart
                                     </a>
                                 </h4>
                             </div>
                             <div id="depthPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Depth Chart">
                                 <div class="panel-body">
-                                    [Depth Chart]
+<?php include 'ATL_Year1_DepthChart_Table.php'; ?>
                                 </div>
                             </div>
                         </div>
@@ -63,13 +72,13 @@
                             <div class="panel-heading" role="tab" id="Season Results">
                                 <h4 class="panel-title">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#resultsPanel" aria-expanded="false" aria-controls="resultsPanel">
-                                        Season Results
+                                        <?php echo strtoupper($fran)." - Year: ".$franYear." - "; ?>Season Results
                                     </a>
                                 </h4>
                             </div>
                             <div id="resultsPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Season Results">
                                 <div class="panel-body">
-                                    [Schedule Table]
+<?php include 'ATL_Year1_Results_Table.php'; ?>
                                 </div>
                             </div>
                         </div>
@@ -77,13 +86,13 @@
                             <div class="panel-heading" role="tab" id="Team Stats">
                                 <h4 class="panel-title">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#teamStatsPanel" aria-expanded="false" aria-controls="teamStatsPanel">
-                                        Team Stats
+                                        <?php echo strtoupper($fran)." - Year: ".$franYear." - "; ?>Team Stats
                                     </a>
                                 </h4>
                             </div>
                             <div id="teamStatsPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Team Stats">
                                 <div class="panel-body">
-                                    [Team Stats Table]
+<?php include 'ATL_Year1_TeamStats_Table.php'; ?>
                                 </div>
                             </div>
                         </div>
@@ -91,13 +100,13 @@
                             <div class="panel-heading" role="tab" id="Individual Stats">
                                 <h4 class="panel-title">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#indvStatsPanel" aria-expanded="false" aria-controls="indvStatsPanel">
-                                        Individual Stats
+                                        <?php echo strtoupper($fran)." - Year: ".$franYear." - "; ?>Individual Stats
                                     </a>
                                 </h4>
                             </div>
                             <div id="indvStatsPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Individual Stats">
                                 <div class="panel-body">
-                                    [Individual Stats Table]
+<?php include 'ATL_Year1_IndvStats_Table.php'; ?>
                                 </div>
                             </div>
                         </div>
@@ -105,13 +114,13 @@
                             <div class="panel-heading" role="tab" id="Offseason Activities">
                                 <h4 class="panel-title">
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#offseasonPanel" aria-expanded="false" aria-controls="offseasonPanel">
-                                        Offseason Activities
+                                        <?php echo strtoupper($fran)." - Year: ".$franYear." - "; ?>Offseason Activities
                                     </a>
                                 </h4>
                             </div>
                             <div id="offseasonPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Offseason Activities">
                                 <div class="panel-body">
-                                    [Offseason Activities Table]
+<?php include 'ATL_Year1_Off_Table.php'; ?>
                                 </div>
                             </div>
                         </div>

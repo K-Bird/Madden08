@@ -10,7 +10,6 @@
         <script src="../../libs/js/commonFunctions.js"></script>
     </head>
     <body>
-        <?php $fran='ATL' ?>
         <div id="wrapper">
             <?php include ('../../nav/franchiseLandingSidebar.php'); ?>
             <div id="page-content-wrapper" style="text-align: center">
