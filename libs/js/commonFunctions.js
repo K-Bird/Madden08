@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-
-
     //Common Function That Toggles the Sidebar Shown/Hidden for Each Page
     $("#menu-toggle").click(function (e) {
         e.preventDefault();
@@ -10,8 +8,8 @@ $(document).ready(function () {
 
     //Common Function To Enable all Tooltips on Page
     $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 
     //Common Functions: History Popovers for Individual Franchise Years
 
@@ -157,6 +155,32 @@ $(document).ready(function () {
         });
         $('#' + event.target.id).popover('show');
     });
+
+
+    //Common Functions: Functions to Edit Franchise Year Pages
+
+    //Master Edit Button Function
+    $("#toggleEdit").click(function (e) {
+        $(".yearEdit").toggle();
+    });
+
+    //Grab Preseason Row Data Which is Passed to the Shown Modal
+    $(".preseasonEdit").click(function (e) {
+        var table = $(this).data('table');
+        var row = $(this).data('row');
+        var col = $(this).data('col');
+
+        $(".editModal #table").val(table);
+        $(".editModal #row").val(row);
+        $(".editModal #col").val(col);
+
+    });
+
+    //For Any editModal Shown Focus on the Value Input Field
+    $(".editModal").on('shown.bs.modal', function (e) {
+        $('[id$=Value]').focus();
+    });
+
 
 });
 

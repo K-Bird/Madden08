@@ -16,7 +16,7 @@ if ($RegSimrow['Value'] != '') {
 
     $result = mysql_query("SELECT * FROM `atl_results` Where `Year`='{$franYear}'");
 
-    echo '<table class="table table-hover" id="fran-reg" style="text-align: center; font-size: small">';
+    echo '<table class="table table-hover" id="', $fran, '_', $franYear, '_regSeason" style="text-align: center; font-size: small">';
     echo '<tr>';
     echo '<td style="text-align: left">Week</td>', '<td>', 'Vs.', '</td>', '<td>', 'Home/Away', '</td>', '<td>', 'Score', '</td>', '<td>', 'Result', '</td>', '<td>', 'Overall Record', '</td>', '<td>', 'Divisional Record', '</td>';
     echo '</tr>';

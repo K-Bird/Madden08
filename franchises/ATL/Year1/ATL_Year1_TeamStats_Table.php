@@ -10,7 +10,7 @@ mysql_select_db("madden08_db", $con);
 $result = mysql_query("SELECT * FROM `{$fran}_teamstats` Where `Year`='{$franYear}'");
 
 echo "<br />";
-echo '<table class="table table-hover" id="atl_teamstats" style="text-align: center; font-size: small">';
+echo '<table class="table table-hover" id="', $fran, '_', $franYear, '_teamstats" style="text-align: center; font-size: small">';
 echo '<tr>';
 echo '<td>', 'Stat', '</td>','<td>', 'Value', '</td>','<td>', 'NFL Rank', '</td>';
 echo '</tr>';
