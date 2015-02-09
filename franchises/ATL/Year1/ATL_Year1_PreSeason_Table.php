@@ -16,7 +16,7 @@ while ($row = mysql_fetch_array($result)) {
     echo '<tr>';
     echo '<td>', $row['Field'], '</td>',
          '<td><span id="', $row['Identify'], 'History" class="preHistory" style="cursor: pointer" data-toggle="popover" title="History">', $row['Value'], '</span></td>',
-         '<td class="yearEdit" style="display: none"><a class="btn btn-default preseasonEdit" data-toggle="modal" data-table="info" data-col="Value" data-row=',$row['Row'],' data-target="#',$row['Identify'],'Modal">Edit</a><td>';
+         '<td class="yearEdit" style="display: none"><a class="btn btn-default yearEditBtn" data-toggle="modal" data-table="info" data-col="Value" data-row=',$row['Row'],' data-target="#',$row['Identify'],'Modal">Edit</a><td>';
     echo '</tr>';
 }
 

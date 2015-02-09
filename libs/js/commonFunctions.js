@@ -165,7 +165,7 @@ $(document).ready(function () {
     });
 
     //Grab Preseason Row Data Which is Passed to the Shown Modal
-    $(".preseasonEdit").click(function (e) {
+    $(".yearEditBtn").click(function (e) {
         var table = $(this).data('table');
         var row = $(this).data('row');
         var col = $(this).data('col');
@@ -181,6 +181,32 @@ $(document).ready(function () {
         $('[id$=Value]').focus();
     });
 
+    //When a Dropdown Item is Selected Replace Button Text With Selected Item
+    $(".dropdown-menu li a").click(function () {
+        var selText = $(this).text();
+        $(this).parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+    });
 
+    //Common function to submit depth chart changes
+    $(".editDepthForm").submit(function (e)
+    {
+        $depthFormData = $('.editDepthForm').serialize();
+
+        $.ajax(
+                {
+                    url: "../../_update/Edit_Depth_Chart.php",
+                    type: "POST",
+                    data: $depthFormData,
+                    success: function (data, textStatus, jqXHR)
+                    {
+                        alert(data);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        alert("Form Did Not Process");
+                    }
+                });
+                e.preventDefault();
+    });
 });
 

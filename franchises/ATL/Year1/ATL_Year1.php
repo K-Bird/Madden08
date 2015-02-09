@@ -13,6 +13,10 @@
                 max-width: 800px;
                 width: auto;
             }
+            .modal-dialog {
+                max-width: 1200px;
+                width: auto;
+            }
         </style>
     </head>
     <body style="background-color: #890101">
