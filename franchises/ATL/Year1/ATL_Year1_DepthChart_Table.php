@@ -1719,10 +1719,10 @@ mysql_select_db("madden08_db", $con);
     </div>
     <br>
     <div class="row" style='text-align: center'>
-        <a class="btn btn-default yearEdit depthEditbtn" style="display: none" data-toggle="modal" data-target="#depthModal">Edit</a>
+        <a class="btn btn-default yearEdit depthEditbtn" style="display: none" data-toggle="modal" data-target="#depthModal">Edit Depth Chart</a>
     </div>
 </div>
 
 <?php
 include ('../../_history/player_History.php');
-include ('../../_modals/depthchart_Modal.php');
+include ('../../_modals/depthchart_Modals.php');

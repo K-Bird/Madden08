@@ -199,14 +199,13 @@ $(document).ready(function () {
                     data: $depthFormData,
                     success: function (data, textStatus, jqXHR)
                     {
-                        alert(data);
+                        location.reload();
                     },
                     error: function (jqXHR, textStatus, errorThrown)
                     {
                         alert("Form Did Not Process");
                     }
                 });
-                e.preventDefault();
+        e.preventDefault();
     });
 });
-
