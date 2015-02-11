@@ -1,8 +1,15 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+$fran = $_POST["fran"];
+$row = $_POST["row"];
+
+$con = mysql_connect("localhost", 'root', 'Fly0Bird797979');
+if (!$con) {
+    die('Could not connect!' . mysql_error());
+}
+
+mysql_select_db("madden08_db", $con);
+
+$insert = mysql_query("DELETE from `{$fran}_players_test` where Row_ID='{$row}'", $con) or die(mysql_error());
+
 

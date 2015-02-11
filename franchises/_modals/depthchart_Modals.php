@@ -179,44 +179,6 @@ array_push($Positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2', 'WR1', '
                                       <td><a class="btn btn-xs btn-success addPlayerBtn" data-toggle="modal" data-target="#add'.$pos.'Modal">Add ' . $pos . '</a></td>';
                             }
                             echo '</tr>';
-                            /* Add Player Modal */
-                            echo '
-                                <div class="modal fade" id="add'.$pos.'Modal" tabindex="-1" role="dialog" aria-labelledby="Add '.$pos.'" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title">Add '.$pos.'</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Add '.$pos.'</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>';
-                            /* Remove Player Modal */
-                            echo '
-                                <div class="modal fade" id="remove'.$pos.'Modal" tabindex="-1" role="dialog" aria-labelledby="Add '.$pos.'" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title">Remove '.$pos.'</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Remove '.$pos.'?</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                                                <button type="button" class="btn btn-success">Yes</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>';
                         }
                         ?>
                     </table>
@@ -226,7 +188,71 @@ array_push($Positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2', 'WR1', '
                 <input type="hidden" name="franchise" value=<?php echo $fran ?> />
                 <button type="submit" class="btn btn-success">Save changes</button>
             </div>
-            </form>
+            </form>                
         </div>
     </div>
 </div>
+
+    
+<?php
+
+foreach ($Positions as $pos) {
+
+$Rosterresult = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='" . $pos . "' and Year='{$franYear}'");
+$RosterRow = mysql_fetch_array($Rosterresult);
+
+/* Remove Player Modal */
+echo '
+    <form role="form" name="add'.$pos.'" class="removePlayerForm">
+    <div class="modal fade" id="remove'.$pos.'Modal" tabindex="-1" role="dialog" aria-labelledby="Add '.$pos.'" aria-hidden="true">
+        <div class="modal-dialog" style="width:200px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Remove Player</h4>
+                </div>
+                <div class="modal-body" style="text-align:center">
+                    <p>Remove '.$pos.'?</p>
+                </div>
+                <div class="modal-footer" style="text-align:center">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-success">Yes</button>
+                    <input type="hidden" name="row" value='.$RosterRow['Row_ID'].' />
+                    <input type="hidden" name="fran" value="'.$fran.'" />
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>';
+
+
+}
+
+foreach ($Positions as $pos) {
+
+$Rosterresult = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='" . $pos . "' and Year='{$franYear}'");
+$RosterRow = mysql_fetch_array($Rosterresult);
+
+/* Add Player Modal */
+                echo '
+                    <div class="modal fade" id="add'.$pos.'Modal" tabindex="-1" role="dialog" aria-labelledby="Add '.$pos.'" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">Add '.$pos.'</h4>
+                                </div>
+                                <div class="modal-body">
+                                <form role="form" name="EditRoster" id="EditRosterForm" class="editDepthForm">
+                                    <p>Add '.$pos.'</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Add '.$pos.'</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+                
+}
