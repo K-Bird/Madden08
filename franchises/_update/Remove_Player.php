@@ -10,6 +10,6 @@ if (!$con) {
 
 mysql_select_db("madden08_db", $con);
 
-$insert = mysql_query("DELETE from `{$fran}_players_test` where Row_ID='{$row}'", $con) or die(mysql_error());
+$insert = mysql_query("DELETE from `{$fran}_players_test` where `Row_ID`='{$row}'", $con) or die(mysql_error());
 
 

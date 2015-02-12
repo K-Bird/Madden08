@@ -186,13 +186,36 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-    //Common function to submit add player forms
+    //Common function to submit remove player forms
     $(".removePlayerForm").submit(function (e)
     {
-        $addPlayerData = $('.removePlayerForm').serialize();
+        $removePlayerData = $(this).serialize();
+
         $.ajax(
                 {
                     url: "../../_update/Remove_Player.php",
+                    type: "POST",
+                    data: $removePlayerData,
+                    success: function (data, textStatus, jqXHR)
+                    {
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        alert("Form Did Not Process");
+                    }
+                });
+        e.preventDefault();
+    });
+    
+    //Common function to submit add player forms
+    $(".addPlayerForm").submit(function (e)
+    {
+        $addPlayerData = $(this).serialize();
+
+        $.ajax(
+                {
+                    url: "../../_update/Add_Player.php",
                     type: "POST",
                     data: $addPlayerData,
                     success: function (data, textStatus, jqXHR)
@@ -206,4 +229,5 @@ $(document).ready(function () {
                 });
         e.preventDefault();
     });
+
 });

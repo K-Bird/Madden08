@@ -235,20 +235,106 @@ $RosterRow = mysql_fetch_array($Rosterresult);
 
 /* Add Player Modal */
                 echo '
+                    <form role="form" name="add'.$pos.'" class="addPlayerForm">
                     <div class="modal fade" id="add'.$pos.'Modal" tabindex="-1" role="dialog" aria-labelledby="Add '.$pos.'" aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog" style="width:500px">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <h4 class="modal-title">Add '.$pos.'</h4>
                                 </div>
-                                <div class="modal-body">
-                                <form role="form" name="EditRoster" id="EditRosterForm" class="editDepthForm">
-                                    <p>Add '.$pos.'</p>
+                                <div class="modal-body">  
+                                    <table class="table">
+                                        <tr>
+                                            <td>
+                                                <label>Name:</label> 
+                                            </td>
+                                            <td style="text-align:left">
+                                                <input type="text" name="addName"> 
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Overall:</label>
+                                            </td>
+                                            <td style="text-align:left">
+                                                <input type="text" name="addOverall" size="2">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Age:</label>
+                                            </td>
+                                            <td style="text-align:left">
+                                                <input type="text" name="addAge"size="2">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Acquired:</label>
+                                            </td>
+                                            <td style="text-align:left">
+                                                <select name="addOnTeam" class="btn btn-xs btn-default dropdown-toggle">
+                                                    <option>On Team</option>
+                                                    <option>Free Agent</option>
+                                                    <option>Trade</option>
+                                                    <option>Draft</option>
+                                                    <option>Created</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Rookie/Vet:</label>
+                                            </td>
+                                            <td style="text-align:left">
+                                                <select name="addVR" class="btn btn-xs btn-default dropdown-toggle">
+                                                    <option value="R">Rookie</option>
+                                                    <option value="">Veteran</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Weapon:</label>
+                                            </td>
+                                            <td style="text-align:left">
+                                                <select name="addWeapon" class="btn btn-xs btn-default dropdown-toggle">
+                                                    <option></option>
+                                                    <option value="CannonArm">Cannon Arm</option>
+                                                    <option value="Coverage">Coverage Corner</option>
+                                                    <option value="Crosshair">Precision QB</option>
+                                                    <option value="Elusive">Elusive Back</option>
+                                                    <option value="Power">Power Back</option>
+                                                    <option value="Franchise">Franchise Player</option>
+                                                    <option value="HeavyHitter">Heavy Hitter</option>
+                                                    <option value="PassBlock">Pocket Protector</option>
+                                                    <option value="RunBlock">Run Blocker</option>
+                                                    <option value="Possesion">Possession Receiver</option>
+                                                    <option value="RunStopper">Run Stopper</option>
+                                                    <option value="Speed">Speed Player</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Ohio State:</label>
+                                            </td>
+                                            <td style="text-align:left">
+                                                <select name="addOSU" class="btn btn-xs btn-default dropdown-toggle">
+                                                    <option></option>
+                                                    <option value="Y">Buckeye</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Add '.$pos.'</button>
+                                <div class="modal-footer" style="text-align:left">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-success">Add '.$pos.'</button>
+                                    <input type="hidden" name="fran" value="'.$fran.'" />
+                                    <input type="hidden" name="franYear" value="'.$franYear.'" />
+                                    <input type="hidden" name="pos" value="'.$pos.'" />
                                     </form>
                                 </div>
                             </div>
