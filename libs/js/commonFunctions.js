@@ -190,7 +190,6 @@ $(document).ready(function () {
     $(".removePlayerForm").submit(function (e)
     {
         $removePlayerData = $(this).serialize();
-
         $.ajax(
                 {
                     url: "../../_update/Remove_Player.php",
@@ -207,12 +206,11 @@ $(document).ready(function () {
                 });
         e.preventDefault();
     });
-    
+
     //Common function to submit add player forms
     $(".addPlayerForm").submit(function (e)
     {
         $addPlayerData = $(this).serialize();
-
         $.ajax(
                 {
                     url: "../../_update/Add_Player.php",
@@ -220,7 +218,7 @@ $(document).ready(function () {
                     data: $addPlayerData,
                     success: function (data, textStatus, jqXHR)
                     {
-                        alert(data);
+                        location.reload();
                     },
                     error: function (jqXHR, textStatus, errorThrown)
                     {

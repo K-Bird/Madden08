@@ -11,15 +11,12 @@ $franchise = $_POST['fran'];
 $franchiseYear = $_POST['franYear'];
 $position = $_POST['pos'];
 
+$con = mysql_connect("localhost", 'root', 'Fly0Bird797979');
+if (!$con) {
+    die('Could not connect!' . mysql_error());
+}
 
-echo $addName . "<br>";
-echo $addOverall . "<br>";
-echo $addAge . "<br>";
-echo $addOnTeam . "<br>";
-echo $addVetRookie . "<br>";
-echo $addWeapon . "<br>";
-echo $addOSU . "<br>";
-echo $franchise . "<br>";
-echo $franchiseYear . "<br>";
-echo $position . "<br>";
+mysql_select_db("madden08_db", $con);
+
+$addNewPlayer = mysql_query("Insert into `{$franchise}_players` (Name, Position, Overall, Age, Weapon, OnTeam, Rookie, OSU, Year) Values ('{$addName}','{$position}','{$addOverall}','{$addAge}','{$addWeapon}','{$addOnTeam}','{$addVetRookie}','{$addOSU}','{$franchiseYear}')", $con) or die(mysql_error());
 

@@ -27,7 +27,7 @@ array_push($Positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2', 'WR1', '
                         <?php
                         foreach ($Positions as $pos) {
                             echo '<tr style="text-align: left">';
-                            $Rosterresult = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='" . $pos . "' and Year='{$franYear}'");
+                            $Rosterresult = mysql_query("SELECT * FROM `{$fran}_players` where Position='" . $pos . "' and Year='{$franYear}'");
                             $numRows = mysql_num_rows($Rosterresult);
                             if ($numRows > 0) {
                                 $RosterRow = mysql_fetch_array($Rosterresult);
@@ -198,21 +198,21 @@ array_push($Positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2', 'WR1', '
 
 foreach ($Positions as $pos) {
 
-$Rosterresult = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='" . $pos . "' and Year='{$franYear}'");
+$Rosterresult = mysql_query("SELECT * FROM `{$fran}_players` where Position='" . $pos . "' and Year='{$franYear}'");
 $RosterRow = mysql_fetch_array($Rosterresult);
 
 /* Remove Player Modal */
 echo '
     <form role="form" name="add'.$pos.'" class="removePlayerForm">
     <div class="modal fade" id="remove'.$pos.'Modal" tabindex="-1" role="dialog" aria-labelledby="Add '.$pos.'" aria-hidden="true">
-        <div class="modal-dialog" style="width:200px">
+        <div class="modal-dialog" style="width:400px">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Remove Player</h4>
+                    <h4 class="modal-title" style="text-align:center">Remove Player</h4>
                 </div>
                 <div class="modal-body" style="text-align:center">
-                    <p>Remove '.$pos.'?</p>
+                    <p>Remove '.$pos.' from '.strtoupper($fran).' - Year: '.$franYear.'?</p>
                 </div>
                 <div class="modal-footer" style="text-align:center">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
@@ -230,7 +230,7 @@ echo '
 
 foreach ($Positions as $pos) {
 
-$Rosterresult = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='" . $pos . "' and Year='{$franYear}'");
+$Rosterresult = mysql_query("SELECT * FROM `{$fran}_players` where Position='" . $pos . "' and Year='{$franYear}'");
 $RosterRow = mysql_fetch_array($Rosterresult);
 
 /* Add Player Modal */
@@ -241,7 +241,7 @@ $RosterRow = mysql_fetch_array($Rosterresult);
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Add '.$pos.'</h4>
+                                    <h4 class="modal-title">Add '.$pos.' to '.strtoupper($fran).' - Year: '.$franYear.'</h4>
                                 </div>
                                 <div class="modal-body">  
                                     <table class="table">

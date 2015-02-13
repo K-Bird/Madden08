@@ -17,6 +17,9 @@
                 max-width: 1200px;
                 width: auto;
             }
+            .modal {
+                overflow-y: scroll !important;
+            }
         </style>
     </head>
     <body style="background-color: #890101">

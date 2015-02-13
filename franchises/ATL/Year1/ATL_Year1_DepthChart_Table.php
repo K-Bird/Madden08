@@ -25,7 +25,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* QB1 Block */
-                        $QB1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='QB1' and Year='{$franYear}'");
+                        $QB1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='QB1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($QB1result);
                         if ($numRows > 0) {
                             $QB1row = mysql_fetch_array($QB1result);
@@ -61,7 +61,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* HB1 Block */
-                        $HB1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='HB1' and Year='{$franYear}'");
+                        $HB1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='HB1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($HB1result);
                         if ($numRows > 0) {
                             $HB1row = mysql_fetch_array($HB1result);
@@ -97,7 +97,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* FB1 Block */
-                        $FB1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='FB1' and Year='{$franYear}'");
+                        $FB1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='FB1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($FB1result);
                         if ($numRows > 0) {
                             $FB1row = mysql_fetch_array($FB1result);
@@ -133,7 +133,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* WR1 Block */
-                        $WR1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='WR1' and Year='{$franYear}'");
+                        $WR1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='WR1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($WR1result);
                         if ($numRows > 0) {
                             $WR1row = mysql_fetch_array($WR1result);
@@ -169,7 +169,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* WR2 Block */
-                        $WR2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='WR2' and Year='{$franYear}'");
+                        $WR2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='WR2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($WR2result);
                         if ($numRows > 0) {
                             $WR2row = mysql_fetch_array($WR2result);
@@ -205,7 +205,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* TE1 Block */
-                        $TE1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='TE1' and Year='{$franYear}'");
+                        $TE1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='TE1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($TE1result);
                         if ($numRows > 0) {
                             $TE1row = mysql_fetch_array($TE1result);
@@ -241,7 +241,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* LT1 Block */
-                        $LT1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='LT1' and Year='{$franYear}'");
+                        $LT1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='LT1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($LT1result);
                         if ($numRows > 0) {
                             $LT1row = mysql_fetch_array($LT1result);
@@ -277,7 +277,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* LG1 Block */
-                        $LG1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='LG1' and Year='{$franYear}'");
+                        $LG1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='LG1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($LG1result);
                         if ($numRows > 0) {
                             $LG1row = mysql_fetch_array($LG1result);
@@ -313,7 +313,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* C1 Block */
-                        $C1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='C1' and Year='{$franYear}'");
+                        $C1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='C1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($C1result);
                         if ($numRows > 0) {
                             $C1row = mysql_fetch_array($C1result);
@@ -349,7 +349,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* RG1 Block */
-                        $RG1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='RG1' and Year='{$franYear}'");
+                        $RG1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='RG1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($RG1result);
                         if ($numRows > 0) {
                             $RG1row = mysql_fetch_array($RG1result);
@@ -385,7 +385,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* RT1 Block */
-                        $RT1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='RT1' and Year='{$franYear}'");
+                        $RT1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='RT1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($RT1result);
                         if ($numRows > 0) {
                             $RT1row = mysql_fetch_array($RT1result);
@@ -422,7 +422,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* QB2 Block */
-                        $QB2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='QB2' and Year='{$franYear}'");
+                        $QB2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='QB2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($QB2result);
                         if ($numRows > 0) {
                             $QB2row = mysql_fetch_array($QB2result);
@@ -458,7 +458,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* HB2 Block */
-                        $HB2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='HB2' and Year='{$franYear}'");
+                        $HB2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='HB2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($HB2result);
                         if ($numRows > 0) {
                             $HB2row = mysql_fetch_array($HB2result);
@@ -494,7 +494,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* HB3 Block */
-                        $HB3result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='HB3' and Year='{$franYear}'");
+                        $HB3result = mysql_query("SELECT * FROM `{$fran}_players` where Position='HB3' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($HB3result);
                         if ($numRows > 0) {
                             $HB3row = mysql_fetch_array($HB3result);
@@ -530,7 +530,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* FB2 Block */
-                        $FB2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='FB2' and Year='{$franYear}'");
+                        $FB2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='FB2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($FB2result);
                         if ($numRows > 0) {
                             $FB2row = mysql_fetch_array($FB2result);
@@ -566,7 +566,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* WR3 Block */
-                        $WR3result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='WR3' and Year='{$franYear}'");
+                        $WR3result = mysql_query("SELECT * FROM `{$fran}_players` where Position='WR3' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($WR3result);
                         if ($numRows > 0) {
                             $WR3row = mysql_fetch_array($WR3result);
@@ -602,7 +602,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* WR4 Block */
-                        $WR4result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='WR4' and Year='{$franYear}'");
+                        $WR4result = mysql_query("SELECT * FROM `{$fran}_players` where Position='WR4' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($WR4result);
                         if ($numRows > 0) {
                             $WR4row = mysql_fetch_array($WR4result);
@@ -638,7 +638,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* TE2 Block */
-                        $TE2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='TE2' and Year='{$franYear}'");
+                        $TE2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='TE2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($TE2result);
                         if ($numRows > 0) {
                             $TE2row = mysql_fetch_array($TE2result);
@@ -674,7 +674,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* LT2 Block */
-                        $LT2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='LT2' and Year='{$franYear}'");
+                        $LT2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='LT2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($LT2result);
                         if ($numRows > 0) {
                             $LT2row = mysql_fetch_array($LT2result);
@@ -710,7 +710,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* LG2 Block */
-                        $LG2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='LG2' and Year='{$franYear}'");
+                        $LG2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='LG2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($LG2result);
                         if ($numRows > 0) {
                             $LG2row = mysql_fetch_array($LG2result);
@@ -746,7 +746,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* C2 Block */
-                        $C2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='C2' and Year='{$franYear}'");
+                        $C2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='C2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($C2result);
                         if ($numRows > 0) {
                             $C2row = mysql_fetch_array($C2result);
@@ -782,7 +782,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* RG2 Block */
-                        $RG2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='RG2' and Year='{$franYear}'");
+                        $RG2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='RG2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($RG2result);
                         if ($numRows > 0) {
                             $RG2row = mysql_fetch_array($RG2result);
@@ -818,7 +818,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* RT2 Block */
-                        $RT2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='RT2' and Year='{$franYear}'");
+                        $RT2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='RT2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($RT2result);
                         if ($numRows > 0) {
                             $RT2row = mysql_fetch_array($RT2result);
@@ -872,7 +872,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* LE1 Block */
-                        $LE1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='LE1' and Year='{$franYear}'");
+                        $LE1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='LE1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($LE1result);
                         if ($numRows > 0) {
                             $LE1row = mysql_fetch_array($LE1result);
@@ -908,7 +908,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* DT1 Block */
-                        $DT1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='DT1' and Year='{$franYear}'");
+                        $DT1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='DT1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($DT1result);
                         if ($numRows > 0) {
                             $DT1row = mysql_fetch_array($DT1result);
@@ -944,7 +944,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* RE1 Block */
-                        $RE1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='RE1' and Year='{$franYear}'");
+                        $RE1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='RE1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($RE1result);
                         if ($numRows > 0) {
                             $RE1row = mysql_fetch_array($RE1result);
@@ -980,7 +980,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* LOLB1 Block */
-                        $LOLB1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='LOLB1' and Year='{$franYear}'");
+                        $LOLB1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='LOLB1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($LOLB1result);
                         if ($numRows > 0) {
                             $LOLB1row = mysql_fetch_array($LOLB1result);
@@ -1016,7 +1016,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* MLB1 Block */
-                        $MLB1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='MLB1' and Year='{$franYear}'");
+                        $MLB1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='MLB1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($MLB1result);
                         if ($numRows > 0) {
                             $MLB1row = mysql_fetch_array($MLB1result);
@@ -1052,7 +1052,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* ROLB1 Block */
-                        $ROLB1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='ROLB1' and Year='{$franYear}'");
+                        $ROLB1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='ROLB1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($ROLB1result);
                         if ($numRows > 0) {
                             $ROLB1row = mysql_fetch_array($ROLB1result);
@@ -1088,7 +1088,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* CB1 Block */
-                        $CB1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='CB1' and Year='{$franYear}'");
+                        $CB1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='CB1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($CB1result);
                         if ($numRows > 0) {
                             $CB1row = mysql_fetch_array($CB1result);
@@ -1124,7 +1124,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* CB2 Block */
-                        $CB2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='CB2' and Year='{$franYear}'");
+                        $CB2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='CB2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($CB2result);
                         if ($numRows > 0) {
                             $CB2row = mysql_fetch_array($CB2result);
@@ -1160,7 +1160,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* FS1 Block */
-                        $FS1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='FS1' and Year='{$franYear}'");
+                        $FS1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='FS1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($FS1result);
                         if ($numRows > 0) {
                             $FS1row = mysql_fetch_array($FS1result);
@@ -1196,7 +1196,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* SS1 Block */
-                        $SS1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='SS1' and Year='{$franYear}'");
+                        $SS1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='SS1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($SS1result);
                         if ($numRows > 0) {
                             $SS1row = mysql_fetch_array($SS1result);
@@ -1232,7 +1232,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* LE2 Block */
-                        $LE2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='LE2' and Year='{$franYear}'");
+                        $LE2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='LE2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($LE2result);
                         if ($numRows > 0) {
                             $LE2row = mysql_fetch_array($LE2result);
@@ -1268,7 +1268,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* DT2 Block */
-                        $DT2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='DT2' and Year='{$franYear}'");
+                        $DT2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='DT2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($DT2result);
                         if ($numRows > 0) {
                             $DT2row = mysql_fetch_array($DT2result);
@@ -1304,7 +1304,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* RE2 Block */
-                        $RE2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='RE2' and Year='{$franYear}'");
+                        $RE2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='RE2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($RE2result);
                         if ($numRows > 0) {
                             $RE2row = mysql_fetch_array($RE2result);
@@ -1340,7 +1340,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* LOLB2 Block */
-                        $LOLB2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='LOLB2' and Year='{$franYear}'");
+                        $LOLB2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='LOLB2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($LOLB2result);
                         if ($numRows > 0) {
                             $LOLB2row = mysql_fetch_array($LOLB2result);
@@ -1376,7 +1376,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* MLB2 Block */
-                        $MLB2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='MLB2' and Year='{$franYear}'");
+                        $MLB2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='MLB2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($MLB2result);
                         if ($numRows > 0) {
                             $MLB2row = mysql_fetch_array($MLB2result);
@@ -1412,7 +1412,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* ROLB2 Block */
-                        $ROLB2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='ROLB2' and Year='{$franYear}'");
+                        $ROLB2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='ROLB2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($ROLB2result);
                         if ($numRows > 0) {
                             $ROLB2row = mysql_fetch_array($ROLB2result);
@@ -1448,7 +1448,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* CB3 Block */
-                        $CB3result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='CB3' and Year='{$franYear}'");
+                        $CB3result = mysql_query("SELECT * FROM `{$fran}_players` where Position='CB3' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($CB3result);
                         if ($numRows > 0) {
                             $CB3row = mysql_fetch_array($CB3result);
@@ -1484,7 +1484,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* CB4 Block */
-                        $CB4result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='CB4' and Year='{$franYear}'");
+                        $CB4result = mysql_query("SELECT * FROM `{$fran}_players` where Position='CB4' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($CB4result);
                         if ($numRows > 0) {
                             $CB4row = mysql_fetch_array($CB4result);
@@ -1520,7 +1520,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* FS2 Block */
-                        $FS2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='FS2' and Year='{$franYear}'");
+                        $FS2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='FS2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($FS2result);
                         if ($numRows > 0) {
                             $FS2row = mysql_fetch_array($FS2result);
@@ -1556,7 +1556,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* SS2 Block */
-                        $SS2result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='SS2' and Year='{$franYear}'");
+                        $SS2result = mysql_query("SELECT * FROM `{$fran}_players` where Position='SS2' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($SS2result);
                         if ($numRows > 0) {
                             $SS2row = mysql_fetch_array($SS2result);
@@ -1610,7 +1610,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* K1 Block */
-                        $K1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='K1' and Year='{$franYear}'");
+                        $K1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='K1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($K1result);
                         if ($numRows > 0) {
                             $K1row = mysql_fetch_array($K1result);
@@ -1646,7 +1646,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* P1 Block */
-                        $P1result = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='P1' and Year='{$franYear}'");
+                        $P1result = mysql_query("SELECT * FROM `{$fran}_players` where Position='P1' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($P1result);
                         if ($numRows > 0) {
                             $P1row = mysql_fetch_array($P1result);
@@ -1682,7 +1682,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* KR Block */
-                        $KRresult = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='KR' and Year='{$franYear}'");
+                        $KRresult = mysql_query("SELECT * FROM `{$fran}_players` where Position='KR' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($KRresult);
                         if ($numRows > 0) {
                             $KRrow = mysql_fetch_array($KRresult);
@@ -1699,7 +1699,7 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <?php
                         /* PR Block */
-                        $PRresult = mysql_query("SELECT * FROM `{$fran}_players_test` where Position='PR' and Year='{$franYear}'");
+                        $PRresult = mysql_query("SELECT * FROM `{$fran}_players` where Position='PR' and Year='{$franYear}'");
                         $numRows = mysql_num_rows($PRresult);
                         if ($numRows > 0) {
                             $PRrow = mysql_fetch_array($PRresult);
