@@ -228,4 +228,60 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
+    //Common functions to edit onclick edit functionality for results table cells
+    function toggleAttr(el, attribute, vals) {
+        if ($(el).attr(attribute) === vals[0]) {
+            $(el).attr(attribute, vals[1]);
+        } else if ($(el).attr(attribute) === vals[1])
+
+        {
+            $(el).attr(attribute, vals[0]);
+        }
+    }
+
+    $('.resultsEditbtn').click(function () {
+        var vals = ['', 'updateReg(this)'];
+        toggleAttr($('.resultEdit'), 'onclick', vals);
+        $(".resultEdit").toggle();
+    });
 });
+
+//Common function to update regular season table
+function updateReg(e) {
+
+    var id = e.id;
+    var split = id.split("/");
+    var row = split[0];
+    var fran = split[1];
+    var year = split[2];
+    var col = split[3];
+
+    var newVal = prompt("Enter New Value: ");
+    if (newVal === null) {
+        alert("No Update");
+        return;
+    }
+
+    $.ajax(
+            {
+                url: "../../_update/Update_Results.php",
+                type: "POST",
+                data: {
+                    row : row,
+                    fran : fran,
+                    year : year,
+                    col : col,
+                    newVal : newVal
+                },
+                success: function (data, textStatus, jqXHR)
+                {
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert("Update Did Not Complete");
+                }
+            });
+
+
+}
