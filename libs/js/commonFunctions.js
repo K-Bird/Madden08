@@ -239,10 +239,18 @@ $(document).ready(function () {
         }
     }
 
+    //Common function to toggle if results table icons are editable
     $('.resultsEditbtn').click(function () {
         var vals = ['', 'updateReg(this)'];
         toggleAttr($('.resultEdit'), 'onclick', vals);
         $(".resultEdit").toggle();
+    });
+    
+    //Common function to toggle if team stats table icons are editable
+     $('.teamStatsEditbtn').click(function () {
+        var vals = ['', 'updateTeamStat(this)'];
+        toggleAttr($('.teamStatEdit'), 'onclick', vals);
+        $(".teamStatEdit").toggle();
     });
 });
 
@@ -258,7 +266,6 @@ function updateReg(e) {
 
     var newVal = prompt("Enter New Value: ");
     if (newVal === null) {
-        alert("No Update");
         return;
     }
 
@@ -282,6 +289,41 @@ function updateReg(e) {
                     alert("Update Did Not Complete");
                 }
             });
+}
 
+//Common function to update team stats table
+function updateTeamStat(e) {
 
+    var id = e.id;
+    var split = id.split("/");
+    var row = split[0];
+    var fran = split[1];
+    var year = split[2];
+    var col = split[3];
+
+    var newVal = prompt("Enter New Value: ");
+    if (newVal === null) {
+        return;
+    }
+
+    $.ajax(
+            {
+                url: "../../_update/Update_TeamStat.php",
+                type: "POST",
+                data: {
+                    row : row,
+                    fran : fran,
+                    year : year,
+                    col : col,
+                    newVal : newVal
+                },
+                success: function (data, textStatus, jqXHR)
+                {
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert("Update Did Not Complete");
+                }
+            });
 }

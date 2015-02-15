@@ -18,8 +18,8 @@ echo '</tr>';
     while ($row = mysql_fetch_array($result)) {
         echo '<tr>';
         echo '<td style="text-align: left"><span id="', $row['Row'], 'History" class="teamStatHistory" style="cursor: pointer" data-toggle="popover" title="History">', $row['Stat'], '</span></td>',
-             '<td id="', $row['Row'], '/atl/1" onclick="updateTeamStat(this)">', $row['Value'], '</td>',
-             '<td>', $row['Rank'],'</td>';
+             '<td>', $row['Value'], '&nbsp;&nbsp;<span id="', $row['Row'], '/', $fran, '/', $franYear, '/Value" class="glyphicon glyphicon-edit teamStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+             '<td>', $row['Rank'],'&nbsp;&nbsp;<span id="', $row['Row'], '/', $fran, '/', $franYear, '/Rank" class="glyphicon glyphicon-edit teamStatEdit" onclick="" aria-hidden="true" style="display: none"></td>';
         echo '</tr>';
     }
 
@@ -28,3 +28,9 @@ echo '</table>';
 include ('../../_history/teamstats_History.php');
 
 mysql_close($con);
+
+?>
+
+<div class="row" style='text-align: center'>
+    <a class="btn btn-default yearEdit teamStatsEditbtn" style="display: none">Edit Team Stats</a>
+</div>
