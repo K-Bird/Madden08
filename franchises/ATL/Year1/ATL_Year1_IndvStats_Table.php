@@ -20,23 +20,29 @@ mysql_select_db("madden08_db", $con);
             <div class="panel-body">
                 <table class="table table-hover" id="passingStatsTable" style="text-align: center; font-size: small">
                     <tr>
-                        <td>Player</td><td>Passer Rating</td><td>Passing Yards</td><td>Passing TDs</td><td>Interceptions</td><td>Completion %</td><td>Times Sacked</td>
+                        <td>Player</td><td>Passer Rating</td><td>Passing Yards</td><td>Passing TDs</td><td>Interceptions</td><td>Completion %</td><td>Times Sacked</td><td></td>
                     </tr>
-                    <?php
-                    $passingResult = mysql_query("SELECT * FROM `{$fran}_stats_passing` Where Year='{$franYear}'");
+                    <tr>
+                        <?php
+                        $passingResult = mysql_query("SELECT * FROM `{$fran}_stats_passing` Where Year='{$franYear}'");
 
-                    while ($PassingRow = mysql_fetch_array($passingResult)) {
-                        echo '<tr>',
-                        '<td><span id="', $PassingRow['Row'], 'Pass" class="passingHistory" style="cursor: pointer" data-toggle="popover" title="Passing History">', $PassingRow['Player'], '</span></td>',
-                        '<td>', $PassingRow['Rating'], '</td>',
-                        '<td>', $PassingRow['Yards'], '</td>',
-                        '<td>', $PassingRow['TDs'], '</td>',
-                        '<td>', $PassingRow['INTs'], '</td>',
-                        '<td>', $PassingRow['Comp'], '</td>',
-                        '<td>', $PassingRow['Sacked'], '</td>',
-                        '</tr>';
-                    }
-                    ?>
+                        while ($PassingRow = mysql_fetch_array($passingResult)) {
+                            echo '<tr>',
+                            '<td><span id="', $PassingRow['Row'], 'Pass" class="passingHistory" style="cursor: pointer" data-toggle="popover" title="Passing History">', $PassingRow['Player'], '</span>&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/Player/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                            '<td>', $PassingRow['Rating'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/Rating/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                            '<td>', $PassingRow['Yards'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/Yards/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                            '<td>', $PassingRow['TDs'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/TDs/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                            '<td>', $PassingRow['INTs'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/INTs/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                            '<td>', $PassingRow['Comp'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/Comp/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                            '<td>', $PassingRow['Sacked'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/Sacked/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                            '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="',$PassingRow['Row'],'/passing/',$fran,'" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                            '</tr>';
+                        }
+                        ?>
+                    </tr>
+                    <tr>
+                        <td colspan="7"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addPassModal" style="display:none">Add Passing Stat Row</a></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -60,13 +66,13 @@ mysql_select_db("madden08_db", $con);
 
                     while ($RushingRow = mysql_fetch_array($rushingResult)) {
                         echo '<tr>',
-                        '<td><span id="', $RushingRow['Row'], 'Rush" class="rushingHistory" style="cursor: pointer" data-toggle="popover" title="Rushing History">', $RushingRow['Player'], '</span></td>',
-                        '<td>', $RushingRow['Yards'], '</td>',
-                        '<td>', $RushingRow['TDs'], '</td>',
-                        '<td>', $RushingRow['YPC'], '</td>',
-                        '<td>', $RushingRow['Fumble'], '</td>',
-                        '<td>', $RushingRow['Broken'], '</td>',
-                        '<td>', $RushingRow['LongRun'], '</td>',
+                        '<td><span id="', $RushingRow['Row'], 'Rush" class="rushingHistory" style="cursor: pointer" data-toggle="popover" title="Rushing History">', $RushingRow['Player'], '</span>&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/', $fran, '/', $franYear, '/Player/rushing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $RushingRow['Yards'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/', $fran, '/', $franYear, '/Yards/rushing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $RushingRow['TDs'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/', $fran, '/', $franYear, '/TDs/rushing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $RushingRow['YPC'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/', $fran, '/', $franYear, '/YPC/rushing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $RushingRow['Fumble'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/', $fran, '/', $franYear, '/Fumble/rushing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $RushingRow['Broken'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/', $fran, '/', $franYear, '/Broken/rushing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $RushingRow['LongRun'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/', $fran, '/', $franYear, '/LongRun/rushing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '</tr>';
                     }
                     ?>
@@ -93,13 +99,13 @@ mysql_select_db("madden08_db", $con);
 
                     while ($RecRow = mysql_fetch_array($recResult)) {
                         echo '<tr>',
-                        '<td><span id="', $RecRow['Row'], 'Rec" class="recHistory" style="cursor: pointer" data-toggle="popover" title="Receiving History">', $RecRow['Player'], '</span></td>',
-                        '<td>', $RecRow['Rec'], '</td>',
-                        '<td>', $RecRow['Yards'], '</td>',
-                        '<td>', $RecRow['TDs'], '</td>',
-                        '<td>', $RecRow['YPC'], '</td>',
-                        '<td>', $RecRow['LongCatch'], '</td>',
-                        '<td>', $RecRow['Drops'], '</td>',
+                        '<td><span id="', $RecRow['Row'], 'Rec" class="recHistory" style="cursor: pointer" data-toggle="popover" title="Receiving History">', $RecRow['Player'], '</span>&nbsp;&nbsp;<span id="', $RecRow['Row'], '/', $fran, '/', $franYear, '/Player/rec" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $RecRow['Rec'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/', $fran, '/', $franYear, '/Rec/rec" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $RecRow['Yards'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/', $fran, '/', $franYear, '/Yards/rec" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $RecRow['TDs'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/', $fran, '/', $franYear, '/TDs/rec" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $RecRow['YPC'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/', $fran, '/', $franYear, '/YPC/rec" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $RecRow['LongCatch'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/', $fran, '/', $franYear, '/LongCatch/rec" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $RecRow['Drops'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/', $fran, '/', $franYear, '/Drops/rec" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '</tr>';
                     }
                     ?>
@@ -126,10 +132,10 @@ mysql_select_db("madden08_db", $con);
 
                     while ($BlockRow = mysql_fetch_array($blockingResult)) {
                         echo '<tr>',
-                        '<td><span id="', $BlockRow['Row'], 'Block" class="blockingHistory" style="cursor: pointer" data-toggle="popover" title="Blocking History">', $BlockRow['Player'], '</span></td>',
-                        '<td>', $BlockRow['Position'], '</td>',
-                        '<td>', $BlockRow['Pancakes'], '</td>',
-                        '<td>', $BlockRow['Sacks'], '</td>',
+                        '<td><span id="', $BlockRow['Row'], 'Block" class="blockingHistory" style="cursor: pointer" data-toggle="popover" title="Blocking History">', $BlockRow['Player'], '</span>&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/', $fran, '/', $franYear, '/Player/block" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $BlockRow['Position'], '&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/', $fran, '/', $franYear, '/Position/block" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $BlockRow['Pancakes'], '&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/', $fran, '/', $franYear, '/Pancakes/block" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $BlockRow['Sacks'], '&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/', $fran, '/', $franYear, '/Sacks/block" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '</tr>';
                     }
                     ?>
@@ -156,13 +162,13 @@ mysql_select_db("madden08_db", $con);
 
                     while ($defRow = mysql_fetch_array($defResult)) {
                         echo '<tr>',
-                        '<td><span id="', $defRow['Row'], 'Def" class="defHistory" style="cursor: pointer" data-toggle="popover" title="Defensive History">', $defRow['Player'], '</span></td>',
-                        '<td>', $defRow['Tackles'], '</td>',
-                        '<td>', $defRow['ForLoss'], '</td>',
-                        '<td>', $defRow['Sacks'], '</td>',
-                        '<td>', $defRow['INTs'], '</td>',
-                        '<td>', $defRow['TDs'], '</td>',
-                        '<td>', $defRow['Saftey'], '</td>',
+                        '<td><span id="', $defRow['Row'], 'Def" class="defHistory" style="cursor: pointer" data-toggle="popover" title="Defensive History">', $defRow['Player'], '</span>&nbsp;&nbsp;<span id="', $defRow['Row'], '/', $fran, '/', $franYear, '/Player/def" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $defRow['Tackles'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/', $fran, '/', $franYear, '/Tackles/def" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $defRow['ForLoss'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/', $fran, '/', $franYear, '/ForLoss/def" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $defRow['Sacks'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/', $fran, '/', $franYear, '/Sacks/def" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $defRow['INTs'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/', $fran, '/', $franYear, '/INTs/def" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $defRow['TDs'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/', $fran, '/', $franYear, '/TDs/def" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $defRow['Saftey'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/', $fran, '/', $franYear, '/Saftey/def" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '</tr>';
                     }
                     ?>
@@ -192,11 +198,11 @@ mysql_select_db("madden08_db", $con);
 
                     while ($STKRow = mysql_fetch_array($STKResult)) {
                         echo '<tr>',
-                        '<td><span id="', $STKRow['Row'], 'ST-" class="STHistory" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STKRow['Player'], '</span></td>',
-                        '<td>', $STKRow['FGA'], '</td>',
-                        '<td>', $STKRow['FGM'], '</td>',
-                        '<td>', $STKRow['FG_Percent'], '</td>',
-                        '<td>', $STKRow['Longest_Play'], '</td>';
+                        '<td><span id="', $STKRow['Row'], 'ST-" class="STHistory" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STKRow['Player'], '</span>&nbsp;&nbsp;<span id="', $STKRow['Row'], '/', $fran, '/', $franYear, '/Player/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $STKRow['FGA'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/', $fran, '/', $franYear, '/FGA/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $STKRow['FGM'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/', $fran, '/', $franYear, '/FGM/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $STKRow['FG_Percent'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/', $fran, '/', $franYear, '/FG_Percent/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $STKRow['Longest_Play'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/', $fran, '/', $franYear, '/Longest_Play/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>';
                         '</tr>';
                     }
                     ?>
@@ -213,9 +219,9 @@ mysql_select_db("madden08_db", $con);
 
                     while ($STPRow = mysql_fetch_array($STPResult)) {
                         echo '<tr>',
-                        '<td><span id="', $STPRow['Row'], 'ST-" class="STHistory" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STPRow['Player'], '</span></td>',
-                        '<td>', $STPRow['Punt_AVG'], '</td>',
-                        '<td>', $STPRow['I20'], '</td>';
+                        '<td><span id="', $STPRow['Row'], 'ST-" class="STHistory" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STPRow['Player'], '</span>&nbsp;&nbsp;<span id="', $STPRow['Row'], '/', $fran, '/', $franYear, '/Player/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $STPRow['Punt_AVG'], '&nbsp;&nbsp;<span id="', $STPRow['Row'], '/', $fran, '/', $franYear, '/Punt_AVG/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $STPRow['I20'], '&nbsp;&nbsp;<span id="', $STPRow['Row'], '/', $fran, '/', $franYear, '/I20/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>';
                         '</tr>';
                     }
                     ?>
@@ -232,10 +238,10 @@ mysql_select_db("madden08_db", $con);
 
                     while ($STKRRow = mysql_fetch_array($STKRResult)) {
                         echo '<tr>',
-                        '<td><span id="', $STKRRow['Row'], 'ST-" class="STHistory" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STKRRow['Player'], '</span></td>',
-                        '<td>', $STKRRow['Ret_AVG'], '</td>',
-                        '<td>', $STKRRow['Ret_TDs'], '</td>',
-                        '<td>', $STKRRow['Longest_Play'], '</td>',
+                        '<td><span id="', $STKRRow['Row'], 'ST-" class="STHistory" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STKRRow['Player'], '</span>&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/', $fran, '/', $franYear, '/Player/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $STKRRow['Ret_AVG'], '&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/', $fran, '/', $franYear, '/Ret_AVG/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $STKRRow['Ret_TDs'], '&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/', $fran, '/', $franYear, '/Ret_TDs/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $STKRRow['Longest_Play'], '&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/', $fran, '/', $franYear, '/Longest_Play/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '</tr>';
                     }
                     ?>
@@ -252,10 +258,10 @@ mysql_select_db("madden08_db", $con);
 
                     while ($STPRRow = mysql_fetch_array($STPRResult)) {
                         echo '<tr>',
-                        '<td><span id="', $STPRRow['Row'], 'ST-" class="STHistory" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STPRRow['Player'], '</span></td>',
-                        '<td>', $STPRRow['Ret_AVG'], '</td>',
-                        '<td>', $STPRRow['Ret_TDs'], '</td>',
-                        '<td>', $STPRRow['Longest_Play'], '</td>',
+                        '<td><span id="', $STPRRow['Row'], 'ST-" class="STHistory" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STPRRow['Player'], '</span>&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/', $fran, '/', $franYear, '/Player/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $STPRRow['Ret_AVG'], '&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/', $fran, '/', $franYear, '/Ret_AVG/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $STPRRow['Ret_TDs'], '&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/', $fran, '/', $franYear, '/Ret_TDs/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $STPRRow['Longest_Play'], '&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/', $fran, '/', $franYear, '/Longest_Play/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '</tr>';
                     }
                     ?>
@@ -273,3 +279,9 @@ include ('../../_history/rec_History.php');
 include ('../../_history/block_History.php');
 include ('../../_history/def_History.php');
 include ('../../_history/st_History.php');
+include ('../../_modals/addPassStat_Modal.php');
+?>
+
+<div class="row" style='text-align: center'>
+    <a class="btn btn-default yearEdit indvStatsEditbtn" style="display: none">Edit Team Stats</a>
+</div>

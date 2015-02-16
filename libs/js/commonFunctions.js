@@ -239,19 +239,51 @@ $(document).ready(function () {
         }
     }
 
-    //Common function to toggle if results table icons are editable
+    //Common function to toggle if results table icons are editable/visable
     $('.resultsEditbtn').click(function () {
         var vals = ['', 'updateReg(this)'];
         toggleAttr($('.resultEdit'), 'onclick', vals);
         $(".resultEdit").toggle();
     });
-    
-    //Common function to toggle if team stats table icons are editable
-     $('.teamStatsEditbtn').click(function () {
+
+    //Common function to toggle if team stats table icons are editable/visable
+    $('.teamStatsEditbtn').click(function () {
         var vals = ['', 'updateTeamStat(this)'];
         toggleAttr($('.teamStatEdit'), 'onclick', vals);
         $(".teamStatEdit").toggle();
     });
+
+    //Common function to toggle if individual stats table icons are editable/visable
+    $('.indvStatsEditbtn').click(function () {
+        var vals = ['', 'updateIndvStat(this)'];
+        toggleAttr($('.indvStatEdit'), 'onclick', vals);
+        $(".indvStatEdit").toggle();
+        $(".indvStatRemove").toggle();
+        $(".indvStatAdd").toggle();
+    });
+
+    //Common function to submit add player forms
+    $(".addPassForm").submit(function (e)
+    {
+        $addPassData = $(this).serialize();
+        $.ajax(
+                {
+                    url: "../../_update/Add_Pass_Stat.php",
+                    type: "POST",
+                    data: $addPassData,
+                    success: function (data, textStatus, jqXHR)
+                    {
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        alert("Form Did Not Process");
+                    }
+                });
+        e.preventDefault();
+    });
+
+
 });
 
 //Common function to update regular season table
@@ -274,11 +306,11 @@ function updateReg(e) {
                 url: "../../_update/Update_Results.php",
                 type: "POST",
                 data: {
-                    row : row,
-                    fran : fran,
-                    year : year,
-                    col : col,
-                    newVal : newVal
+                    row: row,
+                    fran: fran,
+                    year: year,
+                    col: col,
+                    newVal: newVal
                 },
                 success: function (data, textStatus, jqXHR)
                 {
@@ -311,11 +343,79 @@ function updateTeamStat(e) {
                 url: "../../_update/Update_TeamStat.php",
                 type: "POST",
                 data: {
-                    row : row,
-                    fran : fran,
-                    year : year,
-                    col : col,
-                    newVal : newVal
+                    row: row,
+                    fran: fran,
+                    year: year,
+                    col: col,
+                    newVal: newVal
+                },
+                success: function (data, textStatus, jqXHR)
+                {
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert("Update Did Not Complete");
+                }
+            });
+}
+
+//Common function to update team stats table
+function updateIndvStat(e) {
+
+    var id = e.id;
+    var split = id.split("/");
+    var row = split[0];
+    var fran = split[1];
+    var year = split[2];
+    var col = split[3];
+    var table = split[4];
+
+    var newVal = prompt("Enter New Value: ");
+    if (newVal === null) {
+        return;
+    }
+
+    $.ajax(
+            {
+                url: "../../_update/Update_IndvStat.php",
+                type: "POST",
+                data: {
+                    row: row,
+                    fran: fran,
+                    year: year,
+                    col: col,
+                    newVal: newVal,
+                    table: table
+                },
+                success: function (data, textStatus, jqXHR)
+                {
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert("Update Did Not Complete");
+                }
+            });
+}
+
+//Common function to remove individual stat row
+function removeIndvStat(e) {
+
+    var id = e.id;
+    var split = id.split("/");
+    var row = split[0];
+    var table = split[1];
+    var fran = split[2];
+
+    $.ajax(
+            {
+                url: "../../_update/Remove_Indv_Stat.php",
+                type: "POST",
+                data: {
+                    row: row,
+                    table: table,
+                    fran : fran
                 },
                 success: function (data, textStatus, jqXHR)
                 {
