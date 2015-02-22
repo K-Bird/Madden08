@@ -22,7 +22,6 @@ mysql_select_db("madden08_db", $con);
                     <tr>
                         <td>Player</td><td>Passer Rating</td><td>Passing Yards</td><td>Passing TDs</td><td>Interceptions</td><td>Completion %</td><td>Times Sacked</td><td></td>
                     </tr>
-                    <tr>
                         <?php
                         $passingResult = mysql_query("SELECT * FROM `{$fran}_stats_passing` Where Year='{$franYear}'");
 
@@ -39,7 +38,6 @@ mysql_select_db("madden08_db", $con);
                             '</tr>';
                         }
                         ?>
-                    </tr>
                     <tr>
                         <td colspan="7"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addPassModal" style="display:none">Add Passing Stat Row</a></td>
                     </tr>
@@ -73,9 +71,13 @@ mysql_select_db("madden08_db", $con);
                         '<td>', $RushingRow['Fumble'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/', $fran, '/', $franYear, '/Fumble/rushing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $RushingRow['Broken'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/', $fran, '/', $franYear, '/Broken/rushing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $RushingRow['LongRun'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/', $fran, '/', $franYear, '/LongRun/rushing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="',$RushingRow['Row'],'/rushing/',$fran,'" onclick="removeIndvStat(this)">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
+                    <tr>
+                        <td colspan="7"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addRushModal" style="display:none">Add Rushing Stat Row</a></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -106,9 +108,13 @@ mysql_select_db("madden08_db", $con);
                         '<td>', $RecRow['YPC'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/', $fran, '/', $franYear, '/YPC/rec" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $RecRow['LongCatch'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/', $fran, '/', $franYear, '/LongCatch/rec" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $RecRow['Drops'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/', $fran, '/', $franYear, '/Drops/rec" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="',$RecRow['Row'],'/rec/',$fran,'" onclick="removeIndvStat(this)">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
+                    <tr>
+                        <td colspan="7"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addRecModal" style="display:none">Add Receiving Stat Row</a></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -139,6 +145,9 @@ mysql_select_db("madden08_db", $con);
                         '</tr>';
                     }
                     ?>
+                    <tr>
+                        <td colspan="7"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addPassModal" style="display:none">Add Blocking Stat Row</a></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -172,6 +181,9 @@ mysql_select_db("madden08_db", $con);
                         '</tr>';
                     }
                     ?>
+                    <tr>
+                        <td colspan="7"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addPassModal" style="display:none">Add Defensive Stat Row</a></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -265,6 +277,9 @@ mysql_select_db("madden08_db", $con);
                         '</tr>';
                     }
                     ?>
+                    <tr>
+                        <td colspan="7"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addPassModal" style="display:none">Add Special Teams Stat Row</a></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -280,6 +295,8 @@ include ('../../_history/block_History.php');
 include ('../../_history/def_History.php');
 include ('../../_history/st_History.php');
 include ('../../_modals/addPassStat_Modal.php');
+include ('../../_modals/addRushStat_Modal.php');
+include ('../../_modals/addRecStat_Modal.php');
 ?>
 
 <div class="row" style='text-align: center'>

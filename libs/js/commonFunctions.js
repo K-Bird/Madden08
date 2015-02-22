@@ -262,15 +262,57 @@ $(document).ready(function () {
         $(".indvStatAdd").toggle();
     });
 
-    //Common function to submit add player forms
+    //Common function to submit add passer row to individual stats
     $(".addPassForm").submit(function (e)
     {
         $addPassData = $(this).serialize();
         $.ajax(
                 {
-                    url: "../../_update/Add_Pass_Stat.php",
+                    url: "../../_update/Add_Stat_Pass.php",
                     type: "POST",
                     data: $addPassData,
+                    success: function (data, textStatus, jqXHR)
+                    {
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        alert("Form Did Not Process");
+                    }
+                });
+        e.preventDefault();
+    });
+    
+    //Common function to submit add passer row to individual stats
+    $(".addRushForm").submit(function (e)
+    {
+        $addRushData = $(this).serialize();
+        $.ajax(
+                {
+                    url: "../../_update/Add_Stat_Rush.php",
+                    type: "POST",
+                    data: $addRushData,
+                    success: function (data, textStatus, jqXHR)
+                    {
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        alert("Form Did Not Process");
+                    }
+                });
+        e.preventDefault();
+    });
+    
+    //Common function to submit add passer row to individual stats
+    $(".addRecForm").submit(function (e)
+    {
+        $addRecData = $(this).serialize();
+        $.ajax(
+                {
+                    url: "../../_update/Add_Stat_Rec.php",
+                    type: "POST",
+                    data: $addRecData,
                     success: function (data, textStatus, jqXHR)
                     {
                         location.reload();
