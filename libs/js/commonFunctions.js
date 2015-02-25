@@ -282,7 +282,7 @@ $(document).ready(function () {
                 });
         e.preventDefault();
     });
-    
+
     //Common function to submit add passer row to individual stats
     $(".addRushForm").submit(function (e)
     {
@@ -303,7 +303,7 @@ $(document).ready(function () {
                 });
         e.preventDefault();
     });
-    
+
     //Common function to submit add passer row to individual stats
     $(".addRecForm").submit(function (e)
     {
@@ -325,7 +325,97 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
+    //Common function to submit add blocker row to individual stats
+    $(".addBlockForm").submit(function (e)
+    {
+        $addBlockData = $(this).serialize();
+        $.ajax(
+                {
+                    url: "../../_update/Add_Stat_Block.php",
+                    type: "POST",
+                    data: $addBlockData,
+                    success: function (data, textStatus, jqXHR)
+                    {
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        alert("Form Did Not Process");
+                    }
+                });
+        e.preventDefault();
+    });
 
+    //Common function to submit add blocker row to individual stats
+    $(".addDefForm").submit(function (e)
+    {
+        $addDefData = $(this).serialize();
+        $.ajax(
+                {
+                    url: "../../_update/Add_Stat_Def.php",
+                    type: "POST",
+                    data: $addDefData,
+                    success: function (data, textStatus, jqXHR)
+                    {
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        alert("Form Did Not Process");
+                    }
+                });
+        e.preventDefault();
+    });
+
+    //Common function to submit add blocker row to individual stats
+    $(".addSTForm").submit(function (e)
+    {
+        $('.addSTForm').find(':input:disabled').removeAttr('disabled');
+        $addSTData = $(this).serialize();
+        $.ajax(
+                {
+                    url: "../../_update/Add_Stat_ST.php",
+                    type: "POST",
+                    data: $addSTData,
+                    success: function (data, textStatus, jqXHR)
+                    {
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        alert("Form Did Not Process");
+                    }
+                });
+        e.preventDefault();
+    });
+
+    //Common function to change enabled fields on add Special Teams row modal
+    $("#STType").change(function () {
+        if ($(this).val() === 'Kicking') {
+            $('.kickingCategory').prop('disabled', false);
+            $('.retCategory').prop('disabled', true);
+            $('.puntingCategory').prop('disabled', true);
+            $('.longestPlay').prop('placeholder', 'Longest Field Goal');
+        }
+        if ($(this).val() === 'Punting') {
+            $('.kickingCategory').prop('disabled', true);
+            $('.retCategory').prop('disabled', true);
+            $('.puntingCategory').prop('disabled', false);
+            $('.longestPlay').prop('placeholder', 'Longest Punt');
+        }
+        if ($(this).val() === 'KR') {
+            $('.kickingCategory').prop('disabled', true);
+            $('.retCategory').prop('disabled', false);
+            $('.puntingCategory').prop('disabled', true);
+            $('.longestPlay').prop('placeholder', 'Longest Kick Return');
+        }
+        if ($(this).val() === 'PR') {
+            $('.kickingCategory').prop('disabled', true);
+            $('.retCategory').prop('disabled', false);
+            $('.puntingCategory').prop('disabled', true);
+            $('.longestPlay').prop('placeholder', 'Longest Punt Return');
+        }
+    });
 });
 
 //Common function to update regular season table
@@ -457,7 +547,7 @@ function removeIndvStat(e) {
                 data: {
                     row: row,
                     table: table,
-                    fran : fran
+                    fran: fran
                 },
                 success: function (data, textStatus, jqXHR)
                 {
