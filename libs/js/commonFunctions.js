@@ -143,11 +143,43 @@ $(document).ready(function () {
     });
     //Common Functions: Functions to Edit Franchise Year Pages
 
-    //Master Edit Button Function
+    //Master Toggle Editing Function
     $("#toggleEdit").click(function (e) {
         $(".yearEdit").toggle();
+
+        //Toggle if results table edit icons are editable/visable
+        var regVals = ['', 'updateReg(this)'];
+        toggleAttr($('.resultEdit'), 'onclick', regVals);
+        $(".resultEdit").toggle();
+
+        //Toggle if team stats table edit icons are editable/visable
+        var teamStatVals = ['', 'updateTeamStat(this)'];
+        toggleAttr($('.teamStatEdit'), 'onclick', teamStatVals);
+        $(".teamStatEdit").toggle();
+
+        //Toggle if individual stats table edit icons are editable/visable
+        var IndvVals = ['', 'updateIndvStat(this)'];
+        toggleAttr($('.indvStatEdit'), 'onclick', IndvVals);
+        $(".indvStatEdit").toggle();
+        $(".indvStatRemove").toggle();
+        $(".indvStatAdd").toggle();
+
+        //Toggle if coaching change table edit icons are editable/visable
+        var coachChgVals = ['', 'updateCoachChg(this)'];
+        toggleAttr($('.coachChgEdit'), 'onclick', coachChgVals);
+        $(".coachChgEdit").toggle();
+
+        //Toggle Yearly Award edit elements
+        $(".awardRemove").toggle();
+
+        //Toggle Probowl edit elements
+        $(".probowlRemove").toggle();
+
+        //Toggle Retired, Draft, Pre&Post Free Agency edit elements
+        $(".movesRemove").toggle();
     });
-    //Grab Preseason Row Data Which is Passed to the Shown Modal
+
+    //Grab Team Info Row Data Which is Passed to the Shown Modal (Preseason/Postseason Info)
     $(".yearEditBtn").click(function (e) {
         var table = $(this).data('table');
         var row = $(this).data('row');
@@ -156,6 +188,7 @@ $(document).ready(function () {
         $(".editModal #row").val(row);
         $(".editModal #col").val(col);
     });
+
     //For Any editModal Shown Focus on the Value Input Field
     $(".editModal").on('shown.bs.modal', function (e) {
         $('[id$=Value]').focus();
@@ -238,29 +271,6 @@ $(document).ready(function () {
             $(el).attr(attribute, vals[0]);
         }
     }
-
-    //Common function to toggle if results table icons are editable/visable
-    $('.resultsEditbtn').click(function () {
-        var vals = ['', 'updateReg(this)'];
-        toggleAttr($('.resultEdit'), 'onclick', vals);
-        $(".resultEdit").toggle();
-    });
-
-    //Common function to toggle if team stats table icons are editable/visable
-    $('.teamStatsEditbtn').click(function () {
-        var vals = ['', 'updateTeamStat(this)'];
-        toggleAttr($('.teamStatEdit'), 'onclick', vals);
-        $(".teamStatEdit").toggle();
-    });
-
-    //Common function to toggle if individual stats table icons are editable/visable
-    $('.indvStatsEditbtn').click(function () {
-        var vals = ['', 'updateIndvStat(this)'];
-        toggleAttr($('.indvStatEdit'), 'onclick', vals);
-        $(".indvStatEdit").toggle();
-        $(".indvStatRemove").toggle();
-        $(".indvStatAdd").toggle();
-    });
 
     //Common function to submit add passer row to individual stats
     $(".addPassForm").submit(function (e)
@@ -416,6 +426,26 @@ $(document).ready(function () {
             $('.longestPlay').prop('placeholder', 'Longest Punt Return');
         }
     });
+
+    //Common Function to change enable field on add Offseason move modal
+    $("#moveType").change(function () {
+        if ($(this).val() === 'draft') {
+            $('.draftMove').prop('disabled', false);
+        } else {
+            $('.draftMove').prop('disabled', true);
+        }
+    });
+
+    //
+    $(".movesAdd").click(function (e) {
+        var type = $(this).data('movetype');
+        $("#addMoves #moveType").val(type);
+
+        if (type === 'draft') {
+            $('.draftMove').prop('disabled', false);
+        }
+    });
+
 });
 
 //Common function to update regular season table
@@ -543,6 +573,130 @@ function removeIndvStat(e) {
     $.ajax(
             {
                 url: "../../_update/Remove_Indv_Stat.php",
+                type: "POST",
+                data: {
+                    row: row,
+                    table: table,
+                    fran: fran
+                },
+                success: function (data, textStatus, jqXHR)
+                {
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert("Update Did Not Complete");
+                }
+            });
+}
+
+//Common function to update coaching change table
+function updateCoachChg(e) {
+
+    var id = e.id;
+    var split = id.split("/");
+    var row = split[0];
+    var fran = split[1];
+    var year = split[2];
+    var col = split[3];
+
+    var newVal = prompt("Enter New Value: ");
+    if (newVal === null) {
+        return;
+    }
+
+    $.ajax(
+            {
+                url: "../../_update/Update_Off_CoachChg.php",
+                type: "POST",
+                data: {
+                    row: row,
+                    fran: fran,
+                    year: year,
+                    col: col,
+                    newVal: newVal,
+                },
+                success: function (data, textStatus, jqXHR)
+                {
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert("Update Did Not Complete");
+                }
+            });
+}
+
+//Common function to remove offseason award row
+function removeAward(e) {
+
+    var id = e.id;
+    var split = id.split("/");
+    var row = split[0];
+    var table = split[1];
+    var fran = split[2];
+
+    $.ajax(
+            {
+                url: "../../_update/Remove_Off_Award.php",
+                type: "POST",
+                data: {
+                    row: row,
+                    table: table,
+                    fran: fran
+                },
+                success: function (data, textStatus, jqXHR)
+                {
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert("Update Did Not Complete");
+                }
+            });
+}
+
+//Common function to remove offseason probowl row
+function removeProbowl(e) {
+
+    var id = e.id;
+    var split = id.split("/");
+    var row = split[0];
+    var table = split[1];
+    var fran = split[2];
+
+    $.ajax(
+            {
+                url: "../../_update/Remove_Off_Probowl.php",
+                type: "POST",
+                data: {
+                    row: row,
+                    table: table,
+                    fran: fran
+                },
+                success: function (data, textStatus, jqXHR)
+                {
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert("Update Did Not Complete");
+                }
+            });
+}
+
+//Common function to remove offseason move row
+function removeMovesRow(e) {
+
+    var id = e.id;
+    var split = id.split("/");
+    var row = split[0];
+    var table = split[1];
+    var fran = split[2];
+
+    $.ajax(
+            {
+                url: "../../_update/Remove_Off_Move.php",
                 type: "POST",
                 data: {
                     row: row,

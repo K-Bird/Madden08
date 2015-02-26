@@ -306,8 +306,3 @@ include ('../../_modals/addRecStat_Modal.php');
 include ('../../_modals/addBlockStat_Modal.php');
 include ('../../_modals/addDefStat_Modal.php');
 include ('../../_modals/addSTStat_Modal.php');
-?>
-
-<div class="row" style='text-align: center'>
-    <a class="btn btn-default yearEdit indvStatsEditbtn" style="display: none">Edit Individual Stats</a>
-</div>

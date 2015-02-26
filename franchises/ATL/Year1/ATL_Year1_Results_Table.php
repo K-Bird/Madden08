@@ -35,8 +35,3 @@ if ($RegSimrow['Value'] != '') {
     echo '</table>';
 }
 mysql_close($con);
-?>
-
-<div class="row" style='text-align: center'>
-    <a class="btn btn-default yearEdit resultsEditbtn" style="display: none">Edit Results</a>
-</div>

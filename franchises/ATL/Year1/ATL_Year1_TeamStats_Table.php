@@ -28,9 +28,3 @@ echo '</table>';
 include ('../../_history/teamstats_History.php');
 
 mysql_close($con);
-
-?>
-
-<div class="row" style='text-align: center'>
-    <a class="btn btn-default yearEdit teamStatsEditbtn" style="display: none">Edit Team Stats</a>
-</div>

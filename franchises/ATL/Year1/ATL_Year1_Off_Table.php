@@ -26,6 +26,7 @@ mysql_select_db("madden08_db", $con);
                         echo '<tr>',
                         '<td>', $offInfoRow['Field'], '</td>',
                         '<td><span id="', $offInfoRow['Identify'], 'History" class="offInfoHistory" style="cursor: pointer" data-toggle="popover" title="History">', $offInfoRow['Value'], '</span></td>',
+                        '<td class="yearEdit" style="display: none"><a class="btn btn-default yearEditBtn" data-toggle="modal" data-table="info" data-col="Value" data-row=',$offInfoRow['Row'],' data-target="#',$offInfoRow['Identify'],'Modal">Edit</a><td>',
                         '</tr>';
                     }
                     ?>
@@ -71,26 +72,26 @@ mysql_select_db("madden08_db", $con);
 
                     while ($coachCHGRow = mysql_fetch_array($coachCHGResult)) {
                         echo '<tr>',
-                        '<td><span id="', $coachCHGRow['Row'], 'CoachCHG" class="coachCHGHistory" style="cursor: pointer" data-toggle="popover" title="Coach History">', $coachCHGRow['Name'], '</span></td>',
-                        '<td>', $coachCHGRow['Position'], '</td>',
-                        '<td>', $coachCHGRow['Age'], '</td>',
-                        '<td>', $coachCHGRow['Chg'], '</td>',
-                        '<td>', $coachCHGRow['Moto'], '</td>',
-                        '<td>', $coachCHGRow['Eth'], '</td>',
-                        '<td>', $coachCHGRow['Chem'], '</td>',
-                        '<td>', $coachCHGRow['Kno'], '</td>',
-                        '<td>', $coachCHGRow['Off'], '</td>',
-                        '<td>', $coachCHGRow['Def'], '</td>',
-                        '<td>', $coachCHGRow['OL'], '</td>',
-                        '<td>', $coachCHGRow['QB'], '</td>',
-                        '<td>', $coachCHGRow['RB'], '</td>',
-                        '<td>', $coachCHGRow['WR'], '</td>',
-                        '<td>', $coachCHGRow['DL'], '</td>',
-                        '<td>', $coachCHGRow['LB'], '</td>',
-                        '<td>', $coachCHGRow['DB'], '</td>',
-                        '<td>', $coachCHGRow['S'], '</td>',
-                        '<td>', $coachCHGRow['K'], '</td>',
-                        '<td>', $coachCHGRow['P'], '</td>',
+                        '<td><span id="', $coachCHGRow['Row'], 'CoachCHG" class="coachCHGHistory" style="cursor: pointer" data-toggle="popover" title="Coach History">', $coachCHGRow['Name'], '</span><br><span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/Name" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['Position'],'</td>',
+                        '<td>', $coachCHGRow['Age'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/Age" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['Chg'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/Chg" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['Moto'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/Moto" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['Eth'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/Eth" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['Chem'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/Chem" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['Kno'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/Kno" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['Off'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/Off" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['Def'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/Def" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['OL'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/OL" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['QB'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/QB" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['RB'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/RB" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['WR'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/WR" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['DL'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/DL" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['LB'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/LB" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['DB'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/DB" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['S'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/S" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['K'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/K" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $coachCHGRow['P'], '&nbsp;&nbsp;<span id="', $coachCHGRow['Row'], '/', $fran, '/', $franYear, '/P" class="glyphicon glyphicon-edit coachChgEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '</tr>';
                     }
                     ?>
@@ -110,14 +111,13 @@ mysql_select_db("madden08_db", $con);
             <div class="panel-body">
                 <table class="table table-hover" id="offAwardStatsTable" style="text-align: center; font-size: small">
 
-                    <tr><td></td><td>Position</td><td style="text-align: left">Award</td></tr>
+                    <tr><td></td><td>Position</td><td style="text-align: left">Award</td><td></td></tr>
 
                     <?php
                     $offAwardResult = mysql_query("SELECT * FROM `{$fran}_off_awards` Where Year='{$franYear}'");
 
                     while ($offAwardRow = mysql_fetch_array($offAwardResult)) {
                         echo '<tr>';
-
                         if ($offAwardRow['Historical_ID'] === '-') {
                             echo '<td>', $offAwardRow['Player'], '</td>';
                         } else {
@@ -125,9 +125,13 @@ mysql_select_db("madden08_db", $con);
                         }
                         echo '<td>', $offAwardRow['Position'], '</td>',
                         '<td style="text-align: left">', $offAwardRow['Award'], '</td>',
+                        '<td><a class="btn btn-danger awardRemove" style="display: none" id="',$offAwardRow['Row'],'/awards/',$fran,'" onclick="removeAward(this)">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
+                    <tr>
+                        <td colspan="7"><a class="btn btn-success yearEdit yearAwardAdd" data-toggle="modal" data-target="#addYearAward" style="display:none">Add New Award</a></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -158,9 +162,13 @@ mysql_select_db("madden08_db", $con);
                             echo '<td><span id="', $offProBowlRow['Row'], 'ProBowl" class="probowlHistory" style="cursor: pointer" data-toggle="popover" title="History">', $offProBowlRow['Player'], '</span></td>';
                         }
                         echo '<td>', $offProBowlRow['Position'], '</td>',
+                        '<td><a class="btn btn-danger probowlRemove" style="display: none" id="',$offProBowlRow['Row'],'/probowl/',$fran,'" onclick="removeProbowl(this)">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
+                    <tr>
+                        <td colspan="7"><a class="btn btn-success yearEdit probowlAdd" data-toggle="modal" data-target="#addProbowl" style="display:none">Add New Probowl Player</a></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -188,9 +196,13 @@ mysql_select_db("madden08_db", $con);
                         '<td>', $offRetiredRow['Position'], '</td>',
                         '<td>', $offRetiredRow['Overall'], '</td>',
                         '<td>', $offRetiredRow['Age'], '</td>',
+                        '<td><a class="btn btn-danger movesRemove" style="display: none" id="',$offRetiredRow['Row'],'/moves/',$fran,'" onclick="removeMovesRow(this)">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
+                    <tr>
+                        <td colspan="7"><a class="btn btn-success yearEdit movesAdd" data-movetype="retired" data-toggle="modal" data-target="#addMoves" style="display:none">Add Retired Player</a></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -218,9 +230,13 @@ mysql_select_db("madden08_db", $con);
                         '<td>', $offprefaRow['Position'], '</td>',
                         '<td>', $offprefaRow['Overall'], '</td>',
                         '<td>', $offprefaRow['Age'], '</td>',
+                        '<td><a class="btn btn-danger movesRemove" style="display: none" id="',$offprefaRow['Row'],'/moves/',$fran,'" onclick="removeMovesRow(this)">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
+                    <tr>
+                        <td colspan="7"><a class="btn btn-success yearEdit movesAdd" data-movetype="prefa" data-toggle="modal" data-target="#addMoves" style="display:none">Add Pre-Draft Free Agent</a></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -249,9 +265,13 @@ mysql_select_db("madden08_db", $con);
                         '<td>', $offdraftRow['Position'], '</td>',
                         '<td>', $offdraftRow['Overall'], '</td>',
                         '<td>', $offdraftRow['Age'], '</td>',
+                        '<td><a class="btn btn-danger movesRemove" style="display: none" id="',$offdraftRow['Row'],'/moves/',$fran,'" onclick="removeMovesRow(this)">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
+                    <tr>
+                        <td colspan="7"><a class="btn btn-success yearEdit movesAdd" data-movetype="draft" data-toggle="modal" data-target="#addMoves" style="display:none">Add Drafted Player</a></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -279,9 +299,13 @@ mysql_select_db("madden08_db", $con);
                         '<td>', $offpostfaRow['Position'], '</td>',
                         '<td>', $offpostfaRow['Overall'], '</td>',
                         '<td>', $offpostfaRow['Age'], '</td>',
+                        '<td><a class="btn btn-danger movesRemove" style="display: none" id="',$offpostfaRow['Row'],'/moves/',$fran,'" onclick="removeMovesRow(this)">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
+                    <tr>
+                        <td colspan="7"><a class="btn btn-success yearEdit movesAdd" data-movetype="postfa" data-toggle="modal" data-target="#addMoves" style="display:none">Add Post-Draft Free Agent</a></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -294,4 +318,5 @@ include ('../../_history/offseason_History.php');
 include ('../../_history/offcoach_History.php');
 include ('../../_history/award_History.php');
 include ('../../_history/probowl_History.php');
+include ('../../_modals/postseason_Modals.php');
 
