@@ -43,7 +43,7 @@
                             </div>
                             <div id="preseasonPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Preseason Information">
                                 <div class="panel-body">
-                                    <?php include 'ATL_Year1_PreSeason_Table.php'; ?>
+                                    <?php include 'ATL_Year'.$franYear.'_PreSeason_Table.php'; ?>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                             </div>
                             <div id="coachingPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Coaching Staff">
                                 <div class="panel-body">
-                                    <?php include 'ATL_Year1_CoachingStaff_Table.php'; ?>
+                                    <?php include 'ATL_Year'.$franYear.'_CoachingStaff_Table.php'; ?>
                                 </div>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                             </div>
                             <div id="depthPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Depth Chart">
                                 <div class="panel-body">
-                                    <?php include 'ATL_Year1_DepthChart_Table.php'; ?>
+                                    <?php include 'ATL_Year'.$franYear.'_DepthChart_Table.php'; ?>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                             </div>
                             <div id="resultsPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Season Results">
                                 <div class="panel-body">
-                                    <?php include 'ATL_Year1_Results_Table.php'; ?>
+                                    <?php include 'ATL_Year'.$franYear.'_Results_Table.php'; ?>
                                 </div>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                             </div>
                             <div id="teamStatsPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Team Stats">
                                 <div class="panel-body">
-                                    <?php include 'ATL_Year1_TeamStats_Table.php'; ?>
+                                    <?php include 'ATL_Year'.$franYear.'_TeamStats_Table.php'; ?>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                             </div>
                             <div id="indvStatsPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Individual Stats">
                                 <div class="panel-body">
-                                    <?php include 'ATL_Year1_IndvStats_Table.php'; ?>
+                                    <?php include 'ATL_Year'.$franYear.'_IndvStats_Table.php'; ?>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
                             </div>
                             <div id="offseasonPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Offseason Activities">
                                 <div class="panel-body">
-                                    <?php include 'ATL_Year1_Off_Table.php'; ?>
+                                    <?php include 'ATL_Year'.$franYear.'_Off_Table.php'; ?>
                                 </div>
                             </div>
                         </div>

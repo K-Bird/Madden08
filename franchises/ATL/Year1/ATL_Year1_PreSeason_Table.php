@@ -7,7 +7,7 @@ if (!$con) {
 
 mysql_select_db("madden08_db", $con);
 
-$result = mysql_query("SELECT * FROM `{$fran}_info` Where `Preseason` = 'Y' and `Year` = '1'");
+$result = mysql_query("SELECT * FROM `{$fran}_info` Where `Preseason` = 'Y' and `Year` = '{$franYear}'");
 
 echo "<br />";
 echo '<table class="table" id="', $fran, '_', $franYear, '_preseason" style="text-align: center; font-size: small">';

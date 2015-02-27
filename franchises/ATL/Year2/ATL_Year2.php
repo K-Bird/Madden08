@@ -1,147 +1,142 @@
-<?php session_start(); ?>
 <html>
     <head>
         <meta charset="utf-8">
         <title>ATL - YR2</title>
-        <link href="../../../_CSS/Bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../../../_CSS/Bootstrap/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
-        <script src="../../../_Scripts/JQuery/JQuery.js"></script>
-        <script src="../../../_Scripts/Bootstrap/bootstrap.min.js"></script>
-        <script src="_Update/Franchise_JS_Functions.js"></script>
+        <link href="../../../libs/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../libs/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">
+        <script src="../../../libs/js/jquery.js"></script>
+        <script src="../../../libs/js/bootstrap.js"></script>
+        <script src="../../../libs/js/commonFunctions.js"></script>
         <style>
-            .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-                background-color: black;
+            .popover {
+                max-width: 800px;
+                width: auto;
             }
-            .pagination li a {                
-                color: black;
+            .modal-dialog {
+                max-width: 1200px;
+                width: auto;
+            }
+            .modal {
+                overflow-y: scroll !important;
             }
         </style>
     </head>
-    <body style="background-color: #890101; color: #FFFFFF;">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <nav class="navbar navbar-default" role="navigation">
-                        <div class="container">
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <ul class="nav navbar-nav">
-                                    <?php
-                                    $con = mysql_connect("localhost", 'root', 'Fly0Bird797979');
-                                    if (!$con) {
-                                        die('Could not connect!' . mysql_error());
-                                    }
-
-                                    mysql_select_db("madden08_db", $con);
-
-                                    $GetCurrentYear = mysql_query("Select * From `franchise_info` where `Franchise`='ATL'", $con) or die(mysql_error());
-                                    $row = mysql_fetch_array($GetCurrentYear);
-                                    $YearNo = $row['CurrentYear'];
-                                    
-                                    echo '<li><a href="#">',$row['FullName'],': </a></li>';
-                                    
-                                    for ($i = 1; $i <= $YearNo; $i++) {
-                                        echo '<li><a href=../Year' . $i . '/ATL_Year' . $i . '.php>Year ' . $i . '</a></li>';
-                                    }
-                                    ?>
-                                    <li><a href="#menu-toggle" id="menu-toggle">Toggle Navigation</a></li>
-
-                                </ul>
-                            </div><!-- /.navbar-collapse -->
+    <body style="background-color: #890101">
+        <?php
+        $franYear = '2';
+        $fran = 'atl';
+        ?>
+        <div id="wrapper">
+            <?php include ('../../../nav/franchiseYearSidebar.php'); ?>
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <?php include ('../../../nav/franchiseYearNav.php'); ?>
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="Preseason Information">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#preseasonPanel" aria-expanded="true" aria-controls="preseasonPanel">
+                                        <?php echo strtoupper($fran) . " - Year: " . $franYear . " - "; ?>Preseason Information
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="preseasonPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Preseason Information">
+                                <div class="panel-body">
+                                    <?php include 'ATL_Year'.$franYear.'_PreSeason_Table.php'; ?>
+                                </div>
+                            </div>
                         </div>
-                    </nav>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12" style="text-align: center">
-                    <header><h1>ATL - Year 2</h1></header>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <?php include ('ATL_Year2_PreSeason_Table.php'); ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <?php include ('ATL_Year2_Roster_Table.php'); ?>
-                </div>
-            </div>
-            <?php
-            /* | IF USER IS LOGGED IN - Display Depth Chart Forms | */
-            if ($_SESSION['Admin'] == true) {
-                echo '<div class="row">';
-                include ('_Forms/ATL_Year2_RosterForms.php');
-                echo '</div>';
-            }
-            ?>
-            <div class="row">
-                <div class="col-lg-12">
-                    <br><br>
-                    <?php include ('ATL_Year2_Reg_Table.php'); ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <?php include ('ATL_Year2_Team_Table.php'); ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <br><br>
-                    <?php include ('ATL_Year2_Stats_Table.php'); ?>
-                </div>
-            </div>
-            <?php
-            /* | IF USER IS LOGGED IN - Display Stat Forms | */
-            if ($_SESSION['Admin'] == true) {
-                echo '<div class="row">';
-                include ('_Forms/ATL_Year2_StatsForms.php');
-                echo '</div>';
-            }
-            ?>
-            <div class="row">
-                <div class="col-lg-12">
-                    <br><br>
-                    <?php include ('ATL_Year2_Coach_Table.php'); ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <br><br>
-                    <?php include ('ATL_Year2_Offseason_Table.php'); ?>
-                </div>
-            </div>
-            <?php
-            /* | IF USER IS LOGGED IN - Display Stat Forms | */
-            if ($_SESSION['Admin'] == true) {
-                echo '<div class="row">';
-                include ('_Forms/ATL_Year2_OffseasonForms.php');
-                echo '</div>';
-            }
-            ?>
-            <div class="row" style="text-align: center">
-                <div class="col-lg-12">
-                    <ul class="pagination">
-                        <?php
-                        $con = mysql_connect("localhost", 'root', 'Fly0Bird797979');
-                        if (!$con) {
-                            die('Could not connect!' . mysql_error());
-                        }
-
-                        mysql_select_db("gamessitedatabase", $con);
-
-                        $GetCurrentYear = mysql_query("Select * From `gm_madden08--franchises` where `Franchise`='ATL'", $con) or die(mysql_error());
-                        $row = mysql_fetch_array($GetCurrentYear);
-                        $YearNo = $row['CurrentYear'];
-
-                        for ($i = 1; $i <= $YearNo; $i++) {
-                            echo '<li><a href=../Year' . $i . '/ATL_Year' . $i . '.php>Year ' . $i . '</a></li>';
-                        }
-                        ?>
-                    </ul>
-                    <br>
-                    <br>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="Coaching Staff">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#coachingPanel" aria-expanded="false" aria-controls="coachingPanel">
+                                        <?php echo strtoupper($fran) . " - Year: " . $franYear . " - "; ?>Coaching Staff
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="coachingPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Coaching Staff">
+                                <div class="panel-body">
+                                    <?php include 'ATL_Year'.$franYear.'_CoachingStaff_Table.php'; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="Depth Chart">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#depthPanel" aria-expanded="false" aria-controls="depthPanel">
+                                        <?php echo strtoupper($fran) . " - Year: " . $franYear . " - "; ?>Depth Chart
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="depthPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Depth Chart">
+                                <div class="panel-body">
+                                    <?php include 'ATL_Year'.$franYear.'_DepthChart_Table.php'; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="Season Results">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#resultsPanel" aria-expanded="false" aria-controls="resultsPanel">
+                                        <?php echo strtoupper($fran) . " - Year: " . $franYear . " - "; ?>Season Results
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="resultsPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Season Results">
+                                <div class="panel-body">
+                                    <?php include 'ATL_Year'.$franYear.'_Results_Table.php'; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="Team Stats">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#teamStatsPanel" aria-expanded="false" aria-controls="teamStatsPanel">
+                                        <?php echo strtoupper($fran) . " - Year: " . $franYear . " - "; ?>Team Stats
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="teamStatsPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Team Stats">
+                                <div class="panel-body">
+                                    <?php include 'ATL_Year'.$franYear.'_TeamStats_Table.php'; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="Individual Stats">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#indvStatsPanel" aria-expanded="false" aria-controls="indvStatsPanel">
+                                        <?php echo strtoupper($fran) . " - Year: " . $franYear . " - "; ?>Individual Stats
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="indvStatsPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Individual Stats">
+                                <div class="panel-body">
+                                    <?php include 'ATL_Year'.$franYear.'_IndvStats_Table.php'; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="Offseason Activities">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#offseasonPanel" aria-expanded="false" aria-controls="offseasonPanel">
+                                        <?php echo strtoupper($fran) . " - Year: " . $franYear . " - "; ?>Offseason Activities
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="offseasonPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Offseason Activities">
+                                <div class="panel-body">
+                                    <?php include 'ATL_Year'.$franYear.'_Off_Table.php'; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="text-align: center">
+                        <div class="col-lg-12">
+                            <a class="btn btn-default" id="toggleEdit">Edit: <?php echo ' ' . strtoupper($fran) . " - Year: " . $franYear; ?></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
