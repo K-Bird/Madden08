@@ -10,12 +10,12 @@
 
                 mysql_select_db("madden08_db", $con);
 
-                $GetCurrentYear = mysql_query("Select * From `franchise_info` where `Franchise`='ATL'", $con) or die(mysql_error());
+                $GetCurrentYear = mysql_query("Select * From `franchise_info` where `Franchise`='{$fran}'", $con) or die(mysql_error());
                 $row = mysql_fetch_array($GetCurrentYear);
                 $YearNo = $row['CurrentYear'];
 
                 for ($i = 1; $i <= $YearNo; $i++) {
-                    echo '<li><a href=Year' . $i . '/ATL_Year' . $i . '.php>Year ' . $i . '</a></li>';
+                    echo '<li><a href=Year' . $i . '/'.$fran.'_Year' . $i . '.php>Year ' . $i . '</a></li>';
                 }
                 ?>
                 <li><a href="#menu-toggle" id="menu-toggle">Toggle Navigation</a></li>

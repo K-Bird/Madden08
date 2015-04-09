@@ -1,8 +1,8 @@
-<?php $fran = 'ARI'; ?>
+<?php $fran = 'NewFran'; ?>
 <html>
     <head>
         <meta charset="utf-8">
-        <title>ARI</title>
+        <title>NewFran</title>
         <link href="../../libs/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="../../libs/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
         <link href="../../libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">
@@ -16,8 +16,8 @@
             <div id="page-content-wrapper" style="text-align: center">
                 <div class="container-fluid">
                     <?php include ('../../nav/franchiseLandingNav.php'); ?>
-                    <img src="ARI_Logo.png"><br>
-                    <header><h1>Arizona Cardinals</h1></header>
+                    <img src="NewFran_Logo.png"><br>
+                    <header><h1>FullName</h1></header>
                     <br><br>
                     <h1>Franchise Inactive</h1>
                 </div>
