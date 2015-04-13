@@ -15,5 +15,3 @@ mysql_close($con);
 
 echo $hex;
 
-?>
-

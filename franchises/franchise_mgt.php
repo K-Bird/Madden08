@@ -4,13 +4,45 @@
         <link href="../libs/css/bootstrap.css" rel="stylesheet" type="text/css">
         <link href="../libs/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
         <link href="../libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">
+        <link href="../libs/css/colorPicker.css" rel="stylesheet" type="text/css">
         <script src="../libs/js/jquery.js"></script>
         <script src="../libs/js/bootstrap.js"></script>
         <script src="../libs/js/commonFunctions.js"></script>
+        <script src="../libs/js/colorPicker.js"></script>
         <script>
-            $("#menu-toggle").click(function (e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("toggled");
+            $(document).ready(function () {
+
+                $('.PColor').colpick({
+                    layout: 'hex',
+                    colorScheme: 'dark',
+                    onSubmit: function (hsb, hex, rgb, el) {
+                        var fran = $(el).attr('id');
+                        var hex = '#' + hex;
+
+                        $.get('_fran_mgt/changePrimaryColor.php', {fran: fran, hex: hex});
+                        $(el).colpickHide();
+                        location.reload();
+                    }
+                });
+
+                $('.SColor').colpick({
+                    layout: 'hex',
+                    colorScheme: 'dark',
+                    onSubmit: function (hsb, hex, rgb, el) {
+                        var fran = $(el).attr('id');
+                        var hex = '#' + hex;
+
+                        $.get('_fran_mgt/changeSecondaryColor.php', {fran: fran, hex: hex});
+                        $(el).colpickHide();
+                        location.reload();
+                    }
+                });
+
+                $("#menu-toggle").click(function (e) {
+                    e.preventDefault();
+                    $("#wrapper").toggleClass("toggled");
+                });
+
             });
         </script>
     </head>
