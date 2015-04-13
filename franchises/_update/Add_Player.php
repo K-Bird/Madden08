@@ -18,5 +18,5 @@ if (!$con) {
 
 mysql_select_db("madden08_db", $con);
 
-$addNewPlayer = mysql_query("Insert into `{$franchise}_players` (Name, Position, Overall, Age, Weapon, OnTeam, Rookie, OSU, Year) Values ('{$addName}','{$position}','{$addOverall}','{$addAge}','{$addWeapon}','{$addOnTeam}','{$addVetRookie}','{$addOSU}','{$franchiseYear}')", $con) or die(mysql_error());
-
+$addNewPlayer = mysql_query("Insert into `{$franchise}_players` (Name, Position, Overall, Age, Weapon, OnTeam, Rookie, OSU, Year) Values ('{$addName}','{$position}','{$addOverall}','{$addAge}','{$addWeapon}','{$addOnTeam}','{$addVetRookie}','{$addOSU}','{$franchiseYear}')", $con);
+$updateHistoricalID = mysql_query("Update `{$franchise}_players` set `Historical_ID` = `Row_ID` where `Year`={$franchiseYear} and `Position`='$position'", $con);

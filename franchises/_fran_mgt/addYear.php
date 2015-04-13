@@ -1,6 +1,6 @@
 <?php
 
-$fran = $_GET['fran'];
+$fran = $_POST['fran'];
 $PrimaryColor;
 $SecondaryColor;
 
@@ -15,7 +15,6 @@ $GetYears = mysql_query("Select * From `franchise_info` where `Franchise`='$fran
 $YearRow = mysql_fetch_array($GetYears);
 $GetYearNum = $YearRow['CurrentYear'];
 $YearNum = $GetYearNum + 1;
-$NextYearNum = $YearNum + 1;
 
 $SetYear = mysql_query("UPDATE `franchise_info` SET `CurrentYear` = '{$YearNum}' where `Franchise`='$fran'", $con) or die(mysql_error());
 $GetColors = mysql_query("Select * From `franchise_info` where `Franchise`='$fran'", $con) or die(mysql_error());
@@ -25,280 +24,132 @@ $PrimaryColor = $row['PrimaryColor'];
 $SecondaryColor = $row['SecondaryColor'];
 
 /* | DIRECTORY AND FILE CREATION */
-$NewFranStructure = "../../Franchises" . "/" . $fran . "/Year" . $YearNum ."/_Forms";
+$NewFranStructure = "../../Franchises" . "/" . $fran . "/Year" . $YearNum;
 mkdir($NewFranStructure, 0700, true);
 
-
 /* Year File Creation */ 
-copy("../../Franchises/_New/FRAN_Year#.php","../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/FRAN_Year#.php");
-rename("../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/FRAN_Year#.php","../../Franchises" . "/" . $fran . "/Year" . $YearNum ."/" . $fran . "_Year" . $YearNum . ".php");
-$YearFile = "../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/" . $fran . "_Year" . $YearNum . ".php";
+copy("..\_new_fran/FRAN_Year#.php","../" . $fran . "/Year" . $YearNum . "/FRAN_Year#.php");
+rename("../" . $fran . "/Year" . $YearNum . "/FRAN_Year#.php","../" . $fran . "/Year" . $YearNum ."/" . $fran . "_Year" . $YearNum . ".php");
+$YearFile = "../" . $fran . "/Year" . $YearNum . "/" . $fran . "_Year" . $YearNum . ".php";
 file_put_contents($YearFile,str_replace('NewFran',$fran,file_get_contents($YearFile)));
-file_put_contents($YearFile,str_replace('Year#','Year'.$YearNum,file_get_contents($YearFile)));
 file_put_contents($YearFile,str_replace('+-',$YearNum,file_get_contents($YearFile)));
 file_put_contents($YearFile,str_replace('PrimaryColor',$PrimaryColor,file_get_contents($YearFile)));
-file_put_contents($YearFile,str_replace('SecondaryColor',$SecondaryColor,file_get_contents($YearFile)));
-fclose($YearFile);
 
-/* Coach File Creation */ 
-copy("../../Franchises/_New/FRAN_Year#_Coach_Table.php","../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/FRAN_Year#_Coach_Table.php");
-rename("../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/FRAN_Year#_Coach_Table.php","../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/" . $fran . "_Year" . $YearNum . "_Coach_Table.php");
-$CoachFile = "../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/" . $fran . "_Year" . $YearNum . "_Coach_Table.php";
-file_put_contents($CoachFile,str_replace('NewFran',$fran,file_get_contents($CoachFile)));
-file_put_contents($CoachFile,str_replace('#',$YearNum,file_get_contents($CoachFile)));
-fclose($CoachFile);
+/* Coaching Staff File Creation */ 
+copy("../_new_fran/FRAN_Year#_CoachingStaff_Table.php","../" . $fran . "/Year".$YearNum."/FRAN_Year#_CoachingStaff_Table.php");
+rename("../" . $fran . "/Year".$YearNum."/FRAN_Year#_CoachingStaff_Table.php","../" . $fran . "/Year".$YearNum."/" . $fran . "_Year".$YearNum."_CoachingStaff_Table.php");
 
 /* Offseason File Creation */ 
-copy("../../Franchises/_New/FRAN_Year#_Offseason_Table.php","../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/FRAN_Year#_Offseason_Table.php");
-rename("../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/FRAN_Year#_Offseason_Table.php","../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/" . $fran . "_Year" . $YearNum . "_Offseason_Table.php");
-$OffseasonFile = "../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/" . $fran . "_Year" . $YearNum . "_Offseason_Table.php";
-file_put_contents($OffseasonFile,str_replace('NewFran',$fran,file_get_contents($OffseasonFile)));
-file_put_contents($OffseasonFile,str_replace('#',$YearNum,file_get_contents($OffseasonFile)));
-fclose($OffseasonFile);
+copy("../_new_fran/FRAN_Year#_Off_Table.php","../" . $fran . "/Year".$YearNum."/FRAN_Year#_Off_Table.php");
+rename("../" . $fran . "/Year".$YearNum."/FRAN_Year#_Off_Table.php","../" . $fran . "/Year".$YearNum."/" . $fran . "_Year".$YearNum."_Off_Table.php");
 
 /* PreSeason File Creation */ 
-copy("../../Franchises/_New/FRAN_Year#_PreSeason_Table.php","../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/FRAN_Year#_PreSeason_Table.php");
-rename("../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/FRAN_Year#_PreSeason_Table.php","../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/" . $fran . "_Year" . $YearNum . "_PreSeason_Table.php");
-$PreSeasonFile = "../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/" . $fran . "_Year" . $YearNum . "_PreSeason_Table.php";
-file_put_contents($PreSeasonFile,str_replace('NewFran',$fran,file_get_contents($PreSeasonFile)));
-file_put_contents($PreSeasonFile,str_replace('#',$YearNum,file_get_contents($PreSeasonFile)));
-fclose($PreSeasonFile);
+copy("../_new_fran/FRAN_Year#_PreSeason_Table.php","../" . $fran . "/Year".$YearNum."/FRAN_Year#_PreSeason_Table.php");
+rename("../" . $fran . "/Year".$YearNum."/FRAN_Year#_PreSeason_Table.php","../" . $fran . "/Year".$YearNum."/" . $fran . "_Year".$YearNum."_PreSeason_Table.php");
 
-/* Reg File Creation */ 
-copy("../../Franchises/_New/FRAN_Year#_Reg_Table.php","../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/FRAN_Year#_Reg_Table.php");
-rename("../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/FRAN_Year#_Reg_Table.php","../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/" . $fran . "_Year" . $YearNum . "_Reg_Table.php");
-$RegFile = "../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/" . $fran . "_Year" . $YearNum . "_Reg_Table.php";
-file_put_contents($RegFile,str_replace('NewFran',$fran,file_get_contents($RegFile)));
-file_put_contents($RegFile,str_replace('#',$YearNum,file_get_contents($RegFile)));
-fclose($RegFile);
+/* Regular Season Results File Creation */ 
+copy("../_new_fran/FRAN_Year#_Results_Table.php","../" . $fran . "/Year".$YearNum."/FRAN_Year#_Results_Table.php");
+rename("../" . $fran . "/Year".$YearNum."/FRAN_Year#_Results_Table.php","../" . $fran . "/Year".$YearNum."/" . $fran . "_Year".$YearNum."_Results_Table.php");
 
-/* Roster File Creation */ 
-copy("../../Franchises/_New/FRAN_Year#_Roster_Table.php","../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/FRAN_Year#_Roster_Table.php");
-rename("../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/FRAN_Year#_Roster_Table.php","../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/" . $fran . "_Year" . $YearNum . "_Roster_Table.php");
-$RosterFile = "../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/" . $fran . "_Year" . $YearNum . "_Roster_Table.php";
-file_put_contents($RosterFile,str_replace('NewFran',$fran,file_get_contents($RosterFile)));
-file_put_contents($RosterFile,str_replace('#',$YearNum,file_get_contents($RosterFile)));
-file_put_contents($RosterFile,str_replace($YearNum.'1','#1',file_get_contents($RosterFile)));
-file_put_contents($RosterFile,str_replace($YearNum.'2','#2',file_get_contents($RosterFile)));
-file_put_contents($RosterFile,str_replace($YearNum.'3','#3',file_get_contents($RosterFile)));
-file_put_contents($RosterFile,str_replace($YearNum.'4','#4',file_get_contents($RosterFile)));
-fclose($RosterFile);
+/* Depth Chart File Creation */ 
+copy("../_new_fran/FRAN_Year#_DepthChart_Table.php","../" . $fran . "/Year".$YearNum."/FRAN_Year#_DepthChart_Table.php");
+rename("../" . $fran . "/Year".$YearNum."/FRAN_Year#_DepthChart_Table.php","../" . $fran . "/Year".$YearNum."/" . $fran . "_Year".$YearNum."_DepthChart_Table.php");
 
 /* Individual Stats File Creation */ 
-copy("../../Franchises/_New/FRAN_Year#_Stats_Table.php","../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/FRAN_Year#_Stats_Table.php");
-rename("../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/FRAN_Year#_Stats_Table.php","../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/" . $fran . "_Year" . $YearNum . "_Stats_Table.php");
-$StatsFile = "../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/" . $fran . "_Year" . $YearNum . "_Stats_Table.php";
-file_put_contents($StatsFile,str_replace('NewFran',$fran,file_get_contents($StatsFile)));
-file_put_contents($StatsFile,str_replace('#',$YearNum,file_get_contents($StatsFile)));
-fclose($StatsFile);
+copy("../_new_fran/FRAN_Year#_IndvStats_Table.php","../" . $fran . "/Year".$YearNum."/FRAN_Year#_IndvStats_Table.php");
+rename("../" . $fran . "/Year".$YearNum."/FRAN_Year#_IndvStats_Table.php","../" . $fran . "/Year".$YearNum."/" . $fran . "_Year".$YearNum."_IndvStats_Table.php");
 
 /* Team Stats File Creation */ 
-copy("../../Franchises/_New/FRAN_Year#_Team_Table.php","../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/FRAN_Year#_Team_Table.php");
-rename("../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/FRAN_Year#_Team_Table.php","../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/" . $fran . "_Year" . $YearNum . "_Team_Table.php");
-$TeamStatsFile = "../../Franchises" . "/" . $fran . "/Year" . $YearNum . "/" . $fran . "_Year" . $YearNum . "_Team_Table.php";
-file_put_contents($TeamStatsFile,str_replace('NewFran',$fran,file_get_contents($TeamStatsFile)));
-file_put_contents($TeamStatsFile,str_replace('#',$YearNum,file_get_contents($TeamStatsFile)));
-fclose($TeamStatsFile);
+copy("../_new_fran/FRAN_Year#_TeamStats_Table.php","../" . $fran . "/Year".$YearNum."/FRAN_Year#_TeamStats_Table.php");
+rename("../" . $fran . "/Year".$YearNum."/FRAN_Year#_TeamStats_Table.php","../" . $fran . "/Year".$YearNum."/" . $fran . "_Year".$YearNum."_TeamStats_Table.php");
 
-/* Roster Form File Creation */ 
-copy("../../Franchises/_New/Fran_Year#_RosterForms.php","../../Franchises" . "/" . $fran . "/Year".$YearNum."/_Forms/" . $fran . "_Year".$YearNum."_RosterForms.php");
-$RosterFormsFile = "../../Franchises" . "/" . $fran . "/Year".$YearNum."/_Forms/" . $fran . "_Year".$YearNum."_RosterForms.php";
-file_put_contents($RosterFormsFile,str_replace('NewFran',$fran,file_get_contents($RosterFormsFile)));
-file_put_contents($RosterFormsFile,str_replace('#',$YearNum,file_get_contents($RosterFormsFile)));
-fclose($RosterFormsFile);
+/* | DATABASE TABLES CREATION | */
 
-/* Stat Form File Creation */ 
-copy("../../Franchises/_New/Fran_Year#_StatsForms.php","../../Franchises" . "/" . $fran . "/Year".$YearNum."/_Forms/" . $fran . "_Year".$YearNum."_StatsForms.php");
-$StatFormsFile = "../../Franchises" . "/" . $fran . "/Year".$YearNum."/_Forms/" . $fran . "_Year".$YearNum."_StatsForms.php";
-file_put_contents($StatFormsFile,str_replace('NewFran',$fran,file_get_contents($StatFormsFile)));
-file_put_contents($StatFormsFile,str_replace('#',$YearNum,file_get_contents($StatFormsFile)));
-fclose($StatFormsFile);
+$PopulateCoachingStaffTable = "INSERT INTO `{$fran}_coaches` (`Name`, `Title`, `Year`) VALUES
+('','HC','{$YearNum}'),
+('','OC','{$YearNum}'),
+('','DC','{$YearNum}'),
+('','ST','{$YearNum}');";
+mysql_query($PopulateCoachingStaffTable);
 
-/* Offseason Form File Creation */ 
-copy("../../Franchises/_New/Fran_Year#_OffseasonForms.php","../../Franchises" . "/" . $fran . "/Year".$YearNum."/_Forms/" . $fran . "_Year".$YearNum."_OffseasonForms.php");
-$OffseasonFormsFile = "../../Franchises" . "/" . $fran . "/Year".$YearNum."/_Forms/" . $fran . "_Year".$YearNum."_OffseasonForms.php";
-file_put_contents($OffseasonFormsFile,str_replace('NewFran',$fran,file_get_contents($OffseasonFormsFile)));
-file_put_contents($OffseasonFormsFile,str_replace('#',$YearNum,file_get_contents($OffseasonFormsFile)));
-fclose($OffseasonFormsFile);
-
-/* | DATABASE TABLE CREATION | */
-
-/* Info Table */
-$InfoTable = "CREATE TABLE IF NOT EXISTS `gm_madden08-{$fran}_{$YearNum}_info` (
-  `Row` int(3) NOT NULL AUTO_INCREMENT,
-  `Field` varchar(150) NOT NULL,
-  `Value` varchar(150) NOT NULL,
-  `Preseason` varchar(1) NOT NULL,
-  PRIMARY KEY (`Row`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23";
-mysql_query($InfoTable);
-
-$PopulateInfoTable = "INSERT INTO `gm_madden08-{$fran}_{$YearNum}_info` (`Row`, `Field`, `Value`, `Preseason`) VALUES
-(10, 'Abbrev', '{$fran}', 'N'),
-(11, 'TeamName', '', 'N'),
-(12, 'Asset', '', 'N'),
-(13, 'SimReg', '', 'N'),
-(14, 'TrainStaff', '', 'N'),
-(15, 'Relocation', '', 'N'),
-(17, 'Salary Cap', '', 'Y'),
-(18, 'Cap Room', '', 'Y'),
-(19, 'Cap Penalties', '', 'Y'),
-(20, 'Team Salary', '', 'Y'),
-(21, 'NFL Icons', '', 'Y'),
-(22, 'Rivals', '', 'Y')";
+$PopulateInfoTable = "INSERT INTO `{$fran}_info` (`Field`, `Identify`, `Value`, `Year`, `Preseason`) VALUES
+('Team Assets', 'asset', '', '{$YearNum}', 'N'),
+('Regular Season Simulated', 'regsim', '', '{$YearNum}', 'N'),
+('Training Staff', 'train', '', '{$YearNum}', 'N'),
+('Team Relocated', 'relo', 'No', '{$YearNum}', 'N'),
+('Salary Cap', 'cap', '', '{$YearNum}', 'Y'),
+('Cap Room', 'room', '', '{$YearNum}', 'Y'),
+('Cap Penalties', 'pen', '', '{$YearNum}', 'Y'),
+('Team Salary', 'salary', '', '{$YearNum}', 'Y'),
+('NFL Icons', 'icons', '', '{$YearNum}', 'Y'),
+('Rivals', 'rivals', '', '{$YearNum}', 'Y')";
 mysql_query($PopulateInfoTable);
 
-/* Offseason Table */
-$OffseasonTable = "CREATE TABLE IF NOT EXISTS `gm_madden08-{$fran}_{$YearNum}_offseason` (
-  `Row` int(3) NOT NULL AUTO_INCREMENT,
-  `Player` varchar(150) NOT NULL,
-  `Type` varchar(150) NOT NULL,
-  `Award` varchar(150) NOT NULL,
-  `Position` varchar(150) NOT NULL,
-  `Overall` varchar(2) NOT NULL,
-  `Pick` varchar(150) NOT NULL,
-  `Age` varchar(50) NOT NULL,
-  UNIQUE KEY `Row` (`Row`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10";
-mysql_query($OffseasonTable);
-
-/* Offseason-Coach Table */
-$CoachTable = "CREATE TABLE IF NOT EXISTS `gm_madden08-{$fran}_{$YearNum}_offseason-coach` (
-  `Row` varchar(2) NOT NULL,
-  `Name` varchar(150) NOT NULL,
-  `Chg` varchar(150) NOT NULL,
-  `Age` varchar(150) NOT NULL,
-  `Position` varchar(50) NOT NULL,
-  `Moto` varchar(2) NOT NULL,
-  `Eth` varchar(2) NOT NULL,
-  `Off` varchar(2) NOT NULL,
-  `Def` varchar(2) NOT NULL,
-  `Chem` varchar(2) NOT NULL,
-  `Kno` varchar(2) NOT NULL,
-  `OL` varchar(2) NOT NULL,
-  `QB` varchar(2) NOT NULL,
-  `RB` varchar(2) NOT NULL,
-  `WR` varchar(2) NOT NULL,
-  `DL` varchar(2) NOT NULL,
-  `LB` varchar(2) NOT NULL,
-  `DB` varchar(2) NOT NULL,
-  `S` varchar(2) NOT NULL,
-  `P` varchar(2) NOT NULL,
-  `K` varchar(2) NOT NULL,
-  UNIQUE KEY `Row` (`Row`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1";
-mysql_query($CoachTable);
-
-$PopulateCoachTable = "INSERT INTO `gm_madden08-{$fran}_{$YearNum}_offseason-coach` (`Row`, `Name`, `Chg`, `Age`, `Position`, `Moto`, `Eth`, `Off`, `Def`, `Chem`, `Kno`, `OL`, `QB`, `RB`, `WR`, `DL`, `LB`, `DB`, `S`, `P`, `K`) VALUES
-('01', '', '', '', 'HC', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-('02', '', '', '', 'OC', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-('03', '', '', '', 'DC', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-('04', '', '', '', 'ST', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '')";
+$PopulateCoachTable = "INSERT INTO `{$fran}_off_coach-chg` (`Name`, `Chg`, `Age`, `Position`, `Moto`, `Eth`, `Off`, `Def`, `Chem`, `Kno`, `OL`, `QB`, `RB`, `WR`, `DL`, `LB`, `DB`, `S`, `P`, `K`,`Historical_ID`,`Year`) VALUES
+('','', '', 'HC', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','1','{$YearNum}'),
+('','', '', 'OC', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2','{$YearNum}'),
+('','', '', 'DC', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','3','{$YearNum}'),
+('','', '', 'ST', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','4','{$YearNum}')";
 mysql_query($PopulateCoachTable);
 
-/* Regular Season Table */
-$RegularSeasonTable = "CREATE TABLE IF NOT EXISTS `gm_madden08-{$fran}_{$YearNum}_reg` (
-  `Row` varchar(2) NOT NULL,
-  `Week` varchar(20) NOT NULL,
-  `Vs` varchar(50) NOT NULL,
-  `HorA` varchar(50) NOT NULL,
-  `Score` varchar(50) NOT NULL,
-  `Result` varchar(1) NOT NULL,
-  `OvrRecord` varchar(10) NOT NULL,
-  `DivRecord` varchar(10) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1";
-mysql_query($RegularSeasonTable);
+$PopulateResultsTable = "INSERT INTO `{$fran}_results` (`Week`, `Vs`, `HorA`, `Score`, `Result`, `OvrRecord`, `DivRecord`, `Year`) VALUES
+('Week 1', '', '', '', '', '', '','{$YearNum}'),
+('Week 2', '', '', '', '', '', '','{$YearNum}'),
+('Week 3', '', '', '', '', '', '','{$YearNum}'),
+('Week 4', '', '', '', '', '', '','{$YearNum}'),
+('Week 5', '', '', '', '', '', '','{$YearNum}'),
+('Week 6', '', '', '', '', '', '','{$YearNum}'),
+('Week 7', '', '', '', '', '', '','{$YearNum}'),
+('Week 8', '', '', '', '', '', '','{$YearNum}'),
+('Week 9', '', '', '', '', '', '','{$YearNum}'),
+('Week 10', '', '', '', '', '', '','{$YearNum}'),
+('Week 11', '', '', '', '', '', '','{$YearNum}'),
+('Week 12', '', '', '', '', '', '','{$YearNum}'),
+('Week 13', '', '', '', '', '', '','{$YearNum}'),
+('Week 14', '', '', '', '', '', '','{$YearNum}'),
+('Week 15', '', '', '', '', '', '','{$YearNum}'),
+('Week 16', '', '', '', '', '', '','{$YearNum}'),
+('Week 17', '', '', '', '', '', '','{$YearNum}'),
+('Wildcard', '', '', '', '', '', '','{$YearNum}'),
+('Divisional', '', '', '', '', '', '','{$YearNum}'),
+('Conference', '', '', '', '', '', '','{$YearNum}'),
+('Super Bowl', '', '', '', '', '', '','{$YearNum}')";
+mysql_query($PopulateResultsTable);
 
-$PopulateRegTable = "INSERT INTO `gm_madden08-{$fran}_{$YearNum}_reg` (`Row`, `Week`, `Vs`, `HorA`, `Score`, `Result`, `OvrRecord`, `DivRecord`) VALUES
-('01', 'Week 1', '', '', '', '', '', ''),
-('02', 'Week 2', '', '', '', '', '', ''),
-('03', 'Week 3', '', '', '', '', '', ''),
-('04', 'Week 4', '', '', '', '', '', ''),
-('05', 'Week 5', '', '', '', '', '', ''),
-('06', 'Week 6', '', '', '', '', '', ''),
-('07', 'Week 7', '', '', '', '', '', ''),
-('08', 'Week 8', '', '', '', '', '', ''),
-('09', 'Week 9', '', '', '', '', '', ''),
-('10', 'Week 10', '', '', '', '', '', ''),
-('11', 'Week 11', '', '', '', '', '', ''),
-('12', 'Week 12', '', '', '', '', '', ''),
-('13', 'Week 13', '', '', '', '', '', ''),
-('14', 'Week 14', '', '', '', '', '', ''),
-('15', 'Week 15', '', '', '', '', '', ''),
-('16', 'Week 16', '', '', '', '', '', ''),
-('17', 'Week 17', '', '', '', '', '', ''),
-('18', 'Wildcard', '', '', '', '', '', ''),
-('19', 'Divisional', '', '', '', '', '', ''),
-('20', 'Conference', '', '', '', '', '', ''),
-('21', 'Super Bowl', '', '', '', '', '', '')";
-mysql_query($PopulateRegTable);
-
-/* Team Stats Table */
-$TeamStatsTable = "CREATE TABLE IF NOT EXISTS `gm_madden08-{$fran}_{$YearNum}_reg-team` (
-  `Row` varchar(2) NOT NULL,
-  `Stat` varchar(50) NOT NULL,
-  `Value` varchar(50) NOT NULL,
-  UNIQUE KEY `Row` (`Row`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1";
-mysql_query($TeamStatsTable);
-
-$PopulateTeamStats = "INSERT INTO `gm_madden08-{$fran}_{$YearNum}_reg-team` (`Row`, `Stat`, `Value`) VALUES
-('01', 'Total Offense', 'Yds [ Rank / 32 ]'),
-('02', 'Rush Offence', 'Yds [ Rank / 32 ]'),
-('03', 'Pass Offense', 'Yds [ Rank / 32 ]'),
-('04', 'Total Defense ', 'Yds [ Rank / 32 ]'),
-('05', 'Rush Defense', 'Yds [ Rank / 32 ]'),
-('06', 'Pass Defense', 'Yds [ Rank / 32 ]'),
-('07', '3rd Down Conversion Percent', '%'),
-('08', '4th Down Conversion Percent', '%'),
-('09', '2 Point Conversion Attempts', '#'),
-('10', '2 Point Conversion Percentage', '%'),
-('11', 'Turnover Margin (+/-)', '#'),
-('12', 'Points Per Game', '#'),
-('13', 'Points Against Per Game', '#'),
-('14', 'Offensive Red Zone Scoring Percent', '%'),
-('15', 'Defensive Red Zone Scoring Percent', '%'),
-('19', 'Rushing TDs', '#'),
-('20', 'Passing TDs', '#'),
-('26', 'Sacks', '#'),
-('27', 'Interceptions', '#'),
-('28', 'Fumbles Recovered', '#'),
-('29', 'Penalties ', '[# - yds ]')";
+$PopulateTeamStats = "INSERT INTO `{$fran}_teamstats` (`Stat`, `Value`, `Rank`, `Year`) VALUES
+('Total Offense', '', '', '{$YearNum}'),
+('Rush Offence', '', '', '{$YearNum}'),
+('Pass Offense', '', '', '{$YearNum}'),
+('Total Defense ', '', '', '{$YearNum}'),
+('Rush Defense', '', '', '{$YearNum}'),
+('Pass Defense', '', '', '{$YearNum}'),
+('3rd Down Conversion Percent', '', '', '{$YearNum}'),
+('4th Down Conversion Percent', '', '', '{$YearNum}'),
+('2 Point Conversion Attempts', '', '', '{$YearNum}'),
+('2 Point Conversion Percentage', '', '', '{$YearNum}'),
+('Turnover Margin (+/-)', '', '', '{$YearNum}'),
+('Points Per Game', '', '', '{$YearNum}'),
+('Points Against Per Game', '', '', '{$YearNum}'),
+('Offensive Red Zone Scoring Percent', '', '', '{$YearNum}'),
+('Defensive Red Zone Scoring Percent', '', '', '{$YearNum}'),
+('Rushing TDs', '', '', '{$YearNum}'),
+('Passing TDs', '', '', '{$YearNum}'),
+('Sacks', '', '', '{$YearNum}'),
+('Interceptions', '', '', '{$YearNum}'),
+('Fumbles Recovered', '', '', '{$YearNum}'),
+('Penalties Commited', '', '', '{$YearNum}'),
+('Penalty Yards', '', '', '{$YearNum}')";
 mysql_query($PopulateTeamStats);
 
-/* Roster Table */
-mysql_query("CREATE Table `gm_madden08-{$fran}_{$YearNum}_roster` LIKE `gm_madden08-{$fran}_{$GetYearNum}_roster`");
-mysql_query("INSERT INTO `gm_madden08-{$fran}_{$YearNum}_roster` SELECT * FROM `gm_madden08-{$fran}_{$GetYearNum}_roster`");
-mysql_query("UPDATE `gm_madden08-{$fran}_{$YearNum}_roster` SET `Age` = `Age` + 1");
 
-$StatsTable = "CREATE TABLE IF NOT EXISTS `gm_madden08-{$fran}_{$YearNum}_stats` (
-  `Row` int(3) NOT NULL AUTO_INCREMENT,
-  `Player` varchar(150) NOT NULL,
-  `Category` varchar(150) NOT NULL,
-  `Rating` varchar(150) NOT NULL,
-  `Yds` varchar(150) NOT NULL,
-  `TDs` varchar(150) NOT NULL,
-  `INTs` varchar(150) NOT NULL,
-  `Percent` varchar(150) NOT NULL,
-  `Sacks` varchar(150) NOT NULL,
-  `AVG` varchar(150) NOT NULL,
-  `Fumbles` varchar(150) NOT NULL,
-  `BrokenTackles` varchar(150) NOT NULL,
-  `Longest` varchar(150) NOT NULL,
-  `Rec` varchar(150) NOT NULL,
-  `Dropped` varchar(150) NOT NULL,
-  `Pancakes` varchar(150) NOT NULL,
-  `Tackles` varchar(150) NOT NULL,
-  `ForLoss` varchar(150) NOT NULL,
-  `Safety` varchar(150) NOT NULL,
-  `Made` varchar(150) NOT NULL,
-  `Attempted` varchar(150) NOT NULL,
-  `KPS` varchar(150) NOT NULL,
-  `KickPercent` varchar(50) NOT NULL,
-  PRIMARY KEY (`Row`),
-  UNIQUE KEY `Row` (`Row`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10";
-mysql_query($StatsTable);
+/* Depth Chart Table */
+$copyDepthCart = "INSERT INTO `{$fran}_players`
+        (`Name`, `Position`, `Overall`, `Age`, `Weapon`, `OnTeam`, `Rookie`, `OSU`, `Historical_ID`, `Year`)
+        SELECT `Name`, `Position`, `Overall`, `Age`, `Weapon`, `OnTeam`, `Rookie`, `OSU`, `Historical_ID`, '$YearNum'
+        FROM `{$fran}_players` WHERE `Year` = {$GetYearNum};";
+mysql_query($copyDepthCart);
 
+$IncrementAge = "UPDATE `{$fran}_players` SET `Age` = `Age` + 1 WHERE `Year` = '$YearNum'";
+mysql_query($IncrementAge);
 
 header('Location: ' . $_SERVER['HTTP_REFERER']);

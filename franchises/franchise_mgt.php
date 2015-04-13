@@ -72,7 +72,7 @@
                                                 ?>                  
                                             </select>
                                             <br>
-                                            <button type="submit" class="btn btn-primary">Add Franchise</button>
+                                            <button type="submit" class="btn btn-success">Activate Franchise</button>
                                         </div>
                                     </form>   
                                 </div>
@@ -84,7 +84,7 @@
                                     <h3 class="panel-title">Add Year to Franchise</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <form role="form"  name="AddFranchise" action="_Actions/_FranMGT/addYear.php" method="get">
+                                    <form role="form"  name="AddFranchise" action="_fran_mgt/addYear.php" method="post">
                                         <div class="form-group">
                                             <label>Active Franchises:</label> 
                                             <select class="form-control" name="fran">
