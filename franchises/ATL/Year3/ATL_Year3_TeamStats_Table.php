@@ -7,7 +7,7 @@ if (!$con) {
 
 mysql_select_db("madden08_db", $con);
 
-$result = mysql_query("SELECT * FROM `{$fran}_teamstats` Where `Year`='{$franYear}'");
+$result = mysql_query("SELECT * FROM `{$fran}_teamstats` Where `Year`='{$franYear}' ORDER BY `Row`");
 
 echo "<br />";
 echo '<table class="table table-hover" id="', $fran, '_', $franYear, '_teamstats" style="text-align: center; font-size: small">';
