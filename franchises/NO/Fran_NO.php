@@ -1,33 +1,23 @@
-<?php session_start(); ?>
+<?php $fran = 'NO'; ?>
 <html>
     <head>
         <meta charset="utf-8">
-        <title>NO - GC</title>
-        <link href="../../_CSS/Bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../../_CSS/Bootstrap/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
-        <script src="../../_Scripts/JQuery/JQuery.js"></script>
-        <script src="../../_Scripts/Bootstrap/bootstrap.min.js"></script>
+        <title>NO</title>
+        <link href="../../libs/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../../libs/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
+        <link href="../../libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">
+        <script src="../../libs/js/jquery.js"></script>
+        <script src="../../libs/js/bootstrap.js"></script>
+        <script src="../../libs/js/commonFunctions.js"></script>
     </head>
     <body>
-
-        <?php
-        $level = 'Franchise';
-        include ('../../_NavBars/navbarMadden.php');
-        ?>
-        <div class="container" style="text-align: center">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img src="NO_Logo.png"></img>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
+        <div id="wrapper">
+            <?php include ('../../nav/franchiseLandingSidebar.php'); ?>
+            <div id="page-content-wrapper" style="text-align: center">
+                <div class="container-fluid">
+                    <?php include ('../../nav/franchiseLandingNav.php'); ?>
+                    <img src="NO_Logo.png"><br>
                     <header><h1>New Orleans Saints </h1></header>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Franchise Not Started</h1>
                 </div>
             </div>
         </div>

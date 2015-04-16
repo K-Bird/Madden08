@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>OAK - YR1</title>
+        <title>NO - YR1</title>
         <link href="../../../libs/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="../../../libs/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
         <link href="../../../libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">
@@ -25,7 +25,7 @@
     <body style="background-color: #000000">
         <?php
         $franYear = '1';
-        $fran = 'OAK';
+        $fran = 'NO';
         ?>
         <div id="wrapper">
             <?php include ('../../../nav/franchiseYearSidebar.php'); ?>
