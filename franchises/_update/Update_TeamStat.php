@@ -18,4 +18,3 @@ $check = mysql_query("Select * from `{$fran}_teamstats` Where Row={$row} and Yea
 $checkRow = mysql_fetch_array($check) or die(mysql_error());
 echo $checkRow[$col];
 mysql_close($con);
-return;

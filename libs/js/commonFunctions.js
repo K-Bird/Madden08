@@ -539,7 +539,7 @@ function updateTeamStat(e) {
                 },
                 success: function (data, textStatus, jqXHR)
                 {
-                    location.reload();
+                    $(e).parent().text(data);
                 },
                 error: function (jqXHR, textStatus, errorThrown)
                 {
