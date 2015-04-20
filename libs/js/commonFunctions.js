@@ -198,6 +198,32 @@ $(document).ready(function () {
         var selText = $(this).text();
         $(this).parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
     });
+
+    //Common function to submit year edit forms via AJAX
+    $(".yearForm").submit(function (e)
+    {
+        window.getIDfromName = $(this).attr('name');
+        var postData = $(this).serializeArray();
+        var formURL = $(this).attr("action");
+        $.ajax(
+                {
+                    url: formURL,
+                    type: "POST",
+                    data: postData,
+                    success: function (data, textStatus, jqXHR)
+                    {
+                        $(".modal").modal('hide');
+                        $("#" + getIDfromName).text(data);
+                        
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        alert("Form did not process");
+                    }
+                });
+        e.preventDefault();
+    });
+    
     //Common function to submit depth chart changes
     $(".editDepthForm").submit(function (e)
     {

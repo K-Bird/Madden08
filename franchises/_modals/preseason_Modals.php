@@ -3,11 +3,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Edit Salary Cap for <?php echo strtoupper($fran) . " - Year: " . $franYear; ?></h4>
             </div>
             <div class="modal-body">
-                <form role="form" name="editSalaryCap" action="../../_update/Edit_Year_Fields.php" method="post">
+                <form role="form" class="yearForm" name="capHistory" action="../../_update/Edit_Year_Fields.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New Salary Cap:</label> 
                         <input class="form-control" type="text" id="Value" name="NewVal" size="15">
@@ -32,11 +31,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Edit Cap Room for <?php echo strtoupper($fran) . " - Year: " . $franYear; ?></h4>
             </div>
             <div class="modal-body">
-                <form role="form" name="editSalaryCap" action="../../_update/Edit_Year_Fields.php" method="post">
+                <form role="form" class="yearForm" name="roomHistory" action="../../_update/Edit_Year_Fields.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New Cap Room:</label> 
                         <input class="form-control" type="text" id="Value" name="NewVal" size="15">
@@ -61,11 +59,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Edit Cap Penalties for <?php echo strtoupper($fran) . " - Year: " . $franYear; ?></h4>
             </div>
             <div class="modal-body">
-                <form role="form" name="editSalaryCap" action="../../_update/Edit_Year_Fields.php" method="post">
+                <form role="form" name="penHistory" class="yearForm" action="../../_update/Edit_Year_Fields.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New Cap Penalties:</label> 
                         <input class="form-control" type="text" id="Value" name="NewVal" size="15">
@@ -90,11 +87,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Edit Team Salary for <?php echo strtoupper($fran) . " - Year: " . $franYear; ?></h4>
             </div>
             <div class="modal-body">
-                <form role="form" name="editSalaryCap" action="../../_update/Edit_Year_Fields.php" method="post">
+                <form role="form" class="yearForm" name="salaryHistory" action="../../_update/Edit_Year_Fields.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New Team Salary:</label> 
                         <input class="form-control" type="text" id="Value" name="NewVal" size="15">
@@ -119,11 +115,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Edit NFL Icons for <?php echo strtoupper($fran) . " - Year: " . $franYear; ?></h4>
             </div>
             <div class="modal-body">
-                <form role="form" name="editSalaryCap" action="../../_update/Edit_Year_Fields.php" method="post">
+                <form role="form" class="yearForm" name="iconsHistory" action="../../_update/Edit_Year_Fields.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New NFL Icons:</label> 
                         <input class="form-control" type="text" id="Value" name="NewVal" size="15">
@@ -148,11 +143,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Edit Rivals for <?php echo strtoupper($fran) . " - Year: " . $franYear; ?></h4>
             </div>
             <div class="modal-body">
-                <form role="form" name="editSalaryCap" action="../../_update/Edit_Year_Fields.php" method="post">
+                <form role="form" class="yearForm" name="rivalsHistory" action="../../_update/Edit_Year_Fields.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New Rivals:</label> 
                         <input class="form-control" type="text" id="Value" name="NewVal" size="15">

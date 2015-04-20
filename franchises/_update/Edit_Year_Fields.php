@@ -17,5 +17,5 @@ $result = mysql_query("Update `{$fran}_{$table}` set {$col} = '$newVal' Where Ro
 $check = mysql_query("Select * from `{$fran}_{$table}` Where Row={$editRow}", $con) or die(mysql_error());
 $checkRow = mysql_fetch_array($check) or die(mysql_error());
 echo $checkRow[$col];
+
 mysql_close($con);
-header('Location: ' . $_SERVER['HTTP_REFERER']);

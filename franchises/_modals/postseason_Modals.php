@@ -3,11 +3,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Edit Team Assets for <?php echo strtoupper($fran) . " - Year: " . $franYear; ?></h4>
             </div>
             <div class="modal-body">
-                <form role="form" name="editTeamAssets" action="../../_update/Edit_Year_Fields.php" method="post">
+                <form role="form" class="yearForm" name="assetHistory" action="../../_update/Edit_Year_Fields.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New Team Assets:</label> 
                         <input class="form-control" type="text" id="Value" name="NewVal" size="15">
@@ -32,11 +31,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Edit Regular Season Simulation for <?php echo strtoupper($fran) . " - Year: " . $franYear; ?></h4>
             </div>
             <div class="modal-body">
-                <form role="form" name="editRegSim" action="../../_update/Edit_Year_Fields.php" method="post">
+                <form role="form" class="yearForm" name="regsimHistory" action="../../_update/Edit_Year_Fields.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New Regular Season Simulated (No or Record):</label> 
                         <input class="form-control" type="text" id="Value" name="NewVal" size="15">
@@ -61,11 +59,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Edit Training Staff for <?php echo strtoupper($fran) . " - Year: " . $franYear; ?></h4>
             </div>
             <div class="modal-body">
-                <form role="form" name="editSalaryCap" action="../../_update/Edit_Year_Fields.php" method="post">
+                <form role="form" class="yearForm" name="trainHistory" action="../../_update/Edit_Year_Fields.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New Training Staff:</label> 
                         <input class="form-control" type="text" id="Value" name="NewVal" size="15">
@@ -94,7 +91,7 @@
                 <h4 class="modal-title">Edit Relocation for <?php echo strtoupper($fran) . " - Year: " . $franYear; ?></h4>
             </div>
             <div class="modal-body">
-                <form role="form" name="editSalaryCap" action="../../_update/Edit_Year_Fields.php" method="post">
+                <form role="form" class="yearForm" name="reloHistory" action="../../_update/Edit_Year_Fields.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New Relocation:</label> 
                         <input class="form-control" type="text" id="Value" name="NewVal" size="15">
