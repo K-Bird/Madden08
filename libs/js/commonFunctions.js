@@ -214,7 +214,7 @@ $(document).ready(function () {
                     {
                         $(".modal").modal('hide');
                         $("#" + getIDfromName).text(data);
-                        
+
                     },
                     error: function (jqXHR, textStatus, errorThrown)
                     {
@@ -223,7 +223,7 @@ $(document).ready(function () {
                 });
         e.preventDefault();
     });
-    
+
     //Common function to submit depth chart changes
     $(".editDepthForm").submit(function (e)
     {
@@ -502,7 +502,7 @@ function updateReg(e) {
                 },
                 success: function (data, textStatus, jqXHR)
                 {
-                    location.reload();
+                    $(e).parent().text(data);
                 },
                 error: function (jqXHR, textStatus, errorThrown)
                 {
