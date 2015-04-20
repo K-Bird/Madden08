@@ -3,11 +3,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Edit Head Coach for <?php echo strtoupper($fran) . " - Year: " . $franYear; ?></h4>
             </div>
             <div class="modal-body">
-                <form role="form" name="editHC" action="../../_update/Edit_Year_Fields.php" method="post">
+                <form role="form" class="yearForm" name="HCHistory" action="../../_update/Edit_Year_Fields.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New Head Coach:</label> 
                         <input class="form-control" type="text" id="Value" name="NewVal" size="15">
@@ -32,11 +31,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Edit Offensive Coordinator for <?php echo strtoupper($fran) . " - Year: " . $franYear; ?></h4>
             </div>
             <div class="modal-body">
-                <form role="form" name="editHC" action="../../_update/Edit_Year_Fields.php" method="post">
+                <form role="form" class="yearForm" name="OCHistory" action="../../_update/Edit_Year_Fields.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New Offensive Coordinator:</label> 
                         <input class="form-control" type="text" id="Value" name="NewVal" size="15">
@@ -61,11 +59,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Edit Defensive Coordinator for <?php echo strtoupper($fran) . " - Year: " . $franYear; ?></h4>
             </div>
             <div class="modal-body">
-                <form role="form" name="editHC" action="../../_update/Edit_Year_Fields.php" method="post">
+                <form role="form" class="yearForm" name="DCHistory" action="../../_update/Edit_Year_Fields.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New Defensive Coordinator:</label> 
                         <input class="form-control" type="text" id="Value" name="NewVal" size="15">
@@ -90,11 +87,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Edit Special Teams Coordinator for <?php echo strtoupper($fran) . " - Year: " . $franYear; ?></h4>
             </div>
             <div class="modal-body">
-                <form role="form" name="editHC" action="../../_update/Edit_Year_Fields.php" method="post">
+                <form role="form" class="yearForm" name="STHistory" action="../../_update/Edit_Year_Fields.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New Special Teams Coordinator:</label> 
                         <input class="form-control" type="text" id="Value" name="NewVal" size="15">
