@@ -1,6 +1,28 @@
 $(document).ready(function () {
 
-//Common Function That Toggles the Sidebar Shown/Hidden for Each Page
+    //Common functions to remember which panel was last opened on a franchise year
+    //Resets after panel is shown so navigation another franchise has no panel remebered until called
+    localStorage.setItem('lastPage',localStorage.getItem('currentPage'));
+    localStorage.setItem('currentPage', window.location.href);
+    
+    if (localStorage.getItem('currentPage') !== localStorage.getItem('lastPage')) {
+        localStorage.setItem('lastPanel', null);
+    }
+    
+    $('#accordion .panel').on('shown.bs.collapse', function (e) {
+        localStorage.setItem('lastPanel', $(e.target).attr("id"));
+    });
+
+    if (localStorage.getItem('lastPanel') === null) {
+
+    } else {
+        var lastPanel = localStorage.getItem('lastPanel');
+        $("#" + lastPanel).addClass("in");
+        $("#" + lastPanel).parents("div").addClass("in");
+    }
+   
+
+    //Common Function That Toggles the Sidebar Shown/Hidden for Each Page
     $("#menu-toggle").click(function (e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
