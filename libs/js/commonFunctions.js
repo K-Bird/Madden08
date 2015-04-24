@@ -2,13 +2,13 @@ $(document).ready(function () {
 
     //Common functions to remember which panel was last opened on a franchise year
     //Resets after panel is shown so navigation another franchise has no panel remebered until called
-    localStorage.setItem('lastPage',localStorage.getItem('currentPage'));
+    localStorage.setItem('lastPage', localStorage.getItem('currentPage'));
     localStorage.setItem('currentPage', window.location.href);
-    
+
     if (localStorage.getItem('currentPage') !== localStorage.getItem('lastPage')) {
         localStorage.setItem('lastPanel', null);
     }
-    
+
     $('#accordion .panel').on('shown.bs.collapse', function (e) {
         localStorage.setItem('lastPanel', $(e.target).attr("id"));
     });
@@ -20,7 +20,20 @@ $(document).ready(function () {
         $("#" + lastPanel).addClass("in");
         $("#" + lastPanel).parents("div").addClass("in");
     }
-   
+    
+    //Common Function to check if user is in editing mode. If yes ('Y') then display the editing elements
+    if (localStorage.getItem('editing') === 'Y') {
+        $(".yearEdit").show();
+        $(".resultEdit").show();
+        $(".teamStatEdit").show();
+        $(".indvStatEdit").show();
+        $(".indvStatAdd").show();
+        $(".indvStatRemove").show();
+        $(".coachChgEdit").show();
+        $(".awardRemove").show();
+        $(".probowlRemove").show();
+        $(".movesRemove").show();
+    }
 
     //Common Function That Toggles the Sidebar Shown/Hidden for Each Page
     $("#menu-toggle").click(function (e) {
@@ -165,8 +178,22 @@ $(document).ready(function () {
     });
     //Common Functions: Functions to Edit Franchise Year Pages
 
-    //Master Toggle Editing Function
+    //Master Toggle Editing Functions  
     $("#toggleEdit").click(function (e) {
+
+        //Check state of editing mode when edit button is clicked, set accordingly
+        switch (localStorage.getItem('editing')) {
+            case null :
+                localStorage.setItem('editing', 'Y');
+                break;
+            case 'Y' :
+                localStorage.setItem('editing', 'N');
+                break;
+            case 'N' :
+                localStorage.setItem('editing', 'Y');
+                break;
+        }
+
         $(".yearEdit").toggle();
 
         //Toggle if results table edit icons are editable/visable
@@ -199,6 +226,7 @@ $(document).ready(function () {
 
         //Toggle Retired, Draft, Pre&Post Free Agency edit elements
         $(".movesRemove").toggle();
+
     });
 
     //Grab Team Info Row Data Which is Passed to the Shown Modal (Preseason/Postseason Info)
