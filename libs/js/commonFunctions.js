@@ -20,8 +20,8 @@ $(document).ready(function () {
         $("#" + lastPanel).addClass("in");
         $("#" + lastPanel).parents("div").addClass("in");
     }
-    
-    //Common Function to check if user is in editing mode. If yes ('Y') then display the editing elements
+
+    //Common Function to check if user is in editing mode. If yes ('Y') then display the editing elements and set update functions
     if (localStorage.getItem('editing') === 'Y') {
         $(".yearEdit").show();
         $(".resultEdit").show();
@@ -33,6 +33,8 @@ $(document).ready(function () {
         $(".awardRemove").show();
         $(".probowlRemove").show();
         $(".movesRemove").show();
+
+        setEditing();
     }
 
     //Common Function That Toggles the Sidebar Shown/Hidden for Each Page
@@ -194,28 +196,21 @@ $(document).ready(function () {
                 break;
         }
 
+        //Toggle editing elements wit yearEdit class
         $(".yearEdit").toggle();
 
         //Toggle if results table edit icons are editable/visable
-        var regVals = ['', 'updateReg(this)'];
-        toggleAttr($('.resultEdit'), 'onclick', regVals);
         $(".resultEdit").toggle();
 
         //Toggle if team stats table edit icons are editable/visable
-        var teamStatVals = ['', 'updateTeamStat(this)'];
-        toggleAttr($('.teamStatEdit'), 'onclick', teamStatVals);
         $(".teamStatEdit").toggle();
 
         //Toggle if individual stats table edit icons are editable/visable
-        var IndvVals = ['', 'updateIndvStat(this)'];
-        toggleAttr($('.indvStatEdit'), 'onclick', IndvVals);
         $(".indvStatEdit").toggle();
         $(".indvStatRemove").toggle();
         $(".indvStatAdd").toggle();
 
         //Toggle if coaching change table edit icons are editable/visable
-        var coachChgVals = ['', 'updateCoachChg(this)'];
-        toggleAttr($('.coachChgEdit'), 'onclick', coachChgVals);
         $(".coachChgEdit").toggle();
 
         //Toggle Yearly Award edit elements
@@ -226,6 +221,8 @@ $(document).ready(function () {
 
         //Toggle Retired, Draft, Pre&Post Free Agency edit elements
         $(".movesRemove").toggle();
+
+        setEditing();
 
     });
 
@@ -788,4 +785,20 @@ function removeMovesRow(e) {
                     alert("Update Did Not Complete");
                 }
             });
+}
+
+function setEditing() {
+
+    if (localStorage.getItem('editing') === 'Y') {
+        $(".resultEdit").attr('onclick', 'updateReg(this)');
+        $(".teamStatEdit").attr('onclick', 'updateTeamStat(this)');
+        $(".indvStatEdit").attr('onclick', 'updateIndvStat(this)');
+        $(".coachChgEdit").attr('onclick', 'updateCoachChg(this)');
+    }
+    if (localStorage.getItem('editing') === 'N') {
+        $(".resultEdit").attr('onclick', '');
+        $(".teamStatEdit").attr('onclick', '');
+        $(".indvStatEdit").attr('onclick', '');
+        $(".coachChgEdit").attr('onclick', '');
+    }
 }
