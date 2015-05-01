@@ -21,7 +21,7 @@ mysql_select_db("madden08_db", $con);
 
 $GetNameResult = mysql_query("SELECT * FROM `{$franchise}_players` where Row_ID={$playerRow}", $con);
 $GetName = mysql_fetch_array($GetNameResult);
-$playerName = $GetName['Name'];
+$playerName = mysql_real_escape_string($GetName['Name']);
 $historicalID = $GetName['Historical_ID'];
 
 $addNewPlayer = mysql_query("Insert into `{$franchise}_stats_def` (Player, Position, Tackles, ForLoss, Sacks, INTs, TDs, Saftey, Historical_ID, Year) Values ('{$playerName}','{$addPos}','{$addTackles}','{$addForLoss}','{$addSacks}','{$addINTs}','{$addTDs}','{$addSaftey}',{$historicalID},'{$franYear}')", $con) or die(mysql_error());

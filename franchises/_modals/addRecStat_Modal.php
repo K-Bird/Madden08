@@ -7,7 +7,7 @@ if (!$con) {
 mysql_select_db("madden08_db", $con);
 
 $Positions = array();
-array_push($Positions, 'WR1', 'WR2','WR3','WR4','HB1','HB2','HB3','TE1','TE2');
+array_push($Positions, 'WR1', 'WR2','WR3','WR4','HB1','HB2','HB3','TE1','TE2','FB1','FB2');
 ?>
 
 <div class="modal fade" id="addRecModal" tabindex="-1" role="dialog" aria-labelledby="Add Receiving Stats Row" aria-hidden="true">

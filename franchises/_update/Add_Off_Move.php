@@ -2,7 +2,7 @@
 
 $moveType = $_POST['moveType'];
 $position = $_POST['pos'];
-$playerName = $_POST['player'];
+$playerName = mysql_real_escape_string($_POST['player']);
 $ovr = $_POST['Ovr'];
 $age = $_POST['Age'];
 $draft = $_POST['Draft'];

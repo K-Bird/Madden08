@@ -239,6 +239,7 @@ array_push($Positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2', 'WR1', '
                                         <option value="CB">CB</option>
                                         <option value="FS">FS</option>
                                         <option value="SS">SS</option>
+                                        <option value="KR">KR</option>
                                     </select>
                                 </td>
                             </tr>
@@ -246,7 +247,7 @@ array_push($Positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2', 'WR1', '
                         <input type="hidden" name="fran" value=<?php echo $fran; ?> />
                         <input type="hidden" name="franYear" value=<?php echo $franYear; ?> />
                         <div class="form-group" style="text-align: left">
-                            <button type="submit" class="btn btn-success">Add Award</button>
+                            <button type="submit" class="btn btn-success">Add Probowl Player</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                     </div>

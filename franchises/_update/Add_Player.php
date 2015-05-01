@@ -1,6 +1,6 @@
 <?php
 
-$addName = $_POST['addName'];
+$addName = mysql_real_escape_string($_POST['addName']);
 $addOverall = $_POST['addOverall'];
 $addAge = $_POST['addAge'];
 $addOnTeam = $_POST['addOnTeam'];

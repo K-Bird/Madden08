@@ -7,7 +7,7 @@ if (!$con) {
 mysql_select_db("madden08_db", $con);
 
 $Positions = array();
-array_push($Positions, 'QB1', 'QB2','HB1','HB2','HB3');
+array_push($Positions, 'QB1', 'QB2','HB1','HB2','HB3','FB1','FB2');
 ?>
 
 <div class="modal fade" id="addRushModal" tabindex="-1" role="dialog" aria-labelledby="Add Rushing Stats Row" aria-hidden="true">

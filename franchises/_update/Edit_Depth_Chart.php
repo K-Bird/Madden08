@@ -22,7 +22,8 @@ foreach ($editPosition as $index => $editPos) {
         if ($changedNames[$index] === '') {
             
         } else {
-            $updateName = mysql_query("Update `{$franchise}_players` SET Name='{$changedNames[$index]}' WHERE ROW_ID='{$editPos}'", $con) or die(mysql_error());
+            $changedNameEscaped = mysql_real_escape_string($changedNames[$index]);
+            $updateName = mysql_query("Update `{$franchise}_players` SET Name='{$changedNameEscaped}' WHERE ROW_ID='{$editPos}'", $con) or die(mysql_error());
         }
         if ($changedOverall[$index] === '') {
             

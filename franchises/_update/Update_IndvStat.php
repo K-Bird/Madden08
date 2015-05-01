@@ -2,7 +2,7 @@
 
 $row = $_POST["row"];
 $col = $_POST["col"];
-$NewValue = $_POST["newVal"];
+$NewValue = mysql_real_escape_string($_POST["newVal"]);
 $fran = $_POST['fran'];
 $year = $_POST ['year'];
 $table = $_POST['table'];
