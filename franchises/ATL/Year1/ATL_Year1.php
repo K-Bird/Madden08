@@ -10,7 +10,7 @@
         <script src="../../../libs/js/commonFunctions.js"></script>
         <style>
             .popover {
-                max-width: 800px;
+                max-width: 1000px;
                 width: auto;
             }
             .modal-dialog {

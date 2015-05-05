@@ -85,12 +85,14 @@ $PopulateInfoTable = "INSERT INTO `{$fran}_info` (`Field`, `Identify`, `Value`, 
 ('Rivals', 'rivals', '', '{$YearNum}', 'Y')";
 mysql_query($PopulateInfoTable);
 
-$PopulateCoachTable = "INSERT INTO `{$fran}_off_coach-chg` (`Name`, `Chg`, `Age`, `Position`, `Moto`, `Eth`, `Off`, `Def`, `Chem`, `Kno`, `OL`, `QB`, `RB`, `WR`, `DL`, `LB`, `DB`, `S`, `P`, `K`,`Historical_ID`,`Year`) VALUES
-('','', '', 'HC', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','1','{$YearNum}'),
-('','', '', 'OC', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2','{$YearNum}'),
-('','', '', 'DC', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','3','{$YearNum}'),
-('','', '', 'ST', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '','4','{$YearNum}')";
-mysql_query($PopulateCoachTable);
+$CopyCoachTable = "INSERT INTO `{$fran}_off_coach-chg` (`Name`, `Chg`, `Age`, `Position`, `Moto`, `Eth`, `Off`, `Def`, `Chem`, `Kno`, `OL`, `QB`, `RB`, `WR`, `DL`, `LB`, `DB`, `S`, `P`, `K`,`Historical_ID`,`Year`)
+SELECT `Name`, `Chg`, `Age`, `Position`, `Moto`, `Eth`, `Off`, `Def`, `Chem`, `Kno`, `OL`, `QB`, `RB`, `WR`, `DL`, `LB`, `DB`, `S`, `P`, `K`,`Historical_ID`,'$YearNum'
+FROM `{$fran}_off_coach-chg` WHERE `Year` = {$GetYearNum};";
+mysql_query($CopyCoachTable);
+
+$IncrementCoachAge = "UPDATE `{$fran}_coach-chg` SET `Age` = `Age` + 1 WHERE `Year` = '$YearNum'";
+
+mysql_query($IncrementCoachAge);
 
 $PopulateResultsTable = "INSERT INTO `{$fran}_results` (`Week`, `Vs`, `HorA`, `Score`, `Result`, `OvrRecord`, `DivRecord`, `Year`) VALUES
 ('Week 1', '', '', '', '', '', '','{$YearNum}'),
@@ -149,7 +151,7 @@ $copyDepthCart = "INSERT INTO `{$fran}_players`
         FROM `{$fran}_players` WHERE `Year` = {$GetYearNum};";
 mysql_query($copyDepthCart);
 
-$IncrementAge = "UPDATE `{$fran}_players` SET `Age` = `Age` + 1 WHERE `Year` = '$YearNum'";
-mysql_query($IncrementAge);
+$IncrementDepthAge = "UPDATE `{$fran}_players` SET `Age` = `Age` + 1 WHERE `Year` = '$YearNum'";
+mysql_query($IncrementDepthAge);
 
 header('Location: ' . $_SERVER['HTTP_REFERER']);
