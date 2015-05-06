@@ -519,6 +519,13 @@ $(document).ready(function () {
         }
     });
 
+    //Common functions to sort tables
+    $("#passingStatsTable").stupidtable(); //Indv Passing Stats
+    $("#rushingStatsTable").stupidtable(); //Indv Rushing Stats
+    $("#recStatsTable").stupidtable(); //Indv Rec Stats
+    $("#blockingStatsTable").stupidtable(); //Indv Block Stats
+    $("#defStatsTable").stupidtable(); //Indv Defensive Stats
+
 });
 
 //Common function to update regular season table

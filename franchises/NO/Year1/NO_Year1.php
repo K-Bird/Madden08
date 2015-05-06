@@ -7,6 +7,7 @@
         <link href="../../../libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">
         <script src="../../../libs/js/jquery.js"></script>
         <script src="../../../libs/js/bootstrap.js"></script>
+        <script src="../../../libs/js/stupidtable.js"></script>
         <script src="../../../libs/js/commonFunctions.js"></script>
         <style>
             .popover {
@@ -19,6 +20,12 @@
             }
             .modal {
                 overflow-y: scroll !important;
+            }
+            th {
+                cursor : pointer;
+            }
+            span.glyphicon {
+                cursor : pointer;
             }
         </style>
     </head>

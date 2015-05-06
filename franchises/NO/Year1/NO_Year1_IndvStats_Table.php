@@ -19,29 +19,29 @@ mysql_select_db("madden08_db", $con);
         <div id="passingCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="passingHeader">
             <div class="panel-body">
                 <table class="table table-hover" id="passingStatsTable" style="text-align: center; font-size: small">
-                    <tr>
-                        <td>Player</td><td>Passer Rating</td><td>Passing Yards</td><td>Passing TDs</td><td>Interceptions</td><td>Completion %</td><td>Times Sacked</td><td></td>
-                    </tr>
-                        <?php
-                        $passingResult = mysql_query("SELECT * FROM `{$fran}_stats_passing` Where Year='{$franYear}'");
+                    <thead>
+                        <tr>
+                            <th data-sort="string">Player</th><th data-sort="float">Passer Rating</th><th data-sort="int">Passing Yards</th><th data-sort="int">Passing TDs</th><th data-sort="int">Interceptions</th><th data-sort="int">Completion %</th><th data-sort="int">Times Sacked</th><th></th>
+                        </tr>
+                    </thead>
+                    <?php
+                    $passingResult = mysql_query("SELECT * FROM `{$fran}_stats_passing` Where Year='{$franYear}'");
 
-                        while ($PassingRow = mysql_fetch_array($passingResult)) {
-                            echo '<tr>',
-                            '<td><span id="', $PassingRow['Row'], 'Pass" class="passingHistory" style="cursor: pointer" data-toggle="popover" title="Passing History">', $PassingRow['Player'], '</span>&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/Player/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
-                            '<td>', $PassingRow['Rating'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/Rating/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
-                            '<td>', $PassingRow['Yards'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/Yards/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
-                            '<td>', $PassingRow['TDs'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/TDs/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
-                            '<td>', $PassingRow['INTs'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/INTs/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
-                            '<td>', $PassingRow['Comp'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/Comp/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
-                            '<td>', $PassingRow['Sacked'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/Sacked/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
-                            '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="',$PassingRow['Row'],'/passing/',$fran,'" onclick="removeIndvStat(this)">Remove Row</a></td>',
-                            '</tr>';
-                        }
-                        ?>
-                    <tr>
-                        <td colspan="7"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addPassModal" style="display:none">Add Passing Stat Row</a></td>
-                    </tr>
+                    while ($PassingRow = mysql_fetch_array($passingResult)) {
+                        echo '<tr>',
+                        '<td><span id="', $PassingRow['Row'], 'Pass" class="passingHistory" style="cursor: pointer" data-toggle="popover" title="Passing History">', $PassingRow['Player'], '</span>&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/Player/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $PassingRow['Rating'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/Rating/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $PassingRow['Yards'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/Yards/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $PassingRow['TDs'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/TDs/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $PassingRow['INTs'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/INTs/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $PassingRow['Comp'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/Comp/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td>', $PassingRow['Sacked'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/', $fran, '/', $franYear, '/Sacked/passing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="', $PassingRow['Row'], '/passing/', $fran, '" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                        '</tr>';
+                    }
+                    ?>
                 </table>
+                <div style="text-align : center"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addPassModal" style="display:none">Add Passing Stat Row</a></div>
             </div>
         </div>
     </div>
@@ -56,9 +56,11 @@ mysql_select_db("madden08_db", $con);
         <div id="rushingCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="rushingHeader">
             <div class="panel-body">
                 <table class="table table-hover" id="rushingStatsTable" style="text-align: center; font-size: small">
-                    <tr>
-                        <td>Player</td><td>Rush Yards</td><td>Rush TDs</td><td>Yards Per Carry</td><td>Fumbles</td><td>Broken Tackles</td><td>Longest Run</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th data-sort="string">Player</th><th data-sort="int">Rush Yards</th><th data-sort="int">Rush TDs</th><th data-sort="float">Yards Per Carry</th><th data-sort="int">Fumbles</th><th data-sort="int">Broken Tackles</th><th data-sort="int">Longest Run</th>
+                        </tr>
+                    </thead>
                     <?php
                     $rushingResult = mysql_query("SELECT * FROM `{$fran}_stats_rushing` Where Year='{$franYear}'");
 
@@ -71,14 +73,12 @@ mysql_select_db("madden08_db", $con);
                         '<td>', $RushingRow['Fumble'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/', $fran, '/', $franYear, '/Fumble/rushing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $RushingRow['Broken'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/', $fran, '/', $franYear, '/Broken/rushing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $RushingRow['LongRun'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/', $fran, '/', $franYear, '/LongRun/rushing" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
-                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="',$RushingRow['Row'],'/rushing/',$fran,'" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="', $RushingRow['Row'], '/rushing/', $fran, '" onclick="removeIndvStat(this)">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
-                    <tr>
-                        <td colspan="7"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addRushModal" style="display:none">Add Rushing Stat Row</a></td>
-                    </tr>
                 </table>
+                <div style="text-align : center"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addRushModal" style="display:none">Add Rushing Stat Row</a></div>
             </div>
         </div>
     </div>
@@ -93,9 +93,11 @@ mysql_select_db("madden08_db", $con);
         <div id="recCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="recHeader">
             <div class="panel-body">
                 <table class="table table-hover" id="recStatsTable" style="text-align: center; font-size: small">
-                    <tr>
-                        <td>Player</td><td>Receptions</td><td>Receiving Yards</td><td>Receiving TDs</td><td>Yards Per Catch</td><td>Longest Catch</td><td>Drops</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th data-sort="string">Player</th><th data-sort="int">Receptions</th><th data-sort="int">Receiving Yards</th><th data-sort="int">Receiving TDs</th><th data-sort="float">Yards Per Catch</th><th data-sort="int">Longest Catch</th><th data-sort="int">Drops</th>
+                        </tr>
+                    </thead>
                     <?php
                     $recResult = mysql_query("SELECT * FROM `{$fran}_stats_rec` Where Year='{$franYear}'");
 
@@ -108,14 +110,13 @@ mysql_select_db("madden08_db", $con);
                         '<td>', $RecRow['YPC'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/', $fran, '/', $franYear, '/YPC/rec" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $RecRow['LongCatch'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/', $fran, '/', $franYear, '/LongCatch/rec" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $RecRow['Drops'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/', $fran, '/', $franYear, '/Drops/rec" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
-                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="',$RecRow['Row'],'/rec/',$fran,'" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="', $RecRow['Row'], '/rec/', $fran, '" onclick="removeIndvStat(this)">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
-                    <tr>
-                        <td colspan="7"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addRecModal" style="display:none">Add Receiving Stat Row</a></td>
-                    </tr>
                 </table>
+                <div style="text-align : center"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addRecModal" style="display:none">Add Receiving Stat Row</a>
+                </div>
             </div>
         </div>
     </div>
@@ -130,9 +131,11 @@ mysql_select_db("madden08_db", $con);
         <div id="blockingCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="blockingHeader">
             <div class="panel-body">
                 <table class="table table-hover" id="blockingStatsTable" style="text-align: center; font-size: small">
-                    <tr>
-                        <td>Player</td><td>Position</td><td>Pancakes</td><td>Sacks Allowed</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th data-sort="string">Player</th><th data-sort="string">Position</th><th data-sort="int">Pancakes</th><th data-sort="int">Sacks Allowed</th>
+                        </tr>
+                    </thead>
                     <?php
                     $blockingResult = mysql_query("SELECT * FROM `{$fran}_stats_block` Where Year='{$franYear}'");
 
@@ -142,14 +145,12 @@ mysql_select_db("madden08_db", $con);
                         '<td>', $BlockRow['Position'], '&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/', $fran, '/', $franYear, '/Position/block" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $BlockRow['Pancakes'], '&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/', $fran, '/', $franYear, '/Pancakes/block" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $BlockRow['Sacks'], '&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/', $fran, '/', $franYear, '/Sacks/block" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
-                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="',$BlockRow['Row'],'/block/',$fran,'" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="', $BlockRow['Row'], '/block/', $fran, '" onclick="removeIndvStat(this)">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
-                    <tr>
-                        <td colspan="7"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addBlockModal" style="display:none">Add Blocking Stat Row</a></td>
-                    </tr>
                 </table>
+                <div style="text-align : center"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addBlockModal" style="display:none">Add Blocking Stat Row</a></div>
             </div>
         </div>
     </div>
@@ -164,29 +165,29 @@ mysql_select_db("madden08_db", $con);
         <div id="defCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="defHeader">
             <div class="panel-body">
                 <table class="table table-hover" id="defStatsTable" style="text-align: center; font-size: small">
-                    <tr>
-                        <td>Player</td><td>Tackles</td><td>Tackles for Loss</td><td>Sacks</td><td>INTs</td><td>TDs</td><td>Saftey</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th data-sort="string">Player</th><th data-sort="int">Tackles</th><th data-sort="int">Tackles for Loss</th><th data-sort="int">Sacks</th><th data-sort="int">INTs</th><th data-sort="int">TDs</th><th data-sort="int">Saftey</th>
+                        </tr>
+                    </thead>
                     <?php
                     $defResult = mysql_query("SELECT * FROM `{$fran}_stats_def` Where Year='{$franYear}'");
 
                     while ($defRow = mysql_fetch_array($defResult)) {
                         echo '<tr>',
-                        '<td><span id="', $defRow['Row'], 'Def" class="defHistory" style="cursor: pointer" data-toggle="popover" title="Defensive History">', $defRow['Player'],' - ',$defRow['Position'], '</span>&nbsp;&nbsp;<span id="', $defRow['Row'], '/', $fran, '/', $franYear, '/Player/def" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
+                        '<td><span id="', $defRow['Row'], 'Def" class="defHistory" style="cursor: pointer" data-toggle="popover" title="Defensive History">', $defRow['Player'], ' - ', $defRow['Position'], '</span>&nbsp;&nbsp;<span id="', $defRow['Row'], '/', $fran, '/', $franYear, '/Player/def" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $defRow['Tackles'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/', $fran, '/', $franYear, '/Tackles/def" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $defRow['ForLoss'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/', $fran, '/', $franYear, '/ForLoss/def" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $defRow['Sacks'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/', $fran, '/', $franYear, '/Sacks/def" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $defRow['INTs'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/', $fran, '/', $franYear, '/INTs/def" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $defRow['TDs'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/', $fran, '/', $franYear, '/TDs/def" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $defRow['Saftey'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/', $fran, '/', $franYear, '/Saftey/def" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
-                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="',$defRow['Row'],'/def/',$fran,'" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="', $defRow['Row'], '/def/', $fran, '" onclick="removeIndvStat(this)">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
-                    <tr>
-                        <td colspan="7"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addDefModal" style="display:none">Add Defensive Stat Row</a></td>
-                    </tr>
                 </table>
+                <div style="text-align : center"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addDefModal" style="display:none">Add Defensive Stat Row</a></div>
             </div>
         </div>
     </div>
@@ -217,7 +218,7 @@ mysql_select_db("madden08_db", $con);
                         '<td>', $STKRow['FGM'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/', $fran, '/', $franYear, '/FGM/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $STKRow['FG_Percent'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/', $fran, '/', $franYear, '/FG_Percent/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $STKRow['Longest_Play'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/', $fran, '/', $franYear, '/Longest_Play/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
-                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="',$STKRow['Row'],'/special/',$fran,'" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="', $STKRow['Row'], '/special/', $fran, '" onclick="removeIndvStat(this)">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
@@ -237,7 +238,7 @@ mysql_select_db("madden08_db", $con);
                         '<td><span id="', $STPRow['Row'], 'ST-" class="STHistory" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STPRow['Player'], '</span>&nbsp;&nbsp;<span id="', $STPRow['Row'], '/', $fran, '/', $franYear, '/Player/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $STPRow['Punt_AVG'], '&nbsp;&nbsp;<span id="', $STPRow['Row'], '/', $fran, '/', $franYear, '/Punt_AVG/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $STPRow['I20'], '&nbsp;&nbsp;<span id="', $STPRow['Row'], '/', $fran, '/', $franYear, '/I20/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
-                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="',$STPRow['Row'],'/special/',$fran,'" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="', $STPRow['Row'], '/special/', $fran, '" onclick="removeIndvStat(this)">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
@@ -258,7 +259,7 @@ mysql_select_db("madden08_db", $con);
                         '<td>', $STKRRow['Ret_AVG'], '&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/', $fran, '/', $franYear, '/Ret_AVG/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $STKRRow['Ret_TDs'], '&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/', $fran, '/', $franYear, '/Ret_TDs/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $STKRRow['Longest_Play'], '&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/', $fran, '/', $franYear, '/Longest_Play/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
-                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="',$STKRRow['Row'],'/special/',$fran,'" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="', $STKRRow['Row'], '/special/', $fran, '" onclick="removeIndvStat(this)">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
@@ -279,14 +280,12 @@ mysql_select_db("madden08_db", $con);
                         '<td>', $STPRRow['Ret_AVG'], '&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/', $fran, '/', $franYear, '/Ret_AVG/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $STPRRow['Ret_TDs'], '&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/', $fran, '/', $franYear, '/Ret_TDs/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
                         '<td>', $STPRRow['Longest_Play'], '&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/', $fran, '/', $franYear, '/Longest_Play/special" class="glyphicon glyphicon-edit indvStatEdit" onclick="" aria-hidden="true" style="display: none"></td>',
-                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="',$STPRRow['Row'],'/special/',$fran,'" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                        '<td><a class="btn btn-danger indvStatRemove removeStatRow" style="display: none" id="', $STPRRow['Row'], '/special/', $fran, '" onclick="removeIndvStat(this)">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
-                    <tr>
-                        <td colspan="7"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addSTModal" style="display:none">Add Special Teams Stat Row</a></td>
-                    </tr>
                 </table>
+                <div style="text-align : center"><a class="btn btn-success indvStatAdd" data-toggle="modal" data-target="#addSTModal" style="display:none">Add Special Teams Stat Row</a></div>
             </div>
         </div>
     </div>
