@@ -14,6 +14,12 @@
         <li>
             <a href="tracking.php">Tracking</a>
         </li>
+        <li>
+            <a href="rosters.php">Rosters</a>
+        </li>
+        <li>
+            <a href="statistics.php">Statistics</a>
+        </li>
     </ul>
 </div>
 
