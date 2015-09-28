@@ -18,8 +18,6 @@
                     <?php include ('../../nav/franchiseLandingNav.php'); ?>
                     <img src="CAR_Logo.png"><br>
                     <header><h1>Carolina Panthers</h1></header>
-                    <br><br>
-                    <h1>Franchise Inactive</h1>
                 </div>
             </div>
         </div>

@@ -1,13 +1,12 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>NO - YR1</title>
+        <title>TEN - YR1</title>
         <link href="../../../libs/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="../../../libs/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
         <link href="../../../libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">
         <script src="../../../libs/js/jquery.js"></script>
         <script src="../../../libs/js/bootstrap.js"></script>
-        <script src="../../../libs/js/stupidtable.js"></script>
         <script src="../../../libs/js/commonFunctions.js"></script>
         <style>
             .popover {
@@ -21,18 +20,12 @@
             .modal {
                 overflow-y: scroll !important;
             }
-            th {
-                cursor : pointer;
-            }
-            span.glyphicon {
-                cursor : pointer;
-            }
         </style>
     </head>
-    <body style="background-color: #000000">
+    <body style="background-color: #2E94D2">
         <?php
         $franYear = '1';
-        $fran = 'NO';
+        $fran = 'TEN';
         ?>
         <div id="wrapper">
             <?php include ('../../../nav/franchiseYearSidebar.php'); ?>

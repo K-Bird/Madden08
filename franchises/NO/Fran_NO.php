@@ -18,6 +18,8 @@
                     <?php include ('../../nav/franchiseLandingNav.php'); ?>
                     <img src="NO_Logo.png"><br>
                     <header><h1>New Orleans Saints </h1></header>
+                    <br><br>
+                    <h1>Franchise Inactive</h1>
                 </div>
             </div>
         </div>
