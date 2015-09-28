@@ -171,6 +171,7 @@ array_push($Positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2', 'WR1', '
                                         <option value="CB">CB</option>
                                         <option value="FS">FS</option>
                                         <option value="SS">SS</option>
+                                        <option value="K">K</option>
                                     </select>
                                 </td>
                                 <td>
@@ -239,7 +240,9 @@ array_push($Positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2', 'WR1', '
                                         <option value="CB">CB</option>
                                         <option value="FS">FS</option>
                                         <option value="SS">SS</option>
+                                        <option value="K">K</option>
                                         <option value="KR">KR</option>
+                                        <option value="PR">PR</option>
                                     </select>
                                 </td>
                             </tr>
@@ -306,6 +309,7 @@ array_push($Positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2', 'WR1', '
                                         <option value="CB">CB</option>
                                         <option value="FS">FS</option>
                                         <option value="SS">SS</option>
+                                        <option value="K">K</option>
                                     </select>
                                 </td>
                                 <td>
