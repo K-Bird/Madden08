@@ -520,11 +520,22 @@ $(document).ready(function () {
     });
 
     //Common functions to sort tables
-    $("#passingStatsTable").stupidtable(); //Indv Passing Stats
-    $("#rushingStatsTable").stupidtable(); //Indv Rushing Stats
-    $("#recStatsTable").stupidtable(); //Indv Rec Stats
-    $("#blockingStatsTable").stupidtable(); //Indv Block Stats
-    $("#defStatsTable").stupidtable(); //Indv Defensive Stats
+    if ($("#passingStatsTable").length > 0) {
+        $("#passingStatsTable").stupidtable(); //Indv Passing Stats
+    }
+    if ($("#rushingStatsTable").length > 0) {
+        $("#rushingStatsTable").stupidtable(); //Indv Rushing Stats
+    }
+    if ($("#recStatsTable").length > 0) {
+        $("#recStatsTable").stupidtable(); //Indv Rec Stats
+    }
+    if ($("#blockingStatsTable").length > 0) {
+        $("#blockingStatsTable").stupidtable(); //Indv Block Stats
+    }
+    if ($("#defStatsTable").length > 0) {
+        $("#defStatsTable").stupidtable(); //Indv Defensive Stats
+    }
+
 
 });
 

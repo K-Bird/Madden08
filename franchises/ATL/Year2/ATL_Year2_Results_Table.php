@@ -6,11 +6,11 @@ if (!$con) {
 
 mysql_select_db("madden08_db", $con);
 
-$RegSimResult = mysql_query("SELECT * FROM `{$fran}_info` where Field='SimReg'");
+$RegSimResult = mysql_query("SELECT * FROM `{$fran}_info` where Identify='regsim' and Year={$franYear}");
 $RegSimrow = mysql_fetch_array($RegSimResult);
 
 if ($RegSimrow['Value'] != '') {
-    echo '<h1>', $RegSimrow['Value'], '</h1>';
+    echo '<div style="text-align:center"><h1>', $RegSimrow['Value'], '</h1></div>';
 } else {
 
     $result = mysql_query("SELECT * FROM `{$fran}_results` Where `Year`='{$franYear}'");
