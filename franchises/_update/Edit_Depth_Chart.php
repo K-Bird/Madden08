@@ -8,6 +8,7 @@ if (!$con) {
 mysql_select_db("madden08_db", $con);
 
 $editPosition = $_POST['positionEdit'];
+$editDepthPOS = $_POST['depthPOSedit'];
 $changedNames = $_POST['changedNames'];
 $changedOverall = $_POST['changedOverall'];
 $changedAge = $_POST['changedAge'];
@@ -16,9 +17,16 @@ $changedVetRookie = $_POST['changedVR'];
 $changedWeapon = $_POST['changedWeapon'];
 $changedOSU = $_POST['changedOSU'];
 $franchise = $_POST['franchise'];
+$year = $_POST['year'];
+
 
 foreach ($editPosition as $index => $editPos) {
     if ($editPos != '') {
+        if ($editDepthPOS[$index] === '') {
+            
+        } else {
+            $updateDepthPOS = mysql_query("Update `{$franchise}_players` SET Position='{$editDepthPOS[$index]}' WHERE ROW_ID='{$editPos}'", $con) or die(mysql_error());
+        }
         if ($changedNames[$index] === '') {
             
         } else {

@@ -282,7 +282,7 @@ $(document).ready(function () {
                     data: $depthFormData,
                     success: function (data, textStatus, jqXHR)
                     {
-                        location.reload();
+                            location.reload();                       
                     },
                     error: function (jqXHR, textStatus, errorThrown)
                     {

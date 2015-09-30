@@ -37,7 +37,14 @@ array_push($Positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2', 'WR1', '
                                             <option value='.$RosterRow['Row_ID'].'>Edit</option>
                                         </select>
                                     </td>
-                                    <td>', $RosterRow['Position'], '</td>
+                                    <td>
+                                    <select name="depthPOSedit[]" class="btn btn-xs btn-default dropdown-toggle">';
+                                    foreach ($Positions as $pos) {
+                                        echo '<option '; 
+                                        if ($pos === $RosterRow['Position']) { echo 'selected="selected"'; }
+                                        echo '>',$pos,'</option>';
+                                    }
+                                    echo '</select></td>
                                     <td>
                                         <input type="text" name="changedNames[]" placeholder="', $RosterRow['Name'], '">
                                     </td>
@@ -186,6 +193,7 @@ array_push($Positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2', 'WR1', '
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 <input type="hidden" name="franchise" value=<?php echo $fran ?> />
+                <input type="hidden" name="year" value=<?php echo $franYear ?> />
                 <button type="submit" class="btn btn-success">Save changes</button>
             </div>
             </form>                
