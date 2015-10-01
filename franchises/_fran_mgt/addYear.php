@@ -65,11 +65,28 @@ rename("../" . $fran . "/Year".$YearNum."/FRAN_Year#_TeamStats_Table.php","../" 
 
 /* | DATABASE TABLES CREATION | */
 
+/* Grab previous year offseason coaches for insertion into next year's coaching staff */
+$GetPreviousHC = mysql_query("SELECT Name FROM `{$fran}_off_coach-chg` WHERE Year={$GetYearNum} and Position='HC'") or die(mysql_error());
+$PreviousHCObj = mysql_fetch_object($GetPreviousHC);
+$PreviousHC = $PreviousHCObj->Name;
+
+$GetPreviousOC = mysql_query("SELECT Name FROM `{$fran}_off_coach-chg` WHERE Year={$GetYearNum} and Position='OC'") or die(mysql_error());
+$PreviousOCObj = mysql_fetch_object($GetPreviousOC);
+$PreviousOC = $PreviousOCObj->Name;
+
+$GetPreviousDC = mysql_query("SELECT Name FROM `{$fran}_off_coach-chg` WHERE Year={$GetYearNum} and Position='DC'") or die(mysql_error());
+$PreviousDCObj = mysql_fetch_object($GetPreviousDC);
+$PreviousDC = $PreviousDCObj->Name;
+
+$GetPreviousST = mysql_query("SELECT Name FROM `{$fran}_off_coach-chg` WHERE Year={$GetYearNum} and Position='ST'") or die(mysql_error());
+$PreviousSTObj = mysql_fetch_object($GetPreviousST);
+$PreviousST = $PreviousSTObj->Name;
+
 $PopulateCoachingStaffTable = "INSERT INTO `{$fran}_coaches` (`Name`, `Title`, `Year`) VALUES
-('','HC','{$YearNum}'),
-('','OC','{$YearNum}'),
-('','DC','{$YearNum}'),
-('','ST','{$YearNum}');";
+('{$PreviousHC}','HC','{$YearNum}'),
+('{$PreviousOC}','OC','{$YearNum}'),
+('{$PreviousDC}','DC','{$YearNum}'),
+('{$PreviousST}','ST','{$YearNum}');";
 mysql_query($PopulateCoachingStaffTable);
 
 $PopulateInfoTable = "INSERT INTO `{$fran}_info` (`Field`, `Identify`, `Value`, `Year`, `Preseason`) VALUES
