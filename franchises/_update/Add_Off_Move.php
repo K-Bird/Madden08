@@ -21,11 +21,14 @@ mysql_select_db("madden08_db", $con);
 if ($moveType === 'retired') {
     $pullRetiredPlayerInfo = mysql_query("SELECT * FROM {$franchise}_Players WHERE Row_ID={$retiredPlayerID}");
     $retiredPlayerRow = mysql_fetch_array($pullRetiredPlayerInfo);
-    
+
     $addRetiredPlayerInfo = mysql_query("INSERT INTO `{$franchise}_off_moves` (Player, Position, Overall, Age, Draft, Year, Type) Values ('{$retiredPlayerRow['Name']}','{$retiredPlayerRow['Position']}','{$ovr}','{$age}','{$draft}','{$franYear}','{$moveType}')", $con) or die(mysql_error());
     $addRetiredToStaging = mysql_query("INSERT INTO `franchise_staging_retired` (PlayerRow, Franchise, Year) Values ('{$retiredPlayerID}','{$franchise}','{$franYear}')", $con) or die(mysql_error());
+} else if ($moveType === 'draft') {
+    $addNewMove = mysql_query("Insert into `{$franchise}_off_moves` (Player, Position, Overall, Age, Draft, Year, Type) Values ('{$playerName}','{$position}','{$ovr}','{$age}','{$draft}','{$franYear}','{$moveType}')", $con) or die(mysql_error());
+    $addDraftedToStaging = mysql_query("INSERT INTO `franchise_staging_drafted` (Name, Position, Overall, Age, Rookie, Franchise, Year) Values ('{$playerName}','{$position}','{$ovr}','{$age}','R','{$franchise}','{$franYear}')", $con) or die(mysql_error());
 } else {
-$addNewMove = mysql_query("Insert into `{$franchise}_off_moves` (Player, Position, Overall, Age, Draft, Year, Type) Values ('{$playerName}','{$position}','{$ovr}','{$age}','{$draft}','{$franYear}','{$moveType}')", $con) or die(mysql_error());
+    $addNewMove = mysql_query("Insert into `{$franchise}_off_moves` (Player, Position, Overall, Age, Draft, Year, Type) Values ('{$playerName}','{$position}','{$ovr}','{$age}','{$draft}','{$franYear}','{$moveType}')", $con) or die(mysql_error());
 }
 
 header('Location: ' . $_SERVER['HTTP_REFERER']);
