@@ -260,7 +260,6 @@ array_push($Positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2', 'WR1', '
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-
 <!-- Add Offseason Moves Modal -->
 <div class="modal fade editModal" id="addMoves">
     <div class="modal-dialog" style="width : 800px">
@@ -286,10 +285,19 @@ array_push($Positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2', 'WR1', '
                                     </select>
                                 </td>
                                 <td>
-                                    <input name="player" type="text" />
+                                    <input name="freePlayer" type="text" class="freeName" />
+                                    <select name="selectedPlayer" class="btn btn-xs btn-default dropdown-toggle selectName">
+                                        <?php
+                                        foreach ($Positions as $pos) {
+                                            $Rosterresult2 = mysql_query("SELECT * FROM `{$fran}_players` where Position='" . $pos . "' and Year='{$franYear}'");
+                                            $RosterRow2 = mysql_fetch_array($Rosterresult2);
+                                            echo '<option value=' . $RosterRow2['Row_ID'] . '>' . $pos . ' - ' . $RosterRow2['Name'] . '</option>';
+                                        }
+                                        ?>
+                                    </select>
                                 </td>
                                 <td>
-                                    <select name="pos" class="btn btn-xs btn-default dropdown-toggle">
+                                    <select name="pos" class="btn btn-xs btn-default dropdown-toggle off-pos">
                                         <option value="QB">QB</option>
                                         <option value="HB">HB</option>
                                         <option value="FB">FB</option>
@@ -313,13 +321,13 @@ array_push($Positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2', 'WR1', '
                                     </select>
                                 </td>
                                 <td>
-                                    <input name="Ovr" type="text" size="5" class="normalMove"/>
+                                    <input name="Ovr" type="text" size="5" class="off-ovr"/>
                                 </td>
                                 <td>
-                                    <input name="Age" type="text" size="5" class="normalMove"/>
+                                    <input name="Age" type="text" size="5" class="off-age"/>
                                 </td>
                                 <td>
-                                    <input name="Draft" type="text" size="10" placeholder="Round-Pick" class="draftMove" disabled/>
+                                    <input name="Draft" type="text" size="10" placeholder="Round-Pick" class="draftMove"/>
                                 </td>
                             </tr>
                         </table>

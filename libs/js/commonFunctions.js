@@ -500,22 +500,50 @@ $(document).ready(function () {
         }
     });
 
-    //Common Function to change enable field on add Offseason move modal
+    //Common Function to change enabled/hidden fields on add Offseason move modal
     $("#moveType").change(function () {
         if ($(this).val() === 'draft') {
             $('.draftMove').prop('disabled', false);
         } else {
             $('.draftMove').prop('disabled', true);
         }
+        if ($(this).val() === 'retired') {
+            $('.freeName').addClass("hidden");
+            $('.selectName').removeClass("hidden");
+            $('.off-pos').prop('disabled', true);
+            $('.off-ovr').prop('disabled', false);
+            $('.off-age').prop('disabled', false);
+        } else {
+            $('.freeName').removeClass("hidden");
+            $('.selectName').addClass("hidden");
+            $('.off-pos').prop('disabled', false);
+            $('.off-ovr').prop('disabled', false);
+            $('.off-age').prop('disabled', false);
+        }
     });
 
-    //
+    //Change offseason move type to the type based on the button clicked to open the offseason move modal and display/disable appropriate fields
     $(".movesAdd").click(function (e) {
         var type = $(this).data('movetype');
         $("#addMoves #moveType").val(type);
 
         if (type === 'draft') {
             $('.draftMove').prop('disabled', false);
+        } else {
+            $('.draftMove').prop('disabled', true);
+        }
+        if (type === 'retired') {
+            $('.freeName').addClass("hidden");
+            $('.selectName').removeClass("hidden");
+            $('.off-pos').prop('disabled', true);
+            $('.off-ovr').prop('disabled', false);
+            $('.off-age').prop('disabled', false);
+        } else {
+            $('.freeName').removeClass("hidden");
+            $('.selectName').addClass("hidden");
+            $('.off-pos').prop('disabled', false);
+            $('.off-ovr').prop('disabled', false);
+            $('.off-age').prop('disabled', false);
         }
     });
 
