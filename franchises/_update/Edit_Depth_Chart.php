@@ -25,7 +25,16 @@ foreach ($editPosition as $index => $editPos) {
         if ($editDepthPOS[$index] === '') {
             
         } else {
-            $updateDepthPOS = mysql_query("Update `{$franchise}_players` SET Position='{$editDepthPOS[$index]}' WHERE ROW_ID='{$editPos}'", $con) or die(mysql_error());
+            $found = false;
+            $pullCurrentDepthPOS = mysql_query("SELECT * FROM `{$franchise}_players` WHERE `Year`={$year}");
+            while ($currentPOSRow = mysql_fetch_array($pullCurrentDepthPOS)) {
+                if ($currentPOSRow['Position'] === $editDepthPOS[$index]) {
+                    $found = true;
+                }
+            }
+            if ($found === false) {
+                $updateDepthPOS = mysql_query("Update `{$franchise}_players` SET Position='{$editDepthPOS[$index]}' WHERE ROW_ID='{$editPos}'", $con) or die(mysql_error());
+            }
         }
         if ($changedNames[$index] === '') {
             
