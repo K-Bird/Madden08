@@ -33,6 +33,12 @@ if ($moveType === 'retired') {
     $getMoveRow = mysql_fetch_array($getMovesMax);
     $MoveMax = $getMoveRow['MaxMove'];
     $addDraftedToStaging = mysql_query("INSERT INTO `franchise_staging_drafted` (Name, Position, Overall, Age, Rookie, Franchise, Year, MoveRow) Values ('{$playerName}','{$position}','{$ovr}','{$age}','R','{$franchise}','{$franYear}','{$MoveMax}')", $con) or die(mysql_error());
+} else if ($moveType === 'prefa' or $moveType === 'postfa') {
+    $addNewMove = mysql_query("Insert into `{$franchise}_off_moves` (Player, Position, Overall, Age, Draft, Year, Type) Values ('{$playerName}','{$position}','{$ovr}','{$age}','{$draft}','{$franYear}','{$moveType}')", $con) or die(mysql_error());
+    $getMovesMax = mysql_query("SELECT MAX(`Row`) as MaxMove FROM `{$franchise}_off_moves`", $con) or die(mysql_error());
+    $getMoveRow = mysql_fetch_array($getMovesMax);
+    $MoveMax = $getMoveRow['MaxMove'];
+    $addFAToStaging = mysql_query("INSERT INTO `franchise_staging_freeagency` (Name, Position, Overall, Age, Rookie, Franchise, Year, MoveRow) Values ('{$playerName}','{$position}','{$ovr}','{$age}','','{$franchise}','{$franYear}','{$MoveMax}')", $con) or die(mysql_error());
 } else {
     $addNewMove = mysql_query("Insert into `{$franchise}_off_moves` (Player, Position, Overall, Age, Draft, Year, Type) Values ('{$playerName}','{$position}','{$ovr}','{$age}','{$draft}','{$franYear}','{$moveType}')", $con) or die(mysql_error());
 }

@@ -18,7 +18,9 @@ array_push($Positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2', 'WR1', '
                 <h4 class="modal-title" id="myModalLabel">Edit Depth Chart</h4>
             </div>
             <div class="modal-body">
-                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#importDraft">Add Drafted Players</button><br><br>
+                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#importDraft">Add Drafted Players</button>
+                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#importFA">Add Signed Free Agents</button>
+                <br><br>
                 <form role="form" name="EditRoster" id="EditRosterForm" class="editDepthForm">
                     <table class="table" id="editDepth" style="font-size: smaller; text-align: left;">
                         <tr>
@@ -365,7 +367,7 @@ foreach ($Positions as $pos) {
                         $previousYear = $franYear - 1;
                         $getStagedDraftedPlayers = mysql_query("SELECT * FROM `franchise_staging_drafted` WHERE Franchise='{$fran}' AND Year='{$previousYear}'") or die(mysql_error());
                         while ($DraftedPlayersRow = mysql_fetch_array($getStagedDraftedPlayers)) {
-                            echo '<option value=' . $DraftedPlayersRow['Row_ID'], '>' . $DraftedPlayersRow['Name'] . '</option>';
+                            echo '<option value=' . $DraftedPlayersRow['Row_ID'], '>' . $DraftedPlayersRow['Name'] . ' - '. $DraftedPlayersRow['Position'] . ': '. $DraftedPlayersRow['Overall'] .'</option>';
                         }
                         ?>
                     </select>
@@ -377,6 +379,43 @@ foreach ($Positions as $pos) {
                         ?>
                     </select>
                     <?php if ($franYear == 1) { echo "<br><h4>Year 1 - No Drafted Players To Add</h4>"; } ?>
+                    <br><br>
+                    <button type="submit" class="btn btn-success" <?php if ($franYear == 1) { echo "disabled"; } ?>>Add Player to Depth Chart</button>
+                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <input type="hidden" name="franYear" value="<?php echo $franYear ?>" />
+                    <input type="hidden" name="franchise" value="<?php echo $fran ?>" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="importFA" tabindex="-1" role="dialog" aria-labelledby="Import Signed Free Agents" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add Signed Free Agents</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" name="AddSignedFAForm" id="AddSignedFAForm" Action="../../_update/Add_FA_Player.php" method="post">
+                    <select name="AddFA" class="btn btn-default dropdown-toggle" <?php if ($franYear == 1) { echo "disabled"; } ?>>
+                        <?php
+                        $previousYear = $franYear - 1;
+                        $getStagedFAPlayers = mysql_query("SELECT * FROM `franchise_staging_freeagency` WHERE Franchise='{$fran}' AND Year='{$previousYear}'") or die(mysql_error());
+                        while ($FAPlayersRow = mysql_fetch_array($getStagedFAPlayers)) {
+                            echo '<option value=' . $FAPlayersRow['Row_ID'], '>' . $FAPlayersRow['Name'] . ' - '. $FAPlayersRow['Position'] . ': '. $FAPlayersRow['Overall'] .'</option>';
+                        }
+                        ?>
+                    </select>
+                    <select name="AddFApos" class="btn btn-default dropdown-toggle" <?php if ($franYear == 1) { echo "disabled"; } ?>>
+                        <?php
+                        foreach ($Positions as $pos) {
+                            echo '<option>', $pos, '</option>';
+                        }
+                        ?>
+                    </select>
+                    <?php if ($franYear == 1) { echo "<br><h4>Year 1 - No Free Agent Players To Add</h4>"; } ?>
                     <br><br>
                     <button type="submit" class="btn btn-success" <?php if ($franYear == 1) { echo "disabled"; } ?>>Add Player to Depth Chart</button>
                     <button class="btn btn-danger" data-dismiss="modal">Close</button>
