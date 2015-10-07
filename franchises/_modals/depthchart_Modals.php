@@ -42,12 +42,12 @@ array_push($Positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2', 'WR1', '
                                     </td>
                                     <td>
                                     <select name="depthPOSedit[]" class="btn btn-xs btn-default dropdown-toggle">';
-                                foreach ($Positions as $pos) {
+                                foreach ($Positions as $editPos) {
                                     echo '<option ';
-                                    if ($pos === $RosterRow['Position']) {
+                                    if ($editPos === $RosterRow['Position']) {
                                         echo 'selected="selected"';
                                     }
-                                    echo '>', $pos, '</option>';
+                                    echo '>', $editPos, '</option>';
                                 }
                                 echo '</select></td>
                                     <td>
