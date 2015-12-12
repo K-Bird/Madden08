@@ -18,8 +18,6 @@
                     <?php include ('../../nav/franchiseLandingNav.php'); ?>
                     <img src="CLE_Logo.png"><br>
                     <header><h1>Cleveland Browns</h1></header>
-                    <br><br>
-                    <h1>Franchise Inactive</h1>
                 </div>
             </div>
         </div>
