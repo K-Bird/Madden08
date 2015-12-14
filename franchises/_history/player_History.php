@@ -17,12 +17,13 @@ while ($playerRow = mysql_fetch_array($GetPlayers)) {
 
     $GetPlayerHistory = mysql_query("Select * From `{$fran}_players` Where `Historical_ID`={$playerRow['Historical_ID']}", $con) or die(mysql_error());
 
-    echo '<tr><td></td><td>Overall</td><td>Age</td><td>Acquired</td><td>Status</td></tr>';
+    echo '<tr><td></td><td>Position</td><td>Overall</td><td>Age</td><td>Acquired</td><td>Status</td></tr>';
 
     while ($historyRow = mysql_fetch_array($GetPlayerHistory)) {
 
         echo '<tr>'
         . '<td>Year: ', $historyRow['Year'], '</td>'
+        . '<td>', $historyRow['Position'], '</td>'
         . '<td>', $historyRow['Overall'], '</td>'
         . '<td>', $historyRow['Age'], '</td>'
         . '<td>', $historyRow['OnTeam'], '</td>';
