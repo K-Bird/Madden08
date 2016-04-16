@@ -1,22 +1,17 @@
 <?php
-include ($_SERVER['DOCUMENT_ROOT']."/football05/libs/db/common_db_functions.php");
+include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php");
 ?>
 <html>
     <head>
-        <title>Madden '08</title>
+        <title>Madden Achievements</title>
         <link href="libs/css/bootstrap.css" rel="stylesheet" type="text/css">
         <link href="libs/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
-        <link href="libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">
+        <link href="libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">       
+        <link href="libs/css/jstree.css" rel="stylesheet" type="text/css">  
         <script src="libs/js/jquery.js"></script>
         <script src="libs/js/bootstrap.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#menu-toggle").click(function (e) {
-                    e.preventDefault();
-                    $("#wrapper").toggleClass("toggled");
-                });
-            });
-        </script>
+        <script src="libs/js/jstree.js"></script>
+        <script src="libs/js/common_functions.js"></script>
     </head>
     <body>
         <div id="wrapper">
@@ -25,13 +20,16 @@ include ($_SERVER['DOCUMENT_ROOT']."/football05/libs/db/common_db_functions.php"
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1>Home</h1>
+                            <h1>Madden Achievements</h1>
                             <br>
                             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Collapse Navigation</a>
+                            <br><br><br>
+                            <h1>Under Construction</h1>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>
