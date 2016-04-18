@@ -845,6 +845,28 @@ foreach ($Positions as $pos) {
                                         </tr>
                                         <tr>
                                             <td>
+                                                <label>Weapon:</label>
+                                            </td>
+                                            <td style="text-align:left">
+                                                <select name="addWeapon" class="btn btn-xs btn-default dropdown-toggle">
+                                                    <option></option>
+                                                    <option value="CannonArm">Cannon Arm</option>
+                                                    <option value="Coverage">Coverage Corner</option>
+                                                    <option value="Crosshair">Precision QB</option>
+                                                    <option value="Elusive">Elusive Back</option>
+                                                    <option value="Power">Power Back</option>
+                                                    <option value="Franchise">Franchise Player</option>
+                                                    <option value="HeavyHitter">Heavy Hitter</option>
+                                                    <option value="PassBlock">Pocket Protector</option>
+                                                    <option value="RunBlock">Run Blocker</option>
+                                                    <option value="Possesion">Possession Receiver</option>
+                                                    <option value="RunStopper">Run Stopper</option>
+                                                    <option value="Speed">Speed Player</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
                                                 <label>Ohio State:</label>
                                             </td>
                                             <td style="text-align:left">
