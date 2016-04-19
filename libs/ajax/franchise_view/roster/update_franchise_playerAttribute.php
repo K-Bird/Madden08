@@ -62,6 +62,12 @@ if (isset($_POST['playerIMP'])) {
 if (isset($_POST['playerTGH'])) {
     $TGH_Change = $_POST['playerTGH'];
 }
+if (isset($_POST['playerKPW'])) {
+    $KPW_Change = $_POST['playerKPW'];
+}
+if (isset($_POST['playerKAC'])) {
+    $KAC_Change = $_POST['playerKAC'];
+}
 $Player_Row = $_POST['row'];
 
 foreach ($Overall_Change as $index => $value) {
