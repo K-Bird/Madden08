@@ -44,6 +44,7 @@ $PopulateCoachingStaffTable = "INSERT INTO `franchise_year_pre_coaches` (`Name`,
 db_query($PopulateCoachingStaffTable);
 
 $PopulateInfoTable = "INSERT INTO `franchise_year_info` (`Field_Display`, `Field_ID`, `Field_Value`, `Franchise`, `Year`, `Section`) VALUES
+('Team Prestige', 'prestige', '', '{$fran}', 1, 'preseason'),
 ('Salary Cap', 'cap', '', '{$fran}', '{$nextYear}', 'preseason'),
 ('Cap Room', 'room', '', '{$fran}', '{$nextYear}', 'preseason'),
 ('Cap Penalties', 'pen', '', '{$fran}', '{$nextYear}', 'preseason'),
