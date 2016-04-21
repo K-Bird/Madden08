@@ -512,6 +512,29 @@ $(document).ready(function () {
                 });
         e.preventDefault();
     });
+    
+        //On Input Change for reagular season simulated change the DB value
+    $('#regularseason_simulated_input').bind('input', function (e) {
+        $sim_value = $('#regularseason_simulated_input').val();
+        $franchise = $(this).data("franchise");
+        $year = $(this).data("year");
+        
+        $.ajax(
+                {
+                    url: "../libs/ajax/franchise_view/controls/update_franchise_simulated.php",
+                    type: "POST",
+                    data: {sim_value: $sim_value, franchise : $franchise, year : $year},
+                    success: function (data, textStatus, jqXHR)
+                    {
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        alert("Form Did Not Process");
+                    }
+                });
+        e.preventDefault();
+    });
 
     //Results on Vs/At Click Update the DB Value
     $('.vsatBtn').click(function (e) {
