@@ -13,7 +13,7 @@ $franYear = $_POST['franYear'];
 
 $GetNameResult = db_query("SELECT * FROM `franchise_year_roster` where Row_ID='{$playerRow}'");
 $GetName = $GetNameResult->fetch_assoc();
-$playerName = $GetName['Name'];
+$playerName = mysql_real_escape_string($GetName['Name']);
 $historicalID = $GetName['Historical_ID'];
 
 $addPassStat = db_query("Insert into `franchise_year_indv_rec` (Name, Rec, Yards, TDs, YPC, LongCatch, Drops, Historical_ID, Year, Team) Values ('{$playerName}','{$addRec}','{$addYards}','{$addTDs}','{$addYPC}','{$addLongRec}','{$addDrop}', {$historicalID},'{$franYear}', '{$franchise}')");
