@@ -653,8 +653,8 @@ foreach ($Positions as $pos) {
     echo '</tr>';
     $i = 0;
     $previousValues = array();
-    $historical_result = db_query("SELECT * FROM `franchise_year_roster` WHERE Historical_ID='{$position_Historical_ID}'");
-    $minYear_result = db_query("SELECT Min(Year) as MinYear FROM `franchise_year_roster` WHERE Historical_ID='{$position_Historical_ID}' ORDER BY Year ASC");
+    $historical_result = db_query("SELECT * FROM `franchise_year_roster` WHERE Historical_ID='{$position_Historical_ID}' ORDER BY Year ASC");
+    $minYear_result = db_query("SELECT Min(Year) as MinYear FROM `franchise_year_roster` WHERE Historical_ID='{$position_Historical_ID}'");
     $minYear_Row = $minYear_result->fetch_assoc();
     $minYear = $minYear_Row['MinYear'];
     while ($histAttr_Row = $historical_result->fetch_assoc()) {
