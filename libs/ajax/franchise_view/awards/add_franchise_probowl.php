@@ -8,7 +8,7 @@ $franYear = $_POST['franYear'];
 
 $GetNameResult = db_query("SELECT * FROM `franchise_year_roster` where Row_ID='{$playerRow}'");
 $GetName = $GetNameResult->fetch_assoc();
-$playerName = $GetName['Name'];
+$playerName = mysql_real_escape_string($GetName['Name']);
 $historicalID = $GetName['Historical_ID'];
 
 $addNewPlayer = db_query("Insert into `franchise_year_probowl` (Player, Position, Historical_ID, Year, Team) Values ('{$playerName}','{$position}','{$historicalID}','{$franYear}', '{$franchise}')");
