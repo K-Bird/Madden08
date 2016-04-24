@@ -766,7 +766,7 @@ foreach ($Positions as $pos) {
     echo '&nbsp;&nbsp;&nbsp;<input type="text" class="form-control" style="width: 250px" name="new_attr" placeholder="Enter New Attribute Value" />';
     echo '<br><br>';
     echo '<button type="submit" class="btn btn-success">Submit Training Camp Result</button>';
-    $historical_result_TC = db_query("SELECT * FROM `franchise_year_roster` WHERE Historical_ID='{$position_Historical_ID}' AND Year='1'");
+    $historical_result_TC = db_query("SELECT * FROM `franchise_year_roster` WHERE Historical_ID='{$position_Historical_ID}'");
     $player_Row = $historical_result_TC->fetch_assoc();
     echo '<input type="hidden" name="row" value="', $player_Row['Row_ID'], '">
                 <input type="hidden" name="franchise" value="', $Curr_Team, '" />
