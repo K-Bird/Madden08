@@ -47,7 +47,7 @@ foreach ($editPosition as $index => $editPos) {
         if ($changedOnTeam[$index] === '') {
             
         } else {
-            $updateOnTeam = db_query("Update `franchise_year_roster` SET OnTeam='{$changedOnTeam[$index]}' WHERE ROW_ID='{$editPos}'");
+            $updateOnTeam = db_query("Update `franchise_year_roster` SET Acquired='{$changedOnTeam[$index]}' WHERE ROW_ID='{$editPos}'");
         }
         if ($changedVetRookie[$index] === 'Rookie') {
             $updateVetRookie = db_query("Update `franchise_year_roster` SET Rookie='R' WHERE ROW_ID='{$editPos}'");
