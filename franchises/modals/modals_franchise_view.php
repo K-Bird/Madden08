@@ -588,15 +588,23 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
 
 <!-- Player Detail Modals -->
 <?php
-$Attributes_QB = array('Age', 'Overall', 'AWR', 'THP', 'THA', 'SPD', 'STR', 'AGI', 'ACC', 'CAR', 'BTK', 'STA', 'INJ', 'IMP', 'TGH');
-$Attributes_HB = array('Age', 'Overall', 'SPD', 'STR', 'AWR', 'AGI', 'ACC', 'CTH', 'CAR', 'BTK', 'PBK', 'STA', 'INJ', 'IMP', 'TGH');
-$Attributes_FB = array('Age', 'Overall', 'SPD', 'STR', 'AWR', 'AGI', 'ACC', 'CAR', 'BTK', 'PBK', 'RBK', 'STA', 'INJ', 'IMP', 'TGH');
-$Attributes_REC = array('Age', 'Overall', 'CTH', 'SPD', 'STR', 'AWR', 'AGI', 'ACC', 'JMP', 'STA', 'INJ', 'IMP', 'TGH');
-$Attributes_OL = array('Age', 'Overall', 'RBK', 'PBK', 'STR', 'AWR', 'SPD', 'AGI', 'ACC', 'STA', 'INJ', 'IMP', 'TGH');
-$Attributes_D = array('Age', 'Overall', 'TAK', 'SPD', 'STR', 'AWR', 'AGI', 'ACC', 'STA', 'INJ', 'IMP', 'TGH');
-$Attributes_DB = array('Age', 'Overall', 'TAK', 'SPD', 'STR', 'AWR', 'AGI', 'ACC', 'CTH', 'JMP', 'STA', 'INJ', 'IMP', 'TGH');
-$Attributes_K = array('Age', 'Overall', 'AWR', 'KPW', 'KAC', 'STA', 'INJ', 'IMP', 'TGH');
-$Attributes_KR = array('Age', 'Overall', 'KR', 'SPD', 'AGI', 'ACC', 'CAR', 'BTK', 'STA', 'INJ', 'IMP', 'TGH');
+$Attributes_QB = array('Age', 'Position', 'Overall', 'THP', 'THA', 'AWR', 'AGI', 'SPD', 'BTK', 'STR', 'ACC', 'CAR', 'STA', 'INJ', 'TGH', 'IMP');
+$Attributes_HB = array('Age', 'Position', 'Overall', 'SPD', 'AGI', 'BTK', 'CAR', 'CTH', 'AWR', 'ACC', 'STR', 'PBK', 'STA', 'INJ', 'TGH', 'IMP');
+$Attributes_FB = array('Age', 'Position', 'Overall', 'RBK', 'AWR', 'CAR', 'SPD', 'ACC', 'BTK', 'STR', 'PBK', 'AGI', 'STA', 'INJ', 'TGH', 'IMP');
+$Attributes_WR = array('Age', 'Position', 'Overall', 'CTH', 'SPD', 'ACC', 'AGI', 'AWR', 'JMP', 'STR', 'STA', 'INJ', 'TGH', 'IMP');
+$Attributes_TE = array('Age', 'Position', 'Overall', 'CTH', 'AWR', 'SPD', 'STR', 'ACC', 'AGI', 'JMP', 'STA', 'INJ', 'TGH', 'IMP');
+$Attributes_T = array('Age', 'Position', 'Overall', 'PBK', 'RBK', 'AWR', 'STR', 'SPD', 'ACC', 'AGI', 'STA', 'INJ', 'TGH', 'IMP');
+$Attributes_GC = array('Age', 'Position', 'Overall', 'RBK', 'PBK', 'AWR', 'STR', 'SPD', 'ACC', 'AGI', 'STA', 'INJ', 'TGH', 'IMP');
+$Attributes_DE = array('Age', 'Position', 'Overall', 'TAK', 'STR', 'SPD', 'ACC', 'AWR', 'AGI', 'STA', 'INJ', 'TGH', 'IMP');
+$Attributes_DT = array('Age', 'Position', 'Overall', 'STR', 'TAK', 'AWR', 'ACC', 'SPD', 'AGI', 'STA', 'INJ', 'TGH', 'IMP');
+$Attributes_OLB = array('Age', 'Position', 'Overall', 'TAK', 'AWR', 'SPD', 'STR', 'AGI', 'ACC', 'STA', 'INJ', 'TGH', 'IMP');
+$Attributes_MLB = array('Age', 'Position', 'Overall', 'TAK', 'AWR', 'STR', 'AGI', 'ACC', 'SPD', 'STA', 'INJ', 'TGH', 'IMP');
+$Attributes_CB = array('Age', 'Position', 'Overall', 'AWR', 'SPD', 'CTH', 'ACC', 'AGI', 'TAK', 'JMP', 'STR', 'STA', 'INJ', 'TGH', 'IMP');
+$Attributes_FS = array('Age', 'Position', 'Overall', 'AWR', 'CTH', 'SPD', 'ACC', 'TAK', 'AGI', 'JMP', 'STR', 'STA', 'INJ', 'TGH', 'IMP');
+$Attributes_SS = array('Age', 'Position', 'Overall', 'AWR', 'CTH', 'SPD', 'TAK', 'ACC', 'AGI', 'STR', 'JMP', 'STA', 'INJ', 'TGH', 'IMP');
+$Attributes_K = array('Age', 'Position', 'Overall', 'KAC', 'KPW', 'AWR', 'STA', 'INJ', 'TGH', 'IMP');
+$Attributes_P = array('Age', 'Position', 'Overall', 'KPW', 'KAC', 'AWR', 'STA', 'INJ', 'TGH', 'IMP');
+$Attributes_KR = array('Age', 'Position', 'Overall', 'KR', 'SPD', 'AGI', 'ACC', 'CAR', 'BTK', 'STA', 'INJ', 'TGH', 'IMP');
 
 foreach ($Positions as $pos) {
 
@@ -609,20 +617,44 @@ foreach ($Positions as $pos) {
     if (in_array($pos, array('FB1', 'FB2'))) {
         $Display_Attributes = $Attributes_FB;
     }
-    if (in_array($pos, array('WR1', 'WR2', 'WR3', 'WR4', 'TE1', 'TE2'))) {
-        $Display_Attributes = $Attributes_REC;
+    if (in_array($pos, array('WR1', 'WR2', 'WR3', 'WR4'))) {
+        $Display_Attributes = $Attributes_WR;
     }
-    if (in_array($pos, array("LT1", "LT2", "LG1", "LG2", "C1", "C2", "RG1", "RG2", "RT1", "RT2"))) {
-        $Display_Attributes = $Attributes_OL;
+    if (in_array($pos, array('TE1', 'TE2'))) {
+        $Display_Attributes = $Attributes_TE;
     }
-    if (in_array($pos, array("LE1", "DT1", "RE1", "LE2", "DT2", "RE2", "LOLB1", "MLB1", "ROLB1", "LOLB2", "MLB2", "ROLB2"))) {
-        $Display_Attributes = $Attributes_D;
+    if (in_array($pos, array("LT1", "LT2", "RT1", "RT2"))) {
+        $Display_Attributes = $Attributes_T;
     }
-    if (in_array($pos, array("CB1", "CB2", "FS1", "SS1", "CB3", "CB4", "FS2", "SS2"))) {
-        $Display_Attributes = $Attributes_DB;
+    if (in_array($pos, array("LG1", "LG2", "C1", "C2", "RG1", "RG2"))) {
+        $Display_Attributes = $Attributes_GC;
     }
-    if (in_array($pos, array('K1', 'P1'))) {
+    if (in_array($pos, array("LE1", "RE1", "LE2", "RE2"))) {
+        $Display_Attributes = $Attributes_DE;
+    }
+    if (in_array($pos, array("DT1", "DT2"))) {
+        $Display_Attributes = $Attributes_DT;
+    }
+    if (in_array($pos, array("LOLB1", "ROLB1", "LOLB2", "ROLB2"))) {
+        $Display_Attributes = $Attributes_OLB;
+    }
+    if (in_array($pos, array("MLB1", "MLB2"))) {
+        $Display_Attributes = $Attributes_MLB;
+    }
+    if (in_array($pos, array("CB1", "CB2", "CB3", "CB4"))) {
+        $Display_Attributes = $Attributes_CB;
+    }
+    if (in_array($pos, array("FS1", "FS2"))) {
+        $Display_Attributes = $Attributes_FS;
+    }
+    if (in_array($pos, array("SS1", "SS2"))) {
+        $Display_Attributes = $Attributes_SS;
+    }
+    if (in_array($pos, array('K1'))) {
         $Display_Attributes = $Attributes_K;
+    }
+    if (in_array($pos, array('P1'))) {
+        $Display_Attributes = $Attributes_P;
     }
     if (in_array($pos, array('KR', 'PR'))) {
         $Display_Attributes = $Attributes_KR;
@@ -661,7 +693,7 @@ foreach ($Positions as $pos) {
         echo '<tr>';
         echo '<td>Year ', $histAttr_Row['Year'], ': </td>';
         foreach ($Display_Attributes as $Attr) {
-            if ($Attr === 'Age') {
+            if ($Attr === 'Age' || $Attr === 'Position') {
                 echo '<td>' . $histAttr_Row[$Attr], '</td>';
             } else {
                 echo '<td><input class="form-control attributeInput" type="text" name="player', $Attr, '[]" placeholder="', $histAttr_Row[$Attr], '" style="width: 50px">';
@@ -669,7 +701,7 @@ foreach ($Positions as $pos) {
             if ($histAttr_Row['Year'] === $minYear) {
                 echo '';
             } else {
-                if ($Attr === 'Age') {
+                if ($Attr === 'Age' || $Attr === 'Position') {
                     
                 } else {
                     $histAttr_Change = $histAttr_Row[$Attr] - $previousValues[$i - count($Display_Attributes)];
@@ -907,7 +939,7 @@ while ($ID_Loop = $Get_Stat_Identifiers->fetch_assoc()) {
     $i = 0;
     $prev_value = 0;
     $ID_Row_Count = mysqli_num_rows($GetTeamStats);
-    
+
     while ($historyRow = $GetTeamStats->fetch_assoc()) {
 
         if ($historyRow['Value'] === '') {
@@ -971,10 +1003,8 @@ while ($playerRow = $GetPassStats->fetch_assoc()) {
 ?>
 
 <?php
-
 $pass_positions = array();
 array_push($pass_positions, 'QB1', 'QB2');
-
 ?>
 
 <div class="modal fade" id="addPassModal" tabindex="-1" role="dialog" aria-labelledby="Add Passing Stats Row" aria-hidden="true">
@@ -998,7 +1028,7 @@ array_push($pass_positions, 'QB1', 'QB2');
                                     foreach ($pass_positions as $pos) {
                                         $Rosterresult = db_query("SELECT * FROM `franchise_year_roster` where Position='{$pos}' and Year='{$View_Year}' and Team='{$Curr_Team}'");
                                         $RosterRow = $Rosterresult->fetch_assoc();
-                                        echo '<option value=' . $RosterRow['Row_ID'] . '>'.$pos.' - ' . $RosterRow['Name'] . '</option>';
+                                        echo '<option value=' . $RosterRow['Row_ID'] . '>' . $pos . ' - ' . $RosterRow['Name'] . '</option>';
                                     }
                                     ?>
                                 </select>
@@ -1064,7 +1094,7 @@ while ($playerRow = $GetRushStats->fetch_assoc()) {
 ?>
 <?php
 $rush_positions = array();
-array_push($rush_positions, 'QB1', 'QB2','HB1','HB2','HB3','FB1','FB2');
+array_push($rush_positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2');
 ?>
 
 <div class="modal fade" id="addRushModal" tabindex="-1" role="dialog" aria-labelledby="Add Rushing Stats Row" aria-hidden="true">
@@ -1088,7 +1118,7 @@ array_push($rush_positions, 'QB1', 'QB2','HB1','HB2','HB3','FB1','FB2');
                                     foreach ($rush_positions as $pos) {
                                         $Rosterresult = db_query("SELECT * FROM `franchise_year_roster` where Position='{$pos}' and Year='{$View_Year}' and Team='{$Curr_Team}'");
                                         $RosterRow = $Rosterresult->fetch_assoc();
-                                        echo '<option value=' . $RosterRow['Row_ID'] . '>'.$pos.' - ' . $RosterRow['Name'] . '</option>';
+                                        echo '<option value=' . $RosterRow['Row_ID'] . '>' . $pos . ' - ' . $RosterRow['Name'] . '</option>';
                                     }
                                     ?>
                                 </select>
@@ -1152,12 +1182,11 @@ while ($playerRow = $getRecStats->fetch_assoc()) {
     echo '</table>
          </div>';
 }
-
 ?>
 
 <?php
 $rec_positions = array();
-array_push($rec_positions, 'WR1', 'WR2','WR3','WR4','HB1','HB2','HB3','TE1','TE2','FB1','FB2');
+array_push($rec_positions, 'WR1', 'WR2', 'WR3', 'WR4', 'HB1', 'HB2', 'HB3', 'TE1', 'TE2', 'FB1', 'FB2');
 ?>
 
 <div class="modal fade" id="addRecModal" tabindex="-1" role="dialog" aria-labelledby="Add Receiving Stats Row" aria-hidden="true">
@@ -1181,7 +1210,7 @@ array_push($rec_positions, 'WR1', 'WR2','WR3','WR4','HB1','HB2','HB3','TE1','TE2
                                     foreach ($rec_positions as $pos) {
                                         $Rosterresult = db_query("SELECT * FROM `franchise_year_roster` where Position='{$pos}' and Year='{$View_Year}' and Team='{$Curr_Team}'");
                                         $RosterRow = $Rosterresult->fetch_assoc();
-                                        echo '<option value=' . $RosterRow['Row_ID'] . '>'.$pos.' - ' . $RosterRow['Name'] . '</option>';
+                                        echo '<option value=' . $RosterRow['Row_ID'] . '>' . $pos . ' - ' . $RosterRow['Name'] . '</option>';
                                     }
                                     ?>
                                 </select>
@@ -1240,12 +1269,11 @@ while ($playerRow = $getBlockStats->fetch_assoc()) {
     echo '</table>
          </div>';
 }
-
 ?>
 
 <?php
 $block_positions = array();
-array_push($block_positions, 'LT1', 'LT2','LG1','LG2','C1','C2','RG1','RG2','RT1','RT2');
+array_push($block_positions, 'LT1', 'LT2', 'LG1', 'LG2', 'C1', 'C2', 'RG1', 'RG2', 'RT1', 'RT2');
 ?>
 
 <div class="modal fade" id="addBlockModal" tabindex="-1" role="dialog" aria-labelledby="Add Blocking Stats Row" aria-hidden="true">
@@ -1269,7 +1297,7 @@ array_push($block_positions, 'LT1', 'LT2','LG1','LG2','C1','C2','RG1','RG2','RT1
                                     foreach ($block_positions as $pos) {
                                         $Rosterresult = db_query("SELECT * FROM `franchise_year_roster` where Position='{$pos}' and Year='{$View_Year}' and Team='{$Curr_Team}'");
                                         $RosterRow = $Rosterresult->fetch_assoc();
-                                        echo '<option value=' . $RosterRow['Row_ID'] . '>'.$pos.' - ' . $RosterRow['Name'] . '</option>';
+                                        echo '<option value=' . $RosterRow['Row_ID'] . '>' . $pos . ' - ' . $RosterRow['Name'] . '</option>';
                                     }
                                     ?>
                                 </select>
@@ -1330,12 +1358,11 @@ while ($playerRow = $getDefStats->fetch_assoc()) {
     echo '</table>
          </div>';
 }
-
 ?>
 
 <?php
 $def_positions = array();
-array_push($def_positions, 'LE1', 'LE2','DT1','DT2','RE1','RE2','LOLB1','LOLB2','MLB1','MLB2','ROLB1','ROLB2','CB1','CB2','CB3','CB4','FS1','FS2','SS1','SS2');
+array_push($def_positions, 'LE1', 'LE2', 'DT1', 'DT2', 'RE1', 'RE2', 'LOLB1', 'LOLB2', 'MLB1', 'MLB2', 'ROLB1', 'ROLB2', 'CB1', 'CB2', 'CB3', 'CB4', 'FS1', 'FS2', 'SS1', 'SS2');
 ?>
 
 <div class="modal fade" id="addDefModal" tabindex="-1" role="dialog" aria-labelledby="Add Defensive Stats Row" aria-hidden="true">
@@ -1359,7 +1386,7 @@ array_push($def_positions, 'LE1', 'LE2','DT1','DT2','RE1','RE2','LOLB1','LOLB2',
                                     foreach ($def_positions as $pos) {
                                         $Rosterresult = db_query("SELECT * FROM `franchise_year_roster` where Position='{$pos}' and Year='{$View_Year}' and Team='{$Curr_Team}'");
                                         $RosterRow = $Rosterresult->fetch_assoc();
-                                        echo '<option value=' . $RosterRow['Row_ID'] . '>'.$pos.' - ' . $RosterRow['Name'] . '</option>';
+                                        echo '<option value=' . $RosterRow['Row_ID'] . '>' . $pos . ' - ' . $RosterRow['Name'] . '</option>';
                                     }
                                     ?>
                                 </select>
@@ -1482,7 +1509,7 @@ while ($playerRow = $GetPlayers->fetch_assoc()) {
         echo '</table>
          </div>';
     }
-    
+
     if ($playerRow['Category'] === 'PR') {
 
         echo '<div id="', $playerRow['Row'], 'ST-Table" style="display: none">
@@ -1506,11 +1533,10 @@ while ($playerRow = $GetPlayers->fetch_assoc()) {
          </div>';
     }
 }
-
 ?>
 <?php
 $st_positions = array();
-array_push($st_positions, 'K1', 'P1','KR','PR');
+array_push($st_positions, 'K1', 'P1', 'KR', 'PR');
 ?>
 
 <div class="modal fade" id="addSTModal" tabindex="-1" role="dialog" aria-labelledby="Add Special Teams Stats Row" aria-hidden="true">
@@ -1534,7 +1560,7 @@ array_push($st_positions, 'K1', 'P1','KR','PR');
                                     foreach ($st_positions as $pos) {
                                         $Rosterresult = db_query("SELECT * FROM `franchise_year_roster` where Position='{$pos}' and Year='{$View_Year}' and Team='{$Curr_Team}'");
                                         $RosterRow = $Rosterresult->fetch_assoc();
-                                        echo '<option value=' . $RosterRow['Row_ID'] . '>'.$pos.' - ' . $RosterRow['Name'] . '</option>';
+                                        echo '<option value=' . $RosterRow['Row_ID'] . '>' . $pos . ' - ' . $RosterRow['Name'] . '</option>';
                                     }
                                     ?>
                                 </select>
@@ -1589,29 +1615,28 @@ $getAwards = db_query("Select * From `franchise_year_awards` Where Year='{$View_
 
 while ($playerRow = $getAwards->fetch_assoc()) {
 
-        echo '<div id="', $playerRow['Row'], 'AwardTable" style="display: none">
+    echo '<div id="', $playerRow['Row'], 'AwardTable" style="display: none">
             <table class="table text-nowrap" style="font-size: smaller; text-align: left">';
 
-        $GetPlayerHistory = db_query("Select * From `franchise_year_awards` Where `Historical_ID`={$playerRow['Historical_ID']}");
+    $GetPlayerHistory = db_query("Select * From `franchise_year_awards` Where `Historical_ID`={$playerRow['Historical_ID']}");
 
 
 
 
 
-        echo '<tr><td></td><td>Award</td></tr>';
+    echo '<tr><td></td><td>Award</td></tr>';
 
-        while ($awardHistoryRow = $GetPlayerHistory->fetch_assoc()) {
+    while ($awardHistoryRow = $GetPlayerHistory->fetch_assoc()) {
 
-            echo '<tr>'
-            . '<td>Year: ', $awardHistoryRow['Year'], '</td>'
-            . '<td style="text-align: left">', $awardHistoryRow['Award'], '</td>';
+        echo '<tr>'
+        . '<td>Year: ', $awardHistoryRow['Year'], '</td>'
+        . '<td style="text-align: left">', $awardHistoryRow['Award'], '</td>';
 
-            echo '</tr>';
-        }
+        echo '</tr>';
+    }
 
-        echo '</table>
+    echo '</table>
          </div>';
-
 }
 ?>
 
@@ -1765,7 +1790,7 @@ while ($playerRow = $getProbowl->fetch_assoc()) {
     $historical_ID = $playerRow['Historical_ID'];
     $GetPlayerHistory = db_query("Select * From `franchise_year_probowl` Where `Historical_ID`='{$historical_ID}'");
     $GetNumRows = $GetPlayerHistory->num_rows;
-    
+
     echo '<tr><td>Years Elected to Pro Bowl</td></tr>';
 
     while ($probowlHistoryRow = $GetPlayerHistory->fetch_assoc()) {
@@ -1774,8 +1799,8 @@ while ($playerRow = $getProbowl->fetch_assoc()) {
         . '<td>Year: ', $probowlHistoryRow['Year'], '</td>'
         . '</tr>';
     }
-    echo '<tr><td>Number of Pro Bowls: ',$GetNumRows,'</td></tr>';
-    
+    echo '<tr><td>Number of Pro Bowls: ', $GetNumRows, '</td></tr>';
+
     echo '</table>
          </div>';
 }
@@ -2000,7 +2025,6 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
     echo '</table>
          </div>';
 }
-
 ?>
 
 <!-- Add Offseason Moves Modal -->
@@ -2096,25 +2120,41 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             </div>
             <div class="modal-body">
                 <form role="form" name="AddDraftedForm" id="AddDraftedForm" Action="../libs/ajax/franchise_view/staging/add_franchise_drafted_player.php" method="post">
-                    <select name="AddDrafted" class="btn btn-default dropdown-toggle" <?php if ($View_Year == 1) { echo "disabled"; } ?>>
-                        <?php
-                        $previousYear = $View_Year - 1;
-                        $getStagedDraftedPlayers = db_query("SELECT * FROM `franchise_staging_drafted` WHERE Franchise='{$Curr_Team}' AND Year='{$previousYear}'") or die(mysql_error());
-                        while ($DraftedPlayersRow = $getStagedDraftedPlayers->fetch_assoc()) {
-                            echo '<option value=' . $DraftedPlayersRow['Row_ID'], '>' . $DraftedPlayersRow['Name'] . ' - '. $DraftedPlayersRow['Position'] . ': '. $DraftedPlayersRow['Overall'] .'</option>';
-                        }
-                        ?>
+                    <select name="AddDrafted" class="btn btn-default dropdown-toggle" <?php
+                    if ($View_Year == 1) {
+                        echo "disabled";
+                    }
+                    ?>>
+                                <?php
+                                $previousYear = $View_Year - 1;
+                                $getStagedDraftedPlayers = db_query("SELECT * FROM `franchise_staging_drafted` WHERE Franchise='{$Curr_Team}' AND Year='{$previousYear}'") or die(mysql_error());
+                                while ($DraftedPlayersRow = $getStagedDraftedPlayers->fetch_assoc()) {
+                                    echo '<option value=' . $DraftedPlayersRow['Row_ID'], '>' . $DraftedPlayersRow['Name'] . ' - ' . $DraftedPlayersRow['Position'] . ': ' . $DraftedPlayersRow['Overall'] . '</option>';
+                                }
+                                ?>
                     </select>
-                    <select name="AddDraftedPOS" class="btn btn-default dropdown-toggle" <?php if ($View_Year == 1) { echo "disabled"; } ?>>
-                        <?php
-                        foreach ($Positions as $pos) {
-                            echo '<option>', $pos, '</option>';
-                        }
-                        ?>
+                    <select name="AddDraftedPOS" class="btn btn-default dropdown-toggle" <?php
+                                if ($View_Year == 1) {
+                                    echo "disabled";
+                                }
+                                ?>>
+                                <?php
+                                foreach ($Positions as $pos) {
+                                    echo '<option>', $pos, '</option>';
+                                }
+                                ?>
                     </select>
-                    <?php if ($View_Year == 1) { echo "<br><h4>Year 1 - No Drafted Players To Add</h4>"; } ?>
+                    <?php
+                    if ($View_Year == 1) {
+                        echo "<br><h4>Year 1 - No Drafted Players To Add</h4>";
+                    }
+                    ?>
                     <br><br>
-                    <button type="submit" class="btn btn-success" <?php if ($View_Year == 1) { echo "disabled"; } ?>>Add Player to Depth Chart</button>
+                    <button type="submit" class="btn btn-success" <?php
+                    if ($View_Year == 1) {
+                        echo "disabled";
+                    }
+                    ?>>Add Player to Depth Chart</button>
                     <button class="btn btn-danger" data-dismiss="modal">Close</button>
                     <input type="hidden" name="franYear" value="<?php echo $View_Year ?>" />
                     <input type="hidden" name="franchise" value="<?php echo $Curr_Team ?>" />
@@ -2133,25 +2173,41 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             </div>
             <div class="modal-body">
                 <form role="form" name="AddSignedFAForm" id="AddSignedFAForm" Action="../libs/ajax/franchise_view/staging/add_franchise_fa_player.php" method="post">
-                    <select name="AddFA" class="btn btn-default dropdown-toggle" <?php if ($View_Year == 1) { echo "disabled"; } ?>>
-                        <?php
-                        $previousYear = $View_Year - 1;
-                        $getStagedFAPlayers = db_query("SELECT * FROM `franchise_staging_freeagency` WHERE Franchise='{$Curr_Team}' AND Year='{$previousYear}'") or die(mysql_error());
-                        while ($FAPlayersRow = $getStagedFAPlayers->fetch_assoc()) {
-                            echo '<option value=' . $FAPlayersRow['Row_ID'], '>' . $FAPlayersRow['Name'] . ' - '. $FAPlayersRow['Position'] . ': '. $FAPlayersRow['Overall'] .'</option>';
-                        }
-                        ?>
+                    <select name="AddFA" class="btn btn-default dropdown-toggle" <?php
+                                if ($View_Year == 1) {
+                                    echo "disabled";
+                                }
+                                ?>>
+                            <?php
+                                $previousYear = $View_Year - 1;
+                                $getStagedFAPlayers = db_query("SELECT * FROM `franchise_staging_freeagency` WHERE Franchise='{$Curr_Team}' AND Year='{$previousYear}'") or die(mysql_error());
+                                while ($FAPlayersRow = $getStagedFAPlayers->fetch_assoc()) {
+                                    echo '<option value=' . $FAPlayersRow['Row_ID'], '>' . $FAPlayersRow['Name'] . ' - ' . $FAPlayersRow['Position'] . ': ' . $FAPlayersRow['Overall'] . '</option>';
+                                }
+                                ?>
                     </select>
-                    <select name="AddFApos" class="btn btn-default dropdown-toggle" <?php if ($View_Year == 1) { echo "disabled"; } ?>>
-                        <?php
-                        foreach ($Positions as $pos) {
-                            echo '<option>', $pos, '</option>';
-                        }
-                        ?>
+                    <select name="AddFApos" class="btn btn-default dropdown-toggle" <?php
+                    if ($View_Year == 1) {
+                        echo "disabled";
+                    }
+                    ?>>
+                            <?php
+                            foreach ($Positions as $pos) {
+                                echo '<option>', $pos, '</option>';
+                            }
+                            ?>
                     </select>
-                    <?php if ($View_Year == 1) { echo "<br><h4>Year 1 - No Free Agent Players To Add</h4>"; } ?>
+<?php
+if ($View_Year == 1) {
+    echo "<br><h4>Year 1 - No Free Agent Players To Add</h4>";
+}
+?>
                     <br><br>
-                    <button type="submit" class="btn btn-success" <?php if ($View_Year == 1) { echo "disabled"; } ?>>Add Player to Depth Chart</button>
+                    <button type="submit" class="btn btn-success" <?php
+if ($View_Year == 1) {
+    echo "disabled";
+}
+?>>Add Player to Depth Chart</button>
                     <button class="btn btn-danger" data-dismiss="modal">Close</button>
                     <input type="hidden" name="franYear" value="<?php echo $View_Year ?>" />
                     <input type="hidden" name="franchise" value="<?php echo $Curr_Team ?>" />
