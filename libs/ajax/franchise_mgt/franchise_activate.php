@@ -41,7 +41,7 @@ $PopulateCoachTable = "INSERT INTO `franchise_year_off_coach` (`Name`, `Chg`, `A
 db_query($PopulateCoachTable);
 
 $PopulateResultsTable = "INSERT INTO `franchise_year_results` (`Week`, `Vs`, `HorA`, `Score`, `Result`, `Divisional`, `Team`, `Year`) VALUES
-('Simulated', '', '', '', '', '', '{$fran}', '1'),
+('Simulated', 'N', '', '', '', '', '{$fran}', '1'),
 ('Week 1', '', '', '', '', '', '{$fran}', '1'),
 ('Week 2', '', '', '', '', '', '{$fran}', '1'),
 ('Week 3', '', '', '', '', '', '{$fran}', '1'),

@@ -44,7 +44,7 @@ $PopulateCoachingStaffTable = "INSERT INTO `franchise_year_pre_coaches` (`Name`,
 db_query($PopulateCoachingStaffTable);
 
 $PopulateInfoTable = "INSERT INTO `franchise_year_info` (`Field_Display`, `Field_ID`, `Field_Value`, `Franchise`, `Year`, `Section`) VALUES
-('Team Prestige', 'prestige', '', '{$fran}', 1, 'preseason'),
+('Team Prestige', 'prestige', '', '{$fran}', '{$nextYear}', 'preseason'),
 ('Salary Cap', 'cap', '', '{$fran}', '{$nextYear}', 'preseason'),
 ('Cap Room', 'room', '', '{$fran}', '{$nextYear}', 'preseason'),
 ('Cap Penalties', 'pen', '', '{$fran}', '{$nextYear}', 'preseason'),
@@ -63,7 +63,7 @@ $IncrementCoachAge = "UPDATE `franchise_year_off_coach` SET `Age` = `Age` + 1 WH
 db_query($IncrementCoachAge);
 
 $PopulateResultsTable = "INSERT INTO `franchise_year_results` (`Week`, `Vs`, `HorA`, `Score`, `Result`, `Divisional`, `Team`, `Year`) VALUES
-('Simulated', '', '', '', '', '', '{$fran}', '{$nextYear}'),
+('Simulated', 'N', '', '', '', '', '{$fran}', '{$nextYear}'),
 ('Week 1', '', '', '', '', '', '{$fran}', '{$nextYear}'),
 ('Week 2', '', '', '', '', '', '{$fran}', '{$nextYear}'),
 ('Week 3', '', '', '', '', '', '{$fran}', '{$nextYear}'),
