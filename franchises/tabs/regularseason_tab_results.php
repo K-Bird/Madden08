@@ -131,18 +131,30 @@ if ($RegSimRow['Vs'] === 'N') {
             echo '-';
         } else {
             if ($ResultsRow['Result'] === 'W') {
-                echo '<button type="button" class="btn btn-default active">W</button>';
-                echo '<button type="button" class="btn btn-default">L</button>';
+                echo '<button type="button" class="btn btn-default wlBtn active" data-row="', $ResultsRow['Row'], '" data-value="W">W</button>';
+                echo '<button type="button" class="btn btn-default wlBtn" data-row="', $ResultsRow['Row'], '" data-value="L">L</button>';
             } else {
-                echo '<button type="button" class="btn btn-default">W</button>';
-                echo '<button type="button" class="btn btn-default active">L</button>';
+                echo '<button type="button" class="btn btn-default wlBtn" data-row="', $ResultsRow['Row'], '" data-value="W">W</button>';
+                echo '<button type="button" class="btn btn-default wlBtn active" data-row="', $ResultsRow['Row'], '" data-value="L">L</button>';
             }
         }
         echo '</div>  
                <span class="franViewDisplay">', $ResultsRow['Result'], '</span>
              </td>',
         '<td>(', $totalWins, '- ', $totalLosses, ')</td>',
-        '<td>(', $divWins, '- ', $divLosses, ')</td>';
+        '<td><span class="franViewDisplay">(', $divWins, '- ', $divLosses, ')</span></div>';
+            
+        echo '<div class="btn-group franViewEdit" role="group">';
+            if ($ResultsRow['Divisional'] === 'Y') {
+                echo '<button type="button" class="btn btn-default divBtn active" data-row="', $ResultsRow['Row'], '" data-value="Y">Div</button>';
+                echo '<button type="button" class="btn btn-default divBtn" data-row="', $ResultsRow['Row'], '" data-value="N">Non</button>';
+            } else {
+                echo '<button type="button" class="btn btn-default divBtn" data-row="', $ResultsRow['Row'], '" data-value="Y">Div</button>';
+                echo '<button type="button" class="btn btn-default divBtn active" data-row="', $ResultsRow['Row'], '" data-value="N">Non</button>';
+            }
+            echo
+            '</div>       
+        </td>';
         echo '</tr>';
     }
 

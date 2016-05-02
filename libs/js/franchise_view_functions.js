@@ -559,6 +559,52 @@ $(document).ready(function () {
 
     });
     
+    //Results on W/L Click Update the DB Value
+    $('.wlBtn').click(function (e) {
+        $row = $(this).data('row');
+        $new_VsAt_value = $(this).data('value');
+
+        $.ajax(
+                {
+                    url: "../libs/ajax/franchise_view/results/update_franchise_results_WL.php",
+                    type: "POST",
+                    data: { row: $row, value: $new_VsAt_value},
+                    success: function (data, textStatus, jqXHR)
+                    {
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        alert("Form Did Not Process");
+                    }
+                });
+        e.preventDefault();
+
+    });
+    
+    //Results on Divisional/Non Click Update the DB Value
+    $('.divBtn').click(function (e) {
+        $row = $(this).data('row');
+        $new_VsAt_value = $(this).data('value');
+
+        $.ajax(
+                {
+                    url: "../libs/ajax/franchise_view/results/update_franchise_results_div.php",
+                    type: "POST",
+                    data: { row: $row, value: $new_VsAt_value},
+                    success: function (data, textStatus, jqXHR)
+                    {
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        alert("Form Did Not Process");
+                    }
+                });
+        e.preventDefault();
+
+    });
+    
        //Results on Vs Team Click Update the DB Value
     $('.vsTeamLi').click(function (e) {
         $row = $(this).data('row');
