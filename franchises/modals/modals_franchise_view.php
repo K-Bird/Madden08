@@ -1,7 +1,7 @@
 <?php
 //**** [ Preseason History ] ****//
 //Team Prestige History
-$GetPrestigeHistory = db_query("Select * From `franchise_year_info` where Field_ID='prestige' AND Franchise='{$Curr_Team}' ORDER BY Year ASC");
+$GetPrestigeHistory = db_query("Select * From `franchise_year_info` where Field_ID='prestige' AND Franchise='{$Curr_Team}' ORDER BY Year DESC");
 ?>
 <div id="prestigeHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -36,7 +36,7 @@ $GetPrestigeHistory = db_query("Select * From `franchise_year_info` where Field_
 
 <?php
 //Team Rival History
-$GetRivalHistory = db_query("Select * From `franchise_year_info` where Field_ID='rivals' AND Franchise='{$Curr_Team}' ORDER BY Year ASC");
+$GetRivalHistory = db_query("Select * From `franchise_year_info` where Field_ID='rivals' AND Franchise='{$Curr_Team}' ORDER BY Year DESC");
 ?>
 <div id="rivalsHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -54,7 +54,7 @@ $GetRivalHistory = db_query("Select * From `franchise_year_info` where Field_ID=
 
 <?php
 //Team Icons History
-$GetIconsHistory = db_query("Select * From `franchise_year_info` where Field_ID='icons' AND Franchise='{$Curr_Team}' ORDER BY Year ASC");
+$GetIconsHistory = db_query("Select * From `franchise_year_info` where Field_ID='icons' AND Franchise='{$Curr_Team}' ORDER BY Year DESC");
 ?>
 <div id="iconsHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -72,7 +72,7 @@ $GetIconsHistory = db_query("Select * From `franchise_year_info` where Field_ID=
 
 <?php
 //Team salaryCap History
-$GetsalaryCapHistory = db_query("Select * From `franchise_year_info` where Field_ID='cap' AND Franchise='{$Curr_Team}' ORDER BY Year ASC");
+$GetsalaryCapHistory = db_query("Select * From `franchise_year_info` where Field_ID='cap' AND Franchise='{$Curr_Team}' ORDER BY Year DESC");
 ?>
 <div id="capHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -107,7 +107,7 @@ $GetsalaryCapHistory = db_query("Select * From `franchise_year_info` where Field
 
 <?php
 //Team teamSalary History
-$GetteamSalaryHistory = db_query("Select * From `franchise_year_info` where Field_ID='salary' AND Franchise='{$Curr_Team}' ORDER BY Year ASC");
+$GetteamSalaryHistory = db_query("Select * From `franchise_year_info` where Field_ID='salary' AND Franchise='{$Curr_Team}' ORDER BY Year DESC");
 ?>
 <div id="salaryHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -142,7 +142,7 @@ $GetteamSalaryHistory = db_query("Select * From `franchise_year_info` where Fiel
 
 <?php
 //Team capRoom History
-$GetcapRoomHistory = db_query("Select * From `franchise_year_info` where Field_ID='room' AND Franchise='{$Curr_Team}' ORDER BY Year ASC");
+$GetcapRoomHistory = db_query("Select * From `franchise_year_info` where Field_ID='room' AND Franchise='{$Curr_Team}' ORDER BY Year DESC");
 ?>
 <div id="roomHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -177,7 +177,7 @@ $GetcapRoomHistory = db_query("Select * From `franchise_year_info` where Field_I
 
 <?php
 //Team capPenalties History
-$GetcapPenaltiesHistory = db_query("Select * From `franchise_year_info` where Field_ID='pen' AND Franchise='{$Curr_Team}' ORDER BY Year ASC");
+$GetcapPenaltiesHistory = db_query("Select * From `franchise_year_info` where Field_ID='pen' AND Franchise='{$Curr_Team}' ORDER BY Year DESC");
 ?>
 <div id="penHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -213,7 +213,7 @@ $GetcapPenaltiesHistory = db_query("Select * From `franchise_year_info` where Fi
 <!-- Coaching Staff History -->
 <?php
 //Head Coach History
-$GetHCHistory = db_query("Select * From `franchise_year_pre_coaches` where Position='HC' AND Team='{$Curr_Team}' ORDER BY Year ASC");
+$GetHCHistory = db_query("Select * From `franchise_year_pre_coaches` where Position='HC' AND Team='{$Curr_Team}' ORDER BY Year DESC");
 ?>
 <div id="HCHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -230,7 +230,7 @@ $GetHCHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
 
 <?php
 //Offensive Coordinator History
-$GetOCHistory = db_query("Select * From `franchise_year_pre_coaches` where Position='OC' AND Team='{$Curr_Team}' ORDER BY Year ASC");
+$GetOCHistory = db_query("Select * From `franchise_year_pre_coaches` where Position='OC' AND Team='{$Curr_Team}' ORDER BY Year DESC");
 ?>
 <div id="OCHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -247,7 +247,7 @@ $GetOCHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
 
 <?php
 //Defensive Coordinator History
-$GetDCHistory = db_query("Select * From `franchise_year_pre_coaches` where Position='DC' AND Team='{$Curr_Team}' ORDER BY Year ASC");
+$GetDCHistory = db_query("Select * From `franchise_year_pre_coaches` where Position='DC' AND Team='{$Curr_Team}' ORDER BY Year DESC");
 ?>
 <div id="DCHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -264,7 +264,7 @@ $GetDCHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
 
 <?php
 //Special Teams Coach History
-$GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Position='ST' AND Team='{$Curr_Team}' ORDER BY Year ASC");
+$GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Position='ST' AND Team='{$Curr_Team}' ORDER BY Year DESC");
 ?>
 <div id="STHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -727,7 +727,7 @@ foreach ($Positions as $pos) {
 
     /* Training Camp Details Section */
     echo '<br><br><h3>Training Camp</h3>';
-    $Get_TC_History = db_query("SELECT * FROM `franchise_year_trainingcamp` WHERE Player_Row='{$position_Historical_ID}' ORDER BY Year ASC");
+    $Get_TC_History = db_query("SELECT * FROM `franchise_year_trainingcamp` WHERE Player_Row='{$position_Historical_ID}' ORDER BY Year DESC");
     echo '<form role="form" name="' . $pos . '_TC" class="playerTCForm">';
 
     echo '<table class="table table-condensed">';
@@ -984,7 +984,7 @@ while ($playerRow = $GetPassStats->fetch_assoc()) {
     echo '<div id="', $playerRow['Row'], 'PassTable" style="display: none">
             <table class="table text-nowrap" style="font-size: smaller; text-align: center">';
 
-    $GetPlayerHistory = db_query("Select * From `franchise_year_indv_passing` Where `Historical_ID`={$playerRow['Historical_ID']}");
+    $GetPlayerHistory = db_query("Select * From `franchise_year_indv_passing` Where `Historical_ID`={$playerRow['Historical_ID']} ORDER BY `Year` ASC");
 
     echo '<tr><td></td><td>Passer Rating</td><td>Passing Yards</td><td>Passing TDs</td><td>Interceptions</td><td>Completion %</td><td>Times Sacked</td></tr>';
 
@@ -1076,7 +1076,7 @@ while ($playerRow = $GetRushStats->fetch_assoc()) {
     echo '<div id="', $playerRow['Row'], 'RushTable" style="display: none">
             <table class="table text-nowrap" style="font-size: smaller; text-align: center">';
 
-    $GetPlayerHistory = db_query("Select * From `franchise_year_indv_rushing` Where `Historical_ID`={$playerRow['Historical_ID']}");
+    $GetPlayerHistory = db_query("Select * From `franchise_year_indv_rushing` Where `Historical_ID`={$playerRow['Historical_ID']} ORDER BY `Year` ASC");
 
     echo '<tr><td></td><td>Rush Yards</td><td>Rush TDs</td><td>Yards Per Carry</td><td>Fumbles</td><td>Broken Tackles</td><td>Longest Run</td></tr>';
 
@@ -1167,7 +1167,7 @@ while ($playerRow = $getRecStats->fetch_assoc()) {
     echo '<div id="', $playerRow['Row'], 'RecTable" style="display: none">
             <table class="table text-nowrap" style="font-size: smaller; text-align: center">';
 
-    $GetPlayerHistory = db_query("Select * From `franchise_year_indv_rec` Where `Historical_ID`={$playerRow['Historical_ID']}");
+    $GetPlayerHistory = db_query("Select * From `franchise_year_indv_rec` Where `Historical_ID`={$playerRow['Historical_ID']} ORDER BY `Year` ASC");
 
     echo '<tr><td></td><td>Receptions</td><td>Receiving Yards</td><td>Receiving TDs</td><td>Yards Per Catch</td><td>Longest Catch</td><td>Drops</td></tr>';
 
@@ -1259,7 +1259,7 @@ while ($playerRow = $getBlockStats->fetch_assoc()) {
     echo '<div id="', $playerRow['Row'], 'BlockTable" style="display: none">
             <table class="table text-nowrap" style="font-size: smaller; text-align: center">';
 
-    $GetPlayerHistory = db_query("Select * From `franchise_year_indv_block` Where `Historical_ID`={$playerRow['Historical_ID']}");
+    $GetPlayerHistory = db_query("Select * From `franchise_year_indv_block` Where `Historical_ID`={$playerRow['Historical_ID']} ORDER BY `Year` ASC");
 
     echo '<tr><td></td><td>Pancakes</td><td>Sacks Allowed</td></tr>';
 
@@ -1343,7 +1343,7 @@ while ($playerRow = $getDefStats->fetch_assoc()) {
     echo '<div id="', $playerRow['Row'], 'DefTable" style="display: none">
             <table class="table text-nowrap" style="font-size: smaller; text-align: center">';
 
-    $GetPlayerHistory = db_query("Select * From `franchise_year_indv_def` Where `Historical_ID`={$playerRow['Historical_ID']}");
+    $GetPlayerHistory = db_query("Select * From `franchise_year_indv_def` Where `Historical_ID`={$playerRow['Historical_ID']} ORDER BY `Year` ASC");
 
     echo '<tr><td></td><td>Tackles</td><td>Tackles For Loss</td><td>Sacks</td><td>INTs</td><td>TDs</td><td>Saftey</td></tr>';
 
@@ -1451,7 +1451,7 @@ while ($playerRow = $GetPlayers->fetch_assoc()) {
         echo '<div id="', $playerRow['Row'], 'ST-Table" style="display: none">
             <table class="table text-nowrap" style="font-size: smaller; text-align: center">';
 
-        $GetPlayerHistory = db_query("Select * From `franchise_year_indv_st` Where `Historical_ID`={$playerRow['Historical_ID']}");
+        $GetPlayerHistory = db_query("Select * From `franchise_year_indv_st` Where `Historical_ID`={$playerRow['Historical_ID']} ORDER BY `Year` ASC");
 
         echo '<tr><td>Player</td><td>Field Goals Attempted</td><td>Field Goals Made</td><td>Field Goal Percent</td><td>Longest Made</td></tr>';
 
@@ -1623,7 +1623,7 @@ while ($playerRow = $getAwards->fetch_assoc()) {
     echo '<div id="', $playerRow['Row'], 'AwardTable" style="display: none">
             <table class="table text-nowrap" style="font-size: smaller; text-align: left">';
 
-    $GetPlayerHistory = db_query("Select * From `franchise_year_awards` Where `Historical_ID`={$playerRow['Historical_ID']}");
+    $GetPlayerHistory = db_query("Select * From `franchise_year_awards` Where `Historical_ID`={$playerRow['Historical_ID']} ORDER BY `Year` ASC");
 
 
 
@@ -1793,7 +1793,7 @@ while ($playerRow = $getProbowl->fetch_assoc()) {
             <table class="table text-nowrap" style="font-size: smaller; text-align: center">';
 
     $historical_ID = $playerRow['Historical_ID'];
-    $GetPlayerHistory = db_query("Select * From `franchise_year_probowl` Where `Historical_ID`='{$historical_ID}'");
+    $GetPlayerHistory = db_query("Select * From `franchise_year_probowl` Where `Historical_ID`='{$historical_ID}' ORDER BY `Year` ASC");
     $GetNumRows = $GetPlayerHistory->num_rows;
 
     echo '<tr><td>Years Elected to Pro Bowl</td></tr>';
@@ -1811,14 +1811,14 @@ while ($playerRow = $getProbowl->fetch_assoc()) {
 }
 
 //Off Coach History Tables
-$GetCoaches = db_query("Select * From `franchise_year_off_coach` Where Year='{$View_Year}' AND Team='{$Curr_Team}'");
+$GetCoaches = db_query("Select * From `franchise_year_off_coach` Where Year='{$View_Year}' AND Team='{$Curr_Team}' ORDER BY Year DESC");
 
 while ($coachRow = $GetCoaches->fetch_assoc()) {
 
     echo '<div id="', $coachRow['Row'], 'CoachCHGTable" style="display: none">
             <table class="table text-nowrap" style="font-size: smaller; text-align: center">';
 
-    $GetCoachHistory = db_query("Select * From `franchise_year_off_coach` Where `Historical_ID`={$coachRow['Historical_ID']} AND Team='{$Curr_Team}'");
+    $GetCoachHistory = db_query("Select * From `franchise_year_off_coach` Where `Historical_ID`={$coachRow['Historical_ID']} AND Team='{$Curr_Team}' ORDER BY `Year` ASC");
 
     echo '<tr><td></td>
               <td>Age</td>

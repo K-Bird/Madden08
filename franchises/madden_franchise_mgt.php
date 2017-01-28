@@ -119,7 +119,7 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php"
                         </div>
                     </div>
                     <?php
-                    $AllFran = db_query("SELECT * FROM `franchise_info`");
+                    $AllFran = db_query("SELECT * FROM `franchise_info` WHERE `Franchise`!='NE'");
                     ?>
                     <div class="row">
                         <div class="col-lg-12">

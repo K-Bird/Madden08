@@ -8,7 +8,7 @@
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane" id="TS_O">
             <?php
-            $TS_O_Results = db_query("SELECT * FROM `franchise_year_teamstats` Where Category='O' AND Year='{$View_Year}' AND Team='{$Curr_Team}'");
+            $TS_O_Results = db_query("SELECT * FROM `franchise_year_teamstats` Where Category='O' AND Year='{$View_Year}' AND Team='{$Curr_Team}' ORDER BY `Year`");
 
             echo "<br />";
             echo '<table class="table table-hover" style="text-align: center">';

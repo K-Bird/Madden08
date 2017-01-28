@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <?php
-                $passingResult = db_query("SELECT * FROM `franchise_year_indv_passing` Where Team='{$Curr_Team}' AND Year='{$View_Year}'");
+                $passingResult = db_query("SELECT * FROM `franchise_year_indv_passing` Where Team='{$Curr_Team}' AND Year='{$View_Year}' ORDER By `Year`");
 
                 while ($PassingRow = $passingResult->fetch_assoc()) {
                     echo '<tr>',
