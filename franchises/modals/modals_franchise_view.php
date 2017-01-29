@@ -794,7 +794,7 @@ foreach ($Positions as $pos) {
 
     /* Remove Player Modal */
     echo '
-    <form role="form" name="add' . $pos . '" class="removePlayerForm">
+    <form role="form" name="remove' . $pos . '" class="removePlayerForm">
     <div class="modal fade" id="remove' . $pos . 'Modal" tabindex="-1" role="dialog" aria-labelledby="Add ' . $pos . '" aria-hidden="true">
         <div class="modal-dialog" style="width:400px">
             <div class="modal-content">
