@@ -3,7 +3,7 @@
     <tr><td>Round-Pick</td><td>Player</td><td>Position</td><td>Overall</td><td>Age</td></tr>
 
     <?php
-    $offdraftResult = db_query("SELECT * FROM `franchise_year_off_moves` Where Year='{$View_Year}' and Team='{$Curr_Team}' and Type='draft'");
+    $offdraftResult = db_query("SELECT * FROM `franchise_year_off_moves` Where Year='{$View_Year}' and Team='{$Curr_Team}' and Type='draft' ORDER BY `Row` ASC");
 
     while ($offdraftRow = $offdraftResult->fetch_assoc()) {
         echo '<tr>',

@@ -1,7 +1,7 @@
 <?php
 //**** [ Preseason History ] ****//
 //Team Prestige History
-$GetPrestigeHistory = db_query("Select * From `franchise_year_info` where Field_ID='prestige' AND Franchise='{$Curr_Team}' ORDER BY Year DESC");
+$GetPrestigeHistory = db_query("Select * From `franchise_year_info` where Field_ID='prestige' AND Franchise='{$Curr_Team}' ORDER BY Year ASC");
 ?>
 <div id="prestigeHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -36,7 +36,7 @@ $GetPrestigeHistory = db_query("Select * From `franchise_year_info` where Field_
 
 <?php
 //Team Rival History
-$GetRivalHistory = db_query("Select * From `franchise_year_info` where Field_ID='rivals' AND Franchise='{$Curr_Team}' ORDER BY Year DESC");
+$GetRivalHistory = db_query("Select * From `franchise_year_info` where Field_ID='rivals' AND Franchise='{$Curr_Team}' ORDER BY Year ASC");
 ?>
 <div id="rivalsHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -54,7 +54,7 @@ $GetRivalHistory = db_query("Select * From `franchise_year_info` where Field_ID=
 
 <?php
 //Team Icons History
-$GetIconsHistory = db_query("Select * From `franchise_year_info` where Field_ID='icons' AND Franchise='{$Curr_Team}' ORDER BY Year DESC");
+$GetIconsHistory = db_query("Select * From `franchise_year_info` where Field_ID='icons' AND Franchise='{$Curr_Team}' ORDER BY Year ASC");
 ?>
 <div id="iconsHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -72,7 +72,7 @@ $GetIconsHistory = db_query("Select * From `franchise_year_info` where Field_ID=
 
 <?php
 //Team salaryCap History
-$GetsalaryCapHistory = db_query("Select * From `franchise_year_info` where Field_ID='cap' AND Franchise='{$Curr_Team}' ORDER BY Year DESC");
+$GetsalaryCapHistory = db_query("Select * From `franchise_year_info` where Field_ID='cap' AND Franchise='{$Curr_Team}' ORDER BY Year ASC");
 ?>
 <div id="capHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -107,7 +107,7 @@ $GetsalaryCapHistory = db_query("Select * From `franchise_year_info` where Field
 
 <?php
 //Team teamSalary History
-$GetteamSalaryHistory = db_query("Select * From `franchise_year_info` where Field_ID='salary' AND Franchise='{$Curr_Team}' ORDER BY Year DESC");
+$GetteamSalaryHistory = db_query("Select * From `franchise_year_info` where Field_ID='salary' AND Franchise='{$Curr_Team}' ORDER BY Year ASC");
 ?>
 <div id="salaryHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -142,7 +142,7 @@ $GetteamSalaryHistory = db_query("Select * From `franchise_year_info` where Fiel
 
 <?php
 //Team capRoom History
-$GetcapRoomHistory = db_query("Select * From `franchise_year_info` where Field_ID='room' AND Franchise='{$Curr_Team}' ORDER BY Year DESC");
+$GetcapRoomHistory = db_query("Select * From `franchise_year_info` where Field_ID='room' AND Franchise='{$Curr_Team}' ORDER BY Year ASC");
 ?>
 <div id="roomHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -177,7 +177,7 @@ $GetcapRoomHistory = db_query("Select * From `franchise_year_info` where Field_I
 
 <?php
 //Team capPenalties History
-$GetcapPenaltiesHistory = db_query("Select * From `franchise_year_info` where Field_ID='pen' AND Franchise='{$Curr_Team}' ORDER BY Year DESC");
+$GetcapPenaltiesHistory = db_query("Select * From `franchise_year_info` where Field_ID='pen' AND Franchise='{$Curr_Team}' ORDER BY Year ASC");
 ?>
 <div id="penHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -213,7 +213,7 @@ $GetcapPenaltiesHistory = db_query("Select * From `franchise_year_info` where Fi
 <!-- Coaching Staff History -->
 <?php
 //Head Coach History
-$GetHCHistory = db_query("Select * From `franchise_year_pre_coaches` where Position='HC' AND Team='{$Curr_Team}' ORDER BY Year DESC");
+$GetHCHistory = db_query("Select * From `franchise_year_pre_coaches` where Position='HC' AND Team='{$Curr_Team}' ORDER BY Year ASC");
 ?>
 <div id="HCHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -230,7 +230,7 @@ $GetHCHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
 
 <?php
 //Offensive Coordinator History
-$GetOCHistory = db_query("Select * From `franchise_year_pre_coaches` where Position='OC' AND Team='{$Curr_Team}' ORDER BY Year DESC");
+$GetOCHistory = db_query("Select * From `franchise_year_pre_coaches` where Position='OC' AND Team='{$Curr_Team}' ORDER BY Year ASC");
 ?>
 <div id="OCHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -247,7 +247,7 @@ $GetOCHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
 
 <?php
 //Defensive Coordinator History
-$GetDCHistory = db_query("Select * From `franchise_year_pre_coaches` where Position='DC' AND Team='{$Curr_Team}' ORDER BY Year DESC");
+$GetDCHistory = db_query("Select * From `franchise_year_pre_coaches` where Position='DC' AND Team='{$Curr_Team}' ORDER BY Year ASC");
 ?>
 <div id="DCHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -264,7 +264,7 @@ $GetDCHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
 
 <?php
 //Special Teams Coach History
-$GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Position='ST' AND Team='{$Curr_Team}' ORDER BY Year DESC");
+$GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Position='ST' AND Team='{$Curr_Team}' ORDER BY Year ASC");
 ?>
 <div id="STHistoryTable" style="display: none">
     <table class="table table-condensed" style="font-size: smaller">
@@ -727,7 +727,7 @@ foreach ($Positions as $pos) {
 
     /* Training Camp Details Section */
     echo '<br><br><h3>Training Camp</h3>';
-    $Get_TC_History = db_query("SELECT * FROM `franchise_year_trainingcamp` WHERE Player_Row='{$position_Historical_ID}' ORDER BY Year DESC");
+    $Get_TC_History = db_query("SELECT * FROM `franchise_year_trainingcamp` WHERE Player_Row='{$position_Historical_ID}' ORDER BY Year ASC");
     echo '<form role="form" name="' . $pos . '_TC" class="playerTCForm">';
 
     echo '<table class="table table-condensed">';
@@ -934,7 +934,7 @@ $Get_Stat_Identifiers = db_query("SELECT * FROM `identify_teamstat`");
 while ($ID_Loop = $Get_Stat_Identifiers->fetch_assoc()) {
 
     $ID = $ID_Loop['Identifier'];
-    $GetTeamStats = db_query("SELECT * FROM `franchise_year_teamstats` Where Team='{$Curr_Team}' and Identifier='{$ID}'");
+    $GetTeamStats = db_query("SELECT * FROM `franchise_year_teamstats` Where Team='{$Curr_Team}' and Identifier='{$ID}' ORDER BY Year ASC");
 
     echo '<div id="', $ID_Loop['Identifier'], 'HistoryTable" style="display: none">
             <table class="table text-nowrap" style="font-size: smaller; text-align: center">';
@@ -1882,7 +1882,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             if ($motoChg < 0) {
                 echo '<td>', $historyRow['Moto'], ' <span style="color:red">(', $motoChg, ')</span></td>';
             } else if ($motoChg === 0) {
-                echo '<td>', $historyRow['Moto'], ' (', $motoChg, ')</td>';
+                echo '<td>', $historyRow['Moto'], ' <span style="color:gold">(', $motoChg, ')</span></td>';
             } else if ($motoChg > 0) {
                 echo '<td>', $historyRow['Moto'], ' <span style="color:green">(+', $motoChg, ')</span></td>';
             }
@@ -1891,7 +1891,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             if ($ethChg < 0) {
                 echo '<td>', $historyRow['Eth'], ' <span style="color:red">(', $ethChg, ')</span></td>';
             } else if ($ethChg === 0) {
-                echo '<td>', $historyRow['Eth'], ' (', $ethChg, ')</td>';
+                echo '<td>', $historyRow['Eth'], ' <span style="color:gold">(', $ethChg, ')</span></td>';
             } else if ($ethChg > 0) {
                 echo '<td>', $historyRow['Eth'], ' <span style="color:green">(+', $ethChg, ')</span></td>';
             }
@@ -1900,7 +1900,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             if ($chemChg < 0) {
                 echo '<td>', $historyRow['Chem'], ' <span style="color:red">(', $chemChg, ')</span></td>';
             } else if ($chemChg === 0) {
-                echo '<td>', $historyRow['Chem'], ' (', $chemChg, ')</td>';
+                echo '<td>', $historyRow['Chem'], ' <span style="color:gold">(', $chemChg, ')</span></td>';
             } else if ($chemChg > 0) {
                 echo '<td>', $historyRow['Chem'], ' <span style="color:green">(+', $chemChg, ')</span></td>';
             }
@@ -1909,7 +1909,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             if ($knoChg < 0) {
                 echo '<td>', $historyRow['Kno'], ' <span style="color:red">(', $knoChg, ')</span></td>';
             } else if ($knoChg === 0) {
-                echo '<td>', $historyRow['Kno'], ' (', $knoChg, ')</td>';
+                echo '<td>', $historyRow['Kno'], ' <span style="color:gold">(', $knoChg, ')</span></td>';
             } else if ($knoChg > 0) {
                 echo '<td>', $historyRow['Kno'], ' <span style="color:green">(+', $knoChg, ')</span></td>';
             }
@@ -1918,7 +1918,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             if ($offChg < 0) {
                 echo '<td>', $historyRow['Off'], ' <span style="color:red">(', $offChg, ')</span></td>';
             } else if ($offChg === 0) {
-                echo '<td>', $historyRow['Off'], ' (', $offChg, ')</td>';
+                echo '<td>', $historyRow['Off'], ' <span style="color:gold">(', $offChg, ')</span></td>';
             } else if ($offChg > 0) {
                 echo '<td>', $historyRow['Off'], ' <span style="color:green">(+', $offChg, ')</span></td>';
             }
@@ -1927,7 +1927,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             if ($defChg < 0) {
                 echo '<td>', $historyRow['Def'], ' <span style="color:red">(', $defChg, ')</span></td>';
             } else if ($defChg === 0) {
-                echo '<td>', $historyRow['Def'], ' (', $defChg, ')</td>';
+                echo '<td>', $historyRow['Def'], ' <span style="color:gold">(', $defChg, ')</span></td>';
             } else if ($defChg > 0) {
                 echo '<td>', $historyRow['Def'], ' <span style="color:green">(+', $defChg, ')</span></td>';
             }
@@ -1936,7 +1936,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             if ($olChg < 0) {
                 echo '<td>', $historyRow['OL'], ' <span style="color:red">(', $olChg, ')</span></td>';
             } else if ($olChg === 0) {
-                echo '<td>', $historyRow['OL'], ' (', $olChg, ')</td>';
+                echo '<td>', $historyRow['OL'], ' <span style="color:gold">(', $olChg, ')</span></td>';
             } else if ($olChg > 0) {
                 echo '<td>', $historyRow['OL'], ' <span style="color:green">(+', $olChg, ')</span></td>';
             }
@@ -1945,7 +1945,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             if ($qbChg < 0) {
                 echo '<td>', $historyRow['QB'], ' <span style="color:red">(', $qbChg, ')</span></td>';
             } else if ($qbChg === 0) {
-                echo '<td>', $historyRow['QB'], ' (', $qbChg, ')</td>';
+                echo '<td>', $historyRow['QB'], ' <span style="color:gold">(', $qbChg, ')</span></td>';
             } else if ($qbChg > 0) {
                 echo '<td>', $historyRow['QB'], ' <span style="color:green">(+', $qbChg, ')</span></td>';
             }
@@ -1954,7 +1954,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             if ($rbChg < 0) {
                 echo '<td>', $historyRow['RB'], ' <span style="color:red">(', $rbChg, ')</span></td>';
             } else if ($rbChg === 0) {
-                echo '<td>', $historyRow['RB'], ' (', $rbChg, ')</td>';
+                echo '<td>', $historyRow['RB'], ' <span style="color:gold">(', $rbChg, ')</span></td>';
             } else if ($rbChg > 0) {
                 echo '<td>', $historyRow['RB'], ' <span style="color:green">(+', $rbChg, ')</span></td>';
             }
@@ -1963,7 +1963,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             if ($wrChg < 0) {
                 echo '<td>', $historyRow['WR'], ' <span style="color:red">(', $wrChg, ')</span></td>';
             } else if ($wrChg === 0) {
-                echo '<td>', $historyRow['WR'], ' (', $wrChg, ')</td>';
+                echo '<td>', $historyRow['WR'], ' <span style="color:gold">(', $wrChg, ')</span></td>';
             } else if ($wrChg > 0) {
                 echo '<td>', $historyRow['WR'], ' <span style="color:green">(+', $wrChg, ')</span></td>';
             }
@@ -1972,7 +1972,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             if ($dlChg < 0) {
                 echo '<td>', $historyRow['DL'], ' <span style="color:red">(', $dlChg, ')</span></td>';
             } else if ($dlChg === 0) {
-                echo '<td>', $historyRow['DL'], ' (', $dlChg, ')</td>';
+                echo '<td>', $historyRow['DL'], ' <span style="color:gold">(', $dlChg, ')</span></td>';
             } else if ($dlChg > 0) {
                 echo '<td>', $historyRow['DL'], ' <span style="color:green">(+', $dlChg, ')</span></td>';
             }
@@ -1981,7 +1981,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             if ($lbChg < 0) {
                 echo '<td>', $historyRow['LB'], ' <span style="color:red">(', $lbChg, ')</span></td>';
             } else if ($lbChg === 0) {
-                echo '<td>', $historyRow['LB'], ' (', $lbChg, ')</td>';
+                echo '<td>', $historyRow['LB'], ' <span style="color:gold">(', $lbChg, ')</span></td>';
             } else if ($lbChg > 0) {
                 echo '<td>', $historyRow['LB'], ' <span style="color:green">(+', $lbChg, ')</span></td>';
             }
@@ -1990,7 +1990,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             if ($dbChg < 0) {
                 echo '<td>', $historyRow['DB'], ' <span style="color:red">(', $dbChg, ')</span></td>';
             } else if ($dbChg === 0) {
-                echo '<td>', $historyRow['DB'], ' (', $dbChg, ')</td>';
+                echo '<td>', $historyRow['DB'], ' <span style="color:gold">(', $dbChg, ')</span></td>';
             } else if ($dbChg > 0) {
                 echo '<td>', $historyRow['DB'], ' <span style="color:green">(+', $dbChg, ')</span></td>';
             }
@@ -1999,7 +1999,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             if ($sChg < 0) {
                 echo '<td>', $historyRow['S'], ' <span style="color:red">(', $sChg, ')</span></td>';
             } else if ($sChg === 0) {
-                echo '<td>', $historyRow['S'], ' (', $sChg, ')</td>';
+                echo '<td>', $historyRow['S'], ' <span style="color:gold">(', $sChg, ')</span></td>';
             } else if ($sChg > 0) {
                 echo '<td>', $historyRow['S'], ' <span style="color:green">(+', $sChg, ')</span></td>';
             }
@@ -2008,7 +2008,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             if ($kChg < 0) {
                 echo '<td>', $historyRow['K'], ' <span style="color:red">(', $kChg, ')</span></td>';
             } else if ($kChg === 0) {
-                echo '<td>', $historyRow['K'], ' (', $kChg, ')</td>';
+                echo '<td>', $historyRow['K'], ' <span style="color:gold">(', $kChg, ')</span></td>';
             } else if ($kChg > 0) {
                 echo '<td>', $historyRow['K'], ' <span style="color:green">(+', $kChg, ')</span></td>';
             }
@@ -2017,7 +2017,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
             if ($pChg < 0) {
                 echo '<td>', $historyRow['P'], ' <span style="color:red">(', $pChg, ')</span></td>';
             } else if ($pChg === 0) {
-                echo '<td>', $historyRow['P'], ' (', $pChg, ')</td>';
+                echo '<td>', $historyRow['P'], ' <span style="color:gold">(', $pChg, ')</span></td>';
             } else if ($pChg > 0) {
                 echo '<td>', $historyRow['P'], ' <span style="color:green">(+', $pChg, ')</span></td>';
             }
