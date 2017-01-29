@@ -685,10 +685,12 @@ foreach ($Positions as $pos) {
     echo '</tr>';
     $i = 0;
     $previousValues = array();
-    $historical_result = db_query("SELECT * FROM `franchise_year_roster` WHERE Historical_ID='{$position_Historical_ID}' ORDER BY Year ASC");
-    $minYear_result = db_query("SELECT Min(Year) as MinYear FROM `franchise_year_roster` WHERE Historical_ID='{$position_Historical_ID}'");
-    $minYear_Row = $minYear_result->fetch_assoc();
-    $minYear = $minYear_Row['MinYear'];
+    
+    $attrDisplay_result = db_query("SELECT * FROM `franchise_info` WHERE Franchise='{$Curr_Team}'");
+    $attrDisplay_Row = $attrDisplay_result->fetch_assoc();
+    $attrDisplay = $attrDisplay_Row['AttrDisplay'];
+    
+    $historical_result = db_query("SELECT * FROM `franchise_year_roster` WHERE (Historical_ID='{$position_Historical_ID}') AND (`Year` >= {$attrDisplay}) ORDER BY Year ASC");
     while ($histAttr_Row = $historical_result->fetch_assoc()) {
         echo '<tr>';
         echo '<td>Year ', $histAttr_Row['Year'], ': </td>';
@@ -698,7 +700,7 @@ foreach ($Positions as $pos) {
             } else {
                 echo '<td><input class="form-control attributeInput" type="text" name="player', $Attr, '[]" placeholder="', $histAttr_Row[$Attr], '" style="width: 50px">';
             }
-            if ($histAttr_Row['Year'] === $minYear) {
+            if ($histAttr_Row['Year'] === $attrDisplay) {
                 echo '';
             } else {
                 if ($Attr === 'Age' || $Attr === 'Position') {

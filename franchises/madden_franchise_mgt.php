@@ -12,6 +12,7 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php"
         <script src="../libs/js/bootstrap.js"></script>
         <script src="../libs/js/jstree.js"></script>
         <script src="../libs/js/common_functions.js"></script>
+        <script src="../libs/js/fran_mgt_functions.js"></script>
     </head>
     <body>
         <div id="wrapper">
@@ -125,7 +126,7 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php"
                         <div class="col-lg-12">
                             <table class="table table-hover" style="text-align: center">
                                 <?php
-                                echo '<td colspan="2" style="text-align: left">Franchise</td><td>Active</td><td>Current Year</td>';
+                                echo '<td colspan="3" style="text-align: center">Franchise</td><td>Active</td><td>Current Year</td><td style="text-align: Left">Attributes Display Year</td>';
 
                                 while ($row = $AllFran->fetch_assoc()) {
                                     if ($row['Active'] === 'Y') {
@@ -134,8 +135,13 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php"
                                     if ($row['Active'] === 'N') {
                                         echo '<tr  class="active">';
                                     }
-                                    echo '<td><img src=../libs/images/franchises/', $row['Franchise'],'_Logo.png height=25 width=40></td><td>', $row['Franchise'], ':</td><td style="text-align: left">', $row['FullName'], '</td><td>', $row['Active'], '</td><td>', $row['CurrentYear'], '</td>';
-
+                                    echo '<td><img src=../libs/images/franchises/', $row['Franchise'],'_Logo.png height=25 width=40></td>'
+                                            . '<td>', $row['Franchise'], ':</td>'
+                                            . '<td style="text-align: left">', $row['FullName'], '</td>'
+                                            . '<td>', $row['Active'], '</td>'
+                                            . '<td>', $row['CurrentYear'], '</td>'
+                                            . '<td><input class="form-control attrDisplayInput" type="text" data-franchise=',$row['Franchise'],' name="',$row['Franchise'],'"[]" placeholder="', $row['AttrDisplay'], '" style="width: 50px"></td>';
+                                            
                                     echo '<tr>';
                                 }
                                 ?>
