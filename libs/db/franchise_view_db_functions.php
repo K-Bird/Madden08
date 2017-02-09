@@ -24,7 +24,7 @@ function return_depth_result_position($Position, $View_Year, $Curr_Team) {
     $Position_Result = db_query("SELECT * FROM `franchise_year_roster` WHERE Year='{$View_Year}' and Team='{$Curr_Team}' and Position='{$Position}'");
     $Position_Row = $Position_Result->fetch_assoc();
     $weapon = '';
-    if ($Position_Row['Weapon'] != "") {
+    if ($Position_Row['Weapon'] != "None") {
         $weapon = '&nbsp;<img src=../libs/images/weapons/'.$Position_Row['Weapon'].'.gif height=20 width=20>';
     }
     return '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#detail' . $Position_Row['Position'] . 'Modal" title="' . $Position_Row['Name'] . '">'. $Position . ': ' . $Position_Row['Overall'].$weapon.'</button>';
@@ -59,7 +59,7 @@ function return_depth_result_tree($Positions, $View_Year, $Curr_Team) {
                 if ($Pos_Row['OSU'] === "Y") {
                     echo '&nbsp;<img src=../libs/images/OSU.png height=20 width=20>';
                 }
-                if ($Pos_Row['Weapon'] != "") {
+                if ($Pos_Row['Weapon'] != "None") {
                     echo '&nbsp;<img src=../libs/images/weapons/', $Pos_Row['Weapon'], '.gif height=20 width=20>';
                 }
             }

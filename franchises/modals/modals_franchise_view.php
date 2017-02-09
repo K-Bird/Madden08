@@ -440,31 +440,31 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
                                         <input type="text" name="changedAge[]" placeholder="', $update_Depth_Row['Age'], '" size="2"></td>
                                     <td>
                                         <select name="changedOnTeam[]" class="btn btn-xs btn-default dropdown-toggle">';
-                                if ($update_Depth_Row['OnTeam'] === 'On Team') {
+                                if ($update_Depth_Row['Acquired'] === 'On Team') {
                                     echo '<option selected>On Team</a></option>';
                                 } else {
                                     echo '<option>On Team</option>';
                                 }
 
-                                if ($update_Depth_Row['OnTeam'] === 'Free Agent') {
+                                if ($update_Depth_Row['Acquired'] === 'Free Agent') {
                                     echo '<option selected>Free Agent</option>';
                                 } else {
                                     echo '<option>Free Agent</option>';
                                 }
 
-                                if ($update_Depth_Row['OnTeam'] === 'Trade') {
+                                if ($update_Depth_Row['Acquired'] === 'Trade') {
                                     echo '<option selected>Trade</option>';
                                 } else {
                                     echo '<option>Trade</option>';
                                 }
 
-                                if ($update_Depth_Row['OnTeam'] === 'Draft') {
+                                if ($update_Depth_Row['Acquired'] === 'Draft') {
                                     echo '<option selected>Draft</option>';
                                 } else {
                                     echo '<option>Draft</option>';
                                 }
 
-                                if ($update_Depth_Row['OnTeam'] === 'Created') {
+                                if ($update_Depth_Row['Acquired'] === 'Created') {
                                     echo '<option selected>Created</option>';
                                 } else {
                                     echo '<option>Created</option>';
@@ -484,13 +484,13 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
                                 echo '</td>
                                         <td>
                                             <select name="changedWeapon[]" class="btn btn-xs btn-default dropdown-toggle">';
-                                if ($update_Depth_Row['Weapon'] === '') {
-                                    echo '<option selected></option>';
+                                if ($update_Depth_Row['Weapon'] === 'None') {
+                                    echo '<option selected>None</option>';
                                 } else {
-                                    echo '<option></option>';
+                                    echo '<option>None</option>';
                                 }
                                 if ($update_Depth_Row['Weapon'] === 'CannonArm') {
-                                    echo '<option selected>Cannon Arm</option>';
+                                    echo '<option selected>CannonArm</option>';
                                 } else {
                                     echo '<option value="CannonArm">Cannon Arm</option>';
                                 }

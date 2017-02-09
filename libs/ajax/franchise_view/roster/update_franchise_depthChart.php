@@ -55,7 +55,7 @@ foreach ($editPosition as $index => $editPos) {
             $updateVetRookie = db_query("Update `franchise_year_roster` SET Rookie='' WHERE ROW_ID='{$editPos}'");
         }
         if ($changedWeapon[$index] === '') {
-            $updateWeapon = db_query("Update `franchise_year_roster` SET Weapon='' WHERE ROW_ID='{$editPos}'");
+
         } else {
             $updateWeapon = db_query("Update `franchise_year_roster` SET Weapon='{$changedWeapon[$index]}' WHERE ROW_ID='{$editPos}'");
         }
