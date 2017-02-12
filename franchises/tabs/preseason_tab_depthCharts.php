@@ -522,4 +522,5 @@ if ($Depth_View === 'Tree') {
     </tr>
 </table>
 <br>
-<a class="btn btn-default franViewEdit" style="display: none" data-toggle="modal" data-target="#depthModal">Edit Depth Chart</a>
+<a class="btn btn-default franViewEdit" style="display: none" data-toggle="modal" data-target="#editDepthModal">Edit Depth Chart</a>
+<a class="btn btn-default franViewEdit" style="display: none" data-toggle="modal" data-target="#removeDepthModal">Remove From Depth Chart</a>

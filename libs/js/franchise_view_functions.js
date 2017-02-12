@@ -449,18 +449,18 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-    //Process Depth Chart Player Remove
-    $(".removePlayerForm").submit(function (e)
+    //On Depth Chart Remove Form Submit Serialize the Changes and Submit to DB Processing
+    $(".removeDepthForm").submit(function (e)
     {
-        $removePlayerData = $(this).serialize();
+        $removeFormData = $('.removeDepthForm').serialize();
         $.ajax(
                 {
                     url: "../libs/ajax/franchise_view/roster/update_franchise_depth_remove.php",
                     type: "POST",
-                    data: $removePlayerData,
+                    data: $removeFormData,
                     success: function (data, textStatus, jqXHR)
                     {
-                        location.reload();
+                        location.reload;
                     },
                     error: function (jqXHR, textStatus, errorThrown)
                     {
