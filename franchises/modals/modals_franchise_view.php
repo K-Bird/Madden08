@@ -734,6 +734,11 @@ foreach ($Positions as $pos) {
     $attrDisplay = $attrDisplay_Row['AttrDisplay'];
     
     $historical_result = db_query("SELECT * FROM `franchise_year_roster` WHERE (Historical_ID='{$position_Historical_ID}') AND (`Year` >= {$attrDisplay}) ORDER BY Year ASC");
+    
+    $lowestYear_result = db_query("SELECT * FROM `franchise_year_roster` WHERE (Historical_ID='{$position_Historical_ID}') AND (`Year` >= {$attrDisplay}) ORDER BY Year ASC LIMIT 1");
+    $lowestYear_Row = $lowestYear_result->fetch_assoc();
+    $lowestYear = $lowestYear_Row['Year'];
+    
     while ($histAttr_Row = $historical_result->fetch_assoc()) {
         echo '<tr>';
         echo '<td>Year ', $histAttr_Row['Year'], ': </td>';
@@ -743,7 +748,7 @@ foreach ($Positions as $pos) {
             } else {
                 echo '<td><input class="form-control attributeInput" type="text" name="player', $Attr, '[]" placeholder="', $histAttr_Row[$Attr], '" style="width: 50px">';
             }
-            if ($histAttr_Row['Year'] === $attrDisplay) {
+            if ($histAttr_Row['Year'] === $attrDisplay || $histAttr_Row['Year'] === $lowestYear) {
                 echo '';
             } else {
                 if ($Attr === 'Age' || $Attr === 'Position') {
