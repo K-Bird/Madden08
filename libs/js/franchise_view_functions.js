@@ -491,6 +491,26 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
+      //Process Depth Chart Player Add - KR/PR
+    $(".addReturnerForm").submit(function (e)
+    {
+        $addPlayerData = $(this).serialize();
+        $.ajax(
+                {
+                    url: "../libs/ajax/franchise_view/roster/update_franchise_depth_add_ret.php",
+                    type: "POST",
+                    data: $addPlayerData,
+                    success: function (data, textStatus, jqXHR)
+                    {
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        alert("Form Did Not Process");
+                    }
+                });
+        e.preventDefault();
+    });
 
     //On Training Camp Remove Drill Button Click, Remove Row From DB
     $('.removeDrill').click(function (e) {
