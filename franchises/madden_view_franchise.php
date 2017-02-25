@@ -14,32 +14,14 @@ array_push($FranchiseList, 'ARI', 'ATL', 'BAL', 'BUF', 'CAR', 'CHI', 'CIN', 'CLE
         <link href="../libs/css/bootstrap.css" rel="stylesheet" type="text/css">
         <link href="../libs/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
         <link href="../libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">       
-        <link href="../libs/css/jstree.css" rel="stylesheet" type="text/css">  
+        <link href="../libs/css/jstree.css" rel="stylesheet" type="text/css"> 
+        <link href="../libs/css/viewFranchise.css" rel="stylesheet" type="text/css"> 
         <script src="../libs/js/jquery.js"></script>
         <script src="../libs/js/bootstrap.js"></script>
         <script src="../libs/js/jstree.js"></script>
         <script src="../libs/js/inputSpinner.js"></script>
         <script src="../libs/js/common_functions.js"></script>
         <script src="../libs/js/franchise_view_functions.js"></script>
-        <style>
-            .form-control {
-                display: inline;
-            }
-            .borderless tbody tr td, .borderless tbody tr th, .borderless thead tr th {
-                border: none;
-            }
-            .popover {
-                max-width: 1000px;
-                width: auto;
-            }
-            .modal-dialog {
-                max-width: 1400px;
-                width: auto;
-            }
-            .modal {
-                overflow-y: scroll !important;
-            }
-        </style>
     </head>
     <body>
         <div id="wrapper">
@@ -108,7 +90,7 @@ array_push($FranchiseList, 'ARI', 'ATL', 'BAL', 'BUF', 'CAR', 'CHI', 'CIN', 'CLE
                                                 </ul>
                                                 <div class="tab-content">
                                                     <div role="tabpanel" class="tab-pane" id="RegularSeason_Results">
-                                                         <?php include ('tabs/regularseason_tab_results.php'); ?>
+                                                        <?php include ('tabs/regularseason_tab_results.php'); ?>
                                                     </div>
                                                     <div role="tabpanel" class="tab-pane" id="RegularSeason_TeamStats">
                                                         <?php include ('tabs/regularseason_tab_teamstats.php'); ?>
@@ -136,12 +118,25 @@ array_push($FranchiseList, 'ARI', 'ATL', 'BAL', 'BUF', 'CAR', 'CHI', 'CIN', 'CLE
                                     <div id="Fran_Year_Postseason" class="panel-collapse collapse" role="tabpanel">
                                         <div class="panel-body">
                                             <div>
+                                                <?php 
+                                                $offRetiredCount = db_query("SELECT * FROM `franchise_year_off_moves` Where Year='{$View_Year}' and Team='{$Curr_Team}' and `Type`='retired'");    
+                                                $retired = $offRetiredCount->num_rows;
+                                                
+                                                $offprefaCount = db_query("SELECT * FROM `franchise_year_off_moves` Where Year='{$View_Year}' and Team='{$Curr_Team}' and Type='prefa'");
+                                                $preFA = $offprefaCount->num_rows;
+                                                
+                                                $offdraftCount = db_query("SELECT * FROM `franchise_year_off_moves` Where Year='{$View_Year}' and Team='{$Curr_Team}' and Type='draft' ORDER BY `Row` ASC");
+                                                $draft = $offdraftCount->num_rows;
+                                                
+                                                $offpostfaCount = db_query("SELECT * FROM `franchise_year_off_moves` Where Year='{$View_Year}' and Team='{$Curr_Team}' and Type='postfa'");
+                                                $postFA = $offpostfaCount->num_rows;
+                                                ?>
                                                 <ul class="nav nav-pills" role="tablist">
                                                     <li id="pill_Offseason_Staffing" role="presentation"><a data-nav="Offseason_Staffing" class="viewPill" href="#Offseason_Staffing" role="tab" data-toggle="tab">Staffing</a></li>
-                                                    <li id="pill_Offseason_Retired" role="presentation"><a data-nav="Offseason_Retired" class="viewPill" href="#Offseason_Retired" role="tab" data-toggle="tab">Retired Players</a></li>
-                                                    <li id="pill_Offseason_RestrictedFA" role="presentation"><a data-nav="Offseason_RestrictedFA" class="viewPill" href="#Offseason_PreFA" role="tab" data-toggle="tab">Pre Draft Free Agents</a></li>
-                                                    <li id="pill_Offseason_Draft" role="presentation"><a data-nav="Offseason_Draft" class="viewPill" href="#Offseason_Draft" role="tab" data-toggle="tab">The Draft</a></li>
-                                                    <li id="pill_Offseason_FA" role="presentation"><a data-nav="Offseason_FA" class="viewPill" href="#Offseason_PostFA" role="tab" data-toggle="tab">Post Draft Free Agency</a></li>
+                                                    <li id="pill_Offseason_Retired" role="presentation"><a data-nav="Offseason_Retired" class="viewPill" href="#Offseason_Retired" role="tab" data-toggle="tab">Retired Players <?php echo '<span class="badge">' . $retired . '</span>' ?></a></li>
+                                                    <li id="pill_Offseason_RestrictedFA" role="presentation"><a data-nav="Offseason_RestrictedFA" class="viewPill" href="#Offseason_PreFA" role="tab" data-toggle="tab">Pre Draft Free Agents <?php echo '<span class="badge">' . $preFA . '</span>' ?></a></li>
+                                                    <li id="pill_Offseason_Draft" role="presentation"><a data-nav="Offseason_Draft" class="viewPill" href="#Offseason_Draft" role="tab" data-toggle="tab">The Draft <?php echo '<span class="badge">' . $draft . '</span>' ?></a></li>
+                                                    <li id="pill_Offseason_FA" role="presentation"><a data-nav="Offseason_FA" class="viewPill" href="#Offseason_PostFA" role="tab" data-toggle="tab">Post Draft Free Agency <?php echo '<span class="badge">' . $postFA . '</span>' ?></a></li>
                                                 </ul>
                                                 <div class="tab-content">
                                                     <div role="tabpanel" class="tab-pane" id="Offseason_Staffing">

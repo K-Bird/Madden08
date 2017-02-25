@@ -1,14 +1,34 @@
 <br>
 <div>
-
+    
+    <?php
+    $passCount = db_query("SELECT * FROM `franchise_year_indv_passing` Where Team='{$Curr_Team}' AND Year='{$View_Year}' ORDER By `Year`");
+    $pass = $passCount->num_rows;
+    
+    $rushCount = db_query("SELECT * FROM `franchise_year_indv_rushing` Where Team='{$Curr_Team}' AND Year='{$View_Year}' ORDER By `Year`");
+    $rush = $rushCount->num_rows;
+    
+    $recCount = db_query("SELECT * FROM `franchise_year_indv_rec` Where Team='{$Curr_Team}' AND Year='{$View_Year}' ORDER By `Year`");
+    $rec = $recCount->num_rows;
+    
+    $blockCount = db_query("SELECT * FROM `franchise_year_indv_block` Where Team='{$Curr_Team}' AND Year='{$View_Year}' ORDER By `Year`");
+    $block = $blockCount->num_rows;
+    
+    $defCount = db_query("SELECT * FROM `franchise_year_indv_def` Where Team='{$Curr_Team}' AND Year='{$View_Year}' ORDER By `Year`");
+    $def = $defCount->num_rows;
+    
+    $stCount = db_query("SELECT * FROM `franchise_year_indv_st` Where Team='{$Curr_Team}' AND Year='{$View_Year}' ORDER By `Year`");
+    $st = $stCount->num_rows;
+    ?>
+    
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation"><a href="#indv_Pass" role="tab" data-toggle="tab">Passing</a></li>
-        <li role="presentation"><a href="#indv_Rush" role="tab" data-toggle="tab">Rushing</a></li>
-        <li role="presentation"><a href="#indv_Rec" role="tab" data-toggle="tab">Receiving</a></li>
-        <li role="presentation"><a href="#indv_Block" role="tab" data-toggle="tab">Blocking</a></li>
-        <li role="presentation"><a href="#indv_Def" role="tab" data-toggle="tab">Defense</a></li>
-        <li role="presentation"><a href="#indv_SP" role="tab" data-toggle="tab">Special Teams</a></li>
+        <li role="presentation"><a href="#indv_Pass" role="tab" data-toggle="tab">Passing <?php echo '<span class="badge">' . $pass . '</span>' ?></a></li>
+        <li role="presentation"><a href="#indv_Rush" role="tab" data-toggle="tab">Rushing <?php echo '<span class="badge">' . $rush . '</span>' ?></a></li>
+        <li role="presentation"><a href="#indv_Rec" role="tab" data-toggle="tab">Receiving <?php echo '<span class="badge">' . $rec . '</span>' ?></a></li>
+        <li role="presentation"><a href="#indv_Block" role="tab" data-toggle="tab">Blocking <?php echo '<span class="badge">' . $block . '</span>' ?></a></li>
+        <li role="presentation"><a href="#indv_Def" role="tab" data-toggle="tab">Defense <?php echo '<span class="badge">' . $def . '</span>' ?></a></li>
+        <li role="presentation"><a href="#indv_SP" role="tab" data-toggle="tab">Special Teams <?php echo '<span class="badge">' . $st . '</span>' ?></a></li>
     </ul>
 
     <!-- Tab panes -->

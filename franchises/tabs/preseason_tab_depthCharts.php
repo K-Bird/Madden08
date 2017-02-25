@@ -50,7 +50,7 @@ if ($Depth_View === 'Tree') {
         ?> value="4-3">4-3</option>
     </select>
 </div>
-<br><br><br>
+<br><br><br><br>
 <!-- [ Depth Chart: Tree View ] -->
 <div id="jstree" style="<?php
 if ($Depth_View === 'Position') {

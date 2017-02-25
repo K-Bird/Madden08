@@ -1,10 +1,19 @@
 <br>
 <div>
+    
+    <?php
+    
+    $offAwardCount = db_query("SELECT * FROM `franchise_year_awards` Where Year='{$View_Year}' AND Team='{$Curr_Team}' ORDER BY Player ASC");
+    $award = $offAwardCount->num_rows;
+    
+    $offProBowlCount = db_query("SELECT * FROM `franchise_year_probowl` Where Year='{$View_Year}' and Team='{$Curr_Team}'");
+    $proBowl = $offProBowlCount->num_rows;
+    ?>
 
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Award</a></li>
-        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Pro Bowl</a></li>
+        <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Award <?php echo '<span class="badge">' . $award . '</span>' ?></a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Pro Bowl <?php echo '<span class="badge">' . $proBowl . '</span>' ?></a></li>
     </ul>
 
     <!-- Tab panes -->

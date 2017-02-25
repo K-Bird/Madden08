@@ -27,7 +27,8 @@ function return_depth_result_position($Position, $View_Year, $Curr_Team) {
     if ($Position_Row['Weapon'] != "None") {
         $weapon = '&nbsp;<img src=../libs/images/weapons/'.$Position_Row['Weapon'].'.gif height=20 width=20>';
     }
-    return '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#detail' . $Position_Row['Position'] . 'Modal" title="' . $Position_Row['Name'] . '">'. $Position . ': ' . $Position_Row['Overall'].$weapon.'</button>';
+    return '<span data-toggle="tooltip" data-placement="top" title="'. $Position_Row['Name'] . '">'
+    . '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#detail' . $Position_Row['Position'] . 'Modal" title="' . $Position_Row['Name'] . '">'. $Position . ': ' . $Position_Row['Overall'].$weapon.'</button></span>';
 }
 
 function return_depth_result_tree($Positions, $View_Year, $Curr_Team) {
@@ -40,28 +41,35 @@ function return_depth_result_tree($Positions, $View_Year, $Curr_Team) {
             
         } else {
             $Pos_Row = $Pos_Result->fetch_assoc();
-            echo '<li data-toggle="modal" data-target="#detail' . $Pos_Row['Position'] . 'Modal">' . $Pos_Row['Position'] .
-            ' - Overall: ' . $Pos_Row['Overall'] . ' : ' .
-            $Pos_Row['Name'] . ' - Age: ' .
-            $Pos_Row['Age'];
+            echo '<li data-toggle="modal" data-target="#detail' . $Pos_Row['Position'] . 'Modal">'
+                    
+            . '<div class="treeDepthCell" style="width: 65px"><span class="label label-default">' . $Pos_Row['Position'] . '</span></div>'
+            . '<div class="treeDepthCell" style="width: 100px;"><span class="label label-default">Overall: ' . $Pos_Row['Overall'] . '</span></div>'
+            . '<div class="treeDepthCell" style="width: 150px"><span class="label label-default">' . $Pos_Row['Name'] . '</span></div>'
+            . '<div class="treeDepthCell" style="width: 65px"><span class="label label-default">Age: ' . $Pos_Row['Age']. '</span></div>';
 
             if ($Pos === 'KR' || $Pos === 'PR') {
                 
             } else {
 
-                echo ' - [ ' .
-                $Pos_Row['Acquired'] . ' ] ';
+                echo '<div class="treeDepthCell" style="width: 80px"><span class="label label-default">' . $Pos_Row['Acquired'] . '</span></div>';
+                echo '<div class="treeDepthCell" style="width: 55px"><span class="label label-default">';
                 if ($Pos_Row['Rookie'] === 'R') {
-                    echo ' - Rookie';
+                    echo 'Rookie';
                 } else {
-                    echo ' - Veteran';
+                    echo 'Veteran';
                 }
+                echo '</span></div>';
+                echo '<div class="treeDepthCell" style="width: 45px">';
+                if ($Pos_Row['Weapon'] != "None") {
+                    echo '<img src=../libs/images/weapons/', $Pos_Row['Weapon'], '.gif height=20 width=20>';
+                }
+                echo'</div>';
+                echo '<div class="treeDepthCell" style="width: 45px">';
                 if ($Pos_Row['OSU'] === "Y") {
                     echo '&nbsp;<img src=../libs/images/OSU.png height=20 width=20>';
                 }
-                if ($Pos_Row['Weapon'] != "None") {
-                    echo '&nbsp;<img src=../libs/images/weapons/', $Pos_Row['Weapon'], '.gif height=20 width=20>';
-                }
+                echo '</div>';
             }
             echo '</li>';
         }

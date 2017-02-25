@@ -1,0 +1,25 @@
+.form-control {
+    display: inline;
+}
+.borderless tbody tr td, .borderless tbody tr th, .borderless thead tr th {
+    border: none;
+}
+.popover {
+    max-width: 1000px;
+    width: auto;
+}
+.modal-dialog {
+    max-width: 1400px;
+    width: auto;
+}
+.modal {
+    overflow-y: scroll !important;
+}
+
+.treeDepthCell {
+
+    display: inline-block;
+    padding : 2px;
+    min-height: 17px
+
+}

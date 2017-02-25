@@ -722,7 +722,7 @@ $(document).ready(function () {
             $('.off-age').prop('disabled', false);
         }
     });
-
+    
 });
 
 //**** [ Madden - Franchise Year Functions ] ****//
