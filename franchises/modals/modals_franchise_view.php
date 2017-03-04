@@ -977,7 +977,7 @@ foreach ($Positions as $pos) {
                                                     <option value="HeavyHitter">Heavy Hitter</option>
                                                     <option value="PassBlock">Pocket Protector</option>
                                                     <option value="RunBlock">Run Blocker</option>
-                                                    <option value="Possesion">Possession Receiver</option>
+                                                    <option value="Possession">Possession Receiver</option>
                                                     <option value="RunStopper">Run Stopper</option>
                                                     <option value="Speed">Speed Player</option>
                                                 </select>
