@@ -460,7 +460,7 @@ $(document).ready(function () {
                     data: $removeFormData,
                     success: function (data, textStatus, jqXHR)
                     {
-                        location.reload;
+                        location.reload();
                     },
                     error: function (jqXHR, textStatus, errorThrown)
                     {

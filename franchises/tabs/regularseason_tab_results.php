@@ -141,8 +141,8 @@ if ($RegSimRow['Vs'] === 'N') {
         echo '</div>  
                <span class="franViewDisplay">', $ResultsRow['Result'], '</span>
              </td>',
-        '<td>(', $totalWins, '- ', $totalLosses, ')</td>',
-        '<td><span class="franViewDisplay">(', $divWins, '- ', $divLosses, ')</span></div>';
+        '<td>(', $totalWins, ' - ', $totalLosses, ')</td>',
+        '<td><span class="franViewDisplay">(', $divWins, ' - ', $divLosses, ')</span></div>';
             
         echo '<div class="btn-group franViewEdit" role="group">';
             if ($ResultsRow['Divisional'] === 'Y') {

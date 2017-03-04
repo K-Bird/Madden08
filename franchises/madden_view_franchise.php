@@ -39,7 +39,7 @@ array_push($FranchiseList, 'ARI', 'ATL', 'BAL', 'BUF', 'CAR', 'CHI', 'CIN', 'CLE
                                     <div class="panel-heading" role="tab">
                                         <h4 class="panel-title">
                                             <a data-toggle="collapse" data-parent="#Fran_Year_Accordion" href="#Fran_Year_Preseason" aria-expanded="true" aria-controls="preseasonPanel">
-                                                <img src="../libs/images/franchises/<?= $Curr_Team ?>_Logo.png" height=25 width=40><?php echo " - " . strtoupper($Curr_Team) . " - Year: " . $View_Year . " - Preseason"; ?>
+                                                <img src="../libs/images/franchises/<?= $Curr_Team ?>_Logo.png" height=25 width=40><?php echo " " . strtoupper($Curr_Team) . " - Year: " . $View_Year . " - Preseason"; ?>
                                             </a>
                                         </h4>
                                     </div>
@@ -75,7 +75,7 @@ array_push($FranchiseList, 'ARI', 'ATL', 'BAL', 'BUF', 'CAR', 'CHI', 'CIN', 'CLE
                                     <div class="panel-heading" role="tab">
                                         <h4 class="panel-title">
                                             <a class="collapsed" data-toggle="collapse" data-parent="#Fran_Year_Accordion" href="#Fran_Year_RegularSeason" aria-expanded="false" aria-controls="coachingPanel">
-                                                <img src="../libs/images/franchises/<?= $Curr_Team ?>_Logo.png" height=25 width=40><?php echo " - " . strtoupper($Curr_Team) . " - Year: " . $View_Year . " - Regular Season"; ?>
+                                                <img src="../libs/images/franchises/<?= $Curr_Team ?>_Logo.png" height=25 width=40><?php echo " " . strtoupper($Curr_Team) . " - Year: " . $View_Year . " - Regular Season"; ?>
                                             </a>
                                         </h4>
                                     </div>
@@ -111,7 +111,7 @@ array_push($FranchiseList, 'ARI', 'ATL', 'BAL', 'BUF', 'CAR', 'CHI', 'CIN', 'CLE
                                     <div class="panel-heading" role="tab">
                                         <h4 class="panel-title">
                                             <a class="collapsed" data-toggle="collapse" data-parent="#Fran_Year_Accordion" href="#Fran_Year_Postseason" aria-expanded="false" aria-controls="depthPanel">
-                                                <img src="../libs/images/franchises/<?= $Curr_Team ?>_Logo.png" height=25 width=40><?php echo " - " . strtoupper($Curr_Team) . " - Year: " . $View_Year . " - Postseason"; ?>
+                                                <img src="../libs/images/franchises/<?= $Curr_Team ?>_Logo.png" height=25 width=40><?php echo " " . strtoupper($Curr_Team) . " - Year: " . $View_Year . " - Postseason"; ?>
                                             </a>
                                         </h4>
                                     </div>

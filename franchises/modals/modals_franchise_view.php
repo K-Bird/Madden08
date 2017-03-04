@@ -826,7 +826,7 @@ foreach ($Positions as $pos) {
     echo '<input type="hidden" name="row" value="', $player_Row['Row_ID'], '">
                 <input type="hidden" name="franchise" value="', $Curr_Team, '" />
                 <input type="hidden" name="year" value="', $View_Year, '" />';
-    echo '</form>;
+    echo '</form>
                 </div>
             </div>
         </div>
