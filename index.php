@@ -1,5 +1,5 @@
 <?php
-include ($_SERVER['DOCUMENT_ROOT']."/football05/libs/db/common_db_functions.php");
+include ($_SERVER['DOCUMENT_ROOT']."/madden08/libs/db/common_db_functions.php");
 ?>
 <html>
     <head>
