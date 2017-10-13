@@ -89,7 +89,7 @@ $GetsalaryCapHistory = db_query("Select * From `franchise_year_info` where Field
             if ($i === 0) {
                 echo '-';
             } else {
-                $Value_Change = $salaryCap_Row['Field_Value'] - $prev_salaryCap;
+                $Value_Change = floatval($salaryCap_Row['Field_Value']) - floatval($prev_salaryCap);
                 if ($Value_Change > 0) {
                     echo '<span style="color: green">( +' . $Value_Change . ' ) Million</span>';
                 } else {
@@ -124,7 +124,7 @@ $GetteamSalaryHistory = db_query("Select * From `franchise_year_info` where Fiel
             if ($i === 0) {
                 echo '-';
             } else {
-                $teamSalary_Change = $teamSalary_Row['Field_Value'] - $prev_teamSalary;
+                $teamSalary_Change = floatval($teamSalary_Row['Field_Value']) - floatval($prev_teamSalary);
                 if ($teamSalary_Change > 0) {
                     echo '<span style="color: green">( +' . $teamSalary_Change . ' ) Million</span>';
                 } else {
@@ -159,7 +159,7 @@ $GetcapRoomHistory = db_query("Select * From `franchise_year_info` where Field_I
             if ($i === 0) {
                 echo '-';
             } else {
-                $capRoom_Change = $capRoom_Row['Field_Value'] - $prev_capRoom;
+                $capRoom_Change = floatval($capRoom_Row['Field_Value']) - floatval($prev_capRoom);
                 if ($capRoom_Change > 0) {
                     echo '<span style="color: green">( +' . $capRoom_Change . ' ) Million</span>';
                 } else {
@@ -194,7 +194,7 @@ $GetcapPenaltiesHistory = db_query("Select * From `franchise_year_info` where Fi
             if ($i === 0) {
                 echo '-';
             } else {
-                $capPenalties_Change = $capPenalties_Row['Field_Value'] - $prev_capPenalties;
+                $capPenalties_Change = floatval($capPenalties_Row['Field_Value']) - floatval($prev_capPenalties);
                 if ($capPenalties_Change > 0) {
                     echo '<span style="color: green">( +' . $capPenalties_Change . ' ) Million</span>';
                 } else {
@@ -282,7 +282,7 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
 
 <!-- Update Coaching Staff HC Modal -->
 <div class="modal fade editModal" id="HCModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="width: 50%">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Edit Head Coach for <?php echo strtoupper($Curr_Team) . " - Year: " . $View_Year; ?></h4>
@@ -309,7 +309,7 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
 
 <!-- Update Coaching Staff OC Modal -->
 <div class="modal fade editModal" id="OCModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="width: 50%">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Edit Offensive Coordinator for <?php echo strtoupper($Curr_Team) . " - Year: " . $View_Year; ?></h4>
@@ -336,7 +336,7 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
 
 <!-- Update Coaching Staff DC Modal -->
 <div class="modal fade editModal" id="DCModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="width: 50%">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Edit Defensive Coordinator for <?php echo strtoupper($Curr_Team) . " - Year: " . $View_Year; ?></h4>
@@ -363,7 +363,7 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
 
 <!-- Update Coaching Staff ST Modal -->
 <div class="modal fade editModal" id="STModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="width: 50%">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Edit Special Teams Coordinator for <?php echo strtoupper($Curr_Team) . " - Year: " . $View_Year; ?></h4>

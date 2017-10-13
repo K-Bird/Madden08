@@ -20,9 +20,12 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php"
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1>Madden Achievements</h1>
-                            <br>
-                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Collapse Navigation</a>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <span id="menu-toggle" class="glyphicon glyphicon glyphicon-tasks" style="float: left" aria-hidden="true"></span>
+                                    Achievements
+                                </div>
+                            </div>
                             <br><br><br>
                             <h1>Under Construction</h1>
                         </div>

@@ -1,5 +1,5 @@
 <?php
-include ($_SERVER['DOCUMENT_ROOT']."/madden08/libs/db/common_db_functions.php");
+include ($_SERVER['DOCUMENT_ROOT'] . "/madden08/libs/db/common_db_functions.php");
 ?>
 <html>
     <head>
@@ -20,14 +20,19 @@ include ($_SERVER['DOCUMENT_ROOT']."/madden08/libs/db/common_db_functions.php");
     </head>
     <body>
         <div id="wrapper">
-            <?php $NavLevel='top'; include ('nav/master_nav.php'); ?>
+            <?php $NavLevel = 'top';
+            include ('nav/master_nav.php');
+            ?>
             <div id="page-content-wrapper" style="text-align : center">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1>Home</h1>
-                            <br>
-                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Collapse Navigation</a>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <span id="menu-toggle" class="glyphicon glyphicon glyphicon-tasks" style="float: left" aria-hidden="true"></span>
+                                    Home
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

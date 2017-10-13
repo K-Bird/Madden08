@@ -4,7 +4,7 @@
     $Get_Preseason_Info = db_query("Select * From `franchise_year_info` WHERE Section='preseason' and Year='{$View_Year}' and Franchise='{$Curr_Team}' ORDER BY `Row`");
     while ($Preseason_Info_Row = $Get_Preseason_Info->fetch_assoc()) {
         echo '<tr>';
-        echo '<td>', $Preseason_Info_Row['Field_Display'], '</td>';
+        echo '<td><span class="label label-default">', $Preseason_Info_Row['Field_Display'], '</span></td>';
         /* Display Cell for Each Field */
         echo '<td style="width: 200px">';
         /* Display Team Prestige */

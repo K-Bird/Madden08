@@ -22,12 +22,12 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php"
                 <div class="container-fluid">
                     <div class="row" style="text-align: center">
                         <div class="col-lg-12">
-                            <h1>Franchise Management</h1>
-                        </div>
-                    </div>
-                    <div class="row" style="text-align: center">
-                        <div class="col-lg-12">
-                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Navigation</a>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <span id="menu-toggle" class="glyphicon glyphicon glyphicon-tasks" style="float: left" aria-hidden="true"></span>
+                                    Franchise Management
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <br>

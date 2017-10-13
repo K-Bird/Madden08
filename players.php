@@ -55,9 +55,12 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Collapse Navigation</a>                         
-                            <br>
-                            <h1>Rosters</h1>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <span id="menu-toggle" class="glyphicon glyphicon glyphicon-tasks" style="float: left" aria-hidden="true"></span>
+                                    Base Rosters
+                                </div>
+                            </div>
                             <br>
                             <br>
                             <label>Filter Rosters:</label><br>
