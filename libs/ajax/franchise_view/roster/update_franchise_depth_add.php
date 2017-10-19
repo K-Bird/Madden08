@@ -1,7 +1,7 @@
 <?php
 include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php");
 
-$addName = mysql_real_escape_string($_POST['addName']);
+$addName = addslashes($_POST['addName']);
 $addOverall = $_POST['addOverall'];
 $addAge = $_POST['addAge'];
 $addOnTeam = $_POST['addOnTeam'];

@@ -31,7 +31,7 @@ foreach ($editPosition as $index => $editPos) {
         if ($changedNames[$index] === '') {
             
         } else {
-            $changedNameEscaped = mysql_real_escape_string($changedNames[$index]);
+            $changedNameEscaped = addslashes($changedNames[$index]);
             $updateName = db_query("Update `franchise_year_roster` SET Name='{$changedNameEscaped}' WHERE ROW_ID='{$editPos}'");
         }
         if ($changedOverall[$index] === '') {
