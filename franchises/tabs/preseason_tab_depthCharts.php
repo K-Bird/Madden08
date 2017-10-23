@@ -1,4 +1,8 @@
 <br>
+<a class="btn btn-default franViewEdit" style="display: none" data-toggle="modal" data-target="#editDepthModal">Edit Depth Chart</a>
+<a class="btn btn-default franViewEdit" style="display: none" data-toggle="modal" data-target="#removeDepthModal">Remove From Depth Chart</a>
+<br>
+<br>
 <div class="col-lg-4">
     <label>Depth Chart View: </label>
     <select id="preseason_depthView_input" class="form-control" data-franchise=<?php echo $Curr_Team; ?> data-year=<?php echo $View_Year; ?> name="depthchart_view_list" style="width: 150px">
@@ -521,6 +525,3 @@ if ($Depth_View === 'Tree') {
         <td></td>
     </tr>
 </table>
-<br>
-<a class="btn btn-default franViewEdit" style="display: none" data-toggle="modal" data-target="#editDepthModal">Edit Depth Chart</a>
-<a class="btn btn-default franViewEdit" style="display: none" data-toggle="modal" data-target="#removeDepthModal">Remove From Depth Chart</a>
