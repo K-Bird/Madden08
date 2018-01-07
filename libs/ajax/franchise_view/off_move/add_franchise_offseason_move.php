@@ -3,11 +3,11 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php"
 
 $moveType = $_POST['moveType'];
 $position = $_POST['pos'];
-$playerName = $_POST['freePlayer'];
+$playerName = addslashes($_POST['freePlayer']);
 $retiredPlayerID = $_POST['selectedPlayer'];
 $ovr = $_POST['Ovr'];
 $age = $_POST['Age'];
-$draft = $_POST['Draft'];
+$draft = $_POST['Draft'];  
 $franchise = $_POST['fran'];
 $franYear = $_POST['franYear'];
 
