@@ -10,6 +10,7 @@ $franchiseYear = $_POST['franYear'];
 
 $selectExisting = db_query("SELECT * From `franchise_year_roster` WHERE Row_ID={$existingRow}");
 $existing_Row = $selectExisting->fetch_assoc();
+$existing_Row_Name = addslashes($existing_Row['Name']);
 
 $addNewPlayer = db_query("Insert into `franchise_year_roster` ("
         . "Name, "
@@ -29,7 +30,7 @@ $addNewPlayer = db_query("Insert into `franchise_year_roster` ("
         . "Team, "
         . "Year"
         . ") Values ("
-        . "'{$existing_Row['Name']}',"
+        . "'{$existing_Row_Name}',"
         . "'{$ret_pos}',"
         . "'{$addOverall}',"
         . "'{$existing_Row['Age']}',"
