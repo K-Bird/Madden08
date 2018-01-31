@@ -2172,6 +2172,7 @@ foreach ($Positions as $pos) {
                                         <option value="FS">FS</option>
                                         <option value="SS">SS</option>
                                         <option value="K">K</option>
+                                        <option value="P">P</option>
                                     </select>
                                 </td>
                                 <td>
