@@ -6,14 +6,14 @@ $(document).ready(function () {
     //Remember Last Opened Panel in Franchise View
     //Resets After Panel is Shown so Navigation to Another Franchise has no Panel Remebered Until Called
     /*localStorage.setItem('08_lastPage', localStorage.getItem('08_currentPage'));
-    localStorage.setItem('08_currentPage', window.location.href);
-
-    if (localStorage.getItem('08_currentPage') !== localStorage.getItem('08_lastPage')) {
-        localStorage.setItem('08_lastPanel', null);
-        localStorage.setItem('08_lastPill_nav', null);
-        localStorage.setItem('08_lastPill_div', null);
-        localStorage.setItem('08_lastModal', null);
-    } */
+     localStorage.setItem('08_currentPage', window.location.href);
+     
+     if (localStorage.getItem('08_currentPage') !== localStorage.getItem('08_lastPage')) {
+     localStorage.setItem('08_lastPanel', null);
+     localStorage.setItem('08_lastPill_nav', null);
+     localStorage.setItem('08_lastPill_div', null);
+     localStorage.setItem('08_lastModal', null);
+     } */
 
     $('#Fran_Year_Accordion .panel').on('shown.bs.collapse', function (e) {
         localStorage.setItem('08_lastPanel', $(e.target).attr("id"));
@@ -23,11 +23,11 @@ $(document).ready(function () {
         localStorage.setItem('08_lastPill_nav', $(e.target).data('nav'));
         localStorage.setItem('08_lastPill_div', $(e.target).attr('href'));
     });
-    
+
     $('.rememberModal').on('shown.bs.modal', function (e) {
         localStorage.setItem('08_lastModal', e.target.id);
     });
-    
+
     $('.rememberModal').on('hidden.bs.modal', function (e) {
         localStorage.setItem('08_lastModal', null);
     });
@@ -46,7 +46,7 @@ $(document).ready(function () {
         $("#" + lastModal).modal('show');
     }
 
-    
+
 
     //When a franchise is selected on the view franchise navigation updated the view table control
     $('.nav_view_franchise').click(function (e) {
@@ -491,7 +491,7 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-      //Process Depth Chart Player Add - KR/PR
+    //Process Depth Chart Player Add - KR/PR
     $(".addReturnerForm").submit(function (e)
     {
         $addPlayerData = $(this).serialize();
@@ -532,18 +532,18 @@ $(document).ready(function () {
                 });
         e.preventDefault();
     });
-    
-        //On Input Change for reagular season simulated change the DB value
+
+    //On Input Change for reagular season simulated change the DB value
     $('#regularseason_simulated_input').bind('input', function (e) {
         $sim_value = $('#regularseason_simulated_input').val();
         $franchise = $(this).data("franchise");
         $year = $(this).data("year");
-        
+
         $.ajax(
                 {
                     url: "../libs/ajax/franchise_view/controls/update_franchise_simulated.php",
                     type: "POST",
-                    data: {sim_value: $sim_value, franchise : $franchise, year : $year},
+                    data: {sim_value: $sim_value, franchise: $franchise, year: $year},
                     success: function (data, textStatus, jqXHR)
                     {
                         location.reload();
@@ -565,7 +565,7 @@ $(document).ready(function () {
                 {
                     url: "../libs/ajax/franchise_view/results/update_franchise_results_VsAt.php",
                     type: "POST",
-                    data: { row: $row, value: $new_VsAt_value},
+                    data: {row: $row, value: $new_VsAt_value},
                     success: function (data, textStatus, jqXHR)
                     {
                         location.reload();
@@ -578,7 +578,7 @@ $(document).ready(function () {
         e.preventDefault();
 
     });
-    
+
     //Results on W/L Click Update the DB Value
     $('.wlBtn').click(function (e) {
         $row = $(this).data('row');
@@ -588,7 +588,7 @@ $(document).ready(function () {
                 {
                     url: "../libs/ajax/franchise_view/results/update_franchise_results_WL.php",
                     type: "POST",
-                    data: { row: $row, value: $new_VsAt_value},
+                    data: {row: $row, value: $new_VsAt_value},
                     success: function (data, textStatus, jqXHR)
                     {
                         location.reload();
@@ -601,7 +601,7 @@ $(document).ready(function () {
         e.preventDefault();
 
     });
-    
+
     //Results on Divisional/Non Click Update the DB Value
     $('.divBtn').click(function (e) {
         $row = $(this).data('row');
@@ -611,7 +611,7 @@ $(document).ready(function () {
                 {
                     url: "../libs/ajax/franchise_view/results/update_franchise_results_div.php",
                     type: "POST",
-                    data: { row: $row, value: $new_VsAt_value},
+                    data: {row: $row, value: $new_VsAt_value},
                     success: function (data, textStatus, jqXHR)
                     {
                         location.reload();
@@ -624,8 +624,8 @@ $(document).ready(function () {
         e.preventDefault();
 
     });
-    
-       //Results on Vs Team Click Update the DB Value
+
+    //Results on Vs Team Click Update the DB Value
     $('.vsTeamLi').click(function (e) {
         $row = $(this).data('row');
         $new_team_value = $(this).data('fran');
@@ -634,7 +634,7 @@ $(document).ready(function () {
                 {
                     url: "../libs/ajax/franchise_view/results/update_franchise_results_VsTeam.php",
                     type: "POST",
-                    data: { row: $row, team: $new_team_value},
+                    data: {row: $row, team: $new_team_value},
                     success: function (data, textStatus, jqXHR)
                     {
                         location.reload();
@@ -647,8 +647,8 @@ $(document).ready(function () {
         e.preventDefault();
 
     });
-    
-        //Common function to change enabled fields on add Special Teams row modal
+
+    //Common function to change enabled fields on add Special Teams row modal
     $("#STType").change(function () {
         if ($(this).val() === 'Kicking') {
             $('.kickingCategory').prop('disabled', false);
@@ -722,7 +722,61 @@ $(document).ready(function () {
             $('.off-age').prop('disabled', false);
         }
     });
-    
+
+    //On typing into player import searchbox genterate the tag results as buttons
+    $(".importPlayerSearch").keyup(function () {
+
+        var name = $(this).val();
+        var team = $(this).attr('data-currTeam');
+        var year = $(this).attr('data-viewYear');
+        var pos = $(this).attr('data-pos');
+
+        if (name === '') {
+            $("#" + pos + 'ImportResults').replaceWith('<div id="' + pos + 'ImportResults"></div>');
+        } else {
+
+            $.ajax(
+                    {
+                        url: "../libs/ajax/franchise_view/roster/search_player_import.php",
+                        type: "POST",
+                        data: {name: name, team: team, year: year, pos: pos},
+                        success: function (data, textStatus, jqXHR)
+                        {
+                            $('#' + pos + 'ImportResults').replaceWith(data);
+                        },
+                        error: function (jqXHR, textStatus, errorThrown)
+                        {
+                            alert("Tags Could Not Be Loaded: " + errorThrown);
+                        }
+                    });
+        }
+    });
+
+    //On import player tag button click import player to position
+    $(document).on("click", '.playerImportListItem', function (event) {
+
+        var playerRow = $(this).attr('id');
+        var team = $(this).attr('data-currTeam');
+        var year = $(this).attr('data-viewYear');
+        var pos = $(this).attr('data-pos');
+
+        $.ajax(
+                {
+                    url: "../libs/ajax/franchise_view/roster/import_player.php",
+                    type: "POST",
+                    data: {playerRow: playerRow, team: team, year: year, pos: pos},
+                    success: function (data, textStatus, jqXHR)
+                    {
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        alert("Player Not Imported: " + errorThrown);
+                    }
+                });
+
+    });
+
 });
 
 //**** [ Madden - Franchise Year Functions ] ****//
@@ -762,8 +816,8 @@ function removeIndvStat(e) {
                 url: "../libs/ajax/franchise_view/indvstats/remove_franchise_indv_stat.php",
                 type: "POST",
                 data: {
-                     row : row,
-                     stat : stat
+                    row: row,
+                    stat: stat
                 },
                 success: function (data, textStatus, jqXHR)
                 {
@@ -796,9 +850,9 @@ function updateIndvStat(e) {
                 type: "POST",
                 data: {
                     row: row,
-                    table : table,
-                    field : field,
-                    newVal : newVal
+                    table: table,
+                    field: field,
+                    newVal: newVal
                 },
                 success: function (data, textStatus, jqXHR)
                 {
