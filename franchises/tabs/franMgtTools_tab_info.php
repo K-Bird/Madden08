@@ -1,0 +1,51 @@
+<br><br>
+<?php
+for ($i = 1; $i <= $num_years; $i++) {
+    echo '<table class="table small">';
+    echo '<tr><td>Preseason Info Year ', $i, '</td><td></td></tr>';
+    echo '<tr>';
+    echo '<td>Team Prestige</td>';
+    echo checkInfoExists($fran, $i, 'info', 'Field_ID', 'prestige', 'Field_Value', 'Franchise');
+    echo '</tr>';
+    echo '<tr>';
+    echo '<td>Team Salary Cap</td>';
+    echo checkInfoExists($fran, $i, 'info', 'Field_ID', 'cap', 'Field_Value', 'Franchise');
+    echo '</tr>';
+    echo '<tr>';
+    echo '<td>Team Cap Room</td>';
+    echo checkInfoExists($fran, $i, 'info', 'Field_ID', 'room', 'Field_Value', 'Franchise');
+    echo '</tr>';
+    echo '<tr>';
+    echo '<td>Team Cap Penalties</td>';
+    echo checkInfoExists($fran, $i, 'info', 'Field_ID', 'pen', 'Field_Value', 'Franchise');
+    echo '</tr>';
+    echo '<tr>';
+    echo '<td>Team Salary</td>';
+    echo checkInfoExists($fran, $i, 'info', 'Field_ID', 'pen', 'Field_Value', 'Franchise');
+    echo '</tr>';
+    echo '<tr>';
+    echo '<td>Team Rivals</td>';
+    echo checkInfoExists($fran, $i, 'info', 'Field_ID', 'rivals', 'Field_Value', 'Franchise');
+    echo '</tr>';
+    echo '<tr>';
+    echo '<td>Team NFL Icons</td>';
+    echo checkInfoExists($fran, $i, 'info', 'Field_ID', 'icons', 'Field_Value', 'Franchise');
+    echo '</tr>';
+    echo '<tr>';
+    echo '<td>Head Coach</td>';
+    echo checkInfoExists($fran, $i, 'pre_coaches', 'Position', 'HC', 'Name', 'Team');
+    echo '</tr>';
+    echo '<tr>';
+    echo '<td>Offensive Coordinator</td>';
+    echo checkInfoExists($fran, $i, 'pre_coaches', 'Position', 'OC', 'Name', 'Team');
+    echo '</tr>';
+    echo '<tr>';
+    echo '<td>Defensive Coordinator</td>';
+    echo checkInfoExists($fran, $i, 'pre_coaches', 'Position', 'DC', 'Name', 'Team');
+    echo '</tr>';
+    echo '<tr>';
+    echo '<td>Special Teams Coordinator</td>';
+    echo checkInfoExists($fran, $i, 'pre_coaches', 'Position', 'ST', 'Name', 'Team');
+    echo '</tr>';
+    echo '</table>';
+}

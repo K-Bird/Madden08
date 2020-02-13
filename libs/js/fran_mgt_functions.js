@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-      //On Input Change for Franchise Attribute Display Year Updated the DB
+    //On Input Change for Franchise Attribute Display Year Updated the DB
     $('.attrDisplayInput').bind('input', function () {
         var timer;
         var input = $(this);
@@ -27,4 +27,18 @@ $(document).ready(function () {
         }, 1000);
     });
 
+    $('.franMgtToolsBtn').click(function (e) {
+        var franchise = $(e.target).data("franchise");
+        var form = document.createElement('form');
+        document.body.appendChild(form);
+        form.method = 'post';
+        form.action = 'madden_franchise_mgt_tools.php';
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = "fran";
+        input.value = franchise;
+        form.appendChild(input);
+        form.submit();
+    });
+    
 });
