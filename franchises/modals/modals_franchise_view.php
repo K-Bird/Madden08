@@ -291,7 +291,7 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
                 <form role="form" class="yearForm" name="HCHistory" action="../libs/ajax/franchise_view/pre_coach/update_franchise_coachingstaff.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New Head Coach:</label> 
-                        <input class="form-control" type="text" id="Value" name="NewValue" size="15">
+                        <input class="form-control" type="text" name="NewValue" size="15">
                         <br><br>
                         <input type="hidden" name="fran" value=<?php echo $Curr_Team; ?> />
                         <input type="hidden" name="year" value=<?php echo $View_Year; ?> />
@@ -318,7 +318,7 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
                 <form role="form" class="yearForm" name="OCHistory" action="../libs/ajax/franchise_view/pre_coach/update_franchise_coachingstaff.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New Offensive Coordinator:</label> 
-                        <input class="form-control" type="text" id="Value" name="NewValue" size="15">
+                        <input class="form-control" type="text" name="NewValue" size="15">
                         <br><br>
                         <input type="hidden" name="fran" value=<?php echo $Curr_Team; ?> />
                         <input type="hidden" name="year" value=<?php echo $View_Year; ?> />
@@ -345,7 +345,7 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
                 <form role="form" class="yearForm" name="DCHistory" action="../libs/ajax/franchise_view/pre_coach/update_franchise_coachingstaff.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New Defensive Coordinator:</label> 
-                        <input class="form-control" type="text" id="Value" name="NewValue" size="15">
+                        <input class="form-control" type="text" name="NewValue" size="15">
                         <br><br>
                         <input type="hidden" name="fran" value=<?php echo $Curr_Team; ?> />
                         <input type="hidden" name="year" value=<?php echo $View_Year; ?> />
@@ -372,7 +372,7 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
                 <form role="form" class="yearForm" name="STHistory" action="../libs/ajax/franchise_view/pre_coach/update_franchise_coachingstaff.php" method="post">
                     <div class="form-group">
                         <label for="NewVal">New Special Teams Coordinator:</label> 
-                        <input class="form-control" type="text" id="Value" name="NewValue" size="15">
+                        <input class="form-control" type="text" name="NewValue" size="15">
                         <br><br>
                         <input type="hidden" name="fran" value=<?php echo $Curr_Team; ?> />
                         <input type="hidden" name="year" value=<?php echo $View_Year; ?> />

@@ -7,14 +7,13 @@ $num_years = franchiseActiveYears($fran);
 ?>
 <html>
     <head>
-        <title>Franchise Mgt Tools - <?php echo $fran; ?></title>
+        <title>Franchise Mgt Toolss - <?php echo $fran; ?></title>
+        <link rel="shortcut icon" href="../libs/images/nfl.png">
         <link href="../libs/css/bootstrap.css" rel="stylesheet" type="text/css">
         <link href="../libs/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
         <link href="../libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">       
         <script src="../libs/js/jquery.js"></script>
         <script src="../libs/js/bootstrap.js"></script>
-        <script src="../libs/js/common_functions.js"></script>
-        <script src="../libs/js/fran_mgt_functions.js"></script>
     </head>
     <body>
         <div id="wrapper">
@@ -29,7 +28,7 @@ $num_years = franchiseActiveYears($fran);
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                     <span id="menu-toggle" class="glyphicon glyphicon glyphicon-tasks" style="float: left" aria-hidden="true"></span>
-                                    Franchise Management Tools - <?php echo getTeamFullName($fran); ?>
+                                    Franchise Management Toolss - <?php echo getTeamFullName($fran); ?>
                                     <span style="float: right"><img src="../libs/images/franchises/<?= $fran ?>_Logo.png" height=25 width=40></span>
                                 </div>
                             </div>
@@ -68,19 +67,19 @@ $num_years = franchiseActiveYears($fran);
 <script>
     $(document).ready(function () {
 
-        if (localStorage.getItem('08_lastToolPill_nav') === null || localStorage.getItem('08_lastToolPill_div') === null) {
-            localStorage.setItem('08_lastToolPill_nav', 'pill_FranMgtTools_Depth');
-            localStorage.setItem('08_lastToolPill_div', '#FranMgtTools_Depth');
+        if (localStorage.getItem('Madden08_lastFranMgtToolsPill_nav') === null || localStorage.getItem('Madden08_lastFranMgtToolsPill_div') === null) {
+            localStorage.setItem('Madden08_lastFranMgtToolsPill_nav', 'pill_FranMgtTools_Depth');
+            localStorage.setItem('Madden08_lastFranMgtToolsPill_div', '#FranMgtTools_Depth');
         }
 
-        var lastPill_nav = localStorage.getItem('08_lastToolPill_nav');
-        var lastPill_div = localStorage.getItem('08_lastToolPill_div');
+        var lastPill_nav = localStorage.getItem('Madden08_lastFranMgtToolsPill_nav');
+        var lastPill_div = localStorage.getItem('Madden08_lastFranMgtToolsPill_div');
         $("#" + lastPill_nav).addClass("active");
         $(lastPill_div).addClass("active");
 
         $('.viewToolsPill').click(function (e) {
-            localStorage.setItem('08_lastToolPill_nav', $(e.target).data('nav'));
-            localStorage.setItem('08_lastToolPill_div', $(e.target).attr('href'));
+            localStorage.setItem('Madden08_lastFranMgtToolsPill_nav', $(e.target).data('nav'));
+            localStorage.setItem('Madden08_lastFranMgtToolsPill_div', $(e.target).attr('href'));
         });
 
     });

@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Madden '08</title>
+        <link rel="shortcut icon" href="libs/images/nfl.png">
         <link href="libs/css/bootstrap.css" rel="stylesheet" type="text/css">
         <link href="libs/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
         <link href="libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">
