@@ -11,12 +11,12 @@
         '<td>', $offpostfaRow['Position'], '</td>',
         '<td>', $offpostfaRow['Overall'], '</td>',
         '<td>', $offpostfaRow['Age'], '</td>',
-        '<td><a class="btn btn-danger franViewEdit" style="display: none" id="', $offpostfaRow['Row'], '/moves/', $fran, '" onclick="removeMovesRow(this)">Remove Row</a></td>',
+        '<td><a class="btn btn-outline-danger franViewEdit" style="display: none" id="', $offpostfaRow['Row'], '/moves/', $fran, '" onclick="removeMovesRow(this)">Remove Row</a></td>',
         '</tr>';
     }
     ?>
     <tr>
-        <td colspan="7"><a class="btn btn-success franViewEdit offMove" data-movetype="postfa" data-toggle="modal" data-target="#addMoves" style="display:none">Add Post-Draft Free Agent</a></td>
+        <td colspan="7"><a class="btn btn-outline-success franViewEdit offMove" data-movetype="postfa" data-toggle="modal" data-target="#addMoves" style="display:none">Add Post-Draft Free Agent</a></td>
     </tr>
 </table>
 

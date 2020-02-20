@@ -7,13 +7,14 @@ $num_years = franchiseActiveYears($fran);
 ?>
 <html>
     <head>
-        <title>Franchise Mgt Toolss - <?php echo $fran; ?></title>
+        <title>Franchise Mgt Tools - <?php echo $fran; ?></title>
         <link rel="shortcut icon" href="../libs/images/nfl.png">
         <link href="../libs/css/bootstrap.css" rel="stylesheet" type="text/css">
-        <link href="../libs/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
-        <link href="../libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">       
+        <link href="../libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">
+        <link href="../libs/css/open-iconic-bootstrap.css" rel="stylesheet" type="text/css">
         <script src="../libs/js/jquery.js"></script>
         <script src="../libs/js/bootstrap.js"></script>
+        <script src="../libs/js/common.js"></script>
     </head>
     <body>
         <div id="wrapper">
@@ -25,24 +26,25 @@ $num_years = franchiseActiveYears($fran);
                 <div class="container-fluid">
                     <div class="row" style="text-align: center">
                         <div class="col-lg-12">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <span id="menu-toggle" class="glyphicon glyphicon glyphicon-tasks" style="float: left" aria-hidden="true"></span>
-                                    Franchise Management Toolss - <?php echo getTeamFullName($fran); ?>
+                            <div class="card">
+                                <div class="card-body">
+                                    <span id="menu-toggle" style="float: left" class="oi oi-chevron-left"></span>
+                                    Franchise Management Tools - <?php echo getTeamFullName($fran); ?>
                                     <span style="float: right"><img src="../libs/images/franchises/<?= $fran ?>_Logo.png" height=25 width=40></span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <br>
                     <div class="row">
                         <div class="col-lg-1">
 
                         </div>
                         <div class="col-lg-10">
                             <ul class="nav nav-pills" role="tablist">
-                                <li id="pill_FranMgtTools_Depth" role="presentation"><a data-nav="pill_FranMgtTools_Depth" class="viewToolsPill" href="#FranMgtTools_Depth" role="tab" data-toggle="tab">Check Depth Charts</a></li>
-                                <li id="pill_FranMgtTools_Info" role="presentation"><a data-nav="pill_FranMgtTools_Info" class="viewToolsPill" href="#FranMgtTools_Info" role="tab" data-toggle="tab">Check Info</a></li>
-                                <li id="pill_FranMgtTools_Season" role="presentation"><a data-nav="pill_FranMgtTools_Season" class="viewToolsPill" href="#FranMgtTools_Season" role="tab" data-toggle="tab">Check Season</a></li>
+                                <li id="pill_FranMgtTools_Depth" class="nav-item" role="presentation"><a data-nav="pill_FranMgtTools_Depth" class="viewToolsPill nav-link" href="#FranMgtTools_Depth" role="tab" data-toggle="tab">Check Depth Charts</a></li>
+                                <li id="pill_FranMgtTools_Info" class="nav-item" role="presentation"><a data-nav="pill_FranMgtTools_Info" class="viewToolsPill nav-link" href="#FranMgtTools_Info" role="tab" data-toggle="tab">Check Info</a></li>
+                                <li id="pill_FranMgtTools_Season" class="nav-item" role="presentation"><a data-nav="pill_FranMgtTools_Season" class="viewToolsPill nav-link" href="#FranMgtTools_Season" role="tab" data-toggle="tab">Check Season</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane" id="FranMgtTools_Depth">

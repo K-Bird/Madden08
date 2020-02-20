@@ -48,13 +48,13 @@ function checkFranPositionExists($fran, $year, $pos) {
     $num_rows = mysqli_num_rows(db_query("SELECT * FROM `franchise_year_roster` WHERE Position='{$pos}' AND Team='{$fran}' AND Year='{$year}'"));
 
     if ($num_rows === 0) {
-        return '<td class="danger">' . $pos . '</td>';
+        return '<td class="table-danger">' . $pos . '</td>';
     }
     if ($num_rows === 1) {
-        return '<td class="success">' . $pos . '</td>';
+        return '<td class="table-success">' . $pos . '</td>';
     }
     if ($num_rows > 1) {
-        return '<td class="warning">' . $pos . '</td>';
+        return '<td class="table-warning">' . $pos . '</td>';
     }
 }
 
@@ -65,9 +65,9 @@ function checkInfoExists($fran, $year, $type, $field, $fieldValue, $testValue, $
     $value = $fetchInfo[$testValue];
 
     if ($value === '' || $value === null) {
-        return '<td class="danger">' . $value . '</td>';
+        return '<td class="table-danger">' . $value . '</td>';
     } else {
-        return '<td class="success">' . $value . '</td>';
+        return '<td class="table-success">' . $value . '</td>';
     }
 
 }

@@ -23,12 +23,12 @@
     
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation"><a href="#indv_Pass" role="tab" data-toggle="tab">Passing <?php echo '<span class="badge">' . $pass . '</span>' ?></a></li>
-        <li role="presentation"><a href="#indv_Rush" role="tab" data-toggle="tab">Rushing <?php echo '<span class="badge">' . $rush . '</span>' ?></a></li>
-        <li role="presentation"><a href="#indv_Rec" role="tab" data-toggle="tab">Receiving <?php echo '<span class="badge">' . $rec . '</span>' ?></a></li>
-        <li role="presentation"><a href="#indv_Block" role="tab" data-toggle="tab">Blocking <?php echo '<span class="badge">' . $block . '</span>' ?></a></li>
-        <li role="presentation"><a href="#indv_Def" role="tab" data-toggle="tab">Defense <?php echo '<span class="badge">' . $def . '</span>' ?></a></li>
-        <li role="presentation"><a href="#indv_SP" role="tab" data-toggle="tab">Special Teams <?php echo '<span class="badge">' . $st . '</span>' ?></a></li>
+        <li class="nav-item"><a href="#indv_Pass" class="nav-link" role="tab" data-toggle="tab">Passing <?php echo '<span class="badge badge-dark">' . $pass . '</span>' ?></a></li>
+        <li class="nav-item"><a href="#indv_Rush" class="nav-link" role="tab" data-toggle="tab">Rushing <?php echo '<span class="badge badge-dark">' . $rush . '</span>' ?></a></li>
+        <li class="nav-item"><a href="#indv_Rec" class="nav-link" role="tab" data-toggle="tab">Receiving <?php echo '<span class="badge badge-dark">' . $rec . '</span>' ?></a></li>
+        <li class="nav-item"><a href="#indv_Block" class="nav-link" role="tab" data-toggle="tab">Blocking <?php echo '<span class="badge badge-dark">' . $block . '</span>' ?></a></li>
+        <li class="nav-item"><a href="#indv_Def" class="nav-link" role="tab" data-toggle="tab">Defense <?php echo '<span class="badge badge-dark">' . $def . '</span>' ?></a></li>
+        <li class="nav-item"><a href="#indv_SP" class="nav-link" role="tab" data-toggle="tab">Special Teams <?php echo '<span class="badge badge-dark">' . $st . '</span>' ?></a></li>
     </ul>
 
     <!-- Tab panes -->
@@ -52,12 +52,12 @@
                     '<td>', $PassingRow['INTs'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/INTs/passing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $PassingRow['Comp'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/Comp/passing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $PassingRow['Sacked'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/Sacked/passing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td><a class="btn btn-danger franViewEdit" id="', $PassingRow['Row'], '/passing" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                    '<td><a class="btn btn-outline-danger franViewEdit" id="', $PassingRow['Row'], '/passing" onclick="removeIndvStat(this)">Remove Row</a></td>',
                     '</tr>';
                 }
                 ?>
             </table>
-            <div style="text-align : center"><a class="btn btn-success franViewEdit" data-toggle="modal" data-target="#addPassModal" style="display:none">Add Passing Stat Row</a></div>
+            <div style="text-align : center"><a class="btn btn-outline-success franViewEdit" data-toggle="modal" data-target="#addPassModal" style="display:none">Add Passing Stat Row</a></div>
         </div>
         <div role="tabpanel" class="tab-pane" id="indv_Rush">
             <table class="table table-hover" id="rushingStatsTable" style="text-align: center; font-size: small">
@@ -78,12 +78,12 @@
                     '<td>', $RushingRow['Fumble'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/Fumble/rushing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $RushingRow['Broken'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/Broken/rushing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $RushingRow['LongRun'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/LongRun/rushing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td><a class="btn btn-danger franViewEdit" id="', $RushingRow['Row'], '/rushing" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                    '<td><a class="btn btn-outline-danger franViewEdit" id="', $RushingRow['Row'], '/rushing" onclick="removeIndvStat(this)">Remove Row</a></td>',
                     '</tr>';
                 }
                 ?>
             </table>
-            <div style="text-align : center"><a class="btn btn-success franViewEdit" data-toggle="modal" data-target="#addRushModal" style="display:none">Add Rushing Stat Row</a></div>
+            <div style="text-align : center"><a class="btn btn-outline-success franViewEdit" data-toggle="modal" data-target="#addRushModal" style="display:none">Add Rushing Stat Row</a></div>
         </div>
         <div role="tabpanel" class="tab-pane" id="indv_Rec">
             <table class="table table-hover" id="recStatsTable" style="text-align: center; font-size: small">
@@ -104,12 +104,12 @@
                     '<td>', $RecRow['YPC'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/YPC/rec" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $RecRow['LongCatch'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/LongCatch/rec" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $RecRow['Drops'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/Drops/rec" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td><a class="btn btn-danger franViewEdit" id="', $RecRow['Row'], '/rec" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                    '<td><a class="btn btn-outline-danger franViewEdit" id="', $RecRow['Row'], '/rec" onclick="removeIndvStat(this)">Remove Row</a></td>',
                     '</tr>';
                 }
                 ?>
             </table>
-            <div style="text-align : center"><a class="btn btn-success franViewEdit" data-toggle="modal" data-target="#addRecModal" style="display:none">Add Receiving Stat Row</a></div>
+            <div style="text-align : center"><a class="btn btn-outline-success franViewEdit" data-toggle="modal" data-target="#addRecModal" style="display:none">Add Receiving Stat Row</a></div>
         </div>
         <div role="tabpanel" class="tab-pane" id="indv_Block">
             <table class="table table-hover" id="blockingStatsTable" style="text-align: center; font-size: small">
@@ -127,12 +127,12 @@
                     '<td>', $BlockRow['Position'], '&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/Position/block" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $BlockRow['Pancakes'], '&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/Pancakes/block" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $BlockRow['Sacks'], '&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/Sacks/block" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td><a class="btn btn-danger franViewEdit" id="', $BlockRow['Row'], '/block" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                    '<td><a class="btn btn-outline-danger franViewEdit" id="', $BlockRow['Row'], '/block" onclick="removeIndvStat(this)">Remove Row</a></td>',
                     '</tr>';
                 }
                 ?>
             </table>
-            <div style="text-align : center"><a class="btn btn-success franViewEdit" data-toggle="modal" data-target="#addBlockModal" style="display:none">Add Blocking Stat Row</a></div>
+            <div style="text-align : center"><a class="btn btn-outline-success franViewEdit" data-toggle="modal" data-target="#addBlockModal" style="display:none">Add Blocking Stat Row</a></div>
         </div>
         <div role="tabpanel" class="tab-pane" id="indv_Def">
             <table class="table table-hover" id="defStatsTable" style="text-align: center; font-size: small">
@@ -153,12 +153,12 @@
                     '<td>', $defRow['INTs'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/INTs/def" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $defRow['TDs'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/TDs/def" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $defRow['Safety'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/Safety/def" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td><a class="btn btn-danger franViewEdit" id="', $defRow['Row'], '/def" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                    '<td><a class="btn btn-outline-danger franViewEdit" id="', $defRow['Row'], '/def" onclick="removeIndvStat(this)">Remove Row</a></td>',
                     '</tr>';
                 }
                 ?>
             </table>
-            <div style="text-align : center"><a class="btn btn-success franViewEdit" data-toggle="modal" data-target="#addDefModal" style="display:none">Add Defensive Stat Row</a></div>
+            <div style="text-align : center"><a class="btn btn-outline-success franViewEdit" data-toggle="modal" data-target="#addDefModal" style="display:none">Add Defensive Stat Row</a></div>
         </div>
         <div role="tabpanel" class="tab-pane" id="indv_SP">
             <table class="table table-hover" id="STKickingStatsTable" style="text-align: center; font-size: small">
@@ -178,7 +178,7 @@
                     '<td>', $STKRow['FGM'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/FGM/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $STKRow['FG_Percent'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/FG_Percent/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $STKRow['Longest_Play'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/Longest_Play/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td><a class="btn btn-danger indvStatRemove removeStatRow"  id="', $STKRow['Row'], '/st" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                    '<td><a class="btn btn-outline-danger franViewEdit"  id="', $STKRow['Row'], '/st" onclick="removeIndvStat(this)">Remove Row</a></td>',
                     '</tr>';
                 }
                 ?>
@@ -198,7 +198,7 @@
                     '<td><span id="', $STPRow['Row'], 'ST-" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STPRow['Name'], '</span>&nbsp;&nbsp;<span id="', $STPRow['Row'], '/Player/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $STPRow['Punt_AVG'], '&nbsp;&nbsp;<span id="', $STPRow['Row'], '/Punt_AVG/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $STPRow['I20'], '&nbsp;&nbsp;<span id="', $STPRow['Row'], '/I20/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td><a class="btn btn-danger indvStatRemove removeStatRow"  id="', $STPRow['Row'], '/st" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                    '<td><a class="btn btn-outline-danger franViewEdit"  id="', $STPRow['Row'], '/st" onclick="removeIndvStat(this)">Remove Row</a></td>',
                     '</tr>';
                 }
                 ?>
@@ -219,7 +219,7 @@
                     '<td>', $STKRRow['Ret_AVG'], '&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/Ret_AVG/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $STKRRow['Ret_TDs'], '&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/Ret_TDs/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $STKRRow['Longest_Play'], '&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/Longest_Play/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td><a class="btn btn-danger indvStatRemove removeStatRow"  id="', $STKRRow['Row'], '/st" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                    '<td><a class="btn btn-outline-danger franViewEdit"  id="', $STKRRow['Row'], '/st" onclick="removeIndvStat(this)">Remove Row</a></td>',
                     '</tr>';
                 }
                 ?>
@@ -240,12 +240,12 @@
                     '<td>', $STPRRow['Ret_AVG'], '&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/Ret_AVG/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $STPRRow['Ret_TDs'], '&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/Ret_TDs/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
                     '<td>', $STPRRow['Longest_Play'], '&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/Longest_Play/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td><a class="btn btn-danger franViewEdit"  id="', $STPRRow['Row'], '/st" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                    '<td><a class="btn btn-outline-danger franViewEdit"  id="', $STPRRow['Row'], '/st" onclick="removeIndvStat(this)">Remove Row</a></td>',
                     '</tr>';
                 }
                 ?>
             </table>
-            <div style="text-align : center"><a class="btn btn-success franViewEdit" data-toggle="modal" data-target="#addSTModal" style="display:none">Add Special Teams Stat Row</a></div>
+            <div style="text-align : center"><a class="btn btn-outline-success franViewEdit" data-toggle="modal" data-target="#addSTModal" style="display:none">Add Special Teams Stat Row</a></div>
         </div>
     </div>
 

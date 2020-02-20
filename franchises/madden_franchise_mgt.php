@@ -7,17 +7,15 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php"
         <link rel="shortcut icon" href="../libs/images/nfl.png">
         <link href="../libs/css/bootstrap.css" rel="stylesheet" type="text/css">
         <link href="../libs/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
+        <link href="../libs/css/open-iconic-bootstrap.css" rel="stylesheet" type="text/css">
         <link href="../libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">       
         <link href="../libs/css/jstree.css" rel="stylesheet" type="text/css">  
         <script src="../libs/js/jquery.js"></script>
         <script src="../libs/js/bootstrap.js"></script>
         <script src="../libs/js/jstree.js"></script>
+        <script src="../libs/js/common.js"></script>
         <script>
             $(document).ready(function () {
-                $("#menu-toggle").click(function (e) {
-                    e.preventDefault();
-                    $("#wrapper").toggleClass("toggled");
-                });
 
                 //On Input Change for Franchise Attribute Display Year Updated the DB
                 $('.attrDisplayInput').bind('input', function () {
@@ -72,9 +70,9 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php"
                 <div class="container-fluid">
                     <div class="row" style="text-align: center">
                         <div class="col-lg-12">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <span id="menu-toggle" class="glyphicon glyphicon glyphicon-tasks" style="float: left" aria-hidden="true"></span>
+                            <div class="card">
+                                <div class="card-body">
+                                    <span id="menu-toggle" style="float: left" class="oi oi-chevron-left"></span>
                                     Franchise Management
                                 </div>
                             </div>
@@ -100,11 +98,11 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php"
                     ?> 
                     <div class="row">
                         <div class="col-lg-4">
-                            <div class="panel panel-default">
+                            <div class="card">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Activate a Franchise</h3>
                                 </div>
-                                <div class="panel-body">
+                                <div class="card-body">
                                     <form role="form"  name="AddFranchise" action="../libs/ajax/franchise_mgt/franchise_activate.php" method="post">
                                         <div class="form-group">
                                             <label for="fran">Inactive Franchises:</label>
@@ -123,11 +121,11 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php"
                             </div>  
                         </div>
                         <div class="col-lg-4">
-                            <div class="panel panel-default">
+                            <div class="card">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Add Year to Franchise</h3>
                                 </div>
-                                <div class="panel-body">
+                                <div class="card-body">
                                     <form role="form"  name="AddFranchise" action="../libs/ajax/franchise_mgt/franchise_addyear.php" method="post">
                                         <div class="form-group">
                                             <label>Active Franchises:</label> 
@@ -146,11 +144,11 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php"
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <div class="panel panel-default">
+                            <div class="card">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Deactivate a Franchise</h3>
                                 </div>
-                                <div class="panel-body">
+                                <div class="card-body">
                                     <form role="form"  name="AddFranchise" action="../libs/ajax/franchise_mgt/franchise_deactivate.php" method="post">
                                         <label>Active Franchises:</label> 
                                         <div class="form-group">
@@ -172,6 +170,7 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php"
                     <?php
                     $AllFran = db_query("SELECT * FROM `franchise_info` WHERE `Franchise`!='NE'");
                     ?>
+                    <br>
                     <div class="row">
                         <div class="col-lg-12">
                             <table class="table table-hover" style="text-align: center">

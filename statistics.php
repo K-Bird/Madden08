@@ -3,10 +3,11 @@
         <title>Madden '08</title>
         <link rel="shortcut icon" href="libs/images/nfl.png">
         <link href="libs/css/bootstrap.css" rel="stylesheet" type="text/css">
-        <link href="libs/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
         <link href="libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">
+        <link href="libs/css/open-iconic-bootstrap.css" rel="stylesheet" type="text/css">
         <script src="libs/js/jquery.js"></script>
         <script src="libs/js/bootstrap.js"></script>
+        <script src="libs/js/common.js"></script>
     </head>
     <body>
         <div id="wrapper">
@@ -15,9 +16,9 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <span id="menu-toggle" class="glyphicon glyphicon glyphicon-tasks" style="float: left" aria-hidden="true"></span>
+                            <div class="card">
+                                <div class="card-body">
+                                    <span id="menu-toggle" class="oi oi-chevron-left" style="float: left" aria-hidden="true"></span>
                                     Statistics
                                 </div>
                             </div>

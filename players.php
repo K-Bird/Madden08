@@ -1,31 +1,51 @@
+<?php
+include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php");
+
+$getTeamFilter = db_query("SELECT Value FROM `master_roster_controls` Where Control='TeamFilter'");
+$TeamFilterObj = $getTeamFilter->fetch_assoc();
+$TeamFilter = $TeamFilterObj['Value'];
+
+$getPosFilter = db_query("SELECT Value FROM `master_roster_controls` Where Control='PosFilter'");
+$PosFilterObj = $getPosFilter->fetch_assoc();
+$PosFilter = $PosFilterObj['Value'];
+
+$FranchiseList = array();
+array_push($FranchiseList, 'FA', 'ARI', 'ATL', 'BAL', 'BUF', 'CAR', 'CHI', 'CIN', 'CLE', 'DAL', 'DEN', 'DET', 'GB', 'HOU', 'IND', 'JAC', 'KC', 'MIA', 'MIN', 'NO', 'NYG', 'NYJ', 'OAK', 'PHI', 'PIT', 'SD', 'SEA', 'SF', 'STL', 'TB', 'TEN', 'WAS');
+
+$Positions = array();
+array_push($Positions, 'QB', 'HB', 'FB', 'WR', 'TE', 'LT', 'LG', 'C', 'RG', 'RT', 'LE', 'RE', 'DT', 'LOLB', 'MLB', 'ROLB', 'CB', 'FS', 'SS', 'K', 'P');
+?>
 <html>
     <head>
         <title>Madden '08</title>
         <link rel="shortcut icon" href="libs/images/nfl.png">
         <link href="libs/css/bootstrap.css" rel="stylesheet" type="text/css">
-        <link href="libs/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
         <link href="libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">
+        <link href="libs/css/bootstrap-select.css" rel="stylesheet" type="text/css">
+        <link href="libs/css/open-iconic-bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="libs/css/tablesorter-default.css" rel="stylesheet" type="text/css">
         <script src="libs/js/jquery.js"></script>
         <script src="libs/js/bootstrap.js"></script>
-        <script src="libs/js/stupidtable.js"></script>
+        <script src="libs/js/bootstrap-select.js"></script>
+        <script src="libs/js/tablesorter.js"></script>
+        <script src="libs/js/tablesorter-widgets.js"></script>
+        <script src="libs/js/common.js"></script>
         <script>
             $(document).ready(function () {
-                $("#menu-toggle").click(function (e) {
-                    e.preventDefault();
-                    $("#wrapper").toggleClass("toggled");
+            
+                $("#masterRosterTable").tablesorter({
+                    theme: "default"
                 });
 
-                $("#masterRosterTable").stupidtable();
-
-                $(".filterPOS").click(function (e) {
-                    $pos = $(this).data("pos");
+                $("#playerTableFilterPOS").change(function (e) {
+                    $pos = $(this).val();
                     $.post("libs/ajax/players/filterRosterPOS.php", {pos: $pos}, function () {
                         location.reload();
                     });
                 });
 
-                $(".filterTeam").click(function (e) {
-                    $team = $(this).data("team");
+                $("#playerTableFilterTeam").change(function (e) {
+                    $team = $(this).val();
                     $.post("libs/ajax/players/filterRosterTeam.php", {team: $team}, function () {
                         location.reload();
                     });
@@ -51,101 +71,93 @@
     </head>
     <body>
         <div id="wrapper">
-            <?php $NavLevel='top'; include ('nav/master_nav.php'); ?>
+            <?php
+            $NavLevel = 'top';
+            include ('nav/master_nav.php');
+            ?>
             <div id="page-content-wrapper" style="text-align : center">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <span id="menu-toggle" class="glyphicon glyphicon glyphicon-tasks" style="float: left" aria-hidden="true"></span>
+                            <div class="card">
+                                <div class="card-body">
+                                    <span id="menu-toggle" class="oi oi-chevron-left" style="float: left" aria-hidden="true"></span>
                                     Base Rosters
                                 </div>
                             </div>
                             <br>
-                            <br>
-                            <label>Filter Rosters:</label><br>
-                            <input id="search_rosters" class="form-control">
-                            <br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <table id="masterRosterTable" class="table table-condensed table-hover" style="text-align: center; font-size: x-small">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            <?php
-                                            $FranchiseList = array();
-                                            array_push($FranchiseList, 'ALL', 'ARI', 'ATL', 'BAL', 'BUF', 'CAR', 'CHI', 'CIN', 'CLE', 'DAL', 'DEN', 'DET', 'GB', 'HOU', 'IND', 'JAC', 'KC', 'MIA', 'MIN', 'NO', 'NYG', 'NYJ', 'OAK', 'PHI', 'PIT', 'SD', 'SEA', 'SF', 'STL', 'TB', 'TEN', 'WAS');
-
-                                            $Positions = array();
-                                            array_push($Positions, 'ALL', 'QB', 'HB', 'FB', 'WR', 'TE', 'LT', 'LG', 'C', 'RG', 'RT', 'LE', 'RE', 'DT', 'LOLB', 'MLB', 'ROLB', 'CB', 'FS', 'SS', 'K', 'P');
-                                            ?>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Team <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <span class="badge badge-secondary"><font size="3">Filter Rosters:</font></span><br>
+                                    <input id="search_rosters" class="form-control">
+                                    <br>
+                                    <span class="badge badge-secondary"><font size="3">Filter Team:</font></span>
+                                    <select id="playerTableFilterTeam" class="selectpicker" data-live-search="true">
+                                        <option value="ALL">ALL</option>
                                         <?php
                                         foreach ($FranchiseList as $fran) {
-                                            echo '<li><a href="#" data-team=' . $fran . ' class="filterTeam">' . $fran . '</a></li>';
+                                            echo '<option value=' . $fran;
+                                            if ($TeamFilter === $fran) {
+                                                echo ' selected';
+                                            }
+                                            echo '>' . $fran . '</option>';
                                         }
                                         ?>
-                                    </ul>
-                                </div>
-                                </th>
-                                <th data-sort="string"><button class=" btn btn-default btn-xs">First Name</button></th>
-                                <th data-sort="string"><button class=" btn btn-default btn-xs">Last Name</button></th>
-                                <th>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Position <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
+                                    </select>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span class="badge badge-secondary"><font size="3">Filter Position:</font></span>
+                                    <select id="playerTableFilterPOS" class="selectpicker" data-live-search="true">
+                                        <option value="ALL">ALL</option>
                                         <?php
+                                        echo '>All</option>';
                                         foreach ($Positions as $pos) {
-                                            echo '<li><a href="#" data-pos=' . $pos . ' class="filterPOS">' . $pos . '</a></li>';
+                                            echo '<option value=' . $pos;
+                                            if ($PosFilter === $pos) {
+                                                echo ' selected';
+                                            }
+                                            echo '>' . $pos . '</option>';
                                         }
                                         ?>
-                                    </ul>
+                                    </select>
                                 </div>
-                                </th>
-                                <th data-sort="int" data-sort-default="asc"><button class=" btn btn-default btn-xs">Age</button></th>
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">OVR</button></th>
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">SPD</button></th>
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">STR</button></th>
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">AWR</button></th> 
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">AGI</button></th> 
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">ACC</button></th> 
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">CAT</button></th> 
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">CAR</button></th> 
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">JMP</button></th> 
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">BTK</button></th> 
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">TKL</button></th> 
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">THP</button></th> 
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">THA</button></th> 
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">RBK</button></th> 
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">PBK</button></th> 
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">KPR</button></th> 
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">KAC</button></th> 
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">KRT</button></th> 
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">STA</button></th> 
-                                <th data-sort="int" data-sort-default="desc"><button class=" btn btn-default btn-xs">INJ</button></th> 
-                                </tr>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table id="masterRosterTable" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Team</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Position</th>
+                                        <th>Age</th>
+                                        <th>OVR</th>
+                                        <th>SPD</th>
+                                        <th>STR</th>
+                                        <th>AWR</th> 
+                                        <th>AGI</th> 
+                                        <th>ACC</th> 
+                                        <th>CAT</th> 
+                                        <th>CAR</th> 
+                                        <th>JMP</th> 
+                                        <th>BTK</th> 
+                                        <th>TKL</th> 
+                                        <th>THP</th> 
+                                        <th>THA</th> 
+                                        <th>RBK</th> 
+                                        <th>PBK</th> 
+                                        <th>KPR</th> 
+                                        <th>KAC</th> 
+                                        <th>KRT</th> 
+                                        <th>STA</th> 
+                                        <th>INJ</th> 
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php");
-
-                                    $getTeamFilter = db_query("SELECT Value FROM `master_roster_controls` Where Control='TeamFilter'");
-                                    $TeamFilterObj = $getTeamFilter->fetch_assoc();
-                                    $TeamFilter = $TeamFilterObj['Value'];
-
-                                    $getPosFilter = db_query("SELECT Value FROM `master_roster_controls` Where Control='PosFilter'");
-                                    $PosFilterObj = $getPosFilter->fetch_assoc();
-                                    $PosFilter = $PosFilterObj['Value'];
-
                                     if ($TeamFilter === '' and $PosFilter === '') {
                                         $getMasterRosters = db_query("SELECT * FROM `master_rosters`");
                                     } else {
@@ -195,6 +207,5 @@
                     </div>
                 </div>
             </div>
-        </div>
     </body>
 </html>

@@ -1,42 +1,47 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+    <span id="menu-toggle" style="float: left" class="oi oi-chevron-left"></span>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <?php
+        $Get_Franchise_Info = db_query("Select * From `franchise_info` where `Franchise`='{$Curr_Team}'");
+        $Year_Row = $Get_Franchise_Info->fetch_assoc();
+        $Curr_Year = $Year_Row['CurrentYear'];
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-            <li class="navbar-brand"><span id="menu-toggle" class="glyphicon glyphicon glyphicon-tasks" style="float: left" aria-hidden="true"></span></li>
-            <?php
-            $Get_Franchise_Info = db_query("Select * From `franchise_info` where `Franchise`='{$Curr_Team}'");
-            $Year_Row = $Get_Franchise_Info->fetch_assoc();
-            $Curr_Year = $Year_Row['CurrentYear'];
-
-            echo '<li><a href="#">Viewing ', $Year_Row['FullName'], ' Year ', $View_Year, '</a></li>';
-            ?>            
-        </ul>
-        <ul class="nav navbar-nav pull-right">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">View an Active Franchise<span class="caret"></span></a>
-                <ul class="dropdown-menu inverse-dropdown" style="text-align: right">
+        echo '<span class="badge badge-light">Viewing ', $Year_Row['FullName'], ' Year ', $View_Year, '</span>';
+        ?> 
+        <ul class="navbar-nav mr-auto">
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    View an Active Franchise
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <?php
                     $Get_Active_Franchise_Info = db_query("Select * From `franchise_info`");
                     while ($Fran_Row = $Get_Active_Franchise_Info->fetch_assoc()) {
                         if ($Fran_Row['Active'] === 'Y') {
-                            echo '<li><a id=', $Fran_Row['Franchise'], ' class="nav_view_franchise" href="#">', $Fran_Row['FullName'], ' - Year: ', $Fran_Row['CurrentYear'], '</a></li>';
+                            echo '<a id=', $Fran_Row['Franchise'], ' class="nav_view_franchise dropdown-item" href="#">', $Fran_Row['FullName'], ' - Year: ', $Fran_Row['CurrentYear'], '</a>';
                         }
                     }
                     ?>
-                </ul>               
+                </div>
             </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">View Franchise Year<span class="caret"></span></a>
-                <ul class="dropdown-menu inverse-dropdown">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    View Franchise Year
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <?php
                     for ($i = 1; $i <= $Curr_Year; $i++) {
-                        echo '<li><a id="', $i, '" class="nav_view_franchise_year" href="#">Year ' . $i . '</a></li>';
+                        echo '<a id="', $i, '" class="nav_view_franchise_year dropdown-item" href="#">Year ' . $i . '</a>';
                     }
                     ?>
-
-                </ul>
+                </div>
             </li>
-            <li><a id="franToggleEdit" href="#"> </a></li>
         </ul>
+        <span class="navbar-text">
+            <span class="badge badge-light" id="franToggleEdit" href="#"></span>
+        </span>
     </div>
 </nav>

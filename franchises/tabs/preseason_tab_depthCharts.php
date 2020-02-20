@@ -1,38 +1,36 @@
 <br>
-<a class="btn btn-default franViewEdit" style="display: none" data-toggle="modal" data-target="#editDepthModal">Edit Depth Chart</a>
-<a class="btn btn-default franViewEdit" style="display: none" data-toggle="modal" data-target="#removeDepthModal">Remove From Depth Chart</a>
-<br>
-<br>
-<div class="col-lg-4">
-    <label>Depth Chart View: </label>
-    <select id="preseason_depthView_input" class="form-control" data-franchise=<?php echo $Curr_Team; ?> data-year=<?php echo $View_Year; ?> name="depthchart_view_list" style="width: 150px">
-        <option <?php
-        if ($Depth_View === 'Position') {
-            echo 'selected ';
-        }
-        ?> value="Position">Position</option>
-        <option <?php
-        if ($Depth_View === 'Tree') {
-            echo 'selected ';
-        }
-        ?> value="Tree">Tree</option>
-    </select>
-</div>
-<div class="col-lg-4">
-    <div class="checkbox" style="<?php
-    if ($Depth_View === 'Tree') {
-        echo 'display: none';
-    } else {
-        echo 'text-align: center';
+<a class="btn btn-outline-secondary franViewEdit" style="display: none" data-toggle="modal" data-target="#editDepthModal">Edit Depth Chart</a>
+<a class="btn btn-outline-secondary franViewEdit" style="display: none" data-toggle="modal" data-target="#removeDepthModal">Remove From Depth Chart</a>
+<br><br>
+<span class="badge badge-dark">Depth Chart View: </span>
+<select id="preseason_depthView_input" class="form-control" data-franchise=<?php echo $Curr_Team; ?> data-year=<?php echo $View_Year; ?> name="depthchart_view_list" style="width: 150px">
+    <option <?php
+    if ($Depth_View === 'Position') {
+        echo 'selected ';
     }
-    ?>">
-        <input id="Preseason_Backups_Input" type="checkbox" <?php
-        if ($Check_Backups_Display_Value['Value'] === 'Y') {
-            echo 'checked';
-        }
-        ?> value=""><label>Display Backups</label>
-    </div>
+    ?> value="Position">Position</option>
+    <option <?php
+    if ($Depth_View === 'Tree') {
+        echo 'selected ';
+    }
+    ?> value="Tree">Tree</option>
+</select>
+
+<div class="checkbox" style="<?php
+if ($Depth_View === 'Tree') {
+    echo 'display: none';
+} else {
+    echo 'text-align: center';
+}
+?>">
+    <span class="badge badge-dark">Display Backups</span>
+    <input id="Preseason_Backups_Input" type="checkbox" <?php
+    if ($Check_Backups_Display_Value['Value'] === 'Y') {
+        echo 'checked';
+    }
+    ?> value="">
 </div>
+
 <div class="col-lg-4" style="<?php
 if ($Depth_View === 'Tree') {
     echo 'display: none';
@@ -40,7 +38,7 @@ if ($Depth_View === 'Tree') {
     
 }
 ?>">
-    <label>Defensive Formation: </label>
+    <badge>Defensive Formation: </badge>
     <select id="preseason_depthFormation_input" class="form-control" data-franchise=<?php echo $Curr_Team; ?> data-year=<?php echo $View_Year; ?> name="depthchart_formation_list" style="width: 75px">
         <option <?php
         if ($Depth_Formation === '3-4') {
@@ -60,7 +58,7 @@ if ($Depth_View === 'Tree') {
 if ($Depth_View === 'Position') {
     echo 'display: none';
 }
-?>">
+?>; text-align: left">
     <ul>
         <li> Offense
             <ul>

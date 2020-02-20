@@ -290,16 +290,16 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
             <div class="modal-body">
                 <form role="form" class="yearForm" name="HCHistory" action="../libs/ajax/franchise_view/pre_coach/update_franchise_coachingstaff.php" method="post">
                     <div class="form-group">
-                        <label for="NewVal">New Head Coach:</label> 
-                        <input class="form-control" type="text" name="NewValue" size="15">
-                        <br><br>
-                        <input type="hidden" name="fran" value=<?php echo $Curr_Team; ?> />
-                        <input type="hidden" name="year" value=<?php echo $View_Year; ?> />
-                        <input type="hidden" name="position" value="HC" />
-                        <div class="form-group" style="text-align: right">
-                            <button type="submit" class="btn btn-success">Update</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
+                        <label for="NewVal">New Head Coach:</badge> 
+                            <input class="form-control" type="text" name="NewValue" size="15">
+                            <br><br>
+                            <input type="hidden" name="fran" value=<?php echo $Curr_Team; ?> />
+                            <input type="hidden" name="year" value=<?php echo $View_Year; ?> />
+                            <input type="hidden" name="position" value="HC" />
+                            <div class="form-group" style="text-align: right">
+                                <button type="submit" class="btn btn-success">Update</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
                     </div>
                 </form>
             </div>
@@ -317,16 +317,16 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
             <div class="modal-body">
                 <form role="form" class="yearForm" name="OCHistory" action="../libs/ajax/franchise_view/pre_coach/update_franchise_coachingstaff.php" method="post">
                     <div class="form-group">
-                        <label for="NewVal">New Offensive Coordinator:</label> 
-                        <input class="form-control" type="text" name="NewValue" size="15">
-                        <br><br>
-                        <input type="hidden" name="fran" value=<?php echo $Curr_Team; ?> />
-                        <input type="hidden" name="year" value=<?php echo $View_Year; ?> />
-                        <input type="hidden" name="position" value="OC" />
-                        <div class="form-group" style="text-align: right">
-                            <button type="submit" class="btn btn-success">Update</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
+                        <label for="NewVal">New Offensive Coordinator:</badge> 
+                            <input class="form-control" type="text" name="NewValue" size="15">
+                            <br><br>
+                            <input type="hidden" name="fran" value=<?php echo $Curr_Team; ?> />
+                            <input type="hidden" name="year" value=<?php echo $View_Year; ?> />
+                            <input type="hidden" name="position" value="OC" />
+                            <div class="form-group" style="text-align: right">
+                                <button type="submit" class="btn btn-success">Update</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
                     </div>
                 </form>
             </div>
@@ -344,16 +344,16 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
             <div class="modal-body">
                 <form role="form" class="yearForm" name="DCHistory" action="../libs/ajax/franchise_view/pre_coach/update_franchise_coachingstaff.php" method="post">
                     <div class="form-group">
-                        <label for="NewVal">New Defensive Coordinator:</label> 
-                        <input class="form-control" type="text" name="NewValue" size="15">
-                        <br><br>
-                        <input type="hidden" name="fran" value=<?php echo $Curr_Team; ?> />
-                        <input type="hidden" name="year" value=<?php echo $View_Year; ?> />
-                        <input type="hidden" name="position" value="DC" />
-                        <div class="form-group" style="text-align: right">
-                            <button type="submit" class="btn btn-success">Update</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
+                        <label for="NewVal">New Defensive Coordinator:</badge> 
+                            <input class="form-control" type="text" name="NewValue" size="15">
+                            <br><br>
+                            <input type="hidden" name="fran" value=<?php echo $Curr_Team; ?> />
+                            <input type="hidden" name="year" value=<?php echo $View_Year; ?> />
+                            <input type="hidden" name="position" value="DC" />
+                            <div class="form-group" style="text-align: right">
+                                <button type="submit" class="btn btn-success">Update</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
                     </div>
                 </form>
             </div>
@@ -371,16 +371,16 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
             <div class="modal-body">
                 <form role="form" class="yearForm" name="STHistory" action="../libs/ajax/franchise_view/pre_coach/update_franchise_coachingstaff.php" method="post">
                     <div class="form-group">
-                        <label for="NewVal">New Special Teams Coordinator:</label> 
-                        <input class="form-control" type="text" name="NewValue" size="15">
-                        <br><br>
-                        <input type="hidden" name="fran" value=<?php echo $Curr_Team; ?> />
-                        <input type="hidden" name="year" value=<?php echo $View_Year; ?> />
-                        <input type="hidden" name="position" value="ST" />
-                        <div class="form-group" style="text-align: right">
-                            <button type="submit" class="btn btn-success">Update</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
+                        <label for="NewVal">New Special Teams Coordinator:</badge> 
+                            <input class="form-control" type="text" name="NewValue" size="15">
+                            <br><br>
+                            <input type="hidden" name="fran" value=<?php echo $Curr_Team; ?> />
+                            <input type="hidden" name="year" value=<?php echo $View_Year; ?> />
+                            <input type="hidden" name="position" value="ST" />
+                            <div class="form-group" style="text-align: right">
+                                <button type="submit" class="btn btn-success">Update</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
                     </div>
                 </form>
             </div>
@@ -393,15 +393,15 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
     <div class="modal-dialog" style="width: 1000px">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Edit Depth Chart</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
                 <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#importDraft">Add Drafted Players</button>
                 <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#importFA">Add Signed Free Agents</button>
                 <br><br>
                 <form role="form" name="EditRoster" id="EditRosterForm" class="editDepthForm">
-                    <table class="table" id="editDepth" style="font-size: smaller; text-align: left;">
+                    <table class="table table-sm" id="editDepth" style="font-size: smaller; text-align: left;">
                         <tr>
                             <td>Edit</td><td>Position</td><td>Name</td><td>Overall</td><td>Age</td><td>Acquired</td><td>Vet/Rookie</td><td>Weapon</td><td>Buckeye</td>
                         </tr>
@@ -415,13 +415,13 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
                             if ($numRows > 0) {
                                 $RosterRow = $edit_depth_Result->fetch_assoc();
                                 echo '<td>
-                                        <select name="positionEdit[]" class="btn btn-xs btn-default dropdown-toggle">
+                                        <select name="positionEdit[]" class="btn btn-sm btn-outline-secondary dropdown-toggle">
                                             <option></option>
                                             <option value=' . $update_Depth_Row['Row_ID'] . '>Edit</option>
                                         </select>
                                     </td>
                                     <td>
-                                    <select name="depthPOSedit[]" class="btn btn-xs btn-default dropdown-toggle">';
+                                    <select name="depthPOSedit[]" class="btn btn-sm btn-outline-secondary dropdown-toggle">';
                                 foreach ($Positions as $editPos) {
                                     echo '<option ';
                                     if ($editPos === $update_Depth_Row['Position']) {
@@ -431,15 +431,15 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
                                 }
                                 echo '</select></td>
                                     <td>
-                                        <input type="text" name="changedNames[]" placeholder="', $update_Depth_Row['Name'], '">
+                                        <input class="form-control" type="text" name="changedNames[]" placeholder="', $update_Depth_Row['Name'], '">
                                     </td>
                                     <td>
-                                        <input type="text" name="changedOverall[]" placeholder="', $update_Depth_Row['Overall'], '" size="2">
+                                        <input class="form-control" type="text" name="changedOverall[]" placeholder="', $update_Depth_Row['Overall'], '" size="2">
                                     </td>
                                     <td>
-                                        <input type="text" name="changedAge[]" placeholder="', $update_Depth_Row['Age'], '" size="2"></td>
+                                        <input class="form-control" type="text" name="changedAge[]" placeholder="', $update_Depth_Row['Age'], '" size="2"></td>
                                     <td>
-                                        <select name="changedOnTeam[]" class="btn btn-xs btn-default dropdown-toggle">';
+                                        <select name="changedOnTeam[]" class="btn btn-sm btn-outline-secondary dropdown-toggle">';
                                 echo '<option></option>';
                                 if ($update_Depth_Row['Acquired'] === 'On Team') {
                                     echo '<option selected>On Team</a></option>';
@@ -474,7 +474,7 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
                                 echo '</select>
                                     </td>
                                     <td>
-                                        <select name="changedVR[]" class="btn btn-xs btn-default dropdown-toggle">';
+                                        <select name="changedVR[]" class="btn btn-sm btn-outline-secondary dropdown-toggle">';
                                 echo '<option></option>';
                                 if ($update_Depth_Row['Rookie'] === 'R') {
                                     echo '<option selected>Rookie</option>
@@ -485,7 +485,7 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
                                 }
                                 echo '</td>
                                         <td>
-                                            <select name="changedWeapon[]" class="btn btn-xs btn-default dropdown-toggle">';
+                                            <select name="changedWeapon[]" class="btn btn-sm btn-outline-secondary dropdown-toggle">';
                                 echo '<option></option>';
                                 if ($update_Depth_Row['Weapon'] === 'None') {
                                     echo '<option selected>None</option>';
@@ -555,7 +555,7 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
                                 echo '</select>
                                         </td>
                                       <td>
-                                        <select name="changedOSU[]" class="btn btn-xs btn-default dropdown-toggle">';
+                                        <select name="changedOSU[]" class="btn btn-sm btn-outline-secondary dropdown-toggle">';
                                 echo '<option></option>';
                                 if ($update_Depth_Row['OSU'] === 'Y') {
                                     echo '<option selected>Buckeye</option>
@@ -568,12 +568,12 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
                             } else {
                                 echo '<td></td>
                                       <td>' . $pos . '</td><td colspan="5" style="text-align:center">No ' . $pos . ' on Roster</td>
-                                      <td><a class="btn btn-xs btn-success addPlayerBtn" data-toggle="modal" data-target="#add' . $pos . 'Modal">Add New ' . $pos . '</a></td>';
+                                      <td><a class="btn btn-sm btn-success addPlayerBtn" data-toggle="modal" data-target="#add' . $pos . 'Modal">Add New ' . $pos . '</a></td>';
 
                                 if ($pos === 'KR' || $pos === 'PR') {
                                     echo '<td></td>';
                                 } else {
-                                    echo '<td><a class="btn btn-xs btn-success addPlayerBtn" data-toggle="modal" data-target="#import' . $pos . 'Modal">Import ' . $pos . '</a></td>';
+                                    echo '<td><a class="btn btn-sm btn-success addPlayerBtn" data-toggle="modal" data-target="#import' . $pos . 'Modal">Import ' . $pos . '</a></td>';
                                 }
                             }
                             echo '</tr>';
@@ -597,8 +597,8 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
     <div class="modal-dialog" style="width: 1000px">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Remove From Depth Chart</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
                 <form role="form" name="RemoveRoster" id="RemoveRosterForm" class="removeDepthForm">
@@ -615,7 +615,7 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
                             if ($numRows > 0) {
                                 $RemoveRow = $remove_depth_Result->fetch_assoc();
                                 echo '<td>
-                                        <select name="positionRemove[]" class="btn btn-xs btn-default dropdown-toggle">
+                                        <select name="positionRemove[]" class="btn btn-sm btn-outline-secondary dropdown-toggle">
                                             <option></option>
                                             <option value=' . $remove_Depth_Row['Row_ID'] . '>Remove</option>
                                         </select>
@@ -724,13 +724,13 @@ foreach ($Positions as $pos) {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
+                    <h4 class="modal-title" style="text-align: center">' . $pos . ' Details | ' . strtoupper($Curr_Team) . ' - Year: ' . $View_Year . ' | ' . $details_Row['Name'] . '</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" style="text-align:center">' . $pos . ' Details | ' . strtoupper($Curr_Team) . ' - Year: ' . $View_Year . ' | ' . $details_Row['Name'] . '</h4>
                 </div>
                 <div class="modal-body" style="text-align:center">
                 <form role="form" name="' . $pos . '_details" class="playerAtrributeForm">
                     <h3>Attributes</h3>
-                    <table class="table table-condensed" style="text-align: left; font-size: small">
+                    <table class="table table-sm" style="text-align: left; font-size: small">
                         <tr><td></td>';
     foreach ($Display_Attributes as $Attr) {
         echo '<td>' . $Attr . '</td>';
@@ -811,7 +811,7 @@ foreach ($Positions as $pos) {
     $Attributes_TC = array('Overall', 'SPD', 'STR', 'AWR', 'AGI', 'ACC', 'CTH', 'CAR', 'JMP', 'BTK', 'TAK', 'THP', 'THA', 'PBK', 'RBK', 'KPW', 'KAC');
     $Drills_TC = array('Pocket Presence', 'Chase and Tackle', 'Swat Ball', 'Trench Fight', 'Clutch Kicking', 'Corner Punt', 'Precision Passing', 'Ground Attack', 'Catch Ball');
 
-    echo '<label>Add Training Camp Result: </label><br>';
+    echo '<badge>Add Training Camp Result: </badge><br>';
     echo '<select name="tc_drill" class="form-control" style="width: 200px">';
     foreach ($Drills_TC as $drill) {
         echo '<option value="', $drill, '">', $drill, '</option>';
@@ -866,7 +866,7 @@ foreach ($Positions as $pos) {
                                         <tr>
                                             <td>';
 
-        echo '<select name="existingReturn" class="btn btn-xs btn-default dropdown-toggle">';
+        echo '<select name="existingReturn" class="btn btn-sm btn-secondary dropdown-toggle">';
         $ret_positions = array();
         array_push($ret_positions, 'HB1', 'HB2', 'HB3', 'WR1', 'WR2', 'WR3', 'WR4', 'CB1', 'CB2', 'CB3', 'CB4', 'FS1', 'FS2', 'SS1', 'SS2');
         foreach ($ret_positions as $ret_pos) {
@@ -881,7 +881,7 @@ foreach ($Positions as $pos) {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <label>Overall as Returner:</label>
+                                                <badge>Overall as Returner:</badge>
                                             </td>
                                             <td style="text-align:left">
                                                 <input type="text" name="addOverall" size="2">
@@ -889,7 +889,7 @@ foreach ($Positions as $pos) {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <label>KR Stat:</label>
+                                                <badge>KR Stat:</badge>
                                             </td>
                                             <td style="text-align:left">
                                                 <input type="text" name="addKR" size="2">
@@ -923,7 +923,7 @@ foreach ($Positions as $pos) {
                                     <table class="table">
                                         <tr>
                                             <td>
-                                                <label>Name:</label> 
+                                                <badge>Name:</badge> 
                                             </td>
                                             <td style="text-align:left">
                                                 <input type="text" name="addName"> 
@@ -931,7 +931,7 @@ foreach ($Positions as $pos) {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <label>Overall:</label>
+                                                <badge>Overall:</badge>
                                             </td>
                                             <td style="text-align:left">
                                                 <input type="text" name="addOverall" size="2">
@@ -939,7 +939,7 @@ foreach ($Positions as $pos) {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <label>Age:</label>
+                                                <badge>Age:</badge>
                                             </td>
                                             <td style="text-align:left">
                                                 <input type="text" name="addAge"size="2">
@@ -947,10 +947,10 @@ foreach ($Positions as $pos) {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <label>Acquired:</label>
+                                                <badge>Acquired:</badge>
                                             </td>
                                             <td style="text-align:left">
-                                                <select name="addOnTeam" class="btn btn-xs btn-default dropdown-toggle">
+                                                <select name="addOnTeam" class="btn btn-sm btn-secondary dropdown-toggle">
                                                     <option>On Team</option>
                                                     <option>Free Agent</option>
                                                     <option>Trade</option>
@@ -961,10 +961,10 @@ foreach ($Positions as $pos) {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <label>Rookie/Vet:</label>
+                                                <badge>Rookie/Vet:</badge>
                                             </td>
                                             <td style="text-align:left">
-                                                <select name="addVR" class="btn btn-xs btn-default dropdown-toggle">
+                                                <select name="addVR" class="btn btn-sm btn-secondary dropdown-toggle">
                                                     <option value="R">Rookie</option>
                                                     <option value="">Veteran</option>
                                                 </select>
@@ -972,10 +972,10 @@ foreach ($Positions as $pos) {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <label>Weapon:</label>
+                                                <badge>Weapon:</badge>
                                             </td>
                                             <td style="text-align:left">
-                                                <select name="addWeapon" class="btn btn-xs btn-default dropdown-toggle">
+                                                <select name="addWeapon" class="btn btn-sm btn-secondary dropdown-toggle">
                                                     <option value="None">None</option>
                                                     <option value="CannonArm">Cannon Arm</option>
                                                     <option value="Coverage">Coverage Corner</option>
@@ -994,10 +994,10 @@ foreach ($Positions as $pos) {
                                         </tr>
                                         <tr>
                                             <td>
-                                                <label>Ohio State:</label>
+                                                <badge>Ohio State:</badge>
                                             </td>
                                             <td style="text-align:left">
-                                                <select name="addOSU" class="btn btn-xs btn-default dropdown-toggle">
+                                                <select name="addOSU" class="btn btn-sm btn-secondary dropdown-toggle">
                                                     <option></option>
                                                     <option value="Y">Buckeye</option>
                                                 </select>
@@ -1140,7 +1140,7 @@ array_push($pass_positions, 'QB1', 'QB2');
                         </tr>
                         <tr>
                             <td>
-                                <select name="passer" class="btn btn-xs btn-default dropdown-toggle">
+                                <select name="passer" class="btn btn-sm btn-secondary dropdown-toggle">
                                     <!-- Add Passer Block -->
                                     <?php
                                     foreach ($pass_positions as $pos) {
@@ -1230,7 +1230,7 @@ array_push($rush_positions, 'QB1', 'QB2', 'HB1', 'HB2', 'HB3', 'FB1', 'FB2');
                         </tr>
                         <tr>
                             <td>
-                                <select name="rusher" class="btn btn-xs btn-default dropdown-toggle">
+                                <select name="rusher" class="btn btn-sm btn-secondary dropdown-toggle">
                                     <!-- Add Rusher Block -->
                                     <?php
                                     foreach ($rush_positions as $pos) {
@@ -1322,7 +1322,7 @@ array_push($rec_positions, 'WR1', 'WR2', 'WR3', 'WR4', 'HB1', 'HB2', 'HB3', 'TE1
                         </tr>
                         <tr>
                             <td>
-                                <select name="receiver" class="btn btn-xs btn-default dropdown-toggle">
+                                <select name="receiver" class="btn btn-sm btn-secondary dropdown-toggle">
                                     <!-- Add Receiving Block -->
                                     <?php
                                     foreach ($rec_positions as $pos) {
@@ -1409,7 +1409,7 @@ array_push($block_positions, 'LT1', 'LT2', 'LG1', 'LG2', 'C1', 'C2', 'RG1', 'RG2
                         </tr>
                         <tr>
                             <td>
-                                <select name="blocker" class="btn btn-xs btn-default dropdown-toggle">
+                                <select name="blocker" class="btn btn-sm btn-secondary dropdown-toggle">
                                     <!-- Add Receiving Block -->
                                     <?php
                                     foreach ($block_positions as $pos) {
@@ -1421,7 +1421,7 @@ array_push($block_positions, 'LT1', 'LT2', 'LG1', 'LG2', 'C1', 'C2', 'RG1', 'RG2
                                 </select>
                             </td>
                             <td>
-                                <select name="blockPosition" class="btn btn-xs btn-default dropdown-toggle">
+                                <select name="blockPosition" class="btn btn-sm btn-secondary dropdown-toggle">
                                     <option value="Right Tackle">Right Tackle</option>
                                     <option value="Right Gaurd">Right Guard</option>
                                     <option value="Center">Center</option>
@@ -1498,7 +1498,7 @@ array_push($def_positions, 'LE1', 'LE2', 'DT1', 'DT2', 'RE1', 'RE2', 'LOLB1', 'L
                         </tr>
                         <tr>
                             <td>
-                                <select name="defense" class="btn btn-xs btn-default dropdown-toggle">
+                                <select name="defense" class="btn btn-sm btn-secondary dropdown-toggle">
                                     <!-- Add Receiving Block -->
                                     <?php
                                     foreach ($def_positions as $pos) {
@@ -1510,7 +1510,7 @@ array_push($def_positions, 'LE1', 'LE2', 'DT1', 'DT2', 'RE1', 'RE2', 'LOLB1', 'L
                                 </select>
                             </td>
                             <td>
-                                <select name="defPosition" class="btn btn-xs btn-default dropdown-toggle">
+                                <select name="defPosition" class="btn btn-sm btn-secondary dropdown-toggle">
                                     <option value="LE">LE</option>
                                     <option value="RE">RE</option>
                                     <option value="DT">DT</option>
@@ -1672,7 +1672,7 @@ array_push($st_positions, 'K1', 'P1', 'KR', 'PR');
                         </tr>
                         <tr>
                             <td>
-                                <select name="specialTeams" class="btn btn-xs btn-default dropdown-toggle">
+                                <select name="specialTeams" class="btn btn-sm btn-secondary dropdown-toggle">
                                     <!-- Add Receiving Block -->
                                     <?php
                                     foreach ($st_positions as $pos) {
@@ -1684,7 +1684,7 @@ array_push($st_positions, 'K1', 'P1', 'KR', 'PR');
                                 </select>
                             </td>
                             <td>
-                                <select id="STType" name="STType" class="btn btn-xs btn-default dropdown-toggle">
+                                <select id="STType" name="STType" class="btn btn-sm btn-secondary dropdown-toggle">
                                     <option value="Kicking">Kicking</option>
                                     <option value="Punting">Punting</option>
                                     <option value="KR">Kick Return</option>
@@ -1775,7 +1775,7 @@ while ($playerRow = $getAwards->fetch_assoc()) {
                             </tr>
                             <tr>
                                 <td>
-                                    <select name="player" class="btn btn-xs btn-default dropdown-toggle">
+                                    <select name="player" class="btn btn-sm btn-secondary dropdown-toggle">
                                         <?php
                                         foreach ($Positions as $pos) {
                                             $Rosterresult = db_query("SELECT * FROM `franchise_year_roster` where Position='" . $pos . "' and Year='{$View_Year}' and Team='{$Curr_Team}'");
@@ -1786,7 +1786,7 @@ while ($playerRow = $getAwards->fetch_assoc()) {
                                     </select>
                                 </td>
                                 <td>
-                                    <select name="pos" class="btn btn-xs btn-default dropdown-toggle">
+                                    <select name="pos" class="btn btn-sm btn-secondary dropdown-toggle">
                                         <option value="QB">QB</option>
                                         <option value="HB">HB</option>
                                         <option value="FB">FB</option>
@@ -1845,7 +1845,7 @@ while ($playerRow = $getAwards->fetch_assoc()) {
                             </tr>
                             <tr>
                                 <td>
-                                    <select name="player" class="btn btn-xs btn-default dropdown-toggle">
+                                    <select name="player" class="btn btn-sm btn-secondary dropdown-toggle">
                                         <?php
                                         foreach ($Positions as $pos) {
                                             $Rosterresult = db_query("SELECT * FROM `franchise_year_roster` where Position='" . $pos . "' and Year='{$View_Year}' AND Team='{$Curr_Team}'");
@@ -1856,7 +1856,7 @@ while ($playerRow = $getAwards->fetch_assoc()) {
                                     </select>
                                 </td>
                                 <td>
-                                    <select name="pos" class="btn btn-xs btn-default dropdown-toggle">
+                                    <select name="pos" class="btn btn-sm btn-secondary dropdown-toggle">
                                         <option value="QB">QB</option>
                                         <option value="HB">HB</option>
                                         <option value="FB">FB</option>
@@ -2162,7 +2162,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
                             </tr>
                             <tr>
                                 <td>
-                                    <select name="moveType" id="moveType" class="btn btn-xs btn-default dropdown-toggle">
+                                    <select name="moveType" id="moveType" class="btn btn-sm btn-secondary dropdown-toggle">
                                         <option value="retired">Retired Player</option>
                                         <option value="prefa">Pre-Draft Free Agent</option>
                                         <option value="draft">Drafted Player</option>
@@ -2171,7 +2171,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
                                 </td>
                                 <td>
                                     <input name="freePlayer" type="text" class="freeName" />
-                                    <select name="selectedPlayer" class="btn btn-xs btn-default dropdown-toggle selectName">
+                                    <select name="selectedPlayer" class="btn btn-sm btn-secondary dropdown-toggle selectName">
                                         <?php
                                         foreach ($Positions as $pos) {
                                             $grabPlayers = db_query("SELECT * FROM `franchise_year_roster` where Position='" . $pos . "' and Year='{$View_Year}' and Team='{$Curr_Team}'");
@@ -2182,7 +2182,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
                                     </select>
                                 </td>
                                 <td>
-                                    <select name="pos" class="btn btn-xs btn-default dropdown-toggle off-pos">
+                                    <select name="pos" class="btn btn-sm btn-secondary dropdown-toggle off-pos">
                                         <option value="QB">QB</option>
                                         <option value="HB">HB</option>
                                         <option value="FB">FB</option>
@@ -2234,12 +2234,12 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Add Drafted Players</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
                 <form role="form" name="AddDraftedForm" id="AddDraftedForm" Action="../libs/ajax/franchise_view/staging/add_franchise_drafted_player.php" method="post">
-                    <select name="AddDrafted" class="btn btn-default dropdown-toggle" <?php
+                    <select name="AddDrafted" class="btn btn-outline-secondary dropdown-toggle" <?php
                     if ($View_Year == 1) {
                         echo "disabled";
                     }
@@ -2252,7 +2252,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
                                 }
                                 ?>
                     </select>
-                    <select name="AddDraftedPOS" class="btn btn-default dropdown-toggle" <?php
+                    <select name="AddDraftedPOS" class="btn btn-outline-secondary dropdown-toggle" <?php
                     if ($View_Year == 1) {
                         echo "disabled";
                     }
@@ -2287,12 +2287,12 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Add Signed Free Agents</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
                 <form role="form" name="AddSignedFAForm" id="AddSignedFAForm" Action="../libs/ajax/franchise_view/staging/add_franchise_fa_player.php" method="post">
-                    <select name="AddFA" class="btn btn-default dropdown-toggle" <?php
+                    <select name="AddFA" class="btn btn-outline-secondary dropdown-toggle" <?php
                     if ($View_Year == 1) {
                         echo "disabled";
                     }
@@ -2305,7 +2305,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
                                 }
                                 ?>
                     </select>
-                    <select name="AddFApos" class="btn btn-default dropdown-toggle" <?php
+                    <select name="AddFApos" class="btn btn-outline-secondary dropdown-toggle" <?php
                     if ($View_Year == 1) {
                         echo "disabled";
                     }

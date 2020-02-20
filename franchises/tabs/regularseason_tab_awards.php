@@ -12,8 +12,8 @@
 
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Award <?php echo '<span class="badge">' . $award . '</span>' ?></a></li>
-        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Pro Bowl <?php echo '<span class="badge">' . $proBowl . '</span>' ?></a></li>
+        <li class="nav-item"><a href="#home" aria-controls="home" class="nav-link" role="tab" data-toggle="tab">Award <?php echo '<span class="badge badge-dark">' . $award . '</span>' ?></a></li>
+        <li class="nav-item"><a href="#profile" aria-controls="profile" class="nav-link" role="tab" data-toggle="tab">Pro Bowl <?php echo '<span class="badge badge-dark">' . $proBowl . '</span>' ?></a></li>
     </ul>
 
     <!-- Tab panes -->
@@ -35,12 +35,12 @@
                     }
                     echo '<td>', $offAwardRow['Position'], '</td>',
                     '<td style="text-align: left">', $offAwardRow['Award'], '</td>',
-                    '<td><a class="btn btn-danger franViewEdit" id="', $offAwardRow['Row'], '" onclick="removeAward(this)">Remove Row</a></td>',
+                    '<td><a class="btn btn-outline-danger franViewEdit" id="', $offAwardRow['Row'], '" onclick="removeAward(this)">Remove Row</a></td>',
                     '</tr>';
                 }
                 ?>
                 <tr>
-                    <td colspan="7"><a class="btn btn-success franViewEdit" data-toggle="modal" data-target="#addYearAward" style="display:none">Add New Award</a></td>
+                    <td colspan="7"><a class="btn btn-outline-success franViewEdit" data-toggle="modal" data-target="#addYearAward" style="display:none">Add New Award</a></td>
                 </tr>
             </table>
         </div>
@@ -61,12 +61,12 @@
                         echo '<td><span id="', $offProBowlRow['Row'], 'ProBowl" class="historyModal" style="cursor: pointer" data-toggle="popover" title="History">', $offProBowlRow['Player'], '</span></td>';
                     }
                     echo '<td>', $offProBowlRow['Position'], '</td>',
-                    '<td><a class="btn btn-danger franViewEdit" id="', $offProBowlRow['Row'], '" onclick="removeProbowl(this)">Remove Row</a></td>',
+                    '<td><a class="btn btn-outline-danger franViewEdit" id="', $offProBowlRow['Row'], '" onclick="removeProbowl(this)">Remove Row</a></td>',
                     '</tr>';
                 }
                 ?>
                 <tr>
-                    <td colspan="7"><a class="btn btn-success franViewEdit" data-toggle="modal" data-target="#addProbowl" style="display:none">Add New Probowl Player</a></td>
+                    <td colspan="7"><a class="btn btn-outline-success franViewEdit" data-toggle="modal" data-target="#addProbowl" style="display:none">Add New Probowl Player</a></td>
                 </tr>
             </table>
         </div>

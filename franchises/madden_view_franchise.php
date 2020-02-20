@@ -31,18 +31,19 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
         <title><?php echo $Curr_Team . " - Year: " . $View_Year ?></title>
         <link rel="shortcut icon" href="../libs/images/nfl.png">
         <link href="../libs/css/bootstrap.css" rel="stylesheet" type="text/css">
-        <link href="../libs/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
         <link href="../libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">       
         <link href="../libs/css/jstree.css" rel="stylesheet" type="text/css"> 
+        <link href="../libs/css/open-iconic-bootstrap.css" rel="stylesheet" type="text/css">
         <link href="../libs/css/viewFranchise.css" rel="stylesheet" type="text/css"> 
         <script src="../libs/js/jquery.js"></script>
         <script src="../libs/js/bootstrap.js"></script>
         <script src="../libs/js/jstree.js"></script>
         <script src="../libs/js/inputSpinner.js"></script>
+        <script src="../libs/js/common.js"></script>
         <script>
             $(document).ready(function () {
 
-                $('#Fran_Year_Accordion .panel').on('shown.bs.collapse', function (e) {
+                $('#Fran_Year_Accordion .card').on('shown.bs.collapse', function (e) {
                     localStorage.setItem('Madden08_franViewLastPanel', $(e.target).attr("id"));
                 });
 
@@ -66,9 +67,9 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                     var lastPill_nav = localStorage.getItem('Madden08_franViewLastPill_nav');
                     var lastPill_div = localStorage.getItem('Madden08_franViewLastPill_div');
                     var lastModal = localStorage.getItem('Madden08_franViewLastModal');
-                    $("#" + lastPanel).addClass("in");
-                    $("#" + lastPanel).parents("div").addClass("in");
-                    $("#" + lastPill_nav).addClass("active");
+                    $("#" + lastPanel).addClass("show");
+                    $("#" + lastPanel).parents("div").addClass("show");
+                    $("#" + lastPill_nav).children().addClass("active");
                     $(lastPill_div).addClass("active");
                     $("#" + lastModal).modal('show');
                 }
@@ -117,18 +118,12 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
 
                 //--- Initialize Functions - Run When Page is Loaded ---
                 //Run function to set inital editing varible and tag text
-                initalizeToggleFranText();
+                initalizeFranEdit();
 
                 // --- Franchise View Page Editing ---
                 //Master Toggle Editing Function for Franchise View  
                 $("#franToggleEdit").click(function (e) {
                     switch (localStorage.getItem('Madden08_fran_editing')) {
-                        case null :
-                            localStorage.setItem('Madden08_fran_editing', 'Y');
-                            $('#franToggleEdit').text("Stop Editing Franchise");
-                            $('.franViewEdit').show();
-                            $('.franViewDisplay').hide();
-                            break;
                         case 'Y' :
                             localStorage.setItem('Madden08_fran_editing', 'N');
                             $('#franToggleEdit').text("Edit Franchise");
@@ -808,26 +803,22 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
 
             //**** [ Madden - Franchise Year Functions ] ****//
 //Check State of Editing Mode When Edit Button in View Franchise Nav is Clicked: Set Local Storage Variable and Tag Text Accordingly
-            function initalizeToggleFranText() {
+            function initalizeFranEdit() {
 
-                switch (localStorage.getItem('Madden08_fran_editing')) {
-                    case null :
-                        $('#franToggleEdit').text("Stop Editing Franchise");
-                        $('.franViewEdit').show();
-                        $('.franViewDisplay').hide();
-                        break;
-                    case 'Y' :
-                        $('#franToggleEdit').text("Stop Editing Franchise");
-                        $('.franViewEdit').show();
-                        $('.franViewDisplay').hide();
-                        break;
-                    case 'N' :
-                        $('#franToggleEdit').text("Edit Franchise");
-                        $('.franViewEdit').hide();
-                        $('.franViewDisplay').show();
-                        break;
+                if (localStorage.getItem('Madden08_fran_editing') === null) {
+                    localStorage.setItem('Madden08_fran_editing', 'Y');
+                    $('#franToggleEdit').text("Stop Editing Franchise");
+                    $('.franViewEdit').show();
+                    $('.franViewDisplay').hide();
+                } else if (localStorage.getItem('Madden08_fran_editing') === 'Y') {
+                    $('#franToggleEdit').text("Stop Editing Franchise");
+                    $('.franViewEdit').show();
+                    $('.franViewDisplay').hide();
+                } else if (localStorage.getItem('Madden08_fran_editing') === 'N') {
+                    $('#franToggleEdit').text("Edit Franchise");
+                    $('.franViewDisplay').show();
+                    $('.franViewEdit').hide();
                 }
-
             }
 
 //Common function to remove individual stat row
@@ -1010,23 +1001,23 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                     <?php include ('../nav/madden_franchise_nav.php'); ?>
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="panel-group" id="Fran_Year_Accordion" role="tablist" style="text-align: left">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#Fran_Year_Accordion" href="#Fran_Year_Preseason" aria-expanded="true" aria-controls="preseasonPanel">
+                            <br><br><br>
+                            <div id="Fran_Year_Accordion">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">
+                                            <a class="collpased badge badge-light" data-toggle="collapse" data-parent="#Fran_Year_Accordion" href="#Fran_Year_Preseason" aria-expanded="true" aria-controls="preseasonPanel">
                                                 <img src="../libs/images/franchises/<?= $Curr_Team ?>_Logo.png" height=25 width=40><?php echo " " . strtoupper($Curr_Team) . " - Year: " . $View_Year . " - Preseason"; ?>
                                             </a>
-                                        </h4>
+                                        </h5>
                                     </div>
-                                    <!-- [ Preseason Panel ] -->
-                                    <div id="Fran_Year_Preseason" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Preseason Information">
-                                        <div class="panel-body">
+                                    <div id="Fran_Year_Preseason" class="collapse" aria-labelledby="headingOne" data-parent="#Fran_Year_Accordion">
+                                        <div class="card-body">
                                             <div>
-                                                <ul class="nav nav-pills" role="tablist">
-                                                    <li id="pill_Preseason_Info" role="presentation"><a data-nav="pill_Preseason_Info" class="viewPill" href="#Preseason_Info" role="tab" data-toggle="tab">Franchise Info</a></li>
-                                                    <li id="pill_Preseason_CoachingStaff" role="presentation"><a data-nav="pill_Preseason_CoachingStaff" class="viewPill" href="#Preseason_CoachingStaff" role="tab" data-toggle="tab">Coaching Staff</a></li>
-                                                    <li id="pill_Preseason_DepthChart" role="presentation"><a data-nav="pill_Preseason_DepthChart" class="viewPill" href="#Preseason_DepthChart" role="tab" data-toggle="tab">Depth Chart</a></li>
+                                                <ul class="nav nav-pills">
+                                                    <li id="pill_Preseason_Info" class="nav-item"><a data-nav="pill_Preseason_Info" class="viewPill nav-link nav-link" href="#Preseason_Info" role="tab" data-toggle="tab">Franchise Info</a></li>
+                                                    <li id="pill_Preseason_CoachingStaff" class="nav-item"><a data-nav="pill_Preseason_CoachingStaff" class="viewPill nav-link nav-link" href="#Preseason_CoachingStaff" role="tab" data-toggle="tab">Coaching Staff</a></li>
+                                                    <li id="pill_Preseason_DepthChart" class="nav-item"><a data-nav="pill_Preseason_DepthChart" class="viewPill nav-link nav-link" href="#Preseason_DepthChart" role="tab" data-toggle="tab">Depth Chart</a></li>
                                                 </ul>
                                                 <div class="tab-content">
                                                     <!-- Franchise Info Tab -->
@@ -1046,23 +1037,22 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                                         </div>
                                     </div>
                                 </div>
-                                <!-- [ Regular Season Panel ] -->
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab">
-                                        <h4 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#Fran_Year_Accordion" href="#Fran_Year_RegularSeason" aria-expanded="false" aria-controls="coachingPanel">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">
+                                            <a class="collapsed badge badge-light" data-toggle="collapse" data-parent="#Fran_Year_Accordion" href="#Fran_Year_RegularSeason" aria-expanded="false" aria-controls="coachingPanel">
                                                 <img src="../libs/images/franchises/<?= $Curr_Team ?>_Logo.png" height=25 width=40><?php echo " " . strtoupper($Curr_Team) . " - Year: " . $View_Year . " - Regular Season"; ?>
                                             </a>
-                                        </h4>
+                                        </h5>
                                     </div>
-                                    <div id="Fran_Year_RegularSeason" class="panel-collapse collapse" role="tabpanel">
-                                        <div class="panel-body">
+                                    <div id="Fran_Year_RegularSeason" class="collapse" aria-labelledby="headingTwo" data-parent="#Fran_Year_Accordion">
+                                        <div class="card-body">
                                             <div>
                                                 <ul class="nav nav-pills" role="tablist">
-                                                    <li id="pill_RegularSeason_Results" role="presentation"><a data-nav="pill_RegularSeason_Results" class="viewPill" href="#RegularSeason_Results" role="tab" data-toggle="tab">Regular Season Results</a></li>
-                                                    <li id="pill_RegularSeason_TeamStats" role="presentation"><a data-nav="pill_RegularSeason_TeamStats" class="viewPill" href="#RegularSeason_TeamStats" role="tab" data-toggle="tab">Team Stats</a></li>
-                                                    <li id="pill_RegularSeason_IndvStats" role="presentation"><a data-nav="pill_RegularSeason_IndvStats" class="viewPill" href="#RegularSeason_IndvStats"role="tab" data-toggle="tab">Indvidual Stats</a></li>
-                                                    <li id="pill_RegularSeason_Awards" role="presentation"><a data-nav="pill_RegularSeason_Awards" class="viewPill" href="#RegularSeason_Awards" role="tab" data-toggle="tab">Awards</a></li>
+                                                    <li id="pill_RegularSeason_Results" class="nav-item"><a data-nav="pill_RegularSeason_Results" class="viewPill nav-link" href="#RegularSeason_Results" role="tab" data-toggle="tab">Regular Season Results</a></li>
+                                                    <li id="pill_RegularSeason_TeamStats" class="nav-item"><a data-nav="pill_RegularSeason_TeamStats" class="viewPill nav-link" href="#RegularSeason_TeamStats" role="tab" data-toggle="tab">Team Stats</a></li>
+                                                    <li id="pill_RegularSeason_IndvStats" class="nav-item"><a data-nav="pill_RegularSeason_IndvStats" class="viewPill nav-link" href="#RegularSeason_IndvStats"role="tab" data-toggle="tab">Indvidual Stats</a></li>
+                                                    <li id="pill_RegularSeason_Awards" class="nav-item"><a data-nav="pill_RegularSeason_Awards" class="viewPill nav-link" href="#RegularSeason_Awards" role="tab" data-toggle="tab">Awards</a></li>
                                                 </ul>
                                                 <div class="tab-content">
                                                     <div role="tabpanel" class="tab-pane" id="RegularSeason_Results">
@@ -1082,37 +1072,36 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                                         </div>
                                     </div>
                                 </div>
-                                <!-- [ Postseason Panel ] -->
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab">
-                                        <h4 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#Fran_Year_Accordion" href="#Fran_Year_Postseason" aria-expanded="false" aria-controls="depthPanel">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">
+                                            <a class="collapsed badge badge-light" data-toggle="collapse" data-parent="#Fran_Year_Accordion" href="#Fran_Year_Postseason" aria-expanded="false" aria-controls="depthPanel">
                                                 <img src="../libs/images/franchises/<?= $Curr_Team ?>_Logo.png" height=25 width=40><?php echo " " . strtoupper($Curr_Team) . " - Year: " . $View_Year . " - Postseason"; ?>
                                             </a>
-                                        </h4>
+                                        </h5>
                                     </div>
-                                    <div id="Fran_Year_Postseason" class="panel-collapse collapse" role="tabpanel">
-                                        <div class="panel-body">
+                                    <div id="Fran_Year_Postseason" class="collapse" aria-labelledby="headingThree" data-parent="#Fran_Year_Accordion">
+                                        <div class="card-body">
+                                            <?php
+                                            $offRetiredCount = db_query("SELECT * FROM `franchise_year_off_moves` Where Year='{$View_Year}' and Team='{$Curr_Team}' and `Type`='retired'");
+                                            $retired = $offRetiredCount->num_rows;
+
+                                            $offprefaCount = db_query("SELECT * FROM `franchise_year_off_moves` Where Year='{$View_Year}' and Team='{$Curr_Team}' and Type='prefa'");
+                                            $preFA = $offprefaCount->num_rows;
+
+                                            $offdraftCount = db_query("SELECT * FROM `franchise_year_off_moves` Where Year='{$View_Year}' and Team='{$Curr_Team}' and Type='draft' ORDER BY `Row` ASC");
+                                            $draft = $offdraftCount->num_rows;
+
+                                            $offpostfaCount = db_query("SELECT * FROM `franchise_year_off_moves` Where Year='{$View_Year}' and Team='{$Curr_Team}' and Type='postfa'");
+                                            $postFA = $offpostfaCount->num_rows;
+                                            ?>
                                             <div>
-                                                <?php
-                                                $offRetiredCount = db_query("SELECT * FROM `franchise_year_off_moves` Where Year='{$View_Year}' and Team='{$Curr_Team}' and `Type`='retired'");
-                                                $retired = $offRetiredCount->num_rows;
-
-                                                $offprefaCount = db_query("SELECT * FROM `franchise_year_off_moves` Where Year='{$View_Year}' and Team='{$Curr_Team}' and Type='prefa'");
-                                                $preFA = $offprefaCount->num_rows;
-
-                                                $offdraftCount = db_query("SELECT * FROM `franchise_year_off_moves` Where Year='{$View_Year}' and Team='{$Curr_Team}' and Type='draft' ORDER BY `Row` ASC");
-                                                $draft = $offdraftCount->num_rows;
-
-                                                $offpostfaCount = db_query("SELECT * FROM `franchise_year_off_moves` Where Year='{$View_Year}' and Team='{$Curr_Team}' and Type='postfa'");
-                                                $postFA = $offpostfaCount->num_rows;
-                                                ?>
                                                 <ul class="nav nav-pills" role="tablist">
-                                                    <li id="pill_Offseason_Staffing" role="presentation"><a data-nav="Offseason_Staffing" class="viewPill" href="#Offseason_Staffing" role="tab" data-toggle="tab">Staffing</a></li>
-                                                    <li id="pill_Offseason_Retired" role="presentation"><a data-nav="Offseason_Retired" class="viewPill" href="#Offseason_Retired" role="tab" data-toggle="tab">Retired Players <?php echo '<span class="badge">' . $retired . '</span>' ?></a></li>
-                                                    <li id="pill_Offseason_RestrictedFA" role="presentation"><a data-nav="Offseason_RestrictedFA" class="viewPill" href="#Offseason_PreFA" role="tab" data-toggle="tab">Pre Draft Free Agents <?php echo '<span class="badge">' . $preFA . '</span>' ?></a></li>
-                                                    <li id="pill_Offseason_Draft" role="presentation"><a data-nav="Offseason_Draft" class="viewPill" href="#Offseason_Draft" role="tab" data-toggle="tab">The Draft <?php echo '<span class="badge">' . $draft . '</span>' ?></a></li>
-                                                    <li id="pill_Offseason_FA" role="presentation"><a data-nav="Offseason_FA" class="viewPill" href="#Offseason_PostFA" role="tab" data-toggle="tab">Post Draft Free Agency <?php echo '<span class="badge">' . $postFA . '</span>' ?></a></li>
+                                                    <li id="pill_Offseason_Staffing" class="nav-item"><a data-nav="Offseason_Staffing" class="viewPill nav-link" href="#Offseason_Staffing" role="tab" data-toggle="tab">Staffing</a></li>
+                                                    <li id="pill_Offseason_Retired" class="nav-item"><a data-nav="Offseason_Retired" class="viewPill nav-link" href="#Offseason_Retired" role="tab" data-toggle="tab">Retired Players <?php echo '<span class="badge badge-dark">' . $retired . '</span>' ?></a></li>
+                                                    <li id="pill_Offseason_RestrictedFA" class="nav-item"><a data-nav="Offseason_RestrictedFA" class="viewPill nav-link" href="#Offseason_PreFA" role="tab" data-toggle="tab">Pre Draft Free Agents <?php echo '<span class="badge badge-dark">' . $preFA . '</span>' ?></a></li>
+                                                    <li id="pill_Offseason_Draft" class="nav-item"><a data-nav="Offseason_Draft" class="viewPill nav-link" href="#Offseason_Draft" role="tab" data-toggle="tab">The Draft <?php echo '<span class="badge badge-dark">' . $draft . '</span>' ?></a></li>
+                                                    <li id="pill_Offseason_FA" class="nav-item"><a data-nav="Offseason_FA" class="viewPill nav-link" href="#Offseason_PostFA" role="tab" data-toggle="tab">Post Draft Free Agency <?php echo '<span class="badge badge-dark">' . $postFA . '</span>' ?></a></li>
                                                 </ul>
                                                 <div class="tab-content">
                                                     <div role="tabpanel" class="tab-pane" id="Offseason_Staffing">
@@ -1139,65 +1128,64 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <?php include ('modals/modals_franchise_view.php'); ?>
-    </body>
-</html>
-<?php
+                <?php include ('modals/modals_franchise_view.php'); ?>
+                </body>
+                </html>
+                <?php
 
-function return_depth_result_position($Position, $View_Year, $Curr_Team) {
+                function return_depth_result_position($Position, $View_Year, $Curr_Team) {
 
-    $Position_Result = db_query("SELECT * FROM `franchise_year_roster` WHERE Year='{$View_Year}' and Team='{$Curr_Team}' and Position='{$Position}'");
-    $Position_Row = $Position_Result->fetch_assoc();
-    $weapon = '';
-    if ($Position_Row['Weapon'] != "None") {
-        $weapon = '&nbsp;<img src=../libs/images/weapons/' . $Position_Row['Weapon'] . '.gif height=20 width=20>';
-    }
-    return '<span data-toggle="tooltip" data-placement="top" title="' . $Position_Row['Name'] . '">'
-            . '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#detail' . $Position_Row['Position'] . 'Modal" title="' . $Position_Row['Name'] . '">' . $Position . ': ' . $Position_Row['Overall'] . $weapon . '</button></span>';
-}
+                    $Position_Result = db_query("SELECT * FROM `franchise_year_roster` WHERE Year='{$View_Year}' and Team='{$Curr_Team}' and Position='{$Position}'");
+                    $Position_Row = $Position_Result->fetch_assoc();
+                    $weapon = '';
+                    if ($Position_Row['Weapon'] != "None") {
+                        $weapon = '&nbsp;<img src=../libs/images/weapons/' . $Position_Row['Weapon'] . '.gif height=20 width=20>';
+                    }
+                    return '<span data-toggle="tooltip" data-placement="top" title="' . $Position_Row['Name'] . '">'
+                            . '<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#detail' . $Position_Row['Position'] . 'Modal" title="' . $Position_Row['Name'] . '">' . $Position . ': ' . $Position_Row['Overall'] . $weapon . '</button></span>';
+                }
 
-function return_depth_result_tree($Positions, $View_Year, $Curr_Team) {
+                function return_depth_result_tree($Positions, $View_Year, $Curr_Team) {
 
-    foreach ($Positions as $Pos) {
+                    foreach ($Positions as $Pos) {
 
-        $Pos_Result = db_query("SELECT * FROM `franchise_year_roster` WHERE Year='{$View_Year}' and Team='{$Curr_Team}' and Position='{$Pos}' ORDER BY Position ASC");
+                        $Pos_Result = db_query("SELECT * FROM `franchise_year_roster` WHERE Year='{$View_Year}' and Team='{$Curr_Team}' and Position='{$Pos}' ORDER BY Position ASC");
 
-        if (mysqli_num_rows($Pos_Result) == 0) {
-            
-        } else {
-            $Pos_Row = $Pos_Result->fetch_assoc();
-            echo '<li data-toggle="modal" data-target="#detail' . $Pos_Row['Position'] . 'Modal">'
-            . '<div class="treeDepthCell" style="width: 65px"><span class="label label-default">' . $Pos_Row['Position'] . '</span></div>'
-            . '<div class="treeDepthCell" style="width: 100px;"><span class="label label-default">Overall: ' . $Pos_Row['Overall'] . '</span></div>'
-            . '<div class="treeDepthCell" style="width: 150px"><span class="label label-default">' . $Pos_Row['Name'] . '</span></div>'
-            . '<div class="treeDepthCell" style="width: 65px"><span class="label label-default">Age: ' . $Pos_Row['Age'] . '</span></div>';
+                        if (mysqli_num_rows($Pos_Result) == 0) {
+                            
+                        } else {
+                            $Pos_Row = $Pos_Result->fetch_assoc();
+                            echo '<li data-toggle="modal" data-target="#detail' . $Pos_Row['Position'] . 'Modal">'
+                            . '<div class="treeDepthCell" style="width: 65px"><span class="label label-default">' . $Pos_Row['Position'] . '</span></div>'
+                            . '<div class="treeDepthCell" style="width: 100px;"><span class="label label-default">Overall: ' . $Pos_Row['Overall'] . '</span></div>'
+                            . '<div class="treeDepthCell" style="width: 150px"><span class="label label-default">' . $Pos_Row['Name'] . '</span></div>'
+                            . '<div class="treeDepthCell" style="width: 65px"><span class="label label-default">Age: ' . $Pos_Row['Age'] . '</span></div>';
 
-            if ($Pos === 'KR' || $Pos === 'PR') {
+                            if ($Pos === 'KR' || $Pos === 'PR') {
+                                
+                            } else {
+
+                                echo '<div class="treeDepthCell" style="width: 80px"><span class="label label-default">' . $Pos_Row['Acquired'] . '</span></div>';
+                                echo '<div class="treeDepthCell" style="width: 55px"><span class="label label-default">';
+                                if ($Pos_Row['Rookie'] === 'R') {
+                                    echo 'Rookie';
+                                } else {
+                                    echo 'Veteran';
+                                }
+                                echo '</span></div>';
+                                echo '<div class="treeDepthCell" style="width: 45px">';
+                                if ($Pos_Row['Weapon'] != "None") {
+                                    echo '<img src=../libs/images/weapons/', $Pos_Row['Weapon'], '.gif height=20 width=20>';
+                                }
+                                echo'</div>';
+                                echo '<div class="treeDepthCell" style="width: 45px">';
+                                if ($Pos_Row['OSU'] === "Y") {
+                                    echo '&nbsp;<img src=../libs/images/OSU.png height=20 width=20>';
+                                }
+                                echo '</div>';
+                            }
+                            echo '</li>';
+                        }
+                    }
+                }
                 
-            } else {
-
-                echo '<div class="treeDepthCell" style="width: 80px"><span class="label label-default">' . $Pos_Row['Acquired'] . '</span></div>';
-                echo '<div class="treeDepthCell" style="width: 55px"><span class="label label-default">';
-                if ($Pos_Row['Rookie'] === 'R') {
-                    echo 'Rookie';
-                } else {
-                    echo 'Veteran';
-                }
-                echo '</span></div>';
-                echo '<div class="treeDepthCell" style="width: 45px">';
-                if ($Pos_Row['Weapon'] != "None") {
-                    echo '<img src=../libs/images/weapons/', $Pos_Row['Weapon'], '.gif height=20 width=20>';
-                }
-                echo'</div>';
-                echo '<div class="treeDepthCell" style="width: 45px">';
-                if ($Pos_Row['OSU'] === "Y") {
-                    echo '&nbsp;<img src=../libs/images/OSU.png height=20 width=20>';
-                }
-                echo '</div>';
-            }
-            echo '</li>';
-        }
-    }
-}

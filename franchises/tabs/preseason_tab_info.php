@@ -10,7 +10,7 @@
         /* Display Team Prestige */
         if ($Preseason_Info_Row['Field_ID'] === 'prestige') {
             echo '<div class="progress">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="10" style="width: ', ($Preseason_Info_Row['Field_Value']) * 10, '%;">
+                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="10" style="width: ', ($Preseason_Info_Row['Field_Value']) * 10, '%;">
                             <span>', $Preseason_Info_Row['Field_Value'], '/10</span>
                     </div>
                   </div>';
@@ -41,7 +41,7 @@
         }
         echo '</td>';
         /* History Cell for Each Field */
-        echo '<td><span class="btn btn-default historyModal" id="', $Preseason_Info_Row['Field_ID'], 'History" style="cursor: pointer" data-toggle="popover" data-placement="top" title="', $Preseason_Info_Row['Field_Display'], ' History">', $Preseason_Info_Row['Field_Display'], ' History</span>';
+        echo '<td><span class="btn btn-secondary historyModal" id="', $Preseason_Info_Row['Field_ID'], 'History" style="cursor: pointer" data-toggle="popover" data-placement="top" title="', $Preseason_Info_Row['Field_Display'], ' History">', $Preseason_Info_Row['Field_Display'], ' History</span>';
         /* Update Cell for Each Field */
         echo '<td class="franViewEdit" style="text-align: right; width: 300px">';
         /* Update Team Prestige */
@@ -54,7 +54,7 @@
             echo '<div class="input-group">
                                                                             <input id="preseason_rival_input" type="text" data-franchise="', $Curr_Team, '" data-year="', $View_Year, '" class="form-control" placeholder="Enter New Rivals">
                                                                             <span class="input-group-btn">
-                                                                              <button id="preseason_rival_btn" class="btn btn-default" type="button">Update</button>
+                                                                              <button id="preseason_rival_btn" class="btn btn-secondary" type="button">Update</button>
                                                                             </span>
                                                                           </div>';
         }
@@ -63,7 +63,7 @@
             echo '<div class="input-group">
                                                                             <input id="preseason_icons_input" type="text" data-franchise="', $Curr_Team, '" data-year="', $View_Year, '" class="form-control" placeholder="Enter New NFL Icon(s)">
                                                                             <span class="input-group-btn">
-                                                                              <button id="preseason_icons_btn" class="btn btn-default" type="button">Update</button>
+                                                                              <button id="preseason_icons_btn" class="btn btn-secondary" type="button">Update</button>
                                                                             </span>
                                                                           </div>';
         }

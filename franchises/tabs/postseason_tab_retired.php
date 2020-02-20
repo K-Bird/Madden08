@@ -13,12 +13,12 @@
                         '<td>', $offRetiredRow['Position'], '</td>',
                         '<td>', $offRetiredRow['Overall'], '</td>',
                         '<td>', $offRetiredRow['Age'], '</td>',
-                        '<td><a class="btn btn-danger franViewEdit" id="',$offRetiredRow['Row'],'" onclick="removeMovesRow(this)">Remove Row</a></td>',
+                        '<td><a class="btn btn-outline-danger franViewEdit" id="',$offRetiredRow['Row'],'" onclick="removeMovesRow(this)">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
                     <tr>
-                        <td colspan="7"><a class="btn btn-success franViewEdit offMove" data-movetype="retired" data-toggle="modal" data-target="#addMoves" style="display:none">Add Retired Player</a></td>
+                        <td colspan="7"><a class="btn btn-outline-success franViewEdit offMove" data-movetype="retired" data-toggle="modal" data-target="#addMoves" style="display:none">Add Retired Player</a></td>
                     </tr>
                 </table>
 
