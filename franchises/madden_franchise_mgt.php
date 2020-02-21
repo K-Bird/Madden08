@@ -179,10 +179,10 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php"
 
                                 while ($row = $AllFran->fetch_assoc()) {
                                     if ($row['Active'] === 'Y') {
-                                        echo '<tr  class="success">';
+                                        echo '<tr  class="table-success">';
                                     }
                                     if ($row['Active'] === 'N') {
-                                        echo '<tr  class="active">';
+                                        echo '<tr>';
                                     }
                                     echo '<td><img src=../libs/images/franchises/', $row['Franchise'], '_Logo.png height=25 width=40></td>'
                                     . '<td>', $row['Franchise'], ':</td>'
