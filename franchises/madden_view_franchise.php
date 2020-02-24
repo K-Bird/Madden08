@@ -37,6 +37,8 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
         <link href="../libs/css/viewFranchise.css" rel="stylesheet" type="text/css"> 
         <script src="../libs/js/jquery.js"></script>
         <script src="../libs/js/bootstrap.js"></script>
+        <script src="../libs/js/tablesorter.js"></script>
+        <script src="../libs/js/tablesorter-widgets.js"></script>
         <script src="../libs/js/jstree.js"></script>
         <script src="../libs/js/inputSpinner.js"></script>
         <script src="../libs/js/common.js"></script>
@@ -73,7 +75,6 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                     $(lastPill_div).addClass("active");
                     $("#" + lastModal).modal('show');
                 }
-
 
 
                 //When a franchise is selected on the view franchise navigation updated the view table control

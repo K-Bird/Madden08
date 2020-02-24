@@ -22,6 +22,10 @@ $(document).ready(function () {
         }
     });
 
+    $(".sortTable").tablesorter({
+        theme: "default"
+    });
+
 });
 
 function getRotationDegrees(obj) {
