@@ -11,7 +11,7 @@
                         '<td>', $offprefaRow['Position'], '</td>',
                         '<td>', $offprefaRow['Overall'], '</td>',
                         '<td>', $offprefaRow['Age'], '</td>',
-                        '<td><a class="btn btn-outline-danger franViewEdit" style="display: none" id="',$offprefaRow['Row'],'" onclick="removeMovesRow(this)">Remove Row</a></td>',
+                        '<td><a class="btn btn-outline-danger franViewEdit removeOffMove" style="display: none" id="',$offprefaRow['Row'],'" data-moveType="fa">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>

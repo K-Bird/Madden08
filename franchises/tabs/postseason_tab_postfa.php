@@ -11,7 +11,7 @@
         '<td>', $offpostfaRow['Position'], '</td>',
         '<td>', $offpostfaRow['Overall'], '</td>',
         '<td>', $offpostfaRow['Age'], '</td>',
-        '<td><a class="btn btn-outline-danger franViewEdit" style="display: none" id="', $offpostfaRow['Row'], '/moves/', $fran, '" onclick="removeMovesRow(this)">Remove Row</a></td>',
+        '<td><a class="btn btn-outline-danger franViewEdit removeOffMove" style="display: none" id="', $offpostfaRow['Row'],'" data-moveType="fa">Remove Row</a></td>',
         '</tr>';
     }
     ?>

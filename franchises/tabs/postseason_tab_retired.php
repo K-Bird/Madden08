@@ -13,7 +13,7 @@
                         '<td>', $offRetiredRow['Position'], '</td>',
                         '<td>', $offRetiredRow['Overall'], '</td>',
                         '<td>', $offRetiredRow['Age'], '</td>',
-                        '<td><a class="btn btn-outline-danger franViewEdit" id="',$offRetiredRow['Row'],'" onclick="removeMovesRow(this)">Remove Row</a></td>',
+                        '<td><a class="btn btn-outline-danger franViewEdit removeOffMove" id="',$offRetiredRow['Row'],'" data-moveType="retired">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>

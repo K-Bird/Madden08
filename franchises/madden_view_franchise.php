@@ -702,19 +702,30 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                 //Common Function to change enabled/hidden fields on add Offseason move modal
                 $("#moveType").change(function () {
                     if ($(this).val() === 'draft') {
+                        $('#freeName').show();
+                        $('#selectName').hide();
+                        $('#fa-search-badge').hide();
+                        $('#importOffFASearch').hide();
+                        $('#offFAImportResults').hide();
                         $('.draftMove').prop('disabled', false);
-                    } else {
-                        $('.draftMove').prop('disabled', true);
                     }
                     if ($(this).val() === 'retired') {
-                        $('.freeName').addClass("hidden");
-                        $('.selectName').removeClass("hidden");
+                        $('#freeName').hide();
+                        $('#selectName').show();
+                        $('#fa-search-badge').hide();
+                        $('#importOffFASearch').hide();
+                        $('#offFAImportResults').hide();
                         $('.off-pos').prop('disabled', true);
                         $('.off-ovr').prop('disabled', false);
                         $('.off-age').prop('disabled', false);
-                    } else {
-                        $('.freeName').removeClass("hidden");
-                        $('.selectName').addClass("hidden");
+                    }
+                    if ($(this).val() === 'prefa' || $(this).val() === 'postfa') {
+                        $('#freeName').show();
+                        $('#selectName').hide();
+                        $('#fa-search-badge').show();
+                        $('#importOffFASearch').show();
+                        $('#offFAImportResults').show();
+                        $('#importOffFASearch').attr('data-faType',type);
                         $('.off-pos').prop('disabled', false);
                         $('.off-ovr').prop('disabled', false);
                         $('.off-age').prop('disabled', false);
@@ -727,22 +738,35 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                     $("#addMoves #moveType").val(type);
 
                     if (type === 'draft') {
+                        $('#freeName').show();
+                        $('#selectName').hide();
+                        $('#fa-search-badge').hide();
+                        $('#importOffFASearch').hide();
+                        $('#fffFAImportResults').hide();
                         $('.draftMove').prop('disabled', false);
-                    } else {
-                        $('.draftMove').prop('disabled', true);
                     }
                     if (type === 'retired') {
-                        $('.freeName').addClass("hidden");
-                        $('.selectName').removeClass("hidden");
+                        $('#freeName').hide();
+                        $('#selectName').show();
+                        $('#fa-search-badge').hide();
+                        $('#importOffFASearch').hide();
+                        $('#offFAImportResults').hide();
                         $('.off-pos').prop('disabled', true);
                         $('.off-ovr').prop('disabled', false);
                         $('.off-age').prop('disabled', false);
-                    } else {
-                        $('.freeName').removeClass("hidden");
-                        $('.selectName').addClass("hidden");
+                        $('.draftMove').prop('disabled', true);
+                    }
+                    if (type === 'prefa' || type === 'postfa') {
+                        $('#freeName').show();
+                        $('#selectName').hide();
+                        $('#fa-search-badge').show();
+                        $('#importOffFASearch').show();
+                        $('#OffFAImportResults').show();
+                        $('#importOffFASearch').attr('data-faType',type);
                         $('.off-pos').prop('disabled', false);
                         $('.off-ovr').prop('disabled', false);
                         $('.off-age').prop('disabled', false);
+                        $('.draftMove').prop('disabled', true);
                     }
                 });
 
@@ -795,6 +819,88 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                                 error: function (jqXHR, textStatus, errorThrown)
                                 {
                                     alert("Player Not Imported: " + errorThrown);
+                                }
+                            });
+
+                });
+
+                //On typing into pre draft FA player import searchbox genterate the tag results as buttons
+                $("#importOffFASearch").keyup(function () {
+
+                    var name = $(this).val();
+                    var team = $(this).attr('data-currTeam');
+                    var year = $(this).attr('data-viewYear');
+                    var faType = $(this).attr('data-faType');
+
+                    if (name === '') {
+                        $("#offFAImportResults").replaceWith('<div id="offFAImportResults"></div>');
+                    } else {
+
+                        $.ajax(
+                                {
+                                    url: "../libs/ajax/franchise_view/off_move/search_off_FA_import.php",
+                                    type: "POST",
+                                    data: {name: name, team: team, year: year, type : faType},
+                                    success: function (data, textStatus, jqXHR)
+                                    {
+                                        $('#offFAImportResults').replaceWith(data);
+                                    },
+                                    error: function (jqXHR, textStatus, errorThrown)
+                                    {
+                                        alert("Tags Could Not Be Loaded: " + errorThrown);
+                                    }
+                                });
+                    }
+                });
+
+                //On import player tag button click import player to position
+                $(document).on("click", '.playerOffFAImportListItem', function (event) {
+
+                    var name = $(this).attr('data-playerName');
+                    var pos = $(this).attr('data-playerPos');
+                    var ovr = $(this).attr('data-playerOvr');
+                    var age = $(this).attr('data-playerAge');
+                    var moveType = $(this).attr('data-offType');
+                    var playerRow = $(this).attr('data-playerRow');
+                    var team = $(this).attr('data-moveTeam');
+                    var year = $(this).attr('data-moveYear');
+
+                    $.ajax(
+                            {
+                                url: "../libs/ajax/franchise_view/off_move/add_franchise_offseason_move.php",
+                                type: "POST",
+                                data: {playerRow: playerRow, fran: team, franYear: year, pos: pos, freePlayer: name, Ovr: ovr, Age: age, moveType: moveType},
+                                success: function (data, textStatus, jqXHR)
+                                {
+                                    location.reload();
+                                },
+                                error: function (jqXHR, textStatus, errorThrown)
+                                {
+                                    alert("Player Not Imported: " + errorThrown);
+                                }
+                            });
+
+                });
+
+                $(".removeOffMove").click(function (e) {
+
+                    var row = $(this).attr('id');
+                    var moveType = $(this).attr('data-moveType');
+
+                    $.ajax(
+                            {
+                                url: "../libs/ajax/franchise_view/off_move/remove_franchise_offseason_move.php",
+                                type: "POST",
+                                data: {
+                                    row: row, moveType: moveType
+                                },
+                                success: function (data, textStatus, jqXHR)
+                                {
+                                    location.reload();
+                                },
+                                error: function (jqXHR, textStatus, errorThrown)
+                                {
+                                    alert("Update Did Not Complete");
                                 }
                             });
 
@@ -955,29 +1061,6 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                                 row: row,
                                 field: field,
                                 newVal: newVal
-                            },
-                            success: function (data, textStatus, jqXHR)
-                            {
-                                location.reload();
-                            },
-                            error: function (jqXHR, textStatus, errorThrown)
-                            {
-                                alert("Update Did Not Complete");
-                            }
-                        });
-            }
-
-//Common function to remove offseason move row
-            function removeMovesRow(e) {
-
-                var id = e.id;
-
-                $.ajax(
-                        {
-                            url: "../libs/ajax/franchise_view/off_move/remove_franchise_offseason_move.php",
-                            type: "POST",
-                            data: {
-                                row: id
                             },
                             success: function (data, textStatus, jqXHR)
                             {

@@ -12,7 +12,7 @@
         '<td>', $offdraftRow['Position'], '</td>',
         '<td>', $offdraftRow['Overall'], '</td>',
         '<td>', $offdraftRow['Age'], '</td>',
-        '<td><a class="btn btn-outline-danger franViewEdit" style="display: none" id="', $offdraftRow['Row'], '" onclick="removeMovesRow(this)">Remove Row</a></td>',
+        '<td><a class="btn btn-outline-danger franViewEdit removeOffMove" style="display: none" id="', $offdraftRow['Row'], '" data-moveType="draft">Remove Row</a></td>',
         '</tr>';
     }
     ?>

@@ -2150,19 +2150,19 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
     <div class="modal-dialog" style="width : 800px">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Add Offseason Move for <?php echo strtoupper($Curr_Team) . " - Year: " . $View_Year; ?></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
                 <form role="form" name="addMove" action="../libs/ajax/franchise_view/off_move/add_franchise_offseason_move.php" method="post">
                     <div class="form-group">
-                        <table class="table" id="addPassTable" style="font-size: smaller; text-align: left;">
+                        <table class="table table-sm" style="font-size: smaller; text-align: left;">
                             <tr>
                                 <td>Type</td><td>Player</td><td>Position</td><td>Overall</td><td>Age</td><td>Draft Position</td>
                             </tr>
                             <tr>
                                 <td>
-                                    <select name="moveType" id="moveType" class="btn btn-sm btn-secondary dropdown-toggle">
+                                    <select name="moveType" id="moveType" class="form-control">
                                         <option value="retired">Retired Player</option>
                                         <option value="prefa">Pre-Draft Free Agent</option>
                                         <option value="draft">Drafted Player</option>
@@ -2170,8 +2170,8 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
                                     </select>
                                 </td>
                                 <td>
-                                    <input name="freePlayer" type="text" class="freeName" />
-                                    <select name="selectedPlayer" class="btn btn-sm btn-secondary dropdown-toggle selectName">
+                                    <input id="freeName" name="freePlayer" type="text" class="form-control" />
+                                    <select id="selectName" name="selectedPlayer" class="form-control">
                                         <?php
                                         foreach ($Positions as $pos) {
                                             $grabPlayers = db_query("SELECT * FROM `franchise_year_roster` where Position='" . $pos . "' and Year='{$View_Year}' and Team='{$Curr_Team}'");
@@ -2182,7 +2182,7 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
                                     </select>
                                 </td>
                                 <td>
-                                    <select name="pos" class="btn btn-sm btn-secondary dropdown-toggle off-pos">
+                                    <select name="pos" class="form-control off-pos">
                                         <option value="QB">QB</option>
                                         <option value="HB">HB</option>
                                         <option value="FB">FB</option>
@@ -2207,16 +2207,20 @@ while ($coachRow = $GetCoaches->fetch_assoc()) {
                                     </select>
                                 </td>
                                 <td>
-                                    <input name="Ovr" type="text" size="5" class="off-ovr"/>
+                                    <input name="Ovr" type="text" size="5" class="form-control off-ovr"/>
                                 </td>
                                 <td>
-                                    <input name="Age" type="text" size="5" class="off-age"/>
+                                    <input name="Age" type="text" size="5" class="form-control off-age"/>
                                 </td>
                                 <td>
-                                    <input name="Draft" type="text" size="10" placeholder="Round-Pick" class="draftMove"/>
+                                    <input name="Draft" type="text" size="10" placeholder="Round-Pick" class="form-control draftMove"/>
                                 </td>
                             </tr>
                         </table>
+                        <span id="fa-search-badge" class="badge badge-dark">OR</span><br>
+                        <input id="importOffFASearch" class="form-control" data-currTeam="<?php echo $Curr_Team; ?>" data-viewYear="<?php echo $View_Year; ?>" placeholder="Search for player to import by first and last name">
+                        <div id="offFAImportResults"></div>
+                        <br>
                         <input type="hidden" name="fran" value=<?php echo $Curr_Team; ?> />
                         <input type="hidden" name="franYear" value=<?php echo $View_Year; ?> />
                         <div class="form-group" style="text-align: left">
