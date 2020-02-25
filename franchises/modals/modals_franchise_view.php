@@ -756,7 +756,8 @@ foreach ($Positions as $pos) {
             if ($Attr === 'Age' || $Attr === 'Position') {
                 echo '<td>' . $histAttr_Row[$Attr], '</td>';
             } else {
-                echo '<td><input class="form-control attributeInput" type="text" name="player', $Attr, '[]" placeholder="', $histAttr_Row[$Attr], '" style="width: 50px">';
+                echo '<td><input class="form-control attributeInput franViewEdit" type="text" name="player', $Attr, '[]" placeholder="', $histAttr_Row[$Attr], '" style="width: 50px">';
+                echo '<span class="badge badge-dark franViewDisplay">' . $histAttr_Row[$Attr] . '</span>';
             }
             if ($histAttr_Row['Year'] === $attrDisplay || $histAttr_Row['Year'] === $lowestYear) {
                 echo '';
@@ -766,11 +767,11 @@ foreach ($Positions as $pos) {
                 } else {
                     $histAttr_Change = $histAttr_Row[$Attr] - $previousValues[$i - count($Display_Attributes)];
                     if ($histAttr_Change > 0) {
-                        echo '<span style="color: green"> (+' . $histAttr_Change . ')</span>';
+                        echo '<span style="color: green" class="franViewDisplay"> (+' . $histAttr_Change . ')</span>';
                     } elseif ($histAttr_Change === 0) {
-                        echo '<span style="color: gold"> (' . $histAttr_Change . ')</span>';
+                        echo '<span style="color: gold" class="franViewDisplay"> (' . $histAttr_Change . ')</span>';
                     } else {
-                        echo '<span style="color: red"> (' . $histAttr_Change . ')</span>';
+                        echo '<span style="color: red" class="franViewDisplay"> (' . $histAttr_Change . ')</span>';
                     }
                 }
             }
@@ -782,7 +783,7 @@ foreach ($Positions as $pos) {
         echo '<input type="hidden" name="row[]" value="', $histAttr_Row['Row_ID'], '" />';
     }
     echo '</table>
-                <button type="submit" class="btn btn-success">Submit Attribute Changes</button>
+                <button type="submit" class="btn btn-success franViewEdit">Submit Attribute Changes</button>
                 </form>';
 
     /* Training Camp Details Section */
@@ -790,7 +791,7 @@ foreach ($Positions as $pos) {
     $Get_TC_History = db_query("SELECT * FROM `franchise_year_trainingcamp` WHERE Player_Row='{$position_Historical_ID}' ORDER BY Year ASC");
     echo '<form role="form" name="' . $pos . '_TC" class="playerTCForm">';
 
-    echo '<table class="table table-condensed">';
+    echo '<table class="table table-sm">';
     while ($TC_Row = $Get_TC_History->fetch_assoc()) {
 
         echo '<tr>';
@@ -811,21 +812,21 @@ foreach ($Positions as $pos) {
     $Attributes_TC = array('Overall', 'SPD', 'STR', 'AWR', 'AGI', 'ACC', 'CTH', 'CAR', 'JMP', 'BTK', 'TAK', 'THP', 'THA', 'PBK', 'RBK', 'KPW', 'KAC');
     $Drills_TC = array('Pocket Presence', 'Chase and Tackle', 'Swat Ball', 'Trench Fight', 'Clutch Kicking', 'Corner Punt', 'Precision Passing', 'Ground Attack', 'Catch Ball');
 
-    echo '<badge>Add Training Camp Result: </badge><br>';
-    echo '<select name="tc_drill" class="form-control" style="width: 200px">';
+    echo '<span class="franViewEdit">Add Training Camp Result:</span><br>';
+    echo '<select name="tc_drill" class="form-control franViewEdit" style="width: 200px">';
     foreach ($Drills_TC as $drill) {
         echo '<option value="', $drill, '">', $drill, '</option>';
     }
     echo '</select>&nbsp;&nbsp;&nbsp;';
-    echo '<select name="selectedAttr" class="form-control" style="width: 150px">';
+    echo '<select name="selectedAttr" class="form-control franViewEdit" style="width: 150px">';
     foreach ($Attributes_TC as $Attr) {
         echo '<option value="', $Attr, '">', $Attr, '</option>';
     }
     echo '</select>';
-    echo '&nbsp;&nbsp;&nbsp;<input type="text" class="form-control" style="width: 250px" name="old_attr" placeholder="Enter Old Attribute Value" />';
-    echo '&nbsp;&nbsp;&nbsp;<input type="text" class="form-control" style="width: 250px" name="new_attr" placeholder="Enter New Attribute Value" />';
+    echo '&nbsp;&nbsp;&nbsp;<input type="text" class="form-control franViewEdit" style="width: 250px" name="old_attr" placeholder="Enter Old Attribute Value" />';
+    echo '&nbsp;&nbsp;&nbsp;<input type="text" class="form-control franViewEdit" style="width: 250px" name="new_attr" placeholder="Enter New Attribute Value" />';
     echo '<br><br>';
-    echo '<button type="submit" class="btn btn-success">Submit Training Camp Result</button>';
+    echo '<button type="submit" class="btn btn-success franViewEdit">Submit Training Camp Result</button>';
 
     $TC_minYear_result = db_query("SELECT Min(Year) as MinYear FROM `franchise_year_roster` WHERE Historical_ID='{$position_Historical_ID}'");
     $TC_minYear_Row = $TC_minYear_result->fetch_assoc();
