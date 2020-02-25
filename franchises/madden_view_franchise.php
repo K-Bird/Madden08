@@ -725,7 +725,7 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                         $('#fa-search-badge').show();
                         $('#importOffFASearch').show();
                         $('#offFAImportResults').show();
-                        $('#importOffFASearch').attr('data-faType',type);
+                        $('#importOffFASearch').attr('data-faType', type);
                         $('.off-pos').prop('disabled', false);
                         $('.off-ovr').prop('disabled', false);
                         $('.off-age').prop('disabled', false);
@@ -762,7 +762,7 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                         $('#fa-search-badge').show();
                         $('#importOffFASearch').show();
                         $('#OffFAImportResults').show();
-                        $('#importOffFASearch').attr('data-faType',type);
+                        $('#importOffFASearch').attr('data-faType', type);
                         $('.off-pos').prop('disabled', false);
                         $('.off-ovr').prop('disabled', false);
                         $('.off-age').prop('disabled', false);
@@ -840,7 +840,7 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                                 {
                                     url: "../libs/ajax/franchise_view/off_move/search_off_FA_import.php",
                                     type: "POST",
-                                    data: {name: name, team: team, year: year, type : faType},
+                                    data: {name: name, team: team, year: year, type: faType},
                                     success: function (data, textStatus, jqXHR)
                                     {
                                         $('#offFAImportResults').replaceWith(data);
@@ -1221,12 +1221,17 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
 
                     $Position_Result = db_query("SELECT * FROM `franchise_year_roster` WHERE Year='{$View_Year}' and Team='{$Curr_Team}' and Position='{$Position}'");
                     $Position_Row = $Position_Result->fetch_assoc();
-                    $weapon = '';
-                    if ($Position_Row['Weapon'] != "None") {
-                        $weapon = '&nbsp;<img src=../libs/images/weapons/' . $Position_Row['Weapon'] . '.gif height=20 width=20>';
+
+                    if (mysqli_num_rows($Position_Result) === 0) {
+                        return  '<button type="button" class="btn btn-warning"> No ' . $Position . '</button>';
+                    } else {
+                        $weapon = '';
+                        if ($Position_Row['Weapon'] != "None") {
+                            $weapon = '&nbsp;<img src=../libs/images/weapons/' . $Position_Row['Weapon'] . '.gif height=20 width=20>';
+                        }
+                        return '<span data-toggle="tooltip" data-placement="top" title="' . $Position_Row['Name'] . '">'
+                                . '<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#detail' . $Position_Row['Position'] . 'Modal" title="' . $Position_Row['Name'] . '">' . $Position . ': ' . $Position_Row['Overall'] . $weapon . '</button></span>';
                     }
-                    return '<span data-toggle="tooltip" data-placement="top" title="' . $Position_Row['Name'] . '">'
-                            . '<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#detail' . $Position_Row['Position'] . 'Modal" title="' . $Position_Row['Name'] . '">' . $Position . ': ' . $Position_Row['Overall'] . $weapon . '</button></span>';
                 }
 
                 function return_depth_result_tree($Positions, $View_Year, $Curr_Team) {
@@ -1235,22 +1240,22 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
 
                         $Pos_Result = db_query("SELECT * FROM `franchise_year_roster` WHERE Year='{$View_Year}' and Team='{$Curr_Team}' and Position='{$Pos}' ORDER BY Position ASC");
 
-                        if (mysqli_num_rows($Pos_Result) == 0) {
-                            
+                        if (mysqli_num_rows($Pos_Result) === 0) {
+                            echo '<li><span class="badge badge-warning">No ' . $Pos . ' On Roster</span></li>';
                         } else {
                             $Pos_Row = $Pos_Result->fetch_assoc();
                             echo '<li data-toggle="modal" data-target="#detail' . $Pos_Row['Position'] . 'Modal">'
-                            . '<div class="treeDepthCell" style="width: 65px"><span class="label label-default">' . $Pos_Row['Position'] . '</span></div>'
-                            . '<div class="treeDepthCell" style="width: 100px;"><span class="label label-default">Overall: ' . $Pos_Row['Overall'] . '</span></div>'
-                            . '<div class="treeDepthCell" style="width: 150px"><span class="label label-default">' . $Pos_Row['Name'] . '</span></div>'
-                            . '<div class="treeDepthCell" style="width: 65px"><span class="label label-default">Age: ' . $Pos_Row['Age'] . '</span></div>';
+                            . '<div class="treeDepthCell" style="width: 65px"><span class="badge badge-dark">' . $Pos_Row['Position'] . '</span></div>'
+                            . '<div class="treeDepthCell" style="width: 100px;"><span class="badge badge-dark">Overall: ' . $Pos_Row['Overall'] . '</span></div>'
+                            . '<div class="treeDepthCell" style="width: 150px"><span class="badge badge-dark">' . $Pos_Row['Name'] . '</span></div>'
+                            . '<div class="treeDepthCell" style="width: 65px"><span class="badge badge-dark">Age: ' . $Pos_Row['Age'] . '</span></div>';
 
                             if ($Pos === 'KR' || $Pos === 'PR') {
                                 
                             } else {
 
-                                echo '<div class="treeDepthCell" style="width: 80px"><span class="label label-default">' . $Pos_Row['Acquired'] . '</span></div>';
-                                echo '<div class="treeDepthCell" style="width: 55px"><span class="label label-default">';
+                                echo '<div class="treeDepthCell" style="width: 80px"><span class="badge badge-dark">' . $Pos_Row['Acquired'] . '</span></div>';
+                                echo '<div class="treeDepthCell" style="width: 55px"><span class="badge badge-dark">';
                                 if ($Pos_Row['Rookie'] === 'R') {
                                     echo 'Rookie';
                                 } else {
