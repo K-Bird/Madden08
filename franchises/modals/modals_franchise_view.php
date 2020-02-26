@@ -727,118 +727,30 @@ foreach ($Positions as $pos) {
                     <h4 class="modal-title" style="text-align: center">' . $pos . ' Details | ' . strtoupper($Curr_Team) . ' - Year: ' . $View_Year . ' | ' . $details_Row['Name'] . '</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
-                <div class="modal-body" style="text-align:center">
-                <form role="form" name="' . $pos . '_details" class="playerAtrributeForm">
-                    <h3>Attributes</h3>
-                    <table class="table table-sm" style="text-align: left; font-size: small">
-                        <tr><td></td>';
-    foreach ($Display_Attributes as $Attr) {
-        echo '<td>' . $Attr . '</td>';
-    }
-    echo '</tr>';
-    $i = 0;
-    $previousValues = array();
-
-    $attrDisplay_result = db_query("SELECT * FROM `franchise_info` WHERE Franchise='{$Curr_Team}'");
-    $attrDisplay_Row = $attrDisplay_result->fetch_assoc();
-    $attrDisplay = $attrDisplay_Row['AttrDisplay'];
-
-    $historical_result = db_query("SELECT * FROM `franchise_year_roster` WHERE (Historical_ID='{$position_Historical_ID}') AND (`Year` >= {$attrDisplay}) ORDER BY Year ASC");
-
-    $lowestYear_result = db_query("SELECT * FROM `franchise_year_roster` WHERE (Historical_ID='{$position_Historical_ID}') AND (`Year` >= {$attrDisplay}) ORDER BY Year ASC LIMIT 1");
-    $lowestYear_Row = $lowestYear_result->fetch_assoc();
-    $lowestYear = $lowestYear_Row['Year'];
-
-    while ($histAttr_Row = $historical_result->fetch_assoc()) {
-        echo '<tr>';
-        echo '<td>Year ', $histAttr_Row['Year'], ': </td>';
-        foreach ($Display_Attributes as $Attr) {
-            if ($Attr === 'Age' || $Attr === 'Position') {
-                echo '<td>' . $histAttr_Row[$Attr], '</td>';
-            } else {
-                echo '<td><input class="form-control attributeInput franViewEdit" type="text" name="player', $Attr, '[]" placeholder="', $histAttr_Row[$Attr], '" style="width: 50px">';
-                echo '<span class="badge badge-dark franViewDisplay">' . $histAttr_Row[$Attr] . '</span>';
-            }
-            if ($histAttr_Row['Year'] === $attrDisplay || $histAttr_Row['Year'] === $lowestYear) {
-                echo '';
-            } else {
-                if ($Attr === 'Age' || $Attr === 'Position') {
-                    
-                } else {
-                    $histAttr_Change = $histAttr_Row[$Attr] - $previousValues[$i - count($Display_Attributes)];
-                    if ($histAttr_Change > 0) {
-                        echo '<span style="color: green" class="franViewDisplay"> (+' . $histAttr_Change . ')</span>';
-                    } elseif ($histAttr_Change === 0) {
-                        echo '<span style="color: gold" class="franViewDisplay"> (' . $histAttr_Change . ')</span>';
-                    } else {
-                        echo '<span style="color: red" class="franViewDisplay"> (' . $histAttr_Change . ')</span>';
-                    }
-                }
-            }
-            echo '</td>';
-            $i++;
-            array_push($previousValues, $histAttr_Row[$Attr]);
-        }
-        echo '</tr>';
-        echo '<input type="hidden" name="row[]" value="', $histAttr_Row['Row_ID'], '" />';
-    }
-    echo '</table>
-                <button type="submit" class="btn btn-success franViewEdit">Submit Attribute Changes</button>
-                </form>';
-
-    /* Training Camp Details Section */
-    echo '<br><br><h3>Training Camp</h3>';
-    $Get_TC_History = db_query("SELECT * FROM `franchise_year_trainingcamp` WHERE Player_Row='{$position_Historical_ID}' ORDER BY Year ASC");
-    echo '<form role="form" name="' . $pos . '_TC" class="playerTCForm">';
-
-    echo '<table class="table table-sm">';
-    while ($TC_Row = $Get_TC_History->fetch_assoc()) {
-
-        echo '<tr>';
-        echo '<td>';
-        echo "Year: " . $TC_Row['Year'] . " ";
-        echo $TC_Row['Drill'];
-        echo " - " . $TC_Row['Attr_Name'];
-        echo " " . $TC_Row['Old_Attr'] . " to " . $TC_Row['New_Attr'];
-        echo '</td>';
-        echo '<td class="franViewEdit">';
-        echo '<button class="btn btn-danger btn-sm removeDrill" id="', $TC_Row['Row_ID'], '">Remove Drill</button>';
-        echo '</td>';
-        echo '</tr>';
-    }
-    echo '</table>';
-
-
-    $Attributes_TC = array('Overall', 'SPD', 'STR', 'AWR', 'AGI', 'ACC', 'CTH', 'CAR', 'JMP', 'BTK', 'TAK', 'THP', 'THA', 'PBK', 'RBK', 'KPW', 'KAC');
-    $Drills_TC = array('Pocket Presence', 'Chase and Tackle', 'Swat Ball', 'Trench Fight', 'Clutch Kicking', 'Corner Punt', 'Precision Passing', 'Ground Attack', 'Catch Ball');
-
-    echo '<span class="franViewEdit">Add Training Camp Result:</span><br>';
-    echo '<select name="tc_drill" class="form-control franViewEdit" style="width: 200px">';
-    foreach ($Drills_TC as $drill) {
-        echo '<option value="', $drill, '">', $drill, '</option>';
-    }
-    echo '</select>&nbsp;&nbsp;&nbsp;';
-    echo '<select name="selectedAttr" class="form-control franViewEdit" style="width: 150px">';
-    foreach ($Attributes_TC as $Attr) {
-        echo '<option value="', $Attr, '">', $Attr, '</option>';
-    }
-    echo '</select>';
-    echo '&nbsp;&nbsp;&nbsp;<input type="text" class="form-control franViewEdit" style="width: 250px" name="old_attr" placeholder="Enter Old Attribute Value" />';
-    echo '&nbsp;&nbsp;&nbsp;<input type="text" class="form-control franViewEdit" style="width: 250px" name="new_attr" placeholder="Enter New Attribute Value" />';
-    echo '<br><br>';
-    echo '<button type="submit" class="btn btn-success franViewEdit">Submit Training Camp Result</button>';
-
-    $TC_minYear_result = db_query("SELECT Min(Year) as MinYear FROM `franchise_year_roster` WHERE Historical_ID='{$position_Historical_ID}'");
-    $TC_minYear_Row = $TC_minYear_result->fetch_assoc();
-    $TC_minYear = $TC_minYear_Row['MinYear'];
-
-    $historical_result_TC = db_query("SELECT * FROM `franchise_year_roster` WHERE Historical_ID='{$position_Historical_ID}' AND Year='{$TC_minYear}'");
-    $player_Row = $historical_result_TC->fetch_assoc();
-    echo '<input type="hidden" name="row" value="', $player_Row['Row_ID'], '">
-                <input type="hidden" name="franchise" value="', $Curr_Team, '" />
-                <input type="hidden" name="year" value="', $View_Year, '" />';
-    echo '</form>
-                </div>
+                <div class="modal-body" style="text-align:center">';
+    ?>
+    <div>
+        <ul class="nav nav-pills" role="tablist">
+            <li id="pill_PlayerDetail_Overview<?php echo $pos ?>" class="nav-item"><a data-nav="PlayerDetail_Overview<?php echo $pos ?>" class="viewPill nav-link" href="#PlayerDetail_Overview<?php echo $pos ?>" role="tab" data-toggle="tab">Overview</a></li>
+            <li id="pill_PlayerDetail_Attributes<?php echo $pos ?>" class="nav-item"><a data-nav="PlayerDetail_Attributes<?php echo $pos ?>" class="viewPill nav-link" href="#PlayerDetail_Attributes<?php echo $pos ?>" role="tab" data-toggle="tab">Attributes</a></li>
+            <li id="pill_PlayerDetail_Stats<?php echo $pos ?>" class="nav-item"><a data-nav="PlayerDetail_Stats<?php echo $pos ?>" class="viewPill nav-link" href="#PlayerDetail_Stats<?php echo $pos ?>" role="tab" data-toggle="tab">Stats</a></li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane" id="PlayerDetail_Overview<?php echo $pos ?>">
+                <?php include ('sub_content/regularseason_playerdetail_overview.php'); ?>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="PlayerDetail_Attributes<?php echo $pos ?>">
+                <?php include ('sub_content/regularseason_playerdetail_attributes.php'); ?>
+                <br>
+                <?php include ('sub_content/regularseason_playerdetail_trainingcamp.php'); ?>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="PlayerDetail_Stats<?php echo $pos ?>">
+                <?php include ('sub_content/regularseason_playerdetail_stats.php'); ?>
+            </div>
+        </div>
+    </div>
+    <?php
+    echo '</div>
             </div>
         </div>
     </div>';
