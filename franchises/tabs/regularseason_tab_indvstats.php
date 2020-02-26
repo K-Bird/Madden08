@@ -46,14 +46,14 @@
 
                     while ($PassingRow = $passingResult->fetch_assoc()) {
                         echo '<tr>',
-                        '<td><span id="', $PassingRow['Row'], 'Pass" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Passing History">', $PassingRow['Name'], '</span>&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/Name/passing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"></td>',
-                        '<td>', $PassingRow['Rating'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/Rating/passing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $PassingRow['Yards'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/Yards/passing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $PassingRow['TDs'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/TDs/passing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $PassingRow['INTs'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/INTs/passing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $PassingRow['Comp'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/Comp/passing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $PassingRow['Sacked'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/Sacked/passing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td><a class="btn btn-outline-danger franViewEdit" id="', $PassingRow['Row'], '/passing" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                        '<td><span id="', $PassingRow['Row'], 'Pass" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Passing History">', $PassingRow['Name'], '</span>&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/Name/passing" class="oi oi-pencil updateIndvStat franViewEdit" onclick="updateIndvStat(this)"></td>',
+                        '<td>', $PassingRow['Rating'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/Rating/passing" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $PassingRow['Yards'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/Yards/passing" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $PassingRow['TDs'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/TDs/passing" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $PassingRow['INTs'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/INTs/passing" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $PassingRow['Comp'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/Comp/passing" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $PassingRow['Sacked'], '&nbsp;&nbsp;<span id="', $PassingRow['Row'], '/Sacked/passing" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td><a class="btn btn-outline-danger removeIndvStat franViewEdit" id="', $PassingRow['Row'], '/passing">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
@@ -74,14 +74,14 @@
 
                     while ($RushingRow = $rushingResult->fetch_assoc()) {
                         echo '<tr>',
-                        '<td><span id="', $RushingRow['Row'], 'Rush" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Rushing History">', $RushingRow['Name'], '</span>&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/Name/rushing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"></td>',
-                        '<td>', $RushingRow['Yards'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/Yards/rushing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $RushingRow['TDs'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/TDs/rushing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $RushingRow['YPC'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/YPC/rushing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $RushingRow['Fumble'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/Fumble/rushing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $RushingRow['Broken'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/Broken/rushing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $RushingRow['LongRun'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/LongRun/rushing" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td><a class="btn btn-outline-danger franViewEdit" id="', $RushingRow['Row'], '/rushing" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                        '<td><span id="', $RushingRow['Row'], 'Rush" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Rushing History">', $RushingRow['Name'], '</span>&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/Name/rushing" class="oi oi-pencil updateIndvStat franViewEdit" onclick="updateIndvStat(this)"></td>',
+                        '<td>', $RushingRow['Yards'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/Yards/rushing" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $RushingRow['TDs'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/TDs/rushing" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $RushingRow['YPC'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/YPC/rushing" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $RushingRow['Fumble'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/Fumble/rushing" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $RushingRow['Broken'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/Broken/rushing" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $RushingRow['LongRun'], '&nbsp;&nbsp;<span id="', $RushingRow['Row'], '/LongRun/rushing" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td><a class="btn btn-outline-danger removeIndvStat franViewEdit" id="', $RushingRow['Row'], '/rushing">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
@@ -102,14 +102,14 @@
 
                     while ($RecRow = $recResult->fetch_assoc()) {
                         echo '<tr>',
-                        '<td><span id="', $RecRow['Row'], 'Rec" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Receiving History">', $RecRow['Name'], '</span>&nbsp;&nbsp;<span id="', $RecRow['Row'], '/Player/rec" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"></td>',
-                        '<td>', $RecRow['Rec'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/Rec/rec" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $RecRow['Yards'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/Yards/rec" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $RecRow['TDs'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/TDs/rec" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $RecRow['YPC'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/YPC/rec" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $RecRow['LongCatch'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/LongCatch/rec" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $RecRow['Drops'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/Drops/rec" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td><a class="btn btn-outline-danger franViewEdit" id="', $RecRow['Row'], '/rec" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                        '<td><span id="', $RecRow['Row'], 'Rec" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Receiving History">', $RecRow['Name'], '</span>&nbsp;&nbsp;<span id="', $RecRow['Row'], '/Player/rec" class="oi oi-pencil updateIndvStat franViewEdit" onclick="updateIndvStat(this)"></td>',
+                        '<td>', $RecRow['Rec'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/Rec/rec" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $RecRow['Yards'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/Yards/rec" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $RecRow['TDs'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/TDs/rec" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $RecRow['YPC'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/YPC/rec" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $RecRow['LongCatch'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/LongCatch/rec" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $RecRow['Drops'], '&nbsp;&nbsp;<span id="', $RecRow['Row'], '/Drops/rec" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td><a class="btn btn-outline-danger removeIndvStat franViewEdit" id="', $RecRow['Row'], '/rec">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
@@ -130,11 +130,11 @@
 
                     while ($BlockRow = $blockingResult->fetch_assoc()) {
                         echo '<tr>',
-                        '<td><span id="', $BlockRow['Row'], 'Block" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Blocking History">', $BlockRow['Name'], '</span>&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/Player/block" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"></td>',
-                        '<td>', $BlockRow['Position'], '&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/Position/block" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $BlockRow['Pancakes'], '&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/Pancakes/block" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $BlockRow['Sacks'], '&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/Sacks/block" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td><a class="btn btn-outline-danger franViewEdit" id="', $BlockRow['Row'], '/block" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                        '<td><span id="', $BlockRow['Row'], 'Block" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Blocking History">', $BlockRow['Name'], '</span>&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/Player/block" class="oi oi-pencil updateIndvStat franViewEdit" onclick="updateIndvStat(this)"></td>',
+                        '<td>', $BlockRow['Position'], '&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/Position/block" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $BlockRow['Pancakes'], '&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/Pancakes/block" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $BlockRow['Sacks'], '&nbsp;&nbsp;<span id="', $BlockRow['Row'], '/Sacks/block" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td><a class="btn btn-outline-danger removeIndvStat franViewEdit" id="', $BlockRow['Row'], '/block">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
@@ -155,14 +155,14 @@
 
                     while ($defRow = $defResult->fetch_assoc()) {
                         echo '<tr>',
-                        '<td><span id="', $defRow['Row'], 'Def" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Defensive History">', $defRow['Name'], ' - ', $defRow['Position'], '</span>&nbsp;&nbsp;<span id="', $defRow['Row'], '/Player/def" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"></td>',
-                        '<td>', $defRow['Tackles'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/Tackles/def" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $defRow['ForLoss'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/ForLoss/def" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $defRow['Sacks'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/Sacks/def" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $defRow['INTs'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/INTs/def" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $defRow['TDs'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/TDs/def" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td>', $defRow['Safety'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/Safety/def" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                        '<td><a class="btn btn-outline-danger franViewEdit" id="', $defRow['Row'], '/def" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                        '<td><span id="', $defRow['Row'], 'Def" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Defensive History">', $defRow['Name'], ' - ', $defRow['Position'], '</span>&nbsp;&nbsp;<span id="', $defRow['Row'], '/Player/def" class="oi oi-pencil updateIndvStat franViewEdit" onclick="updateIndvStat(this)"></td>',
+                        '<td>', $defRow['Tackles'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/Tackles/def" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $defRow['ForLoss'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/ForLoss/def" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $defRow['Sacks'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/Sacks/def" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $defRow['INTs'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/INTs/def" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $defRow['TDs'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/TDs/def" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td>', $defRow['Safety'], '&nbsp;&nbsp;<span id="', $defRow['Row'], '/Safety/def" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                        '<td><a class="btn btn-outline-danger removeIndvStat franViewEdit" id="', $defRow['Row'], '/def">Remove Row</a></td>',
                         '</tr>';
                     }
                     ?>
@@ -183,12 +183,12 @@
 
                 while ($STKRow = $STKResult->fetch_assoc()) {
                     echo '<tr>',
-                    '<td><span id="', $STKRow['Row'], 'ST-" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STKRow['Name'], '</span>&nbsp;&nbsp;<span id="', $STKRow['Row'], '/Player/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td>', $STKRow['FGA'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/FGA/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td>', $STKRow['FGM'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/FGM/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td>', $STKRow['FG_Percent'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/FG_Percent/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td>', $STKRow['Longest_Play'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/Longest_Play/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td><a class="btn btn-outline-danger franViewEdit"  id="', $STKRow['Row'], '/st" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                    '<td><span id="', $STKRow['Row'], 'ST-" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STKRow['Name'], '</span>&nbsp;&nbsp;<span id="', $STKRow['Row'], '/Player/st" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                    '<td>', $STKRow['FGA'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/FGA/st" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                    '<td>', $STKRow['FGM'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/FGM/st" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                    '<td>', $STKRow['FG_Percent'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/FG_Percent/st" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                    '<td>', $STKRow['Longest_Play'], '&nbsp;&nbsp;<span id="', $STKRow['Row'], '/Longest_Play/st" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                    '<td><a class="btn btn-outline-danger removeIndvStat franViewEdit"  id="', $STKRow['Row'], '/st">Remove Row</a></td>',
                     '</tr>';
                 }
                 ?>
@@ -205,10 +205,10 @@
 
                 while ($STPRow = $STPResult->fetch_assoc()) {
                     echo '<tr>',
-                    '<td><span id="', $STPRow['Row'], 'ST-" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STPRow['Name'], '</span>&nbsp;&nbsp;<span id="', $STPRow['Row'], '/Player/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td>', $STPRow['Punt_AVG'], '&nbsp;&nbsp;<span id="', $STPRow['Row'], '/Punt_AVG/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td>', $STPRow['I20'], '&nbsp;&nbsp;<span id="', $STPRow['Row'], '/I20/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td><a class="btn btn-outline-danger franViewEdit"  id="', $STPRow['Row'], '/st" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                    '<td><span id="', $STPRow['Row'], 'ST-" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STPRow['Name'], '</span>&nbsp;&nbsp;<span id="', $STPRow['Row'], '/Player/st" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                    '<td>', $STPRow['Punt_AVG'], '&nbsp;&nbsp;<span id="', $STPRow['Row'], '/Punt_AVG/st" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                    '<td>', $STPRow['I20'], '&nbsp;&nbsp;<span id="', $STPRow['Row'], '/I20/st" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                    '<td><a class="btn btn-outline-danger removeIndvStat franViewEdit"  id="', $STPRow['Row'], '/st">Remove Row</a></td>',
                     '</tr>';
                 }
                 ?>
@@ -225,11 +225,11 @@
 
                 while ($STKRRow = $STKRResult->fetch_assoc()) {
                     echo '<tr>',
-                    '<td><span id="', $STKRRow['Row'], 'ST-" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STKRRow['Name'], '</span>&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/Player/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td>', $STKRRow['Ret_AVG'], '&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/Ret_AVG/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td>', $STKRRow['Ret_TDs'], '&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/Ret_TDs/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td>', $STKRRow['Longest_Play'], '&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/Longest_Play/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td><a class="btn btn-outline-danger franViewEdit"  id="', $STKRRow['Row'], '/st" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                    '<td><span id="', $STKRRow['Row'], 'ST-" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STKRRow['Name'], '</span>&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/Player/st" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                    '<td>', $STKRRow['Ret_AVG'], '&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/Ret_AVG/st" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                    '<td>', $STKRRow['Ret_TDs'], '&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/Ret_TDs/st" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                    '<td>', $STKRRow['Longest_Play'], '&nbsp;&nbsp;<span id="', $STKRRow['Row'], '/Longest_Play/st" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                    '<td><a class="btn btn-outline-danger removeIndvStat franViewEdit"  id="', $STKRRow['Row'], '/st">Remove Row</a></td>',
                     '</tr>';
                 }
                 ?>
@@ -246,11 +246,11 @@
 
                 while ($STPRRow = $STPRResult->fetch_assoc()) {
                     echo '<tr>',
-                    '<td><span id="', $STPRRow['Row'], 'ST-" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STPRRow['Name'], '</span>&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/Player/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td>', $STPRRow['Ret_AVG'], '&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/Ret_AVG/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td>', $STPRRow['Ret_TDs'], '&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/Ret_TDs/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td>', $STPRRow['Longest_Play'], '&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/Longest_Play/st" class="glyphicon glyphicon-edit franViewEdit" onclick="updateIndvStat(this)"  ></td>',
-                    '<td><a class="btn btn-outline-danger franViewEdit"  id="', $STPRRow['Row'], '/st" onclick="removeIndvStat(this)">Remove Row</a></td>',
+                    '<td><span id="', $STPRRow['Row'], 'ST-" class="historyModal" style="cursor: pointer" data-toggle="popover" title="Special Teams History">', $STPRRow['Name'], '</span>&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/Player/st" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                    '<td>', $STPRRow['Ret_AVG'], '&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/Ret_AVG/st" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                    '<td>', $STPRRow['Ret_TDs'], '&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/Ret_TDs/st" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                    '<td>', $STPRRow['Longest_Play'], '&nbsp;&nbsp;<span id="', $STPRRow['Row'], '/Longest_Play/st" class="oi oi-pencil updateIndvStat franViewEdit"></td>',
+                    '<td><a class="btn btn-outline-danger removeIndvStat franViewEdit"  id="', $STPRRow['Row'], '/st">Remove Row</a></td>',
                     '</tr>';
                 }
                 ?>

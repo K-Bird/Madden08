@@ -18,7 +18,7 @@ while ($fetchFoundNames = $returnFoundNames->fetch_assoc()) {
 
         echo ' class="playerImportListItem list-group-item list-group-item-action btn-sm" data-currTeam=' . $team . ' data-viewYear=' . $year . ' data-pos=' . $pos . '>';
         
-    echo '<span class="glyphicon glyphicon glyphicon-import" aria-hidden="true"></span>';
+    echo '<span class="oi oi-plus" style="float: left"></span>';
     echo "   " . $fetchFoundNames['firstname'] . " " . $fetchFoundNames ['lastname'] . " (Age " .  $fetchFoundNames ['age'] . ") - " . $fetchFoundNames ['team'] . " - " . $fetchFoundNames ['position'] . " "  . $fetchFoundNames ['ovr'] . " ";
 
     echo '</button>';

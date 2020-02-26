@@ -939,8 +939,8 @@ foreach ($Positions as $pos) {
                         <div class="modal-dialog" style="width:500px">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <h4 class="modal-title">Import ' . $pos . ' to ' . strtoupper($Curr_Team) . ' - Year: ' . $View_Year . '</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <div class="modal-body">  
                                     <input id="import' . $pos . 'Search" class="form-control importPlayerSearch" data-currTeam=' . $Curr_Team . ' data-viewYear=' . $View_Year . ' data-pos=' . $pos . ' placeholder="Search for player to import by first and last name">

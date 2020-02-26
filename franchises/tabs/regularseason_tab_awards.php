@@ -35,7 +35,7 @@
                     }
                     echo '<td>', $offAwardRow['Position'], '</td>',
                     '<td style="text-align: left">', $offAwardRow['Award'], '</td>',
-                    '<td><a class="btn btn-outline-danger franViewEdit" id="', $offAwardRow['Row'], '" onclick="removeAward(this)">Remove Row</a></td>',
+                    '<td><a class="btn btn-outline-danger removeAward franViewEdit" id="', $offAwardRow['Row'], '">Remove Row</a></td>',
                     '</tr>';
                 }
                 ?>
@@ -61,7 +61,7 @@
                         echo '<td><span id="', $offProBowlRow['Row'], 'ProBowl" class="historyModal" style="cursor: pointer" data-toggle="popover" title="History">', $offProBowlRow['Player'], '</span></td>';
                     }
                     echo '<td>', $offProBowlRow['Position'], '</td>',
-                    '<td><a class="btn btn-outline-danger franViewEdit" id="', $offProBowlRow['Row'], '" onclick="removeProbowl(this)">Remove Row</a></td>',
+                    '<td><a class="btn btn-outline-danger removeProBowl franViewEdit" id="', $offProBowlRow['Row'], '">Remove Row</a></td>',
                     '</tr>';
                 }
                 ?>

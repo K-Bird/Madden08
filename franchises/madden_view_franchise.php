@@ -45,23 +45,25 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
         <script>
             $(document).ready(function () {
 
+                /* Local Storage - Navigation Interactions */
+                //When view franchise panel is opened set that panel as the last one opened
                 $('#Fran_Year_Accordion .card').on('shown.bs.collapse', function (e) {
                     localStorage.setItem('Madden08_franViewLastPanel', $(e.target).attr("id"));
                 });
-
+                //When view franchise nav pill is clocked set that nav and div content as the last opened
                 $('.viewPill').click(function (e) {
                     localStorage.setItem('Madden08_franViewLastPill_nav', $(e.target).data('nav'));
                     localStorage.setItem('Madden08_franViewLastPill_div', $(e.target).attr('href'));
                 });
-
+                //When view franchise modal is shown set the modal as the last opened
                 $('.rememberModal').on('shown.bs.modal', function (e) {
                     localStorage.setItem('Madden08_franViewLastModal', e.target.id);
                 });
-
+                //When view franchise modal is closed reset the last opened modal
                 $('.rememberModal').on('hidden.bs.modal', function (e) {
                     localStorage.setItem('Madden08_franViewLastModal', null);
                 });
-
+                //If no panel has been opened do nothing, if it has open the subsequent panel, nav, content and modal (if one was open)
                 if (localStorage.getItem('Madden08_franViewLastPanel') === null) {
 
                 } else {
@@ -76,7 +78,7 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                     $("#" + lastModal).modal('show');
                 }
 
-
+                /* Interaction Functions - Controls */
                 //When a franchise is selected on the view franchise navigation updated the view table control
                 $('.nav_view_franchise').click(function (e) {
                     $franchise_abbrev = e.target.id;
@@ -117,11 +119,10 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                     e.preventDefault();
                 });
 
-                //--- Initialize Functions - Run When Page is Loaded ---
+                /* Interaction Functions - Page Editing */
                 //Run function to set inital editing varible and tag text
                 initalizeFranEdit();
 
-                // --- Franchise View Page Editing ---
                 //Master Toggle Editing Function for Franchise View  
                 $("#franToggleEdit").click(function (e) {
                     switch (localStorage.getItem('Madden08_fran_editing')) {
@@ -140,13 +141,13 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                     }
                 });
 
-                //--- Franchise View Display
+                /* Franchise View Display */
 
                 //Create jstree for Depth Chart Tree View on Any Franchise Year Page and Then Open All Nodes
                 $('#jstree').jstree({
                     "types": {
                         "default": {
-                            "icon": "glyphicon glyphicon-th-list"
+                            "icon": "oi oi-pulse"
                         }
                     },
                     "plugins": ["types"]
@@ -906,9 +907,144 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
 
                 });
 
+                $(".removeIndvStat").click(function (e) {
+
+                    var id = $(this).attr('id');
+                    var split = id.split("/");
+                    var row = split[0];
+                    var stat = split[1];
+
+                    $.ajax(
+                            {
+                                url: "../libs/ajax/franchise_view/indvstats/remove_franchise_indv_stat.php",
+                                type: "POST",
+                                data: {
+                                    row: row,
+                                    stat: stat
+                                },
+                                success: function (data, textStatus, jqXHR)
+                                {
+                                    location.reload();
+                                },
+                                error: function (jqXHR, textStatus, errorThrown)
+                                {
+                                    alert("Removal Unsuccessful");
+                                }
+                            });
+                });
+
+                $(".updateIndvStat").click(function (e) {
+
+                    var id = $(this).attr('id');
+                    var split = id.split("/");
+                    var row = split[0];
+                    var field = split[1];
+                    var table = split[2];
+
+                    var newVal = prompt("Enter New Value: ");
+                    if (newVal === null) {
+                        return;
+                    }
+
+                    $.ajax(
+                            {
+                                url: "../libs/ajax/franchise_view/indvstats/update_franchise_indv_stat.php",
+                                type: "POST",
+                                data: {
+                                    row: row,
+                                    table: table,
+                                    field: field,
+                                    newVal: newVal
+                                },
+                                success: function (data, textStatus, jqXHR)
+                                {
+                                    location.reload();
+                                },
+                                error: function (jqXHR, textStatus, errorThrown)
+                                {
+                                    alert("Update Did Not Complete");
+                                }
+                            });
+                });
+
+                $(".removeAward").click(function (e) {
+                    var id = $(this).attr('id');
+
+                    $.ajax(
+                            {
+                                url: "../libs/ajax/franchise_view/awards/remove_franchise_award.php",
+                                type: "POST",
+                                data: {
+                                    row: id
+
+                                },
+                                success: function (data, textStatus, jqXHR)
+                                {
+                                    location.reload();
+                                },
+                                error: function (jqXHR, textStatus, errorThrown)
+                                {
+                                    alert("Update Did Not Complete");
+                                }
+                            });
+                });
+
+                $(".removeProBowl").click(function (e) {
+
+                    var id = $(this).attr('id');
+
+                    $.ajax(
+                            {
+                                url: "../libs/ajax/franchise_view/awards/remove_franchise_probowl.php",
+                                type: "POST",
+                                data: {
+                                    row: id
+
+                                },
+                                success: function (data, textStatus, jqXHR)
+                                {
+                                    location.reload();
+                                },
+                                error: function (jqXHR, textStatus, errorThrown)
+                                {
+                                    alert("Update Did Not Complete");
+                                }
+                            });
+                });
+
+                $(".updateCoachChg").click(function (e) {
+                    var id = $(this).attr('id');
+                    var split = id.split("/");
+                    var row = split[0];
+                    var field = split[1];
+
+                    var newVal = prompt("Enter New Value: ");
+                    if (newVal === null) {
+                        return;
+                    }
+
+                    $.ajax(
+                            {
+                                url: "../libs/ajax/franchise_view/off_coach/update_franchise_off_coach.php",
+                                type: "POST",
+                                data: {
+                                    row: row,
+                                    field: field,
+                                    newVal: newVal
+                                },
+                                success: function (data, textStatus, jqXHR)
+                                {
+                                    location.reload();
+                                },
+                                error: function (jqXHR, textStatus, errorThrown)
+                                {
+                                    alert("Update Did Not Complete");
+                                }
+                            });
+                });
+
             });
 
-            //**** [ Madden - Franchise Year Functions ] ****//
 //Check State of Editing Mode When Edit Button in View Franchise Nav is Clicked: Set Local Storage Variable and Tag Text Accordingly
             function initalizeFranEdit() {
 
@@ -926,151 +1062,6 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                     $('.franViewDisplay').show();
                     $('.franViewEdit').hide();
                 }
-            }
-
-//Common function to remove individual stat row
-            function removeIndvStat(e) {
-
-                var id = e.id;
-                var split = id.split("/");
-                var row = split[0];
-                var stat = split[1];
-
-                $.ajax(
-                        {
-                            url: "../libs/ajax/franchise_view/indvstats/remove_franchise_indv_stat.php",
-                            type: "POST",
-                            data: {
-                                row: row,
-                                stat: stat
-                            },
-                            success: function (data, textStatus, jqXHR)
-                            {
-                                location.reload();
-                            },
-                            error: function (jqXHR, textStatus, errorThrown)
-                            {
-                                alert("Removal Unsuccessful");
-                            }
-                        });
-            }
-
-//Common function to update team stats table
-            function updateIndvStat(e) {
-
-                var id = e.id;
-                var split = id.split("/");
-                var row = split[0];
-                var field = split[1];
-                var table = split[2];
-
-                var newVal = prompt("Enter New Value: ");
-                if (newVal === null) {
-                    return;
-                }
-
-                $.ajax(
-                        {
-                            url: "../libs/ajax/franchise_view/indvstats/update_franchise_indv_stat.php",
-                            type: "POST",
-                            data: {
-                                row: row,
-                                table: table,
-                                field: field,
-                                newVal: newVal
-                            },
-                            success: function (data, textStatus, jqXHR)
-                            {
-                                location.reload();
-                            },
-                            error: function (jqXHR, textStatus, errorThrown)
-                            {
-                                alert("Update Did Not Complete");
-                            }
-                        });
-            }
-
-//Common function to remove offseason award row
-            function removeAward(e) {
-
-                var id = e.id;
-
-
-                $.ajax(
-                        {
-                            url: "../libs/ajax/franchise_view/awards/remove_franchise_award.php",
-                            type: "POST",
-                            data: {
-                                row: id
-
-                            },
-                            success: function (data, textStatus, jqXHR)
-                            {
-                                location.reload();
-                            },
-                            error: function (jqXHR, textStatus, errorThrown)
-                            {
-                                alert("Update Did Not Complete");
-                            }
-                        });
-            }
-
-//Common function to remove offseason probowl row
-            function removeProbowl(e) {
-
-                var id = e.id;
-
-
-                $.ajax(
-                        {
-                            url: "../libs/ajax/franchise_view/awards/remove_franchise_probowl.php",
-                            type: "POST",
-                            data: {
-                                row: id
-
-                            },
-                            success: function (data, textStatus, jqXHR)
-                            {
-                                location.reload();
-                            },
-                            error: function (jqXHR, textStatus, errorThrown)
-                            {
-                                alert("Update Did Not Complete");
-                            }
-                        });
-            }
-
-//Common function to update coaching change table
-            function updateCoachChg(e) {
-
-                var id = e.id;
-                var split = id.split("/");
-                var row = split[0];
-                var field = split[1];
-
-                var newVal = prompt("Enter New Value: ");
-                if (newVal === null) {
-                    return;
-                }
-
-                $.ajax(
-                        {
-                            url: "../libs/ajax/franchise_view/off_coach/update_franchise_off_coach.php",
-                            type: "POST",
-                            data: {
-                                row: row,
-                                field: field,
-                                newVal: newVal
-                            },
-                            success: function (data, textStatus, jqXHR)
-                            {
-                                location.reload();
-                            },
-                            error: function (jqXHR, textStatus, errorThrown)
-                            {
-                                alert("Update Did Not Complete");
-                            }
-                        });
             }
         </script>
     </head>
@@ -1223,7 +1214,7 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                     $Position_Row = $Position_Result->fetch_assoc();
 
                     if (mysqli_num_rows($Position_Result) === 0) {
-                        return  '<button type="button" class="btn btn-warning"> No ' . $Position . '</button>';
+                        return '<button type="button" class="btn btn-warning"> No ' . $Position . '</button>';
                     } else {
                         $weapon = '';
                         if ($Position_Row['Weapon'] != "None") {
