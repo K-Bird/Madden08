@@ -1093,6 +1093,7 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                                                     <li id="pill_Preseason_Info" class="nav-item"><a data-nav="pill_Preseason_Info" class="viewPill nav-link nav-link" href="#Preseason_Info" role="tab" data-toggle="tab">Franchise Info</a></li>
                                                     <li id="pill_Preseason_CoachingStaff" class="nav-item"><a data-nav="pill_Preseason_CoachingStaff" class="viewPill nav-link nav-link" href="#Preseason_CoachingStaff" role="tab" data-toggle="tab">Coaching Staff</a></li>
                                                     <li id="pill_Preseason_DepthChart" class="nav-item"><a data-nav="pill_Preseason_DepthChart" class="viewPill nav-link nav-link" href="#Preseason_DepthChart" role="tab" data-toggle="tab">Depth Chart</a></li>
+                                                    <li id="pill_Preseason_DepthChart_YOY" class="nav-item"><a data-nav="pill_Preseason_DepthChart_YOY" class="viewPill nav-link nav-link" href="#Preseason_DepthChart_YOY" role="tab" data-toggle="tab">Depth Chart YOY</a></li>
                                                 </ul>
                                                 <div class="tab-content">
                                                     <!-- Franchise Info Tab -->
@@ -1106,6 +1107,10 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                                                     <!-- Depth Chart Tab -->
                                                     <div role="tabpanel" class="tab-pane" id="Preseason_DepthChart">
                                                         <?php include ('tabs/preseason_tab_depthCharts.php'); ?>
+                                                    </div>
+                                                    <!-- Depth Chart YOY Tab -->
+                                                    <div role="tabpanel" class="tab-pane" id="Preseason_DepthChart_YOY">
+                                                        <?php include ('tabs/preseason_tab_depthCharts_YOY.php'); ?>
                                                     </div>
                                                 </div>
                                             </div>
