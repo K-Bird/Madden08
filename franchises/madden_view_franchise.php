@@ -25,6 +25,9 @@ $Depth_Formation = $Depth_Formation_Row['Value'];
 
 $Check_Backups_Display_Result = db_query("SELECT `Value` FROM `franchise_view_controls` WHERE Control='franchise_depth_backups'");
 $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
+
+$Check_Sim_Result = db_query("SELECT * FROM `franchise_year_results` WHERE Team='{$Curr_Team}' AND Year='{$View_Year}' AND Week='Simulated'");
+$Check_Sim_Result_Value = $Check_Sim_Result->fetch_assoc();
 ?>
 <html>
     <head>
@@ -1041,6 +1044,37 @@ $Check_Backups_Display_Value = $Check_Backups_Display_Result->fetch_assoc();
                                     alert("Update Did Not Complete");
                                 }
                             });
+                });
+
+                //Toggle if the franchise simulation made the playoffs for not  
+                $('#simPost').click(function (e) {
+
+                    var change = '';
+                    
+                    if (this.checked) {
+                        change = 'Y';
+                    } else {
+                        change = 'N';
+                    }
+                    
+                    var fran = $(this).attr('data-fran');
+                    var year = $(this).attr('data-year');
+
+                    $.ajax(
+                            {
+                                url: "../libs/ajax/franchise_view/roster/update_franchise_sim_playoffs.php",
+                                type: "POST",
+                                data: {change : change, fran : fran, year : year},
+                                success: function (data, textStatus, jqXHR)
+                                {
+                                    location.reload();
+                                },
+                                error: function (jqXHR, textStatus, errorThrown)
+                                {
+                                    alert("Form Did Not Process");
+                                }
+                            });
+                    e.preventDefault();
                 });
 
             });
