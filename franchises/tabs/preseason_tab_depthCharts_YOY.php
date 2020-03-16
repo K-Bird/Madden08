@@ -30,7 +30,7 @@
         <tr><th>TE1</th><?php echo positionYOY('TE1', $Curr_Team); ?></tr>
         <tr><th>TE2</th><?php echo positionYOY('TE2', $Curr_Team); ?></tr>
         <tr><th>LT1</th><?php echo positionYOY('LT1', $Curr_Team); ?></tr>
-        <tr><th>LT2</th><?php echo positionYOY('LT1', $Curr_Team); ?></tr>
+        <tr><th>LT2</th><?php echo positionYOY('LT2', $Curr_Team); ?></tr>
         <tr><th>LG1</th><?php echo positionYOY('LG1', $Curr_Team); ?></tr>
         <tr><th>LG2</th><?php echo positionYOY('LG2', $Curr_Team); ?></tr>
         <tr><th>C1</th><?php echo positionYOY('C1', $Curr_Team); ?></tr>
@@ -76,7 +76,7 @@ function positionYOY($position, $fran) {
         } else {
             echo '<td></td>';
         }
-        echo '<td><span class="badge badge-dark">' . $fetchYOY['Name'] . '</span>&nbsp;<span class="badge badge-dark">' . $fetchYOY['Overall'] . '</span></td>';
+        echo '<td>' . tradeTeamIcon($fetchYOY['Acquired'], $fetchYOY['Master_Roster_ID']) . returnAcquiredIcon($fetchYOY['Acquired']) . ' <span class="badge badge-dark">' . $fetchYOY['Name'] . positionChanged($fetchYOY['Row_ID'], $fetchYOY['Master_Roster_ID'], $fetchYOY['Year']) . '</span>&nbsp;<span class="badge badge-dark">' . $fetchYOY['Overall'] . '</span>&nbsp;' . onTeamNextYear($fetchYOY['Team'], $fetchYOY['Year'], $fetchYOY['Historical_ID']) . '</td>';
     }
 }
 
@@ -93,5 +93,94 @@ function prevOvrDiff($fran, $Position, $currentYear, $currentOVR) {
         return '<span style="color: gold" class="franViewDisplay"> (' . $ovrChange . ')</span>';
     } else {
         return '<span style="color: red" class="franViewDisplay"> (' . $ovrChange . ')</span>';
+    }
+}
+
+function returnAcquiredIcon($type) {
+
+    if ($type === 'On Team') {
+        return '<span class="oi oi-circle-check"></span>';
+    }
+    if ($type === 'Trade') {
+        return '<span class="oi oi-transfer"></span>';
+    }
+    if ($type === 'Free Agent') {
+        return '<span class="oi oi-plus"></span>';
+    }
+    if ($type === 'Draft') {
+        return '<span class="oi oi-target"></span>';
+    }
+    if ($type === 'Created') {
+        return '<span class="oi oi-brush"></span>';
+    }
+}
+
+function onTeamNextYear($fran, $currentYear, $Master_ID) {
+
+    $nextYear = $currentYear + 1;
+
+    $maxYear = returnCurrenFranYear($fran);
+
+    if ($nextYear > $maxYear) {
+        
+    } else {
+
+        $checkPlayerNextYear = db_query("SELECT * FROM `franchise_year_roster` WHERE Historical_ID='{$Master_ID}' AND Year='{$nextYear}'");
+        if (mysqli_num_rows($checkPlayerNextYear) > 0) {
+            return '<span class="oi oi-arrow-circle-right"></span>';
+        } else {
+            return '<span class="oi oi-x"></span>';
+        }
+    }
+}
+
+function tradeTeamIcon($Acquired, $masterRowID) {
+
+    if ($Acquired === 'Trade') {
+        $orginalTeam = returnMasterRosterTeam($masterRowID);
+        return '<img src="../libs/images/franchises/' . $orginalTeam . '_Logo.png" height=20 width=35>&nbsp;';
+    } else {
+        
+    }
+}
+
+function positionChanged($rosterRow, $masterRow, $year) {
+
+    $getMasterRosterPos = db_query("SELECT * FROM `master_rosters` WHERE Row_ID='{$masterRow}'");
+    $fetchMasterRosterPos = $getMasterRosterPos->fetch_assoc();
+    $masterPos = $fetchMasterRosterPos['position'];
+
+    $getRosterPos = db_query("SELECT * FROM `franchise_year_roster` WHERE Row_ID='{$rosterRow}'");
+    $fetchRosterPos = $getRosterPos->fetch_assoc();
+    $rosterPos = substr($fetchRosterPos['Position'], 0, -1);
+    $Historical_ID = $fetchRosterPos['Historical_ID'];
+
+    $curr_year = $fetchRosterPos['Year'];
+
+    if ($curr_year === '1') {
+
+        if ($rosterPos != $masterPos) {
+            return " (" . $masterPos . '<span class="oi oi-arrow-right"></span>' . $rosterPos . ")";
+        } else {
+            
+        }
+    } else {
+        //for years greater than 1, look at pevious year's roster position and see if it's changed
+        $prevYear = $curr_year - 1;
+        $getRosterPrevPos = db_query("SELECT * FROM `franchise_year_roster` WHERE Historical_ID='{$Historical_ID}' AND Year='{$prevYear}'");
+
+        if (mysqli_num_rows($getRosterPrevPos) < 1) {
+            
+        } else {
+
+            $fetchRosterPrevPos = $getRosterPrevPos->fetch_assoc();
+            $prevPos = substr($fetchRosterPrevPos['Position'], 0, -1);
+
+            if ($prevPos != $rosterPos) {
+                return " (" . $prevPos . '<span class="oi oi-arrow-right"></span>' . $rosterPos . ")";
+            } else {
+                
+            }
+        }
     }
 }

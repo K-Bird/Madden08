@@ -43,6 +43,7 @@ if (empty($FAPlayerRow['Master_Row_ID'])) {
     $importKR = $fetchMasterRosterInfo['kr'];
     $importSTA = $fetchMasterRosterInfo['sta'];
     $importINJ = $fetchMasterRosterInfo['inj'];
+    $importMasterRow = $fetchMasterRosterInfo['Row_ID'];
 
     $importAttributes = db_query("UPDATE `franchise_year_roster` SET
     SPD = '{$importSPD}',
@@ -63,7 +64,8 @@ if (empty($FAPlayerRow['Master_Row_ID'])) {
     KAC = '{$importKA}',
     KR = '{$importKR}',
     STA = '{$importSTA}',
-    INJ = '{$importINJ}'
+    INJ = '{$importINJ}',
+    Master_Roster_ID = '{$importMasterRow}'
 
     WHERE Row_ID='{$Max}'");
 }

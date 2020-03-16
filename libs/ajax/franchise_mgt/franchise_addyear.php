@@ -115,8 +115,8 @@ db_query($PopulateTeamStats);
 /* Depth Chart Table */
 
 $copyDepthCart = "INSERT INTO `franchise_year_roster`
-        (`Name`, `Position`, `Overall`, `Age`, `Weapon`, `Acquired`, `Rookie`, `OSU`, `SPD`, `STR`, `AWR`, `AGI`, `ACC`, `CTH`, `CAR`, `JMP`, `BTK`, `TAK`, `THP`, `THA`, `PBK`, `RBK`, `KPW`, `KAC`, `KR`, `IMP`, `STA`, `INJ`, `TGH`, `Historical_ID`, `Team`, `Year`)
-        SELECT `Name`, `Position`, `Overall`, `Age`, `Weapon`, `Acquired`, `Rookie`, `OSU`, `SPD`, `STR`, `AWR`, `AGI`, `ACC`, `CTH`, `CAR`, `JMP`, `BTK`, `TAK`, `THP`, `THA`, `PBK`, `RBK`, `KPW`, `KAC`, `KR`, `IMP`, `STA`, `INJ`, `TGH`, `Historical_ID`, '{$fran}', '{$nextYear}'
+        (`Name`, `Position`, `Overall`, `Age`, `Weapon`, `Acquired`, `Rookie`, `OSU`, `SPD`, `STR`, `AWR`, `AGI`, `ACC`, `CTH`, `CAR`, `JMP`, `BTK`, `TAK`, `THP`, `THA`, `PBK`, `RBK`, `KPW`, `KAC`, `KR`, `IMP`, `STA`, `INJ`, `TGH`, `Historical_ID`, `Master_Roster_ID`, `Team`, `Year`)
+        SELECT `Name`, `Position`, `Overall`, `Age`, `Weapon`, `Acquired`, `Rookie`, `OSU`, `SPD`, `STR`, `AWR`, `AGI`, `ACC`, `CTH`, `CAR`, `JMP`, `BTK`, `TAK`, `THP`, `THA`, `PBK`, `RBK`, `KPW`, `KAC`, `KR`, `IMP`, `STA`, `INJ`, `TGH`, `Historical_ID`, `Master_Roster_ID`, '{$fran}', '{$nextYear}'
         FROM `franchise_year_roster` WHERE `Year` = {$previousYear} and Team='{$fran}';";
 db_query($copyDepthCart);
  

@@ -39,6 +39,7 @@ $Check_Sim_Result_Value = $Check_Sim_Result->fetch_assoc();
         <link href="../libs/css/open-iconic-bootstrap.css" rel="stylesheet" type="text/css">
         <link href="../libs/css/viewFranchise.css" rel="stylesheet" type="text/css"> 
         <script src="../libs/js/jquery.js"></script>
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="../libs/js/bootstrap.js"></script>
         <script src="../libs/js/tablesorter.js"></script>
         <script src="../libs/js/tablesorter-widgets.js"></script>

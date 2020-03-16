@@ -6,7 +6,6 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php"
         <title>Madden Franchise Management</title>
         <link rel="shortcut icon" href="../libs/images/nfl.png">
         <link href="../libs/css/bootstrap.css" rel="stylesheet" type="text/css">
-        <link href="../libs/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
         <link href="../libs/css/open-iconic-bootstrap.css" rel="stylesheet" type="text/css">
         <link href="../libs/css/simple-sidebar.css" rel="stylesheet" type="text/css">       
         <link href="../libs/css/jstree.css" rel="stylesheet" type="text/css">  
@@ -42,6 +41,27 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php"
                                 });
                         e.preventDefault();
                     }, 1000);
+                });
+
+                //Process Depth Chart Player Add
+                $("#addYearForm").submit(function (e)
+                {
+                    $addPlayerData = $(this).serialize();
+                    $.ajax(
+                            {
+                                url: "../libs/ajax/franchise_mgt/franchise_addyear.php",
+                                type: "POST",
+                                data: $addPlayerData,
+                                success: function (data, textStatus, jqXHR)
+                                {
+                                    location.reload();
+                                },
+                                error: function (jqXHR, textStatus, errorThrown)
+                                {
+                                    alert("Form Did Not Process");
+                                }
+                            });
+                    e.preventDefault();
                 });
 
                 $('.franMgtToolsBtn').click(function (e) {
@@ -126,7 +146,7 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Madden08/libs/db/common_db_functions.php"
                                     <h3 class="panel-title">Add Year to Franchise</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form role="form"  name="AddFranchise" action="../libs/ajax/franchise_mgt/franchise_addyear.php" method="post">
+                                    <form id="addYearForm">
                                         <div class="form-group">
                                             <label>Active Franchises:</label> 
                                             <select class="form-control" name="fran">

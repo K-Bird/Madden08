@@ -79,3 +79,21 @@ function franchiseActiveYears($fran) {
     $activeYears = $fetchActiveYears['CurrentYear'];
     return $activeYears;
 }
+
+function returnCurrenFranYear ($fran) {
+    
+    $getMaxFranYear = db_query("SELECT * FROM `franchise_info` WHERE Franchise='{$fran}'");
+    $fetchMaxFranYear = $getMaxFranYear->fetch_assoc();
+    $maxYear = $fetchMaxFranYear['CurrentYear'];
+    return $maxYear;
+    
+}
+
+function returnMasterRosterTeam ($MasterRow) {
+    
+    $getMasterRosterTeam = db_query("SELECT * FROM `master_rosters` WHERE Row_ID='{$MasterRow}'");
+    $fetchMasterRosterTeam = $getMasterRosterTeam->fetch_assoc();
+    $team = $fetchMasterRosterTeam['team'];
+    return $team;
+   
+}

@@ -35,9 +35,10 @@ $importKA = $fetchImportPlayer['ka'];
 $importKR = $fetchImportPlayer['kr'];
 $importSTA = $fetchImportPlayer['sta'];
 $importINJ = $fetchImportPlayer['inj'];
+$importMasterRow = $fetchImportPlayer['Row_ID'];
 
 $importPlayer = db_query("Insert into `franchise_year_roster`
-(Name, Position, Overall, Age, Weapon, Acquired, Rookie, OSU, SPD, STR, AWR, AGI, ACC, CTH, CAR, JMP, BTK, TAK, THP, THA, PBK, RBK, KPW, KAC, KR, IMP, STA, INJ, TGH, Team, Year) Values 
+(Name, Position, Overall, Age, Weapon, Acquired, Rookie, OSU, SPD, STR, AWR, AGI, ACC, CTH, CAR, JMP, BTK, TAK, THP, THA, PBK, RBK, KPW, KAC, KR, IMP, STA, INJ, TGH, Master_Roster_ID, Team, Year) Values 
 
 ('{$importName}',
 '{$pos}',
@@ -67,7 +68,8 @@ $importPlayer = db_query("Insert into `franchise_year_roster`
 '0',
 '{$importSTA}',
 '{$importINJ}',
-'',                                              
+'',    
+'{$importMasterRow}',
 '{$team}',
 '{$year}')");
 
