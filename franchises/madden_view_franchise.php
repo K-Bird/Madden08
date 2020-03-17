@@ -1051,13 +1051,13 @@ $Check_Sim_Result_Value = $Check_Sim_Result->fetch_assoc();
                 $('#simPost').click(function (e) {
 
                     var change = '';
-                    
+
                     if (this.checked) {
                         change = 'Y';
                     } else {
                         change = 'N';
                     }
-                    
+
                     var fran = $(this).attr('data-fran');
                     var year = $(this).attr('data-year');
 
@@ -1065,7 +1065,32 @@ $Check_Sim_Result_Value = $Check_Sim_Result->fetch_assoc();
                             {
                                 url: "../libs/ajax/franchise_view/roster/update_franchise_sim_playoffs.php",
                                 type: "POST",
-                                data: {change : change, fran : fran, year : year},
+                                data: {change: change, fran: fran, year: year},
+                                success: function (data, textStatus, jqXHR)
+                                {
+                                    location.reload();
+                                },
+                                error: function (jqXHR, textStatus, errorThrown)
+                                {
+                                    alert("Form Did Not Process");
+                                }
+                            });
+                    e.preventDefault();
+                });
+                //When offseasn move edit icon is clicked, updated the corresponding field
+                $('.updateOffMoveField').click(function (e) {
+                    var row = $(this).data('row');
+                    var field = $(this).data('field');
+                    var newVal = prompt("Enter New Value: ");
+                    if (newVal === null) {
+                        return;
+                    }
+
+                    $.ajax(
+                            {
+                                url: "../libs/ajax/franchise_view/off_move/update_off_move_field.php",
+                                type: "POST",
+                                data: {row: row, field: field, newVal : newVal},
                                 success: function (data, textStatus, jqXHR)
                                 {
                                     location.reload();
@@ -1214,7 +1239,7 @@ $Check_Sim_Result_Value = $Check_Sim_Result->fetch_assoc();
                                                 <ul class="nav nav-pills" role="tablist">
                                                     <li id="pill_Offseason_Staffing" class="nav-item"><a data-nav="Offseason_Staffing" class="viewPill nav-link" href="#Offseason_Staffing" role="tab" data-toggle="tab">Staffing</a></li>
                                                     <li id="pill_Offseason_Retired" class="nav-item"><a data-nav="Offseason_Retired" class="viewPill nav-link" href="#Offseason_Retired" role="tab" data-toggle="tab">Retired Players <?php echo '<span class="badge badge-dark">' . $retired . '</span>' ?></a></li>
-                                                    <li id="pill_Offseason_RestrictedFA" class="nav-item"><a data-nav="Offseason_RestrictedFA" class="viewPill nav-link" href="#Offseason_PreFA" role="tab" data-toggle="tab">Pre Draft Free Agents <?php echo '<span class="badge badge-dark">' . $preFA . '</span>' ?></a></li>
+                                                    <li id="pill_Offseason_RestrictedFA" class="nav-item"><a data-nav="Offseason_RestrictedFA" class="viewPill nav-link" href="#Offseason_PreFA" role="tab" data-toggle="tab">Pre Draft Free Agency <?php echo '<span class="badge badge-dark">' . $preFA . '</span>' ?></a></li>
                                                     <li id="pill_Offseason_Draft" class="nav-item"><a data-nav="Offseason_Draft" class="viewPill nav-link" href="#Offseason_Draft" role="tab" data-toggle="tab">The Draft <?php echo '<span class="badge badge-dark">' . $draft . '</span>' ?></a></li>
                                                     <li id="pill_Offseason_FA" class="nav-item"><a data-nav="Offseason_FA" class="viewPill nav-link" href="#Offseason_PostFA" role="tab" data-toggle="tab">Post Draft Free Agency <?php echo '<span class="badge badge-dark">' . $postFA . '</span>' ?></a></li>
                                                 </ul>

@@ -69,7 +69,6 @@ function checkInfoExists($fran, $year, $type, $field, $fieldValue, $testValue, $
     } else {
         return '<td class="table-success">' . $value . '</td>';
     }
-
 }
 
 function franchiseActiveYears($fran) {
@@ -80,20 +79,23 @@ function franchiseActiveYears($fran) {
     return $activeYears;
 }
 
-function returnCurrenFranYear ($fran) {
-    
+function returnCurrenFranYear($fran) {
+
     $getMaxFranYear = db_query("SELECT * FROM `franchise_info` WHERE Franchise='{$fran}'");
     $fetchMaxFranYear = $getMaxFranYear->fetch_assoc();
     $maxYear = $fetchMaxFranYear['CurrentYear'];
     return $maxYear;
-    
 }
 
-function returnMasterRosterTeam ($MasterRow) {
-    
+function returnMasterRosterTeam($MasterRow) {
+
     $getMasterRosterTeam = db_query("SELECT * FROM `master_rosters` WHERE Row_ID='{$MasterRow}'");
     $fetchMasterRosterTeam = $getMasterRosterTeam->fetch_assoc();
     $team = $fetchMasterRosterTeam['team'];
-    return $team;
-   
+
+    if ($team === null) {
+        return 'None';
+    } else {
+        return $team;
+    }
 }

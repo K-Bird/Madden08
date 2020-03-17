@@ -459,10 +459,10 @@ $GetSTHistory = db_query("Select * From `franchise_year_pre_coaches` where Posit
                                     echo '<option>Trade</option>';
                                 }
 
-                                if ($update_Depth_Row['Acquired'] === 'Draft') {
-                                    echo '<option selected>Draft</option>';
+                                if ($update_Depth_Row['Acquired'] === 'Drafted') {
+                                    echo '<option selected>Drafted</option>';
                                 } else {
-                                    echo '<option>Draft</option>';
+                                    echo '<option>Drafted</option>';
                                 }
 
                                 if ($update_Depth_Row['Acquired'] === 'Created') {

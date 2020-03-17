@@ -8,9 +8,9 @@
                     while ($offprefaRow = $offprefaResult->fetch_assoc()) {
                         echo '<tr>',
                         '<td>', $offprefaRow['Player'], '</td>',
-                        '<td>', $offprefaRow['Position'], '</td>',
-                        '<td>', $offprefaRow['Overall'], '</td>',
-                        '<td>', $offprefaRow['Age'], '</td>',
+                        '<td>', $offprefaRow['Position'], '&nbsp;<span class="oi oi-pencil updateOffMoveField franViewEdit" data-row="', $offprefaRow['Row'],'" data-field="Position"></span></td>',
+                        '<td>', $offprefaRow['Overall'], '&nbsp;<span class="oi oi-pencil updateOffMoveField franViewEdit" data-row="', $offprefaRow['Row'],'" data-field="Overall"></span></td>',
+                        '<td>', $offprefaRow['Age'], '&nbsp;<span class="oi oi-pencil updateOffMoveField franViewEdit" data-row="', $offprefaRow['Row'],'" data-field="Age"></span></td>',
                         '<td><a class="btn btn-outline-danger franViewEdit removeOffMove" style="display: none" id="',$offprefaRow['Row'],'" data-moveType="fa">Remove Row</a></td>',
                         '</tr>';
                     }

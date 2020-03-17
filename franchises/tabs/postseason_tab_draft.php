@@ -7,11 +7,11 @@
 
     while ($offdraftRow = $offdraftResult->fetch_assoc()) {
         echo '<tr>',
-        '<td>', $offdraftRow['Draft'], '</td>',
-        '<td>', $offdraftRow['Player'], '</td>',
-        '<td>', $offdraftRow['Position'], '</td>',
-        '<td>', $offdraftRow['Overall'], '</td>',
-        '<td>', $offdraftRow['Age'], '</td>',
+        '<td>', $offdraftRow['Draft'], '&nbsp;<span class="oi oi-pencil updateOffMoveField franViewEdit" data-row="', $offdraftRow['Row'],'" data-field="Draft"></span></td>',
+        '<td>', $offdraftRow['Player'], '&nbsp;<span class="oi oi-pencil updateOffMoveField franViewEdit" data-row="', $offdraftRow['Row'],'" data-field="Player"></span></td>',
+        '<td>', $offdraftRow['Position'], '&nbsp;<span class="oi oi-pencil updateOffMoveField franViewEdit" data-row="', $offdraftRow['Row'],'" data-field="Position"></span></td>',
+        '<td>', $offdraftRow['Overall'], '&nbsp;<span class="oi oi-pencil updateOffMoveField franViewEdit" data-row="', $offdraftRow['Row'],'" data-field="Overall"></span></td>',
+        '<td>', $offdraftRow['Age'], '&nbsp;<span class="oi oi-pencil updateOffMoveField franViewEdit" data-row="', $offdraftRow['Row'],'" data-field="Age"></span></td>',
         '<td><a class="btn btn-outline-danger franViewEdit removeOffMove" style="display: none" id="', $offdraftRow['Row'], '" data-moveType="draft">Remove Row</a></td>',
         '</tr>';
     }

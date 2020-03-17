@@ -107,7 +107,7 @@ function returnAcquiredIcon($type) {
     if ($type === 'Free Agent') {
         return '<span class="oi oi-plus"></span>';
     }
-    if ($type === 'Draft') {
+    if ($type === 'Drafted') {
         return '<span class="oi oi-target"></span>';
     }
     if ($type === 'Created') {
@@ -138,7 +138,11 @@ function tradeTeamIcon($Acquired, $masterRowID) {
 
     if ($Acquired === 'Trade') {
         $orginalTeam = returnMasterRosterTeam($masterRowID);
-        return '<img src="../libs/images/franchises/' . $orginalTeam . '_Logo.png" height=20 width=35>&nbsp;';
+        if ($orginalTeam === 'None') {
+            return '';
+        } else {
+            return '<img src="../libs/images/franchises/' . $orginalTeam . '_Logo.png" height=20 width=35>&nbsp;';
+        }
     } else {
         
     }
