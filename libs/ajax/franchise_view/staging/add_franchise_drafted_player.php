@@ -9,7 +9,8 @@ $year = $_POST['franYear'];
 $getDraftPlayerInfo = db_query("SELECT * FROM `franchise_staging_drafted` WHERE Row_ID='{$draftedRow}'");
 $DraftedPlayerRow = $getDraftPlayerInfo->fetch_assoc();
 
-$AddDraftedPlayerToRoster = db_query("INSERT INTO `franchise_year_roster` (Name, Position, Overall, Age, Weapon, Acquired, Rookie, OSU, Historical_ID, Team, Year) VALUES ('{$DraftedPlayerRow['Name']}','{$draftedPOS}','{$DraftedPlayerRow['Overall']}','{$DraftedPlayerRow['Age']}','None','Drafted','R','','', '{$fran}','{$year}')");
+$escapedName = addslashes($DraftedPlayerRow['Name']);
+$AddDraftedPlayerToRoster = db_query("INSERT INTO `franchise_year_roster` (Name, Position, Overall, Age, Weapon, Acquired, Rookie, OSU, Historical_ID, Team, Year) VALUES ('{$escapedName}','{$draftedPOS}','{$DraftedPlayerRow['Overall']}','{$DraftedPlayerRow['Age']}','None','Drafted','R','','', '{$fran}','{$year}')");
 
 $getRowMax = db_query("SELECT MAX(`Row_ID`) as MaxRow FROM `franchise_year_roster`");
 $Max = $getRowMax->fetch_object()->MaxRow;
