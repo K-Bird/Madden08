@@ -25,7 +25,7 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/madden08/libs/db/common_db_functions.php"
                             <div class="card">
                                 <div class="card-body">
                                     <span id="menu-toggle" style="float: left" class="oi oi-chevron-left"></span>
-                                    Home
+                                    Home - Test
                                 </div>
                             </div>
                         </div>
